@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_tab"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/icon"
+        android:src="@color/colorGray_b" />
+
+    <top.wzmyyj.wzm_sdk.widget.CircleImageView
+        android:id="@+id/img_avatar"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/icon"
+        android:padding="2dp"
+        android:src="@color/colorGray_b"
+        android:visibility="gone"
+        app:border_color="@color/colorLine"
+        app:border_width="0.1dp" />
+
+</FrameLayout>

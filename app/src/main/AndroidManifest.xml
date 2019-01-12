@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.osmeet.os">
+
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!--允许程序打开网络套接字-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--允许程序设置内置sd卡的写权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--允许程序获取网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--允许程序访问WiFi网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--允许程序读写手机状态和身份-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--允许程序访问FINE来获取粗略的位置-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- iBeancon功能所需权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 个推3.0电子围栏功能所需权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".app.application.App"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities=".FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path" />
+        </provider>
+
+
+        <!--高德地图开发者申请的key-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="5e0bc70116ada6769679b8fc018fd371" />
+
+        <service android:name="com.amap.api.location.APSService" />
+
+        <service
+            android:name=".service.PushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice"
+            android:permission="1" />
+        <service android:name=".service.PushIntentService"/>
+
+        <activity android:name=".view.activity.LaunchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.activity.MainActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.GuideActivity" />
+        <activity android:name=".view.activity.AdActivity" />
+        <activity android:name=".view.activity.PopInfoActivity" />
+        <activity android:name=".view.activity.StoreActivity" />
+        <activity android:name=".view.activity.UpdateInfoActivity" />
+        <activity android:name=".view.activity.SettingActivity" />
+        <activity android:name=".view.activity.CameraActivity" />
+        <activity android:name=".view.activity.InviteListActivity" />
+        <activity android:name=".view.activity.MatchActivity" />
+        <activity android:name=".view.activity.MatchListActivity" />
+        <activity android:name=".view.activity.NewFriendsActivity" />
+        <activity android:name=".view.activity.TradeActivity" />
+        <activity android:name=".view.activity.TradeListActivity" />
+        <activity android:name=".view.activity.InviteFriendsActivity" />
+        <activity android:name=".view.activity.SearchActivity" />
+        <activity android:name=".view.activity.WalletActivity" />
+        <activity android:name=".view.activity.GoodsBuyActivity" />
+        <activity android:name=".view.activity.GoodsActivity" />
+        <activity android:name=".view.activity.MatchBeginActivity" />
+        <activity android:name=".view.activity.ChatActivity" />
+        <activity android:name=".view.activity.ChatInviteActivity" />
+        <activity android:name=".view.activity.ScanActivity" />
+        <activity android:name=".view.activity.VisitCardActivity" />
+    </application>
+
+</manifest>

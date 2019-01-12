@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_gravity="center"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_edit_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+
+        <EditText
+            android:id="@+id/et_sms_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorClarity"
+            android:hint="@string/please_input_sms_code"
+            android:inputType="number"
+            android:padding="5dp"
+            android:textColor="@color/colorGray_5"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="25dp"
+            android:background="@color/colorP1" />
+
+        <TextView
+            android:id="@+id/tv_get_sms_code"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:text="@string/get_sms_code"
+            android:textColor="@color/colorP1"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_edit_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorClarity"
+            android:hint="@string/please_set_password"
+            android:inputType="textPassword"
+            android:padding="5dp"
+            android:textColor="@color/colorGray_5"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/img_eye"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:contentDescription="@string/icon"
+            android:gravity="center"
+            android:padding="10.5dp"
+            android:src="@mipmap/login_eye_gray"
+            android:text="@string/get_sms_code"
+            android:textColor="@color/colorP1"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_register"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_button_selector"
+        android:text="@string/register"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

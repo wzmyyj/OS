@@ -1,0 +1,44 @@
+package com.osmeet.os.contract;
+
+import com.osmeet.os.app.tools.I;
+import com.osmeet.os.base.contract.IBasePresenter;
+import com.osmeet.os.base.contract.IBaseView;
+
+/**
+ * Created by yyj on 2018/12/03. email: 2209011667@qq.com
+ * 登录与注册。
+ */
+
+public interface LoginContract {
+
+    interface IView extends IBaseView {
+
+        int LOGIN_PASSWORD = 1;
+        int LOGIN_SMS = 2;
+        int LOGIN_REGISTER = 3;
+
+        void showWhat(int w);
+
+        void showBack();
+    }
+
+    interface IPresenter extends IBasePresenter, I.Main, I.PopInfo {
+
+        void checkToken();
+
+        void checkExists(String zoneCode, String phone);
+
+        void loginSMS(String smsCode);
+
+        void loginPassword(String password);
+
+        void register(String smsCode, String password);
+
+        void needSMSCode();
+
+        void loadUserInfo();
+
+
+    }
+
+}

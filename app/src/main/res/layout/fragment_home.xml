@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="15dp"
+    tools:context=".view.activity.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/abl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorClarity"
+        app:elevation="0dp">
+
+        <include layout="@layout/layout_home_top_bar" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_top"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:tabBackground="@color/colorClarity"
+            app:tabGravity="fill"
+            app:tabIndicatorHeight="0dp"
+            app:tabMaxWidth="100dp"
+            app:tabMinWidth="20dp"
+            app:tabMode="scrollable"
+            app:tabPadding="-1dp"
+            app:tabPaddingBottom="-1dp"
+            app:tabPaddingEnd="-1dp"
+            app:tabPaddingStart="-1dp"
+            app:tabPaddingTop="-1dp"
+            app:tabSelectedTextColor="@color/colorWhite"
+            app:tabTextColor="@color/colorGray_b">
+
+        </android.support.design.widget.TabLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/colorLine" />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </android.support.v4.view.ViewPager>
+
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+    <!--android:id="@+id/fab_a"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="bottom|center_horizontal"-->
+    <!--android:layout_margin="25dp"-->
+    <!--app:backgroundTint="@color/colorPrimary"-->
+    <!--app:fabSize="normal"-->
+    <!--app:layout_behavior="com.osmeet.os.view.widget.ScrollAwareFABBehavior"-->
+    <!--app:rippleColor="@color/colorP2" />-->
+
+</android.support.design.widget.CoordinatorLayout>

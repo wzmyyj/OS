@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="horizontal"
+    android:paddingBottom="5dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gray"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <top.wzmyyj.wzm_sdk.widget.CircleImageView
+            android:id="@+id/img_store_logo"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="15dp"
+            android:src="@color/colorGray_e"
+            app:border_color="@color/colorWhite"
+            app:border_width="0.5dp" />
+
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="100dp"
+            android:minWidth="30dp"
+            android:text="@string/store"
+            android:textColor="@color/colorGray_5"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:maxWidth="100dp"
+            android:text="@string/receive"
+            android:textColor="@color/colorGray_5"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_store_invite_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="50dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="@string/_0"
+            android:textColor="@color/colorPrice"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="100dp"
+            android:text="@string/invite_num"
+            android:textColor="@color/colorGray_5"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+
+            <top.wzmyyj.wzm_sdk.widget.CircleImageView
+                android:id="@+id/img_u_1"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="32.5dp"
+                android:layout_marginStart="32.5dp"
+                android:src="@color/colorGray_e"
+                android:visibility="gone"
+                app:border_color="@color/colorWhite"
+                app:border_width="1dp" />
+
+            <top.wzmyyj.wzm_sdk.widget.CircleImageView
+                android:id="@+id/img_u_2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"
+                android:src="@color/colorGray_e"
+                android:visibility="gone"
+                app:border_color="@color/colorWhite"
+                app:border_width="1dp" />
+
+            <top.wzmyyj.wzm_sdk.widget.CircleImageView
+                android:id="@+id/img_u_3"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="17.5dp"
+                android:layout_marginStart="17.5dp"
+                android:src="@color/colorGray_e"
+                android:visibility="gone"
+                app:border_color="@color/colorWhite"
+                app:border_width="1dp" />
+
+            <top.wzmyyj.wzm_sdk.widget.CircleImageView
+                android:id="@+id/img_u_4"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:src="@color/colorGray_e"
+                android:visibility="gone"
+                app:border_color="@color/colorWhite"
+                app:border_width="1dp" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

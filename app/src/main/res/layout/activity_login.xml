@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".view.activity.LoginActivity">
+
+    <ImageView
+        android:id="@+id/img_ball_1"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_gravity="top|end"
+        android:layout_marginEnd="46dp"
+        android:layout_marginRight="46dp"
+        android:layout_marginTop="42dp"
+        android:background="@drawable/ic_login_bg_dec01"
+        android:contentDescription="@string/icon" />
+
+    <ImageView
+        android:id="@+id/img_ball_2"
+        android:layout_width="78dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/ic_login_bg_dec02"
+        android:contentDescription="@string/icon" />
+
+
+    <ImageView
+        android:layout_width="117dp"
+        android:layout_height="78dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="106dp"
+        android:background="@mipmap/login_text_title"
+        android:contentDescription="@string/icon" />
+
+    <ImageView
+        android:id="@+id/img_bg_end"
+        android:layout_width="270dp"
+        android:layout_height="190dp"
+        android:layout_gravity="bottom|end"
+        android:background="@mipmap/login_bg_dec03"
+        android:contentDescription="@string/icon" />
+
+    <FrameLayout
+        android:id="@+id/fl_l"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_2"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="60dp"
+            android:text="@string/get_user_info_fail"
+            android:textColor="@color/colorGray_7"
+            android:textSize="14sp"
+            tools:ignore="SmallSp" />
+        <Button
+            android:id="@+id/bt_redo"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@drawable/bg_button_selector"
+            android:text="@string/redo_get"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+    </FrameLayout>
+</FrameLayout>

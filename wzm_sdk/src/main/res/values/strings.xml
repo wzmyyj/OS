@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">wzm_sdk</string>
+    <string name="wzm">wzmyyj</string>
+    <string name="end">--end--</string>
+    <string name="item">item</string>
+    <string name="icon">icon</string>
+</resources>

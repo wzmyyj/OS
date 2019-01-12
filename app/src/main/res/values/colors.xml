@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FC6B50</color>
+    <color name="colorPrimaryDark">#FC6B50</color>
+    <color name="colorAccent">#FA906E</color>
+
+    <color name="colorP1">#FC6B50</color>
+    <color name="colorP2">#FA906E</color>
+    <color name="colorP3">#FCA57E</color>
+    <color name="colorP1Dark">#FC6B50</color>
+
+    <color name="colorP4">#FF5A60</color>
+    <color name="gallery_blue">#FC6B50</color>
+    <color name="colorNumRed">#FC5454</color>
+    <color name="colorPrice">#FF254E</color>
+    <color name="colorLightBlue">#10ACFF</color>
+    <color name="colorLittleBlue">#00C8FF</color>
+</resources>

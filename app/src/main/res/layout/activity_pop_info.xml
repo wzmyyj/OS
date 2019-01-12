@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".view.activity.PopInfoActivity">
+
+    <ImageView
+        android:id="@+id/img_bg_top"
+        android:layout_width="match_parent"
+        android:layout_height="245dp"
+        android:background="@mipmap/improve_information_bg_dec03"
+        android:contentDescription="@string/bg" />
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="35dp"
+        android:contentDescription="@string/icon"
+        android:padding="6dp"
+        android:src="@mipmap/icon_back_white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        android:gravity="center"
+        android:text="@string/improve_information"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp" />
+
+    <FrameLayout
+        android:id="@+id/fl_center"
+        android:layout_width="180dp"
+        android:layout_height="220dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/bg_improve_information_dec02">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:gravity="center"
+            android:text="@string/upload_avatar"
+            android:textColor="@color/colorGray_9"
+            android:textSize="14sp" />
+
+        <top.wzmyyj.wzm_sdk.widget.RoundAngleImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:contentDescription="@string/avatar"
+            app:radiusLeftTop="10dp"
+            app:radiusRightTop="10dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_gravity="bottom"
+            android:background="@mipmap/improve_information_bg_dec01"
+            android:contentDescription="@string/icon" />
+
+        <LinearLayout
+            android:id="@+id/ll_sex_male"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/img_sex_male"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/icon"
+                android:src="@mipmap/improve_information_icon_male_2" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_sex_female"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/img_sex_female"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/icon"
+                android:src="@mipmap/improve_information_icon_female_2" />
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_input"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="310dp"
+        android:orientation="vertical"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/bg_edit_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:text="@string/input_nickname"
+                android:textColor="@color/colorP1"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="25dp"
+                android:background="@color/colorP1" />
+
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorClarity"
+                android:hint="@string/please_input_nickname"
+                android:inputType="text"
+                android:padding="5dp"
+                android:textColor="@color/colorGray_5"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/bg_edit_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:text="@string/birth_day"
+                android:textColor="@color/colorP1"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="25dp"
+                android:background="@color/colorP1" />
+
+
+            <EditText
+                android:id="@+id/et_birthday"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorClarity"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="@string/please_pick_you_birthday"
+                android:inputType="text"
+                android:padding="5dp"
+                android:textColor="@color/colorGray_5"
+                android:textSize="14sp"
+                tools:ignore="Deprecated" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_open_os"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/bg_button_selector"
+            android:text="@string/open_os"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/tv_cannot_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/improve_information_open_os"
+                android:textColor="@color/colorGray_7"
+                android:textSize="10.5sp"
+                tools:ignore="SmallSp" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+</FrameLayout>

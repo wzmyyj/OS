@@ -1,0 +1,99 @@
+package com.osmeet.os.base.activity;
+
+import android.os.Bundle;
+
+import com.osmeet.os.base.application.BaseApplication;
+import com.osmeet.os.base.contract.IBasePresenter;
+import com.osmeet.os.base.contract.IBaseView;
+
+import butterknife.ButterKnife;
+import top.wzmyyj.wzm_sdk.activity.PanelActivity;
+import top.wzmyyj.wzm_sdk.tools.T;
+import top.wzmyyj.wzm_sdk.utils.OrientationUtil;
+import top.wzmyyj.wzm_sdk.utils.StatusBarUtil;
+
+
+/**
+ * Created by yyj on 2018/06/28. email: 2209011667@qq.com
+ */
+
+public abstract class BaseActivity<P extends IBasePresenter> extends PanelActivity implements IBaseView {
+
+    protected P mPresenter;
+
+    @Override
+    protected void initSome(Bundle savedInstanceState) {
+        BaseApplication.addActivity(this);
+        initPresenter();
+        checkPresenterIsNull();
+        super.initSome(savedInstanceState);
+        StatusBarUtil.initStatusBar(activity, true, true, true);
+    }
+
+    protected abstract void initPresenter();
+
+    public P getPresenter() {
+        return mPresenter;
+    }
+
+
+    private void checkPresenterIsNull() {
+        if (mPresenter == null) {
+            throw new IllegalStateException("please init mPresenter in initPresenter() method ");
+        }
+    }
+
+    protected abstract int getLayoutId();
+
+    @Override
+    protected void setRootView() {
+        setContentView(getLayoutId());
+        ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    protected void onResume() {
+        // 强制设为竖屏。
+        OrientationUtil.portrait(this);
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPresenter.destroy();
+        mPresenter = null;
+        BaseApplication.removeActivity(this);
+    }
+
+    @Override
+    public void showToast(String t) {
+        T.s(t);
+    }
+
+    @Override
+    public void showFail(int what, Object... objects) {
+
+    }
+
+    @Override
+    public void showSuccess(int what, Object... objects) {
+
+    }
+}
