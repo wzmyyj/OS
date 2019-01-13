@@ -49,6 +49,12 @@ public class InviteListActivity extends BaseActivity<InviteListContract.IPresent
     }
 
     @Override
+    protected void initData() {
+        super.initData();
+        mPresenter.loadMatchInviteList();
+    }
+
+    @Override
     public void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList) {
         inviteListRecyclerPanel.matchInviteList(matchInviteList);
     }

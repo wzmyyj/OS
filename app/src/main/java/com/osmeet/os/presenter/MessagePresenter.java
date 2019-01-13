@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 
+import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.MessageContract;
@@ -40,6 +41,18 @@ public class MessagePresenter extends BasePresenter<MessageContract.IView> imple
 
     @Override
     public void loadMatchInviteList() {
+        matchModel.matchInvite_getBeInvited(new PObserver<Box<ListContent<MatchInvite>>>() {
+            @Override
+            public void onNext(Box<ListContent<MatchInvite>> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                if (box.getData() != null) {
+                    mView.showMatchInviteList(box.getData().getContent());
+                }
+            }
 
+        }, 0, 100);
     }
 }

@@ -166,14 +166,15 @@ public class I {
         }
     }
 
-    public static void goMatchActivity(Context context) {
+    public static void goMatchActivity(Context context, String matchId) {
         Intent intent = new Intent(context, MatchActivity.class);
+        intent.putExtra("matchId", matchId);
         context.startActivity(intent);
     }
 
     public interface Match extends IContext {
-        default void goMatch() {
-            goMatchActivity(getContext());
+        default void goMatch(String matchId) {
+            goMatchActivity(getContext(), matchId);
         }
     }
 

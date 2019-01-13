@@ -71,7 +71,6 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
     }
 
     private void scan() {
-        mPresenter.goMatch();
     }
 
     @Override

@@ -5,9 +5,11 @@ import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.osmeet.os.R;
@@ -20,12 +22,14 @@ import com.osmeet.os.app.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseNeScrollPanel;
 import com.osmeet.os.contract.MessageContract;
 import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import top.wzmyyj.wzm_sdk.utils.DensityUtil;
 
 
@@ -109,6 +113,21 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
                     bar.setAlpha(percent);
             }
         });
+
+        mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                String matchId = mData.get(position).getId();
+                if (!TextUtils.isEmpty(matchId)) {
+                    mPresenter.goMatch(matchId);
+                }
+            }
+
+            @Override
+            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+                return false;
+            }
+        });
     }
 
     public void matchTeamList(@NonNull List<MatchTeam> matchTeamList) {
@@ -122,7 +141,38 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         mAdapter.notifyDataSetChanged();
     }
 
+    @BindView(R.id.img_store_logo)
+    ImageView img_store_logo;
+    @BindView(R.id.tv_store_name)
+    TextView tv_store_name;
+    @BindView(R.id.tv_store_invite_num)
+    TextView tv_store_invite_num;
+
+    @OnClick(R.id.ll_invite)
+    void go_invite() {
+        mPresenter.loadMatchTeamList();
+    }
+
+    @BindView(R.id.ll_invite_empty)
+    LinearLayout ll_invite_empty;
+
     public void matchInviteList(@NonNull List<MatchInvite> matchInviteList) {
+        if (matchInviteList.size() == 0) {
+            ll_invite_empty.setVisibility(View.VISIBLE);
+            return;
+        }
+        ll_invite_empty.setVisibility(View.GONE);
+        MatchInvite invite = matchInviteList.get(0);
+        Store store = invite.getMatchUnit().getStore();
+        int count = 0;
+        for (MatchInvite matchInvite : matchInviteList) {
+            if (matchInvite.getMatchUnit().getStore().getId().equals(store.getId())) {
+                count++;
+            }
+        }
+        G.img(context, store.getLogoImage().getUrl(), img_store_logo);
+        WidgetUtil.setTextNotNull(tv_store_name, store.getName());
+        WidgetUtil.setTextNumber(tv_store_invite_num, count);
 
     }
 }

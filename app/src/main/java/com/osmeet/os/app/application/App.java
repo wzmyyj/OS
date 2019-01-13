@@ -1,6 +1,7 @@
 package com.osmeet.os.app.application;
 
 
+import android.app.Application;
 import android.support.annotation.NonNull;
 
 import com.igexin.sdk.PushManager;
@@ -41,6 +42,8 @@ public class App extends BaseApplication {
     private static TokenManager tokenManager;
     public static SettingManager SETTING;
 
+    private static Application application;
+
 
     @Override
     public void onCreate() {
@@ -57,13 +60,13 @@ public class App extends BaseApplication {
         REFRESHTOKEN = tokenManager.getRefreshToken();
         BEARER_TOKEN = "Bearer " + TOKEN;
 
+        application = this;
 
         GP.init(PackageUtil.getPackageName(this) + ".FileProvider", "/OsMeet/images");
 
 
         PushManager.getInstance().initialize(this.getApplicationContext(), PushService.class);
         PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), PushIntentService.class);
-
     }
 
 
@@ -81,11 +84,17 @@ public class App extends BaseApplication {
         App.REFRESHTOKEN = null;
         App.REFRESHTOKEN = null;
         tokenManager.clearToken();
+        if (MyInfo != null) {
+            PushManager.getInstance().unBindAlias(application, MyInfo.getId(), false);
+        }
         MyInfo = null;
     }
 
     public static void setMyInfo(User user) {
         MyInfo = user;
+        if (user != null)
+            PushManager.getInstance().bindAlias(application, user.getId());
+
     }
 
     public static void setComplete(boolean isComplete) {

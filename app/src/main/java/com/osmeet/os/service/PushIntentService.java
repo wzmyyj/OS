@@ -1,12 +1,14 @@
 package com.osmeet.os.service;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.igexin.sdk.GTIntentService;
 import com.igexin.sdk.message.GTCmdMessage;
 import com.igexin.sdk.message.GTNotificationMessage;
 import com.igexin.sdk.message.GTTransmitMessage;
+
+import top.wzmyyj.wzm_sdk.tools.L;
+import top.wzmyyj.wzm_sdk.tools.T;
 
 /**
  * Created by yyj on 2019/01/12. email: 2209011667@qq.com
@@ -25,11 +27,13 @@ public class PushIntentService extends GTIntentService {
     @Override
     public void onReceiveMessageData(Context context, GTTransmitMessage msg) {
         // 透传消息的处理，详看SDK demo
+        L.d("MSG:" + msg.getMessageId());
+        T.s(msg.getMessageId());
     }
 
     @Override
     public void onReceiveClientId(Context context, String clientid) {
-        Log.e(TAG, "onReceiveClientId -> " + "clientid = " + clientid);
+        L.d("onReceiveClientId -> " + "clientid = " + clientid);
     }
 
     @Override
