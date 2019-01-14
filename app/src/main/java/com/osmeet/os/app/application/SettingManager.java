@@ -6,6 +6,7 @@ import top.wzmyyj.wzm_sdk.tools.P;
 
 /**
  * Created by yyj on 2018/12/28. email: 2209011667@qq.com
+ * 单例。
  */
 
 public class SettingManager {

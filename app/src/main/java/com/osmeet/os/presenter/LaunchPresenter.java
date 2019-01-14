@@ -23,14 +23,14 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
 
     @Override
     public void init() {
-        App.setMyInfo(null);
+        App.getInstance().setMyInfo(null);
     }
 
     @Override
     public long delayMillis() {
-        if (App.SETTING.isOnce()) {
+        if (App.getInstance().getSetting().isOnce()) {
             return 1000;
-        } else if (App.SETTING.isAd()) {
+        } else if (App.getInstance().getSetting().isAd()) {
             return 500;
         } else {
             return 200;
@@ -40,9 +40,9 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
 
     @Override
     public void go() {
-        if (App.SETTING.isOnce()) {
+        if (App.getInstance().getSetting().isOnce()) {
             goGuide();// 前往引导页。
-        } else if (App.SETTING.isAd()) {
+        } else if (App.getInstance().getSetting().isAd()) {
             goAd();// 前往广告。
         } else {
             goLogin();// 前往登录。

@@ -20,7 +20,7 @@ public class SettingPresenter extends BasePresenter<SettingContract.IView> imple
 
     @Override
     public void logout() {
-        App.clearToken();
+        App.getInstance().clearToken();
         App.finish(MainActivity.class);
         toast("登出成功！");
         goLogin();
@@ -31,6 +31,6 @@ public class SettingPresenter extends BasePresenter<SettingContract.IView> imple
 
     @Override
     public SettingManager getSetting() {
-        return App.SETTING;
+        return App.getInstance().getSetting();
     }
 }

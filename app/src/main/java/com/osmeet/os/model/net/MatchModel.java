@@ -93,6 +93,11 @@ public class MatchModel {
         SubscribeUtil.io2main(observable, observer);
     }
 
+    public void matchTeam_finish(Observer<Box<MatchTeam>> observer, String matchTeamId) {
+        Observable<Box<MatchTeam>> observable = getService().matchTeam_finish(matchTeamId);
+        SubscribeUtil.io2main(observable, observer);
+    }
+
     /////////////////////////////
 
     public void matchInvite(Observer<Box<MatchInvite>> observer, String storeId, String invitedUnitId) {
@@ -106,8 +111,8 @@ public class MatchModel {
         SubscribeUtil.io2main(observable, observer);
     }
 
-    public void matchInvite_accept(Observer<Box<MatchInvite>> observer, String matchInviteId) {
-        Observable<Box<MatchInvite>> observable = getService().matchInvite_accept(matchInviteId);
+    public void matchInvite_accept(Observer<Box<MatchTeam>> observer, String matchInviteId) {
+        Observable<Box<MatchTeam>> observable = getService().matchInvite_accept(matchInviteId);
         SubscribeUtil.io2main(observable, observer);
     }
 

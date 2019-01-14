@@ -12,6 +12,11 @@ public class MatchTeam {
     private Store store;
     private MatchUnit unita;
     private MatchUnit unitb;
+    private String togetherState;
+    private int atimeStatus;
+    private long awantMeetTime;
+    private int btimeStatus;
+    private long bwantMeetTime;
 
     public void setId(String id) {
         this.id = id;
@@ -59,5 +64,46 @@ public class MatchTeam {
 
     public MatchUnit getUnitb() {
         return unitb;
+    }
+
+
+    public String getTogetherState() {
+        return togetherState;
+    }
+
+    public void setTogetherState(String togetherState) {
+        this.togetherState = togetherState;
+    }
+
+    public int getAtimeStatus() {
+        return atimeStatus;
+    }
+
+    public void setAtimeStatus(int atimeStatus) {
+        this.atimeStatus = atimeStatus;
+    }
+
+    public long getAwantMeetTime() {
+        return awantMeetTime;
+    }
+
+    public void setAwantMeetTime(long awantMeetTime) {
+        this.awantMeetTime = awantMeetTime;
+    }
+
+    public int getBtimeStatus() {
+        return btimeStatus;
+    }
+
+    public void setBtimeStatus(int btimeStatus) {
+        this.btimeStatus = btimeStatus;
+    }
+
+    public long getBwantMeetTime() {
+        return bwantMeetTime;
+    }
+
+    public void setBwantMeetTime(long bwantMeetTime) {
+        this.bwantMeetTime = bwantMeetTime;
     }
 }

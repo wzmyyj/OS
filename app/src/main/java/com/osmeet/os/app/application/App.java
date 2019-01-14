@@ -1,7 +1,6 @@
 package com.osmeet.os.app.application;
 
 
-import android.app.Application;
 import android.support.annotation.NonNull;
 
 import com.igexin.sdk.PushManager;
@@ -16,7 +15,6 @@ import com.osmeet.os.service.PushService;
 
 import top.wzmyyj.wzm_sdk.tools.L;
 import top.wzmyyj.wzm_sdk.utils.PackageUtil;
-import top.wzmyyj.wzm_sdk.utils.StatusBarUtil;
 
 /**
  * Created by yyj on 2018/10/27. email: 2209011667@qq.com
@@ -26,41 +24,22 @@ import top.wzmyyj.wzm_sdk.utils.StatusBarUtil;
 
 public class App extends BaseApplication {
 
+    private static App app;
 
-    public static String TOKEN = null;
-    public static String REFRESHTOKEN = null;
-
-    // Bearer
-    public static String BEARER_TOKEN = null;
-
-    public static String VERSION = null;
-
-    public static boolean ISCOMPLETE = false;
-
-    public static User MyInfo;
-
-    private static TokenManager tokenManager;
-    public static SettingManager SETTING;
-
-    private static Application application;
-
+    private UserManager userManager;
+    private SettingManager settingManager;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        StatusBarUtil.initStatusBarHeight(this);
         L.setTAG("OSMeet");
 //        L.setDebug(false);
         L.setDebug(true);
         ReOk.init(Urls.OS_BASE);
-        SETTING = SettingManager.getInstance(this);
-        tokenManager = TokenManager.getInstance(this);
-        VERSION = "Android_" + PackageUtil.getVersionName(this);
-        TOKEN = tokenManager.getToken();
-        REFRESHTOKEN = tokenManager.getRefreshToken();
-        BEARER_TOKEN = "Bearer " + TOKEN;
+        app = this;
 
-        application = this;
+        userManager = UserManager.getInstance(this);
+        settingManager = SettingManager.getInstance(this);
 
         GP.init(PackageUtil.getPackageName(this) + ".FileProvider", "/OsMeet/images");
 
@@ -69,36 +48,51 @@ public class App extends BaseApplication {
         PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), PushIntentService.class);
     }
 
+    public static App getInstance() {
+        return app;
+    }
 
-    public static void setToken(@NonNull Token token) {
+    public void setToken(@NonNull Token token) {
         if (token.getToken() != null && token.getRefreshToken() != null) {
-            TOKEN = token.getToken();
-            REFRESHTOKEN = token.getRefreshToken();
-            BEARER_TOKEN = "Bearer " + TOKEN;
-            tokenManager.setToken(token);
+            userManager.setToken(token);
         }
     }
 
-    public static void clearToken() {
-        App.TOKEN = null;
-        App.REFRESHTOKEN = null;
-        App.REFRESHTOKEN = null;
-        tokenManager.clearToken();
-        if (MyInfo != null) {
-            PushManager.getInstance().unBindAlias(application, MyInfo.getId(), false);
+    public void clearToken() {
+        if (userManager.getMyInfo() != null) {
+            PushManager.getInstance().unBindAlias(this, userManager.getMyInfo().getId(), false);
         }
-        MyInfo = null;
+        userManager.clearToken();
     }
 
-    public static void setMyInfo(User user) {
-        MyInfo = user;
+    public void setMyInfo(User user) {
+        userManager.setMyInfo(user);
         if (user != null)
-            PushManager.getInstance().bindAlias(application, user.getId());
-
+            PushManager.getInstance().bindAlias(this, user.getId());
     }
 
-    public static void setComplete(boolean isComplete) {
-        ISCOMPLETE = isComplete;
+    public User getMyInfo() {
+        return userManager.getMyInfo();
+    }
+
+    public void setComplete(boolean isComplete) {
+        userManager.setComplete(isComplete);
+    }
+
+    public boolean isComplete() {
+        return userManager.isComplete();
+    }
+
+    public String getVersion() {
+        return "Android_" + PackageUtil.getVersionName(this);
+    }
+
+    public Token getToken() {
+        return userManager.getToken();
+    }
+
+    public SettingManager getSetting() {
+        return settingManager;
     }
 
 }

@@ -30,7 +30,7 @@ public class GuideActivity extends BaseActivity<GuideContract.IPresenter> implem
     @Override
     protected void initData() {
         super.initData();
-        App.SETTING.setIsOnce(false);
+        App.getInstance().getSetting().setIsOnce(false);
     }
 }
 

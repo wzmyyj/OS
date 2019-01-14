@@ -1,10 +1,12 @@
 package top.wzmyyj.wzm_sdk.utils;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -13,7 +15,7 @@ import android.view.WindowManager;
 /**
  * Created by yyj on 2018/06/29. email: 2209011667@qq.com
  */
-
+@RequiresApi(api = Build.VERSION_CODES.M)
 public class StatusBarUtil {
 
 
@@ -28,6 +30,8 @@ public class StatusBarUtil {
         initStatusBar(context, isTint, isDark, false);
     }
 
+
+    @TargetApi(Build.VERSION_CODES.O)
     public static void initStatusBar(Activity context, boolean isTint, boolean isDark, boolean isTransparent) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             return;
@@ -58,13 +62,6 @@ public class StatusBarUtil {
 
     }
 
-
-    public static void initStatusBarHeight(Context context) {
-        StatusBarHeight = getStatusBarHeight(context);
-    }
-
-    public static int StatusBarHeight;
-
     /**
      * 获取状态栏高度
      *
@@ -80,10 +77,10 @@ public class StatusBarUtil {
         return result;
     }
 
-    public static void fitsStatusBarView(@NonNull View... views) {
-        for (int i = 0; i < views.length; i++) {
-            ViewGroup.LayoutParams params = views[i].getLayoutParams();
-            params.height = StatusBarHeight;
+    public static void fitsStatusBarView(Context context, @NonNull View... views) {
+        for (View view : views) {
+            ViewGroup.LayoutParams params = view.getLayoutParams();
+            params.height = getStatusBarHeight(context);
         }
     }
 

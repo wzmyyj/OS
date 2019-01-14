@@ -50,7 +50,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
     @Override
     public void update() {
         mPresenter.loadMatchTeamList();
-        mPresenter.loadMatchTeamList();
+        mPresenter.loadMatchInviteList();
     }
 
     @BindView(R.id.rv_list)
@@ -155,6 +155,14 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
 
     @BindView(R.id.ll_invite_empty)
     LinearLayout ll_invite_empty;
+    @BindView(R.id.img_u_1)
+    ImageView img_u_1;
+    @BindView(R.id.img_u_2)
+    ImageView img_u_2;
+    @BindView(R.id.img_u_3)
+    ImageView img_u_3;
+    @BindView(R.id.img_u_4)
+    ImageView img_u_4;
 
     public void matchInviteList(@NonNull List<MatchInvite> matchInviteList) {
         if (matchInviteList.size() == 0) {
@@ -164,15 +172,32 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         ll_invite_empty.setVisibility(View.GONE);
         MatchInvite invite = matchInviteList.get(0);
         Store store = invite.getMatchUnit().getStore();
-        int count = 0;
+
+        List<MatchInvite> inviteList = new ArrayList<>();
         for (MatchInvite matchInvite : matchInviteList) {
             if (matchInvite.getMatchUnit().getStore().getId().equals(store.getId())) {
-                count++;
+                inviteList.add(matchInvite);
             }
         }
-        G.img(context, store.getLogoImage().getUrl(), img_store_logo);
+        if (store.getLogoImage() != null) {
+            G.img(context, store.getLogoImage().getUrl(), img_store_logo);
+        }
         WidgetUtil.setTextNotNull(tv_store_name, store.getName());
-        WidgetUtil.setTextNumber(tv_store_invite_num, count);
+        WidgetUtil.setTextNumber(tv_store_invite_num, inviteList.size());
+
+        List<ImageView> imageViewList = new ArrayList<>();
+        imageViewList.add(img_u_1);
+        imageViewList.add(img_u_2);
+        imageViewList.add(img_u_3);
+        imageViewList.add(img_u_4);
+
+
+        for (int i = 0; i < 4 && i < inviteList.size(); i++) {
+            User user = inviteList.get(i).getMatchUnit().getUser();
+            if (user.getAvatar() != null) {
+                G.img(context, user.getAvatar().getUrl(), imageViewList.get(i));
+            }
+        }
 
     }
 }

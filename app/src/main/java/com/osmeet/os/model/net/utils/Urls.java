@@ -28,25 +28,6 @@ public class Urls {
     public static final String region_district = "/region/district";
     public static final String region_road = "/region/road";
 
-    // 同行。
-    public static final String invite_get = "/invite";
-    public static final String invite_post = "/invite";
-    public static final String invite_accept = "/invite/accept";
-    public static final String invite_accept_friends = "/invite/accept/friends";
-    public static final String invite_acceptTime = "/invite/acceptTime";
-    public static final String invite_allInviteList = "/invite/allInviteList";
-    public static final String invite_cancel = "/invite/cancel";
-    public static final String invite_cancelByUserId = "/invite/cancelByUserId";
-    public static final String invite_detail = "/invite/detail";
-    public static final String invite_expectTime = "/invite/expectTime";
-    public static final String invite_finish = "/invite/finish";
-    public static final String invite_finishedList = "/invite/finishedList";
-    public static final String invite_friends = "/invite/friends";
-    public static final String invite_getInvite_friends = "/invite/getInvite/friends";
-    public static final String invite_getInviteByStore = "/invite/getInviteByStore";
-    public static final String invite_getInviteFromMe_friends = "/invite/getInviteFromMe/friends";
-    public static final String invite_getOperate = "/invite/getOperate";
-    public static final String invite_unfinishedList = "/invite/unfinishedList";
 
     // 商品。
     public static final String store_goods_get = "/store/goods";
@@ -127,14 +108,6 @@ public class Urls {
     public static final String user_updatePhone = "/user/updatePhone";
     public static final String user_validatePhoneAndCode = "/user/validatePhoneAndCode";
 
-    // 目的地。
-    public static final String destination_get = "/destination";
-    public static final String destination_post = "/destination";
-    public static final String destination_del = "/destination";
-    public static final String destination_findById = "/destination/findById";
-    public static final String destination_mode = "/destination/mode";
-    public static final String destination_users = "/destination/users";
-    public static final String destination_usersPage = "/destination/usersPage";
 
     // 红包。
     public static final String coupon_post = "/coupon";
@@ -169,6 +142,7 @@ public class Urls {
     public static final String matchTeam_quitTeam = "/matchTeam/quitTeam";
     public static final String matchTeam_refuseTime = "/matchTeam/refuseTime";
     public static final String matchTeam_detail = "/matchTeam/detail";
+    public static final String matchTeam_finish = "/matchTeam/finish";
 
     // 匹配邀请。
     public static final String matchInvite = "/matchInvite";
@@ -177,4 +151,10 @@ public class Urls {
     public static final String matchInvite_cancel = "/matchInvite/cancel";
     public static final String matchInvite_getBeInvitedByStore = "/matchInvite/getBeInvitedByStore";
     public static final String matchInvite_getInviteByStore = "/matchInvite/getInviteByStore";
+
+    public static final String matchInvite_friends = "/matchInvite/friends";
+    public static final String matchInvite_friends_accept = "/matchInvite/friends/accept";
+    public static final String matchInvite_friends_cancel = "/matchInvite/friends/cancel";
+    public static final String matchInvite_friends_fromMe = "/matchInvite/friends/fromMe";
+    public static final String matchInvite_friends_toMe = "/matchInvite/friends/toMe";
 }

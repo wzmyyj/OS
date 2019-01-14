@@ -25,7 +25,7 @@ public class MessagePresenter extends BasePresenter<MessageContract.IView> imple
 
     @Override
     public void loadMatchTeamList() {
-        matchModel.matchTeam(new PObserver<Box<ListContent<MatchTeam>>>() {
+        matchModel.matchTeam_going(new PObserver<Box<ListContent<MatchTeam>>>() {
             @Override
             public void onNext(Box<ListContent<MatchTeam>> box) {
                 if (box.getCode() != 0) {

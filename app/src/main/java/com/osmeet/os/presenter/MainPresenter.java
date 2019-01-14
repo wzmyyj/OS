@@ -25,8 +25,8 @@ public class MainPresenter extends BasePresenter<MainContract.IView> implements 
 
     @Override
     public void loadMyInfo() {
-        if (App.MyInfo != null && App.ISCOMPLETE) {
-            mView.showMyInfo(App.MyInfo);
+        if (App.getInstance().getMyInfo() != null && App.getInstance().isComplete()) {
+            mView.showMyInfo(App.getInstance().getMyInfo());
             return;
         }
         userModel.user(new PObserver<Box<User>>() {
@@ -44,12 +44,12 @@ public class MainPresenter extends BasePresenter<MainContract.IView> implements 
                             && !TextUtils.isEmpty(user.getUsername())
                             && !TextUtils.isEmpty(user.getUsername())) {
                         log("用户信息完整！");
-                        App.setComplete(true);
-                        App.setMyInfo(user);
+                        App.getInstance().setComplete(true);
+                        App.getInstance().setMyInfo(user);
                         mView.showMyInfo(user);
                     } else {
                         log("用户信息不完整！");
-                        App.setComplete(false);
+                        App.getInstance().setComplete(false);
                         goPopInfoAndFinish();
                     }
                 }

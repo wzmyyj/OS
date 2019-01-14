@@ -3,7 +3,6 @@ package com.osmeet.os.view.panel.bean;
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.Store;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,8 +13,7 @@ public class MatchStoreInvite {
     Store store;
     List<MatchInvite> inviteList;
 
-    public MatchStoreInvite(Store store) {
-        this.store = store;
+    public MatchStoreInvite() {
     }
 
     public Store getStore() {
@@ -28,13 +26,6 @@ public class MatchStoreInvite {
 
     public List<MatchInvite> getInviteList() {
         return inviteList;
-    }
-
-    public void addInvite(MatchInvite invite) {
-        if (inviteList == null) {
-            inviteList = new ArrayList<>();
-        }
-        inviteList.add(invite);
     }
 
     public void setInviteList(List<MatchInvite> inviteList) {

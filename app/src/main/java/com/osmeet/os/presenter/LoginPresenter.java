@@ -27,7 +27,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
 
     @Override
     public void checkToken() {
-        if (!TextUtils.isEmpty(App.TOKEN)) {
+        if (App.getInstance().getToken() != null) {
 //            loadUserInfo();
             goMainAndFinish();
         }
@@ -84,7 +84,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                     return;
                 }
                 if (box.getData() != null) {
-                    App.setToken(box.getData());
+                    App.getInstance().setToken(box.getData());
                     toast("登录成功!");
                     loadUserInfo();
                 }
@@ -104,7 +104,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                     return;
                 }
                 if (box.getData() != null) {
-                    App.setToken(box.getData());
+                    App.getInstance().setToken(box.getData());
                     toast("登录成功!");
                     loadUserInfo();
                 }
@@ -123,7 +123,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                     return;
                 }
                 if (box.getData() != null) {
-                    App.setToken(box.getData());
+                    App.getInstance().setToken(box.getData());
                     toast("注册成功:请完善信息！");
                     goPopInfoAndFinish();
                 }
@@ -151,11 +151,11 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                             && !TextUtils.isEmpty(user.getUsername())
                             && !TextUtils.isEmpty(user.getUsername())) {
                         log("用户信息完整！");
-                        App.setComplete(true);
+                        App.getInstance().setComplete(true);
                         goMainAndFinish();
                     } else {
                         log("用户信息不完整！");
-                        App.setComplete(true);
+                        App.getInstance().setComplete(true);
                         goPopInfoAndFinish();
                     }
                 }

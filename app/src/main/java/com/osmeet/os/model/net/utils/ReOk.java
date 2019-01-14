@@ -71,8 +71,8 @@ public class ReOk {
 
     private static Response intercept(@NonNull Interceptor.Chain chain) throws IOException {
         Request.Builder request = chain.request().newBuilder();
-        request.addHeader("Authorization", App.BEARER_TOKEN)
-                .addHeader("version", App.VERSION); //添加默认的Token请求头
+        request.addHeader("Authorization", App.getInstance().getToken().getBearerToken())
+                .addHeader("version", App.getInstance().getVersion()); //添加默认的Token请求头
         Response proceed = chain.proceed(request.build());
         //如果token过期 再去重新请求token 然后设置token的请求头 重新发起请求 用户无感
         L.d("intercept:" + proceed.code());
@@ -96,13 +96,19 @@ public class ReOk {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(Gson2ConverterFactory.create())
                 .build();
-        retrofit2.Response<Box<Token>> response = retrofit.create(UserService.class).refreshToken(App.REFRESHTOKEN).execute();
+        retrofit2.Response<Box<Token>> response = retrofit.create(UserService.class)
+                .refreshToken(App.getInstance().getToken().getRefreshToken())
+                .execute();
         Box<Token> box = response.body();
         if (box == null) throw new IllegalStateException("refreshToken response body is null");
         Token token = box.getData();
-        App.setToken(token);
-        L.d("intercept new token:" + token.getBearerToken());
-        return token.getBearerToken();
+        String newToken = null;
+        if (token != null) {
+            App.getInstance().setToken(token);
+            L.d("intercept new token:" + token.getBearerToken());
+            newToken = token.getBearerToken();
+        }
+        return newToken;
     }
 
 

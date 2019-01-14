@@ -31,8 +31,8 @@ public class MinePresenter extends BasePresenter<MineContract.IView> implements 
 
     @Override
     public void loadMyInfo() {
-        if (App.MyInfo != null && App.ISCOMPLETE) {
-            mView.showMyInfo(App.MyInfo);
+        if (App.getInstance().getMyInfo() != null && App.getInstance().isComplete()) {
+            mView.showMyInfo(App.getInstance().getMyInfo());
             return;
         }
        freshMyInfo();
@@ -50,7 +50,7 @@ public class MinePresenter extends BasePresenter<MineContract.IView> implements 
                 }
                 if (box.getData() != null) {
                     User user = box.getData();
-                    App.setMyInfo(user);
+                    App.getInstance().setMyInfo(user);
                     mView.showMyInfo(user);
                 }
             }

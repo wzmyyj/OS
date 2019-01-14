@@ -14,6 +14,7 @@ import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 /**
@@ -90,6 +91,9 @@ public interface MatchService {
     Observable<Box<MatchTeam>> matchTeam_detail(
             @Query("matchTeamId") String matchTeamId);
 
+    @PUT(Urls.matchTeam_finish)
+    Observable<Box<MatchTeam>> matchTeam_finish(
+            @Query("matchTeamId") String matchTeamId);
 
     // Invite
     @GET(Urls.matchInvite)
@@ -99,7 +103,7 @@ public interface MatchService {
 
 
     @GET(Urls.matchInvite_accept)
-    Observable<Box<MatchInvite>> matchInvite_accept(
+    Observable<Box<MatchTeam>> matchInvite_accept(
             @Query("matchInviteId") String matchInviteId);
 
 
@@ -124,4 +128,9 @@ public interface MatchService {
             @Query("storeId") String storeId,
             @Query("pageNum") int pageNum,
             @Query("pageSize") int pageSize);
+
+
+    @GET(Urls.matchInvite_friends)
+    Observable<Box> matchInvite_friends(
+    );
 }

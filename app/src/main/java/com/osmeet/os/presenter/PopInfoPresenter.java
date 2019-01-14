@@ -96,8 +96,8 @@ public class PopInfoPresenter extends BasePresenter<PopInfoContract.IView> imple
         if (isFinishConsummateInfo && isFinishUpdateAvatar) {
             toast("完善信息成功!");
             App.finish(LoginActivity.class);
-            App.setMyInfo(null);
-            App.setComplete(true);
+            App.getInstance().setMyInfo(null);
+            App.getInstance().setComplete(true);
             goMain();
             finish();
         }

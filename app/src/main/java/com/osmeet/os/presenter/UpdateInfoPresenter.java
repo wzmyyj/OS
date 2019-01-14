@@ -29,8 +29,8 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.IView>
 
     @Override
     public void loadMyInfo() {
-        if (App.MyInfo != null && App.ISCOMPLETE) {
-            mView.showMyInfo(App.MyInfo);
+        if (App.getInstance().getMyInfo() != null && App.getInstance().isComplete()) {
+            mView.showMyInfo(App.getInstance().getMyInfo());
             return;
         }
         log("正在获取用户信息!");
@@ -43,7 +43,7 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.IView>
                 }
                 if (box.getData() != null) {
                     User user = box.getData();
-                    App.setMyInfo(user);
+                    App.getInstance().setMyInfo(user);
                     mView.showMyInfo(user);
                 }
             }
@@ -166,7 +166,7 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.IView>
     private void checkFinishAll() {
         if (isFinishUpdateInfo && isFinishUpdateAvatar && isFinishUpdateImages) {
             toast("修改信息成功!");
-            App.setMyInfo(null);
+            App.getInstance().setMyInfo(null);
             EventBus.getDefault().post(new MyInfoUpdateEvent(true));
             finish();
         }
