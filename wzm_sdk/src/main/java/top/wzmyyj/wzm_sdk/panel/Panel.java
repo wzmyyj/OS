@@ -22,7 +22,7 @@ import java.util.Map;
  */
 
 
-public class Panel {
+public class Panel{
 
     protected LayoutInflater mInflater;
     protected Context context;
@@ -30,7 +30,6 @@ public class Panel {
     protected Fragment fragment;
     protected View view;
     protected String title = "";
-
 
     public Context getContext() {
         return context;

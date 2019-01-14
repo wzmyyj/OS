@@ -51,7 +51,8 @@ public class I {
 //
 //    public interface $XX$ extends IContext {
 //        default void go$XX$() {
-//            go$XX$Activity(getContext());
+//            if (getContext() != null)
+//               go$XX$Activity(getContext());
 //        }
 //    }
 
@@ -62,7 +63,8 @@ public class I {
 
     public interface Login extends IContext {
         default void goLogin() {
-            goLoginActivity(getContext());
+            if (getContext() != null)
+                goLoginActivity(getContext());
         }
     }
 
@@ -73,7 +75,8 @@ public class I {
 
     public interface PopInfo extends IContext {
         default void goPopInfo() {
-            goPopInfoActivity(getContext());
+            if (getContext() != null)
+                goPopInfoActivity(getContext());
         }
     }
 
@@ -84,7 +87,8 @@ public class I {
 
     public interface Ad extends IContext {
         default void goAd() {
-            goAdActivity(getContext());
+            if (getContext() != null)
+                goAdActivity(getContext());
         }
     }
 
@@ -95,7 +99,8 @@ public class I {
 
     public interface Guide extends IContext {
         default void goGuide() {
-            goGuideActivity(getContext());
+            if (getContext() != null)
+                goGuideActivity(getContext());
         }
     }
 
@@ -106,7 +111,8 @@ public class I {
 
     public interface Main extends IContext {
         default void goMain() {
-            goMainActivity(getContext());
+            if (getContext() != null)
+                goMainActivity(getContext());
         }
     }
 
@@ -118,7 +124,8 @@ public class I {
 
     public interface Store extends IContext {
         default void goStore(String storeId) {
-            goStoreActivity(getContext(), storeId);
+            if (getContext() != null)
+                goStoreActivity(getContext(), storeId);
         }
     }
 
@@ -129,7 +136,8 @@ public class I {
 
     public interface UpdateInfo extends IContext {
         default void goUpdateInfo() {
-            goUpdateInfoActivity(getContext());
+            if (getContext() != null)
+                goUpdateInfoActivity(getContext());
         }
     }
 
@@ -140,7 +148,8 @@ public class I {
 
     public interface Setting extends IContext {
         default void goSetting() {
-            goSettingActivity(getContext());
+            if (getContext() != null)
+                goSettingActivity(getContext());
         }
     }
 
@@ -151,7 +160,8 @@ public class I {
 
     public interface Camera extends IContext {
         default void goCamera() {
-            goCameraActivity(getContext());
+            if (getContext() != null)
+                goCameraActivity(getContext());
         }
     }
 
@@ -162,7 +172,8 @@ public class I {
 
     public interface InviteList extends IContext {
         default void goInviteList() {
-            goInviteListActivity(getContext());
+            if (getContext() != null)
+                goInviteListActivity(getContext());
         }
     }
 
@@ -174,7 +185,8 @@ public class I {
 
     public interface Match extends IContext {
         default void goMatch(String matchId) {
-            goMatchActivity(getContext(), matchId);
+            if (getContext() != null)
+                goMatchActivity(getContext(), matchId);
         }
     }
 
@@ -185,7 +197,8 @@ public class I {
 
     public interface MatchList extends IContext {
         default void goMatchList() {
-            goMatchListActivity(getContext());
+            if (getContext() != null)
+                goMatchListActivity(getContext());
         }
     }
 
@@ -196,7 +209,8 @@ public class I {
 
     public interface NewFriends extends IContext {
         default void goNewFriends() {
-            goNewFriendsActivity(getContext());
+            if (getContext() != null)
+                goNewFriendsActivity(getContext());
         }
     }
 
@@ -207,7 +221,8 @@ public class I {
 
     public interface Trade extends IContext {
         default void goTrade() {
-            goTradeActivity(getContext());
+            if (getContext() != null)
+                goTradeActivity(getContext());
         }
     }
 
@@ -218,7 +233,8 @@ public class I {
 
     public interface TradeList extends IContext {
         default void goTradeList() {
-            goTradeListActivity(getContext());
+            if (getContext() != null)
+                goTradeListActivity(getContext());
         }
     }
 
@@ -229,7 +245,8 @@ public class I {
 
     public interface InviteFriends extends IContext {
         default void goInviteFriends() {
-            goInviteFriendsActivity(getContext());
+            if (getContext() != null)
+                goInviteFriendsActivity(getContext());
         }
     }
 
@@ -240,7 +257,8 @@ public class I {
 
     public interface Search extends IContext {
         default void goSearch() {
-            goSearchActivity(getContext());
+            if (getContext() != null)
+                goSearchActivity(getContext());
         }
     }
 
@@ -251,7 +269,8 @@ public class I {
 
     public interface Wallet extends IContext {
         default void goWallet() {
-            goWalletActivity(getContext());
+            if (getContext() != null)
+                goWalletActivity(getContext());
         }
     }
 
@@ -262,7 +281,8 @@ public class I {
 
     public interface GoodsBuy extends IContext {
         default void goGoodsBuy() {
-            goGoodsBuyActivity(getContext());
+            if (getContext() != null)
+                goGoodsBuyActivity(getContext());
         }
     }
 
@@ -273,7 +293,8 @@ public class I {
 
     public interface Goods extends IContext {
         default void goGoods() {
-            goGoodsActivity(getContext());
+            if (getContext() != null)
+                goGoodsActivity(getContext());
         }
     }
 
@@ -284,7 +305,8 @@ public class I {
 
     public interface MatchBegin extends IContext {
         default void goMatchBegin() {
-            goMatchBeginActivity(getContext());
+            if (getContext() != null)
+                goMatchBeginActivity(getContext());
         }
     }
 
@@ -295,7 +317,8 @@ public class I {
 
     public interface Chat extends IContext {
         default void goChat() {
-            goChatActivity(getContext());
+            if (getContext() != null)
+                goChatActivity(getContext());
         }
     }
 
@@ -306,7 +329,8 @@ public class I {
 
     public interface ChatInvite extends IContext {
         default void goChatInvite() {
-            goChatInviteActivity(getContext());
+            if (getContext() != null)
+                goChatInviteActivity(getContext());
         }
     }
 
@@ -317,7 +341,8 @@ public class I {
 
     public interface Scan extends IContext {
         default void goScan() {
-            goScanActivity(getContext());
+            if (getContext() != null)
+                goScanActivity(getContext());
         }
     }
 
@@ -328,7 +353,8 @@ public class I {
 
     public interface VisitCard extends IContext {
         default void goVisitCard() {
-            goVisitCardActivity(getContext());
+            if (getContext() != null)
+                goVisitCardActivity(getContext());
         }
     }
 
@@ -340,7 +366,8 @@ public class I {
 
     public interface AMap extends IContext {
         default void goAMap(String uri) {
-            goAMapApp(getContext(), uri);
+            if (getContext() != null)
+                goAMapApp(getContext(), uri);
         }
     }
 

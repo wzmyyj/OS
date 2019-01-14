@@ -1,12 +1,11 @@
 package top.wzmyyj.wzm_sdk.utils;
 
-import android.annotation.TargetApi;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -15,7 +14,6 @@ import android.view.WindowManager;
 /**
  * Created by yyj on 2018/06/29. email: 2209011667@qq.com
  */
-@RequiresApi(api = Build.VERSION_CODES.M)
 public class StatusBarUtil {
 
 
@@ -31,7 +29,7 @@ public class StatusBarUtil {
     }
 
 
-    @TargetApi(Build.VERSION_CODES.O)
+    @SuppressLint("InlinedApi")
     public static void initStatusBar(Activity context, boolean isTint, boolean isDark, boolean isTransparent) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             return;

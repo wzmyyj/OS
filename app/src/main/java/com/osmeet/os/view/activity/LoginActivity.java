@@ -174,5 +174,12 @@ public class LoginActivity extends BaseActivity<LoginContract.IPresenter> implem
             fl_2.setVisibility(View.GONE);
         }
     }
+
+    @Override
+    public void showFinishActivity() {
+        super.showFinishActivity();
+        overridePendingTransition(android.R.anim.fade_in,
+                android.R.anim.fade_out);
+    }
 }
 

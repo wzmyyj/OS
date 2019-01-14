@@ -36,16 +36,12 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
     private void goMainAndFinish() {
         goMain();
         finish();
-        mActivity.overridePendingTransition(android.R.anim.fade_in,
-                android.R.anim.fade_out);
     }
 
     private void goPopInfoAndFinish() {
         goPopInfo();
         toast("用户信息不完整，请完善信息！");
         finish();
-        mActivity.overridePendingTransition(android.R.anim.fade_in,
-                android.R.anim.fade_out);
     }
 
 

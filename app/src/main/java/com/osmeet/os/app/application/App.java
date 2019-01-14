@@ -37,9 +37,9 @@ public class App extends BaseApplication {
         L.setDebug(true);
         ReOk.init(Urls.OS_BASE);
         app = this;
-
         userManager = UserManager.getInstance(this);
         settingManager = SettingManager.getInstance(this);
+
 
         GP.init(PackageUtil.getPackageName(this) + ".FileProvider", "/OsMeet/images");
 

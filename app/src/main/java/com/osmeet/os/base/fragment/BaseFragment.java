@@ -69,17 +69,40 @@ public abstract class BaseFragment<P extends IBasePresenter> extends PanelFragme
     }
 
     @Override
-    public void showToast(String t) {
-        T.s(t);
+    public void showToast(String msg) {
+        T.s(msg);
+    }
+
+    @Override
+    public void showStart(int what, Object... objects) {
+
+    }
+
+    @Override
+    public void showProgress(int what, int progress, Object... objects) {
+
     }
 
     @Override
     public void showFail(int what, Object... objects) {
-
+        if (what == this.DEFAULT) {
+            showToast((String) objects[0]);
+        }
     }
 
     @Override
     public void showSuccess(int what, Object... objects) {
 
+    }
+
+    @Override
+    public void showFinish(int what, Object... objects) {
+
+    }
+
+    @Override
+    public void showFinishActivity() {
+        if (getActivity() != null)
+            getActivity().finish();
     }
 }

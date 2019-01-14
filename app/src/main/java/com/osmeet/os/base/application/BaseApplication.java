@@ -1,5 +1,6 @@
 package com.osmeet.os.base.application;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 
 import java.util.ArrayList;
@@ -12,9 +13,11 @@ import top.wzmyyj.wzm_sdk.application.WZM_Application;
  * Created by yyj on 2018/06/28. email: 2209011667@qq.com
  */
 
+@SuppressLint("Registered")
 public class BaseApplication extends WZM_Application {
 
-    protected static List<Activity> mActivityList = null;
+    private List<Activity> mActivityList = null;
+    private static BaseApplication baseApplication;
 
     @Override
     public void onCreate() {
@@ -22,17 +25,23 @@ public class BaseApplication extends WZM_Application {
         if (mActivityList == null) {
             mActivityList = new ArrayList<>();
         }
+        baseApplication = this;
     }
 
-    public static void addActivity(Activity activity) {
+    public static BaseApplication getInstance() {
+        return baseApplication;
+    }
+
+
+    public void addActivity(Activity activity) {
         mActivityList.add(activity);
     }
 
-    public static void removeActivity(Activity activity) {
+    public void removeActivity(Activity activity) {
         mActivityList.remove(activity);
     }
 
-    public static void finish(Class<?> cls) {
+    public void finish(Class<?> cls) {
         for (Activity activity : mActivityList) {
             if (activity.getClass() == cls) {
                 activity.finish();
@@ -40,7 +49,7 @@ public class BaseApplication extends WZM_Application {
         }
     }
 
-    public static void finishAll() {
+    public void finishAll() {
         for (Activity activity : mActivityList) {
             if (!activity.isFinishing())
                 activity.finish();

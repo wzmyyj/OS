@@ -1,15 +1,15 @@
 package com.osmeet.os.base.presenter;
 
-import android.app.Activity;
 import android.content.Context;
 
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
 
+import java.lang.ref.WeakReference;
+
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import top.wzmyyj.wzm_sdk.tools.L;
-import top.wzmyyj.wzm_sdk.tools.T;
 
 
 /**
@@ -18,56 +18,57 @@ import top.wzmyyj.wzm_sdk.tools.T;
 
 public class BasePresenter<V extends IBaseView> implements IBasePresenter {
     protected V mView;
-    protected Activity mActivity;
+    private WeakReference<Context> weakContext;
 
-    public BasePresenter(Activity activity, V iv) {
-        this.mActivity = activity;
+    public BasePresenter(Context context, V iv) {
+        this.weakContext = new WeakReference<>(context);
         this.mView = iv;
     }
 
     @Override
     public Context getContext() {
-        return mActivity;
+        return weakContext.get();
     }
 
     @Override
     public void finish() {
-        mActivity.finish();
+        mView.showFinishActivity();
     }
 
     @Override
     public void destroy() {
-        this.mActivity = null;
+        this.weakContext.clear();
+        this.weakContext = null;
         this.mView = null;
     }
 
 
     @Override
-    public void log(String s) {
-        L.d(s);
+    public void log(String msg) {
+        L.d(msg);
     }
 
     @Override
-    public void toast(String s) {
-        T.s(s);
+    public void toast(String msg) {
+        mView.showToast(msg);
     }
 
 
     protected abstract class PObserver<B> implements Observer<B> {
         @Override
         public void onSubscribe(Disposable d) {
-
+            mView.showStart(mView.DEFAULT, "Start!");
         }
 
         @Override
         public void onError(Throwable e) {
-            toast("Error:" + e.getMessage());
+            mView.showFail(mView.DEFAULT, "Error:" + e.getMessage());
             log("Error:" + e.getMessage());
         }
 
         @Override
         public void onComplete() {
-
+            mView.showSuccess(mView.DEFAULT, "Complete!");
         }
 
     }

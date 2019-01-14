@@ -23,7 +23,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends PanelActivi
 
     @Override
     protected void initSome(Bundle savedInstanceState) {
-        BaseApplication.addActivity(this);
+        BaseApplication.getInstance().addActivity(this);
         initPresenter();
         checkPresenterIsNull();
         super.initSome(savedInstanceState);
@@ -79,21 +79,43 @@ public abstract class BaseActivity<P extends IBasePresenter> extends PanelActivi
         super.onDestroy();
         mPresenter.destroy();
         mPresenter = null;
-        BaseApplication.removeActivity(this);
+        BaseApplication.getInstance().removeActivity(this);
     }
 
     @Override
-    public void showToast(String t) {
-        T.s(t);
+    public void showToast(String msg) {
+        T.s(msg);
+    }
+
+    @Override
+    public void showStart(int what, Object... objects) {
+
+    }
+
+    @Override
+    public void showProgress(int what, int progress, Object... objects) {
+
     }
 
     @Override
     public void showFail(int what, Object... objects) {
-
+        if (what == this.DEFAULT) {
+            showToast((String) objects[0]);
+        }
     }
 
     @Override
     public void showSuccess(int what, Object... objects) {
 
+    }
+
+    @Override
+    public void showFinish(int what, Object... objects) {
+
+    }
+
+    @Override
+    public void showFinishActivity() {
+        finish();
     }
 }
