@@ -1,5 +1,6 @@
 package com.osmeet.os.base.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.osmeet.os.base.contract.IBasePresenter;
@@ -18,16 +19,21 @@ import top.wzmyyj.wzm_sdk.tools.L;
 
 public class BasePresenter<V extends IBaseView> implements IBasePresenter {
     protected V mView;
-    private WeakReference<Context> weakContext;
+    private WeakReference<Activity> weakActivity;
 
-    public BasePresenter(Context context, V iv) {
-        this.weakContext = new WeakReference<>(context);
+    public BasePresenter(Activity activity, V iv) {
+        this.weakActivity = new WeakReference<>(activity);
         this.mView = iv;
     }
 
     @Override
     public Context getContext() {
-        return weakContext.get();
+        return weakActivity.get();
+    }
+
+    @Override
+    public Activity getActivity() {
+        return weakActivity.get();
     }
 
     @Override
@@ -37,8 +43,8 @@ public class BasePresenter<V extends IBaseView> implements IBasePresenter {
 
     @Override
     public void destroy() {
-        this.weakContext.clear();
-        this.weakContext = null;
+        this.weakActivity.clear();
+        this.weakActivity = null;
         this.mView = null;
     }
 

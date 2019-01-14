@@ -14,4 +14,17 @@ public class MatchBeginPresenter extends BasePresenter<MatchBeginContract.IView>
     public MatchBeginPresenter(Activity activity, MatchBeginContract.IView iv) {
         super(activity, iv);
     }
+
+    @Override
+    public String getMatchTeamId() {
+//        return getActivity().getIntent().getBundleExtra(n);
+        return null;
+    }
+
+    @Override
+    public void getMatchTeam() {
+
+    }
+
+
 }

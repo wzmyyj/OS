@@ -74,7 +74,7 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
     }
 
     private String getStoreId() {
-        return mActivity.getIntent().getStringExtra("storeId");
+        return getActivity().getIntent().getStringExtra("storeId");
     }
 
     @Override

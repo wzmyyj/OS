@@ -1,5 +1,6 @@
 package top.wzmyyj.wzm_sdk.inter;
 
+import android.app.Activity;
 import android.content.Context;
 
 /**
@@ -8,4 +9,6 @@ import android.content.Context;
 
 public interface IContext {
     Context getContext();
+
+    Activity getActivity();
 }

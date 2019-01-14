@@ -24,12 +24,12 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
 
     @Override
     public String getStoreId() {
-        return mActivity.getIntent().getStringExtra("storeId");
+        return getActivity().getIntent().getStringExtra("storeId");
     }
 
     @Override
     public void loadStoreInfo() {
-        String storeId = mActivity.getIntent().getStringExtra("storeId");
+        String storeId = getActivity().getIntent().getStringExtra("storeId");
         if (TextUtils.isEmpty(storeId)) {
             toast("Store Id is a empty value!");
             return;

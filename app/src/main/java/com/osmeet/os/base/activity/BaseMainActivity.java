@@ -21,7 +21,7 @@ public abstract class BaseMainActivity<P extends IBasePresenter> extends PagerFr
 
     @Override
     protected void initSome(Bundle savedInstanceState) {
-        BaseApplication.addActivity(this);
+        BaseApplication.getInstance().addActivity(this);
         initPresenter();
         checkPresenterIsNull();
         super.initSome(savedInstanceState);
@@ -54,7 +54,7 @@ public abstract class BaseMainActivity<P extends IBasePresenter> extends PagerFr
         super.onDestroy();
         mPresenter.destroy();
         mPresenter = null;
-        BaseApplication.removeActivity(this);
+        BaseApplication.getInstance().removeActivity(this);
     }
 
     @Override
@@ -69,6 +69,11 @@ public abstract class BaseMainActivity<P extends IBasePresenter> extends PagerFr
 
     @Override
     public void showProgress(int what, int progress, Object... objects) {
+
+    }
+
+    @Override
+    public void showCancel(int what, int progress, Object... objects) {
 
     }
 

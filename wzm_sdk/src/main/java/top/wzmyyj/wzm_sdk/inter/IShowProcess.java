@@ -6,11 +6,13 @@ package top.wzmyyj.wzm_sdk.inter;
 
 public interface IShowProcess {
 
-    int DEFAULT = -19970120;
+    int DEFAULT = -0x10000;
 
     void showStart(int what, Object... objects);
 
     void showProgress(int what, int progress, Object... objects);
+
+    void showCancel(int what, int progress, Object... objects);
 
     void showFail(int what, Object... objects);
 

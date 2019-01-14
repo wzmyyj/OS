@@ -66,7 +66,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         mData = new ArrayList<>();
         rv_list.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         rv_list.setAdapter(mAdapter = new CommonAdapter<MatchTeam>(context,
-                R.layout.layout_message_os_item, mData) {
+                R.layout.layout_message_match_item, mData) {
 
             @Override
             protected void convert(ViewHolder holder, MatchTeam matchTeam, int position) {

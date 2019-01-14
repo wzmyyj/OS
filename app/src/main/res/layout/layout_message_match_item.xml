@@ -35,7 +35,7 @@
                 android:layout_height="33dp"
                 android:layout_margin="4dp"
                 android:src="@color/colorGray_e"
-                app:border_color="@color/colorLine"
+                app:border_color="@color/colorWhite"
                 app:border_width="0.5dp" />
 
             <top.wzmyyj.wzm_sdk.widget.CircleImageView
@@ -44,7 +44,7 @@
                 android:layout_height="33dp"
                 android:layout_margin="4dp"
                 android:src="@color/colorGray_e"
-                app:border_color="@color/colorLine"
+                app:border_color="@color/colorWhite"
                 app:border_width="0.5dp" />
         </LinearLayout>
 
@@ -64,7 +64,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:src="@color/colorGray_e"
-            app:border_color="@color/colorLine"
+            app:border_color="@color/colorWhite"
             app:border_width="0.5dp" />
 
     </LinearLayout>

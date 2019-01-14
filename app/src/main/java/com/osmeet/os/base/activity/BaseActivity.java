@@ -98,6 +98,11 @@ public abstract class BaseActivity<P extends IBasePresenter> extends PanelActivi
     }
 
     @Override
+    public void showCancel(int what, int progress, Object... objects) {
+
+    }
+
+    @Override
     public void showFail(int what, Object... objects) {
         if (what == this.DEFAULT) {
             showToast((String) objects[0]);

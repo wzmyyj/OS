@@ -91,6 +91,11 @@ public abstract class BaseFragment<P extends IBasePresenter> extends PanelFragme
     }
 
     @Override
+    public void showCancel(int what, int progress, Object... objects) {
+
+    }
+
+    @Override
     public void showSuccess(int what, Object... objects) {
 
     }
