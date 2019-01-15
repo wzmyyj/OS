@@ -2,7 +2,6 @@ package com.osmeet.os.view.panel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
@@ -12,9 +11,9 @@ import android.widget.TextView;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.FileInfo;
-import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.tools.G;
+import com.osmeet.os.app.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.MineContract;
 import com.osmeet.os.view.panel.bean.Photo;
@@ -92,23 +91,15 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<Photo, MineContrac
 
     }
 
-    @SuppressLint("SetTextI18n")
     public void setStore(@NonNull Store store) {
         // header
 
         if (store.getLogoImage() != null)
             G.img(context, store.getLogoImage().getUrl(), img_store_avatar);
-        tv_store_name.setText("" + store.getName());
-        tv_store_os_num.setText("" + store.getMatchCount());
-        tv_store_introduce.setText("" + store.getIntroduce());
-        tv_store_distance.setText("127km");
-
-        if (store.getGoods() != null && store.getGoods().size() > 0) {
-            Goods goods = store.getGoods().get(0);
-            tv_goods_name.setText("" + goods.getName());
-            tv_goods_price.setText("￥" + goods.getDiscountPrice());
-            tv_goods_price_old.setText("￥" + goods.getDiscountPrice());
-        }
+        WidgetUtil.setTextNotNull(tv_store_name, store.getName());
+        WidgetUtil.setTextNumber(tv_store_os_num, store.getMatchCount());
+        WidgetUtil.setTextNotNull(tv_store_introduce, store.getIntroduce());
+        WidgetUtil.setTextNotNull(tv_store_distance, "127km");
 
         List<FileInfo> images = store.getImages();
         if (images != null && images.size() > 0) {
@@ -124,17 +115,21 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<Photo, MineContrac
         notifyDataSetChanged();
     }
 
+//    public void setGoodsList(@NonNull List<Goods> goodsList) {
+//        mGoodsList.clear();
+//        mGoodsList.addAll(goodsList);
+//        mAdapter.notifyDataSetChanged();
+//    }
 
     private ImageView img_store_avatar;
     private TextView tv_store_name;
     private TextView tv_store_distance;
     private TextView tv_store_os_num;
     private TextView tv_store_introduce;
-    private TextView tv_goods_name;
-    private TextView tv_goods_price;
-    private TextView tv_goods_price_old;
     private ImageView img_image;
 
+//    private List<Goods> mGoodsList;
+//    private CommonAdapter mAdapter;
 
     @SuppressLint("InflateParams")
     @Override
@@ -146,13 +141,9 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<Photo, MineContrac
         tv_store_distance = mHeader.findViewById(R.id.tv_store_distance);
         tv_store_os_num = mHeader.findViewById(R.id.tv_store_os_num);
         tv_store_introduce = mHeader.findViewById(R.id.tv_store_introduce);
-        tv_goods_name = mHeader.findViewById(R.id.tv_goods_name);
-        tv_goods_price = mHeader.findViewById(R.id.tv_goods_price);
-        tv_goods_price_old = mHeader.findViewById(R.id.tv_goods_price_old);
         img_image = mHeader.findViewById(R.id.img_image);
         img_image.getLayoutParams().height = MockUtil.getScreenWidth(context);
         img_image.requestLayout();
-        tv_goods_price_old.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
 
 
         TextView tv_update = mHeader.findViewById(R.id.tv_update);
@@ -164,6 +155,35 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<Photo, MineContrac
         tv_wallet.setOnClickListener(v -> {
 
         });
+
+        // 商品。
+//        RecyclerView rv_goods = mHeader.findViewById(R.id.rv_goods);
+//        rv_goods.setLayoutManager(new LinearLayoutManager(context, LinearLayout.HORIZONTAL, false));
+//        mGoodsList = new ArrayList<>();
+//        rv_goods.setAdapter(mAdapter = new CommonAdapter<Goods>(context, R.layout.layout_store_goods_item, mGoodsList) {
+//
+//            @Override
+//            protected void convert(ViewHolder holder, Goods goods, int position) {
+//                TextView tv_goods_name = holder.getView(R.id.tv_goods_name);
+//                TextView tv_goods_price = holder.getView(R.id.tv_goods_price);
+//                TextView tv_goods_price_old = holder.getView(R.id.tv_goods_price_old);
+//                tv_goods_price_old.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+//                WidgetUtil.setTextNotNull(tv_goods_name, goods.getName());
+//                WidgetUtil.setTextNotNull(tv_goods_price, "￥" + goods.getDiscountPrice());
+//                WidgetUtil.setTextNotNull(tv_goods_price_old, "￥" + goods.getDiscountPrice());
+//            }
+//        });
+//        mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+//
+//            }
+//
+//            @Override
+//            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+//                return false;
+//            }
+//        });
     }
 
     @SuppressLint("InflateParams")

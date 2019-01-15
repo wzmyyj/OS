@@ -27,7 +27,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
 
     @Override
     public void checkToken() {
-        if (App.getInstance().getToken() != null) {
+        if (!App.getInstance().getToken().isEmpty()) {
 //            loadUserInfo();
             goMainAndFinish();
         }
@@ -35,13 +35,13 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
 
     private void goMainAndFinish() {
         goMain();
-        finish();
+        finish(mView.FINISH_FADE_IN_OUT);
     }
 
     private void goPopInfoAndFinish() {
         goPopInfo();
         toast("用户信息不完整，请完善信息！");
-        finish();
+        finish(mView.FINISH_FADE_IN_OUT);
     }
 
 

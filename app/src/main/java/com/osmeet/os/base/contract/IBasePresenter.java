@@ -14,5 +14,7 @@ public interface IBasePresenter extends IContext{
 
     void finish();
 
+    void finish(int how);
+
     void destroy();
 }

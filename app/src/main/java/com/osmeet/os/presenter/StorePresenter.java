@@ -30,13 +30,9 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
     }
 
 
-    private String getStoreId() {
-        return mActivity.getIntent().getStringExtra("storeId");
-    }
-
     @Override
     public void loadStoreInfo() {
-        String storeId = getStoreId();
+        String storeId = getActivity().getIntent().getStringExtra("storeId");
         if (TextUtils.isEmpty(storeId)) {
             toast("Store Id is a empty value!");
             return;
@@ -72,7 +68,7 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
 
     @Override
     public void loadMatchUnitList() {
-        String storeId = getStoreId();
+        String storeId = getActivity().getIntent().getStringExtra("storeId");
         if (TextUtils.isEmpty(storeId)) {
             toast("Store Id is a empty value!");
             return;

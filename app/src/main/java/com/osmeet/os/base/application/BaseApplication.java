@@ -56,4 +56,11 @@ public class BaseApplication extends WZM_Application {
         }
         mActivityList.clear();
     }
+
+    public void finishAllWithout(Activity a) {
+        for (Activity activity : mActivityList) {
+            if (!activity.isFinishing() && activity != a)
+                activity.finish();
+        }
+    }
 }

@@ -286,15 +286,16 @@ public class I {
         }
     }
 
-    public static void goGoodsActivity(Context context) {
+    public static void goGoodsActivity(Context context, String goodsId) {
         Intent intent = new Intent(context, GoodsActivity.class);
+        intent.putExtra("goodsId", goodsId);
         context.startActivity(intent);
     }
 
     public interface Goods extends IContext {
-        default void goGoods() {
+        default void goGoods(String goodsId) {
             if (getContext() != null)
-                goGoodsActivity(getContext());
+                goGoodsActivity(getContext(), goodsId);
         }
     }
 

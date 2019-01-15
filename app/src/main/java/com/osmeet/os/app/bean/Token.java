@@ -20,11 +20,15 @@ public class Token {
         return token;
     }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public String getBearerToken() {
         return "Bearer " + token;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public boolean isEmpty() {
+        return token == null || token.isEmpty();
     }
 }

@@ -7,7 +7,10 @@ import top.wzmyyj.wzm_sdk.inter.IShowProcess;
  */
 
 public interface IBaseView extends IShowProcess {
+    int FINISH_FADE_IN_OUT = -0x12345;
+    int FINISH_DEAULT = 0;
+
     void showToast(String msg);
 
-    void showFinishActivity();
+    void showFinishActivity(int how);
 }

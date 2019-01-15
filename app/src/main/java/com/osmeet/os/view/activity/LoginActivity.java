@@ -175,11 +175,5 @@ public class LoginActivity extends BaseActivity<LoginContract.IPresenter> implem
         }
     }
 
-    @Override
-    public void showFinishActivity() {
-        super.showFinishActivity();
-        overridePendingTransition(android.R.anim.fade_in,
-                android.R.anim.fade_out);
-    }
 }
 

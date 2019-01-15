@@ -38,7 +38,12 @@ public class BasePresenter<V extends IBaseView> implements IBasePresenter {
 
     @Override
     public void finish() {
-        mView.showFinishActivity();
+        finish(mView.FINISH_DEAULT);
+    }
+
+    @Override
+    public void finish(int how) {
+        mView.showFinishActivity(how);
     }
 
     @Override
@@ -63,18 +68,18 @@ public class BasePresenter<V extends IBaseView> implements IBasePresenter {
     protected abstract class PObserver<B> implements Observer<B> {
         @Override
         public void onSubscribe(Disposable d) {
-            mView.showStart(mView.DEFAULT, "Start!");
+            mView.showStart(mView.PROCESS_DEFAULT, "Start!");
         }
 
         @Override
         public void onError(Throwable e) {
-            mView.showFail(mView.DEFAULT, "Error:" + e.getMessage());
+            mView.showFail(mView.PROCESS_DEFAULT, "Error:" + e.getMessage());
             log("Error:" + e.getMessage());
         }
 
         @Override
         public void onComplete() {
-            mView.showSuccess(mView.DEFAULT, "Complete!");
+            mView.showSuccess(mView.PROCESS_DEFAULT, "Complete!");
         }
 
     }

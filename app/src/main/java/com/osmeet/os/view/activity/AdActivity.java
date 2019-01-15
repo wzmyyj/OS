@@ -26,5 +26,6 @@ public class AdActivity extends BaseActivity<AdContract.IPresenter> implements A
         super.initView();
         setSwipeBackEnable(false);
     }
+
 }
 

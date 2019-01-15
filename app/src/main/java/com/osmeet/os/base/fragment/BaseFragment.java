@@ -85,7 +85,7 @@ public abstract class BaseFragment<P extends IBasePresenter> extends PanelFragme
 
     @Override
     public void showFail(int what, Object... objects) {
-        if (what == this.DEFAULT) {
+        if (what == this.PROCESS_DEFAULT) {
             showToast((String) objects[0]);
         }
     }
@@ -106,8 +106,13 @@ public abstract class BaseFragment<P extends IBasePresenter> extends PanelFragme
     }
 
     @Override
-    public void showFinishActivity() {
-        if (getActivity() != null)
-            getActivity().finish();
+    public void showFinishActivity(int how) {
+        if (getActivity() == null) return;
+        getActivity().finish();
+        if (how == IBaseView.FINISH_FADE_IN_OUT) {
+            getActivity().overridePendingTransition(android.R.anim.fade_in,
+                    android.R.anim.fade_out);
+        }
+
     }
 }

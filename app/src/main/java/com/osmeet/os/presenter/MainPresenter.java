@@ -61,7 +61,7 @@ public class MainPresenter extends BasePresenter<MainContract.IView> implements 
         goPopInfo();
         toast("用户信息不完整，请完善信息！");
         finish();
-        mActivity.overridePendingTransition(android.R.anim.fade_in,
+        getActivity().overridePendingTransition(android.R.anim.fade_in,
                 android.R.anim.fade_out);
     }
 

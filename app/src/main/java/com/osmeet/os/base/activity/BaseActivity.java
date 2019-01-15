@@ -104,7 +104,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends PanelActivi
 
     @Override
     public void showFail(int what, Object... objects) {
-        if (what == this.DEFAULT) {
+        if (what == this.PROCESS_DEFAULT) {
             showToast((String) objects[0]);
         }
     }
@@ -120,7 +120,11 @@ public abstract class BaseActivity<P extends IBasePresenter> extends PanelActivi
     }
 
     @Override
-    public void showFinishActivity() {
+    public void showFinishActivity(int how) {
         finish();
+        if(how==IBaseView.FINISH_FADE_IN_OUT){
+            this.overridePendingTransition(android.R.anim.fade_in,
+                    android.R.anim.fade_out);
+        }
     }
 }

@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.osmeet.os.R;
+import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.app.utils.WidgetUtil;
@@ -17,6 +18,8 @@ import com.osmeet.os.contract.StoreInfoContract;
 import com.osmeet.os.presenter.StoreInfoPresenter;
 import com.osmeet.os.view.panel.StoreFrontPanel;
 import com.osmeet.os.view.panel.StoreInfoRecyclerPanel;
+
+import java.util.List;
 
 import butterknife.BindView;
 import top.wzmyyj.wzm_sdk.activity.PanelActivity;
@@ -79,7 +82,7 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
     @Override
     protected void initData() {
         super.initData();
-        mPresenter.log(mPresenter.getStoreId());
+        mPresenter.loadGoodsList();
     }
 
     public void setStore(@NonNull Store store) {// 给别人调用。（第一次加载）
@@ -104,5 +107,10 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
         if (storeInfoFrontPanel != null) {
             storeInfoFrontPanel.setStore(store);
         }
+    }
+
+    @Override
+    public void showGoodsList(@NonNull List<Goods> goodsList) {
+        storeInfoRecyclerPanel.setGoodsList(goodsList);
     }
 }

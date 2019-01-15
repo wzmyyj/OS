@@ -18,7 +18,6 @@ public class Store {
     private long createDate;
     private long endTime;
     private int endTimeStamp;
-    private List<Goods> goods;
     private String id;
     private List<FileInfo> images;
     private String introduce;
@@ -104,13 +103,6 @@ public class Store {
         return endTimeStamp;
     }
 
-    public void setGoods(List<Goods> goods) {
-        this.goods = goods;
-    }
-
-    public List<Goods> getGoods() {
-        return goods;
-    }
 
     public void setId(String id) {
         this.id = id;

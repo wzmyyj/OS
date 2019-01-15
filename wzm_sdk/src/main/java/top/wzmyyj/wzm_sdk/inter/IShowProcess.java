@@ -6,7 +6,7 @@ package top.wzmyyj.wzm_sdk.inter;
 
 public interface IShowProcess {
 
-    int DEFAULT = -0x10000;
+    int PROCESS_DEFAULT = -0x10000;
 
     void showStart(int what, Object... objects);
 

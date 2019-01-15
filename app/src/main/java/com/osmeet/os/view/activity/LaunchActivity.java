@@ -48,5 +48,6 @@ public class LaunchActivity extends BaseActivity<LaunchContract.IPresenter> impl
         super.onStop();
         mHandler.removeCallbacks(mRunnable);
     }
+
 }
 

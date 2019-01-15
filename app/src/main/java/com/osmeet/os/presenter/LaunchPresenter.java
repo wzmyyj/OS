@@ -47,8 +47,6 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
         } else {
             goLogin();// 前往登录。
         }
-        finish();
-        mActivity.overridePendingTransition(android.R.anim.fade_in,
-                android.R.anim.fade_out);// 淡入淡出。
+        finish(mView.FINISH_FADE_IN_OUT);
     }
 }

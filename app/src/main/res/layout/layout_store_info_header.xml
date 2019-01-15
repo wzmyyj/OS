@@ -108,6 +108,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:baselineAligned="false"
         android:orientation="horizontal">
 
         <FrameLayout
@@ -172,64 +173,20 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_goods"
+        android:layout_width="match_parent"
+        android:layout_height="110dp" />
+
     <!--<View-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="0.1dp"-->
     <!--android:background="@color/colorLine" />-->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            android:contentDescription="@string/icon"
-            android:src="@color/colorGray_e" />
-
-
-        <TextView
-            android:id="@+id/tv_goods_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            android:layout_weight="1"
-            android:text="@string/beef_noodles"
-            android:textColor="@color/colorGray_5"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/tv_goods_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            android:padding="1dp"
-            android:text="@string/_10_yuan"
-            android:textColor="@color/colorPrice"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_goods_price_old"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="3dp"
-            android:padding="1dp"
-            android:text="@string/_20_yuan"
-            android:textColor="@color/colorGray_9"
-            android:textSize="10sp"
-            tools:ignore="SmallSp" />
-
-    </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
