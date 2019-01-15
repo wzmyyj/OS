@@ -33,7 +33,7 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
         } else if (App.getInstance().getSetting().isAd()) {
             return 500;
         } else {
-            return 200;
+            return 300;
         }
     }
 
