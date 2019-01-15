@@ -115,12 +115,16 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
     @Override
     public void showFail(int what, Object... objects) {
         super.showFail(what, objects);
-        userInfoRecyclerPanel.showMatchSuccess(false);
+        if (what == 1) {
+            userInfoRecyclerPanel.showMatchSuccess(false);
+        }
     }
 
     @Override
     public void showSuccess(int what, Object... objects) {
         super.showSuccess(what, objects);
-        userInfoRecyclerPanel.showMatchSuccess(true);
+        if (what == 1) {
+            userInfoRecyclerPanel.showMatchSuccess(true);
+        }
     }
 }

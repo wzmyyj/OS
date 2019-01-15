@@ -106,4 +106,6 @@
     <string name="you_not_be_invite">您还有被邀请</string>
     <string name="success_create_match">成功创建相对</string>
     <string name="image">image</string>
+    <string name="goods_how_use">不可叠加 | 过期自动退 | 随时退 | 免预约</string>
+    <string name="goods_when_use">此商品需双方到店打卡使用</string>
 </resources>

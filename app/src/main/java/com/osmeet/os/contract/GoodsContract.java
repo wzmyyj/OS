@@ -21,6 +21,7 @@ public interface GoodsContract {
     interface IPresenter extends IBasePresenter {
 
         void loadGoods();
+
     }
 
 }
