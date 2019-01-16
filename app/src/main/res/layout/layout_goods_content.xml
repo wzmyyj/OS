@@ -15,9 +15,14 @@
 
     </FrameLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="120dp"
         android:orientation="horizontal"
         android:padding="20dp">
 
@@ -39,15 +44,19 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_goods_name"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
+                android:text="@string/goods"
+                android:textColor="@color/colorGray_5"
+                android:textSize="18sp"
                 tools:ignore="NestedWeights" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="20dp"
                 android:gravity="center_vertical"
                 android:text="@string/goods_how_use"
                 android:textSize="12sp" />
@@ -80,4 +89,11 @@
             android:textColor="@color/colorWhite"
             android:textSize="14sp" />
     </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp">
+
+    </LinearLayout>
 </LinearLayout>

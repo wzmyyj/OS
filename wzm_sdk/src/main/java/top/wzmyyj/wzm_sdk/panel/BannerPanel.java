@@ -36,13 +36,13 @@ public abstract class BannerPanel extends GroupPanel {
 
         List images = new ArrayList<>();
         List<String> titles = new ArrayList<>();
-        setData(images, titles);
+        setFirstData(images, titles);
         //设置图片加载器
         mBanner.setImageLoader(getImageLoader());
         //设置图片集合
         mBanner.setImages(images);
         //设置banner动画效果
-        mBanner.setBannerAnimation(Transformer.Accordion);
+        mBanner.setBannerAnimation(Transformer.Default);
         //设置标题集合（当banner样式有显示title时）
         mBanner.setBannerTitles(titles);
         //设置自动轮播，默认为true
@@ -64,9 +64,11 @@ public abstract class BannerPanel extends GroupPanel {
 
     }
 
-    protected void setData(List images, List<String> titles) {
+    protected void setFirstData(List images, List<String> titles) {
 
     }
+
+    public abstract void setBannerData(@NonNull List<?> list);
 
     @NonNull
     protected abstract ImageLoader getImageLoader();

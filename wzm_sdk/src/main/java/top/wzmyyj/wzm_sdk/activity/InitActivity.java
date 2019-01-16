@@ -3,6 +3,7 @@ package top.wzmyyj.wzm_sdk.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
@@ -17,12 +18,14 @@ public abstract class InitActivity extends SwipeBackActivity {
     protected SwipeBackLayout mSwipeBackLayout;
     protected Context context;
     protected Activity activity;
+    protected LayoutInflater mInflater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
         activity = this;
+        mInflater = getLayoutInflater();
         setSwipeBackEnable(swipeBackEnable());
         mSwipeBackLayout = getSwipeBackLayout();
         //设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM

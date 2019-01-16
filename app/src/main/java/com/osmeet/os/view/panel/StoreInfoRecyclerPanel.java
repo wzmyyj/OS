@@ -195,7 +195,7 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Photo, StoreInfoCo
                 tv_goods_price_old.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                 WidgetUtil.setTextNotNull(tv_goods_name, goods.getName());
                 WidgetUtil.setTextNotNull(tv_goods_price, "￥" + goods.getDiscountPrice());
-                WidgetUtil.setTextNotNull(tv_goods_price_old, "￥" + goods.getDiscountPrice());
+                WidgetUtil.setTextNotNull(tv_goods_price_old, "￥" + goods.getOriginalPrice());
                 if (goods.getImages() != null && goods.getImages().size() > 0) {
                     G.img(context, goods.getImages().get(0).getUrl(), img_goods);
                 }
