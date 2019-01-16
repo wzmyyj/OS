@@ -16,5 +16,8 @@ public class GoodsBuyActivity extends BaseActivity<GoodsBuyContract.IPresenter> 
         return R.layout.activity_goods_buy;
     }
 
+
+
+
 }
 

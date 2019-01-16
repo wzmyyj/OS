@@ -47,7 +47,7 @@ public class GoodsNeScrollPanel extends BaseNeScrollPanel<GoodsContract.IPresent
     }
 
 
-    BaseBannerPanel imageBannerPanel;
+    private BaseBannerPanel imageBannerPanel;
 
     @Override
     protected void initPanels() {

@@ -12,5 +12,5 @@
 
     </FrameLayout>
 
-    <include layout="@layout/layout_goods_buy" />
+    <include layout="@layout/layout_goods_buy_bottom" />
 </LinearLayout>
