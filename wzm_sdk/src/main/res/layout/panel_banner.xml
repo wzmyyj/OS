@@ -15,7 +15,7 @@
         app:indicator_margin="3dp"
         app:indicator_width="9dp"
         app:scroll_time="1000"
-        app:title_background="@color/black_overlay"
+        app:title_background="@color/colorAhp_Black_5"
         app:title_height="25dp"
         app:title_textcolor="@color/colorWhite"
         app:title_textsize="12dp">

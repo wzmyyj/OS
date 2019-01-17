@@ -22,6 +22,7 @@
     <color name="colorPurple">#bb33ee</color>
     <color name="colorPink">#ff3399</color>
     <color name="colorSky">#00bbff</color>
+    <color name="colorBlack">#111111</color>
 
     <color name="colorGolden">#f6c90d</color>
     <color name="colorSilvery">#9b9b9b</color>
@@ -29,11 +30,11 @@
 
     <color name="colorTop">#eeeeff</color>
 
-    <color name="colorAhp_4">#44000000</color>
     <color name="colorAhp_9">#99ffffff</color>
     <color name="colorAhp_d">#ddffffff</color>
-    <color name="colorBlack">#111111</color>
 
+
+    <color name="colorRefresh">#eeeeee</color>>
 
     <color name="colorLine">#bfbfbf</color>
     <color name="colorGray_1">#111111</color>
@@ -54,19 +55,21 @@
     <color name="colorGray_g">#f5f5f5</color>>
     <color name="colorGray_h">#fbfbfb</color>>
 
-    <color name="colorRefresh">#eaeaea</color>>
-
+    <color name="colorAhp_Black_i">#07000000</color>
     <color name="colorAhp_Black_1">#11000000</color>>
     <color name="colorAhp_Black_2">#22000000</color>>
+    <color name="colorAhp_Black_3">#33000000</color>>
     <color name="colorAhp_Black_4">#44000000</color>>
+    <color name="colorAhp_Black_5">#55000000</color>>
     <color name="colorAhp_Black_6">#66000000</color>>
+    <color name="colorAhp_Black_7">#77000000</color>>
     <color name="colorAhp_Black_8">#88000000</color>>
+    <color name="colorAhp_Black_9">#99000000</color>>
     <color name="colorAhp_Black_a">#aa000000</color>>
-    <color name="colorAhp_Black">#cc000000</color>>
+    <color name="colorAhp_Black_b">#bb000000</color>>
+    <color name="colorAhp_Black_c">#cc000000</color>>
     <color name="colorAhp_Black_d">#dd000000</color>>
     <color name="colorAhp_Black_e">#ee000000</color>>
 
-
-    <color name="black_overlay">#55000000</color>
 
 </resources>

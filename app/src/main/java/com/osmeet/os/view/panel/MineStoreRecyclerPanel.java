@@ -97,7 +97,7 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<Photo, MineContrac
         if (store.getLogoImage() != null)
             G.img(context, store.getLogoImage().getUrl(), img_store_avatar);
         WidgetUtil.setTextNotNull(tv_store_name, store.getName());
-        WidgetUtil.setTextNumber(tv_store_os_num, store.getMatchCount());
+        WidgetUtil.setTextNumber(tv_store_os_num, store.getMatchUnitCount());
         WidgetUtil.setTextNotNull(tv_store_introduce, store.getIntroduce());
         WidgetUtil.setTextNotNull(tv_store_distance, "127km");
 

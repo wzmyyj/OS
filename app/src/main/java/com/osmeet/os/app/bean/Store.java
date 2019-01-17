@@ -25,7 +25,8 @@ public class Store {
     private double lat;
     private double lng;
     private FileInfo logoImage;
-    private int matchCount;
+    private FileInfo coverImage;
+    private int matchUnitCount;
     private String name;
     private String nameEn;
     private String openDay;
@@ -103,7 +104,6 @@ public class Store {
         return endTimeStamp;
     }
 
-
     public void setId(String id) {
         this.id = id;
     }
@@ -160,12 +160,20 @@ public class Store {
         return logoImage;
     }
 
-    public void setMatchCount(int matchCount) {
-        this.matchCount = matchCount;
+    public FileInfo getCoverImage() {
+        return coverImage;
     }
 
-    public int getMatchCount() {
-        return matchCount;
+    public void setCoverImage(FileInfo coverImage) {
+        this.coverImage = coverImage;
+    }
+
+    public int getMatchUnitCount() {
+        return matchUnitCount;
+    }
+
+    public void setMatchUnitCount(int matchUnitCount) {
+        this.matchUnitCount = matchUnitCount;
     }
 
     public void setName(String name) {

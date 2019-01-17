@@ -35,8 +35,15 @@ public class SettingNeScrollPanel extends BaseNeScrollPanel<SettingContract.IPre
     @Override
     protected void initView() {
         super.initView();
+        mRefreshLayout.setEnablePureScrollMode(true);
         choiceSex(mPresenter.getSetting().getOsSex());
         bsb_age.setProgress(mPresenter.getSetting().getOsMaxAge());
+        bsb_distance.setProgress(mPresenter.getSetting().getOsDistance());
+    }
+
+    @Override
+    protected void initListener() {
+        super.initListener();
         bsb_age.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
             @Override
             public void onProgressChanged(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {
@@ -54,7 +61,6 @@ public class SettingNeScrollPanel extends BaseNeScrollPanel<SettingContract.IPre
             }
         });
 
-        bsb_distance.setProgress(mPresenter.getSetting().getOsDistance());
         bsb_distance.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
             @Override
             public void onProgressChanged(BubbleSeekBar bubbleSeekBar, int progress, float progressFloat, boolean fromUser) {

@@ -59,7 +59,8 @@ public class HomeStoreRecyclerPanel extends BaseRecyclerPanel<Store, HomeStoreCo
                 convertView.setLayoutParams(params);
 
                 ImageView img_bg = holder.getView(R.id.img_bg);
-                G.img(context, store.getImages().get(0).getUrl(), img_bg);
+                if (store.getCoverImage() != null)
+                    G.img(context, store.getCoverImage().getUrl(), img_bg);
 
                 ImageView img_store_avatar = holder.getView(R.id.img_store_avatar);
                 if (store.getLogoImage() != null)
@@ -69,7 +70,7 @@ public class HomeStoreRecyclerPanel extends BaseRecyclerPanel<Store, HomeStoreCo
                 tv_store_name.setText(store.getName());
 
                 TextView tv_store_os_num = holder.getView(R.id.tv_store_os_num);
-                tv_store_os_num.setText("" + store.getMatchCount());
+                tv_store_os_num.setText("" + store.getMatchUnitCount());
 
                 List<String> avatarUrls = store.getAvatarUrls();
                 if (avatarUrls == null) return;

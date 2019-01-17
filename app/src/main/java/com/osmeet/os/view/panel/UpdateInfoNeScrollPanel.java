@@ -132,6 +132,7 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
     @Override
     protected void initView() {
         super.initView();
+        mRefreshLayout.setEnablePureScrollMode(true);
         et_signature.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         et_signature.setHorizontallyScrolling(false);
         et_signature.setSingleLine(false);

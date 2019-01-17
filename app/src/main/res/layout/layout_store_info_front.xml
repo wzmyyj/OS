@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="85dp"
         android:layout_gravity="bottom"
-        android:background="@color/colorAhp_4"
+        android:background="@color/colorAhp_Black_4"
         android:orientation="horizontal">
 
 
