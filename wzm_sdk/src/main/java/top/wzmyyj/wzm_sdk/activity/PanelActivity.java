@@ -13,6 +13,8 @@ import top.wzmyyj.wzm_sdk.panel.PanelManager;
  * Panel in Activity.
  *
  * @author wzmyyj email: 2209011667@qq.com
+ * @see top.wzmyyj.wzm_sdk.panel.Panel
+ * @see top.wzmyyj.wzm_sdk.panel.PanelManager
  */
 
 

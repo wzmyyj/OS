@@ -12,6 +12,7 @@ import android.view.View;
  * Group Panel: Panel in Panel.
  *
  * @author wzmyyj email: 2209011667@qq.com
+ * @see top.wzmyyj.wzm_sdk.panel.PanelManager
  */
 
 public abstract class GroupPanel extends InitPanel {
