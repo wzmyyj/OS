@@ -90,7 +90,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
                     G.img(context, store.getLogoImage().getUrl(), img_shop_logo);
                 }
                 img_os_bg.setImageResource(R.color.colorLittleBlue);
-                WidgetUtil.setTextNotNull(tv_os_when, "" + matchTeam.getUnita().getMatchStatus());
+                WidgetUtil.setTextNonNull(tv_os_when, "" + matchTeam.getUnita().getMatchStatus());
             }
         });
 
@@ -108,7 +108,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 mDistance = scrollY;
                 float percent = mDistance * 1f / maxDistance;//百分比
-                View bar = mViewMap.get("v");
+                View bar = getBindView("v");
                 if (bar != null)
                     bar.setAlpha(percent);
             }
@@ -182,7 +182,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         if (store.getLogoImage() != null) {
             G.img(context, store.getLogoImage().getUrl(), img_store_logo);
         }
-        WidgetUtil.setTextNotNull(tv_store_name, store.getName());
+        WidgetUtil.setTextNonNull(tv_store_name, store.getName());
         WidgetUtil.setTextNumber(tv_store_invite_num, inviteList.size());
 
         List<ImageView> imageViewList = new ArrayList<>();

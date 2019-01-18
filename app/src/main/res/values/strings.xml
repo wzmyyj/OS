@@ -113,4 +113,7 @@
     <string name="goods_need_some">相对商品需双方到店打卡使用 \n若双方同时兑换成功，可返现10元</string>
     <string name="number">数量</string>
     <string name="sum">总计</string>
+    <string name="no_goods">暂无商品！</string>
+    <string name="need_known">须知：</string>
+    <string name="pay">支付</string>
 </resources>

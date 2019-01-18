@@ -9,16 +9,27 @@ import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
- * Created by wzm on 2018/04/22. email: 2209011667@qq.com
+ * Created by yyj on 2018/04/22.
+ *
+ * Init Activity.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 
 public abstract class InitActivity extends SwipeBackActivity {
 
+
+    /**
+     * default edge size
+     */
+    private static final int DEFAULT_EDGE_SIZE = 100;
+
     protected SwipeBackLayout mSwipeBackLayout;
     protected Context context;
     protected Activity activity;
     protected LayoutInflater mInflater;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,37 +51,57 @@ public abstract class InitActivity extends SwipeBackActivity {
     }
 
 
+    /**
+     * 是否侧滑退出。
+     *
+     * @return swipeBackEnable
+     */
     protected boolean swipeBackEnable() {
         return true;
     }
 
+    /**
+     * 边界的宽度。
+     *
+     * @return size
+     */
     protected int edgeSize() {
-        return 100;
+        return DEFAULT_EDGE_SIZE;
     }
 
+    /**
+     * set root view
+     */
     protected abstract void setRootView();
 
+    /**
+     * do something init.
+     *
+     * @param savedInstanceState
+     */
     protected void initSome(Bundle savedInstanceState) {
     }
 
+    /**
+     * do something about view.
+     */
     protected abstract void initView();
 
+    /**
+     * do something about data.
+     */
     protected abstract void initData();
 
+    /**
+     * do something about listener
+     */
     protected abstract void initListener();
 
+    /**
+     * do something about event
+     */
     protected void initEvent() {
     }
-
-
-//    /**
-//     * 当按下返回键时
-//     */
-//    @Override
-//    public void onBackPressed() {
-//        scrollToFinishActivity();//左滑退出activity
-//    }
-
 
     @Override
     protected void onDestroy() {

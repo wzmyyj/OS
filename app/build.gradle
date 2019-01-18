@@ -10,9 +10,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
-                GETUI_APP_ID : "QDHthkn2ao6ZYpIDvdeStA",
-                GETUI_APP_KEY : "yb6urXd5048maViJ6NZfE",
-                GETUI_APP_SECRET : "7VlbB1jFT3ApUdLC6HONX9"
+                GETUI_APP_ID    : "QDHthkn2ao6ZYpIDvdeStA",
+                GETUI_APP_KEY   : "yb6urXd5048maViJ6NZfE",
+                GETUI_APP_SECRET: "7VlbB1jFT3ApUdLC6HONX9"
         ]
         ndk {
             //选择要添加的对应cpu类型的.so库。
@@ -64,14 +64,14 @@ dependencies {
     implementation 'rouchuan.viewpagerlayoutmanager:viewpagerlayoutmanager:2.0.22'
     implementation 'com.github.YancyYe:GalleryPick:1.2.1'
     implementation 'cn.yipianfengye.android:zxing-library:2.2'
-    implementation 'com.github.f0ris.sweetalert:library:1.5.1'
+    implementation 'com.kongzue.dialog:dialog:2.4.6'
 
     //3D地图so及jar
     implementation 'com.amap.api:3dmap:6.2.0'
     //定位功能
     implementation 'com.amap.api:location:3.3.0'
-    //搜索功能
-    //implementation 'com.amap.api:search:5.0.0'
 
     implementation 'com.getui:sdk:2.13.0.0'
+
+    implementation(name: 'alipaySdk-15.5.9-20181123210657-noUtdid', ext: 'aar')
 }

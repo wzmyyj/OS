@@ -4,13 +4,20 @@ import android.content.Context;
 import android.util.TypedValue;
 
 /**
- * Created by yyj on 2018/07/16. email: 2209011667@qq.com
+ * Created by yyj on 2018/07/16
+ *
  * 常用单位转换的辅助类，涉及到单位转换的方法都在这里.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class DensityUtil {
     /**
      * dp转px
+     *
+     * @param context
+     * @param dpVal
+     * @return dp
      */
     public static int dp2px(Context context, float dpVal) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
@@ -19,6 +26,10 @@ public class DensityUtil {
 
     /**
      * sp转px
+     *
+     * @param context
+     * @param spVal
+     * @return sp
      */
     public static int sp2px(Context context, float spVal) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
@@ -27,6 +38,10 @@ public class DensityUtil {
 
     /**
      * px转dp
+     *
+     * @param context
+     * @param pxVal
+     * @return px
      */
     public static float px2dp(Context context, float pxVal) {
         final float scale = context.getResources().getDisplayMetrics().density;
@@ -35,6 +50,10 @@ public class DensityUtil {
 
     /**
      * px转sp
+     *
+     * @param context
+     * @param pxVal
+     * @return px
      */
     public static float px2sp(Context context, float pxVal) {
         return (pxVal / context.getResources().getDisplayMetrics().scaledDensity);

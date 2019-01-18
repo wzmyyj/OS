@@ -62,7 +62,7 @@ public class GP {
                 .multiSelect(false, 3)                   // 配置是否多选的同时 配置多选数量   默认：false ， 9
                 .maxSize(9)                             // 配置多选时 的多选数量。    默认：9
                 .crop(true)                             // 快捷开启裁剪功能，仅当单选 或直接开启相机时有效
-                .crop(true, 1, 1, 500, 500)             // 配置裁剪功能的参数，   默认裁剪比例 1:1
+                .crop(true, 1, 1, 5000, 5000)             // 配置裁剪功能的参数，   默认裁剪比例 1:1
                 .isShowCamera(true)                     // 是否现实相机按钮  默认：false
                 .isOpenCamera(false)                    // 是否直接打开相机
                 .filePath(filePath)          // 图片存放路径

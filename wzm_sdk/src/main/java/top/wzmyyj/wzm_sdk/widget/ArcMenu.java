@@ -19,7 +19,11 @@ import android.view.animation.TranslateAnimation;
 import top.wzmyyj.wzm_sdk.R;
 
 /**
- * Created by wzm on 2017/10/23. email: 2209011667@qq.com
+ * Created by yyj on 2017/10/23.
+ *
+ * 卫星菜单控件。
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class ArcMenu extends ViewGroup implements OnClickListener {
@@ -35,6 +39,9 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
     private View mCButton;
     private OnMenuItemClickListener mMenuItemClickListener;
 
+    /**
+     * @param mMenuItemClickListener
+     */
     public void setOnMenuItemClickListener(
             OnMenuItemClickListener mMenuItemClickListener) {
         this.mMenuItemClickListener = mMenuItemClickListener;
@@ -44,6 +51,9 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
         OPEN, CLOSE
     }
 
+    /**
+     * @return isOpen.
+     */
     public boolean isOpen() {
         return mStatus == Status.OPEN;
     }
@@ -169,6 +179,9 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
 
     }
 
+    /**
+     * @param duration
+     */
     public void toggleMenu(int duration) {
         int count = getChildCount();
         for (int i = 0; i < count - 1; i++) {

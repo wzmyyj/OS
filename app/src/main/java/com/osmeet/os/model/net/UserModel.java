@@ -35,6 +35,7 @@ public class UserModel {
         return ReOk.bind().create(UserService.class);
     }
 
+
     public void user(Observer<Box<User>> observer) {
         Observable<Box<User>> observable = getService().user();
         SubscribeUtil.io2main(observable, observer);

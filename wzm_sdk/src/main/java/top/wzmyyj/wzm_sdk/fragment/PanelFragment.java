@@ -27,7 +27,7 @@ public abstract class PanelFragment extends InitFragment {
     }
 
     @SuppressWarnings("unchecked")
-    public  <P extends Panel> P getPanel(int i) {
+    public <P extends Panel> P getPanel(int i) {
         return (P) mPanelManager.get(i);
     }
 
@@ -48,11 +48,10 @@ public abstract class PanelFragment extends InitFragment {
         mPanelManager.onCreate(savedInstanceState);
     }
 
-
     @Override
-    public void onResume() {
-        super.onResume();
-        mPanelManager.onResume();
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mPanelManager.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -60,6 +59,13 @@ public abstract class PanelFragment extends InitFragment {
         super.onStart();
         mPanelManager.onStart();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPanelManager.onResume();
+    }
+
 
     @Override
     public void onPause() {
@@ -71,12 +77,6 @@ public abstract class PanelFragment extends InitFragment {
     public void onStop() {
         super.onStop();
         mPanelManager.onStop();
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mPanelManager.onActivityCreated(savedInstanceState);
     }
 
     @Override

@@ -2,12 +2,14 @@ package com.osmeet.os.view.fragment;
 
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.kongzue.dialog.v2.BottomMenu;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
@@ -17,6 +19,9 @@ import com.osmeet.os.contract.UserInfoContract;
 import com.osmeet.os.presenter.UserInfoPresenter;
 import com.osmeet.os.view.activity.StoreActivity;
 import com.osmeet.os.view.panel.UserInfoRecyclerPanel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -71,7 +76,7 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
         setTopBar();
         fl_panel.addView(getPanelView(0));
         fl_panel.addView(mTopBar);
-        userInfoRecyclerPanel.bingView("v", ll_tap_bar);
+        userInfoRecyclerPanel.bindView("v", ll_tap_bar);
     }
 
     private View mTopBar;
@@ -90,7 +95,19 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
         img_back.setOnClickListener(v -> ((StoreActivity) activity).setCurrentItem(0));
         ImageView img_menu = mTopBar.findViewById(R.id.img_menu);
         img_menu.setOnClickListener(v -> {
-
+            List<String> list = new ArrayList<>();
+            list.add("举报");
+            list.add("拉黑");
+            BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
+                switch (index) {
+                    case 0:
+                        mPresenter.toast(text);
+                        break;
+                    case 1:
+                        mPresenter.toast(text);
+                        break;
+                }
+            }, true).setTitle("请选择！");
         });
     }
 
@@ -107,7 +124,7 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
     public void showUserInfo(@NonNull User user) {
         userInfoRecyclerPanel.setUser(user);
         // bar
-        WidgetUtil.setTextNotNull(tv_name_top, user.getUsername());
+        WidgetUtil.setTextNonNull(tv_name_top, user.getUsername());
         if (user.getAvatar() != null)
             G.img(context, user.getAvatar().getUrl(), img_avatar_top);
     }

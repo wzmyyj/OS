@@ -7,10 +7,17 @@ import android.content.pm.PackageManager;
 import java.util.List;
 
 /**
- * Created by yyj on 2019/01/08. email: 2209011667@qq.com
+ * Created by yyj on 2019/01/08.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class ApkUtil {
+    /**
+     * @param context
+     * @param packageName
+     * @return apk is exist
+     */
     @SuppressWarnings("deprecation")
     public static boolean checkApkExist(Context context, String packageName) {
         if (packageName == null || "".equals(packageName))

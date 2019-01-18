@@ -12,23 +12,40 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * Created by yyj on 2018/06/29. email: 2209011667@qq.com
+ * Created by yyj on 2018/06/29.
+ *
+ * 状态栏相关。
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 public class StatusBarUtil {
 
 
     /**
      * 状态栏设置
+     * @param context
+     * @param isTint
      */
     public static void initStatusBar(Activity context, boolean isTint) {
         initStatusBar(context, isTint, false, false);
     }
 
+    /**
+     * @param context
+     * @param isTint
+     * @param isDark
+     */
     public static void initStatusBar(Activity context, boolean isTint, boolean isDark) {
         initStatusBar(context, isTint, isDark, false);
     }
 
 
+    /**
+     * @param context
+     * @param isTint
+     * @param isDark
+     * @param isTransparent
+     */
     @SuppressLint("InlinedApi")
     public static void initStatusBar(Activity context, boolean isTint, boolean isDark, boolean isTransparent) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
@@ -61,8 +78,9 @@ public class StatusBarUtil {
     }
 
     /**
-     * 获取状态栏高度
+     * 获取状态栏高度。
      *
+     * @param context
      * @return 高度（px）
      */
     public static int getStatusBarHeight(Context context) {
@@ -75,6 +93,12 @@ public class StatusBarUtil {
         return result;
     }
 
+    /**
+     * 让view高度=状态栏高度。
+     *
+     * @param context
+     * @param views
+     */
     public static void fitsStatusBarView(Context context, @NonNull View... views) {
         for (View view : views) {
             ViewGroup.LayoutParams params = view.getLayoutParams();
@@ -82,12 +106,22 @@ public class StatusBarUtil {
         }
     }
 
+    /**
+     * 隐藏状态栏。
+     *
+     * @param context
+     */
     public static void fullScreen(Activity context) {
-        context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN); //隐藏状态栏
+        context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    public static void notfullScreen(Activity context) {
-        context.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);//显示状态栏
+    /**
+     * 显示状态栏。
+     *
+     * @param context
+     */
+    public static void notFullScreen(Activity context) {
+        context.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
 

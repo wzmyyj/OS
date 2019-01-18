@@ -93,7 +93,23 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:padding="20dp"
+        android:orientation="vertical"
         android:layout_height="500dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:text="@string/need_known"
+            android:textColor="@color/colorGray_6"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorGray_8"
+            android:textSize="12sp" />
 
     </LinearLayout>
 </LinearLayout>

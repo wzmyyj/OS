@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 
+import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.GoodsBuyContract;
 
@@ -13,5 +14,10 @@ public class GoodsBuyPresenter extends BasePresenter<GoodsBuyContract.IView> imp
 
     public GoodsBuyPresenter(Activity activity, GoodsBuyContract.IView iv) {
         super(activity, iv);
+    }
+
+    @Override
+    public Goods.SimpleGoods getSimpleGoods() {
+        return (Goods.SimpleGoods) getActivity().getIntent().getSerializableExtra("goods");
     }
 }

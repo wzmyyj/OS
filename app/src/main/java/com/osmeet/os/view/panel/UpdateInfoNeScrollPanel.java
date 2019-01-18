@@ -1,6 +1,5 @@
 package com.osmeet.os.view.panel;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.Editable;
@@ -12,12 +11,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.kongzue.dialog.v2.SelectDialog;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.FileInfo;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.app.tools.GP;
-import com.osmeet.os.app.tools.SAD;
 import com.osmeet.os.app.tools.SDT;
 import com.osmeet.os.app.utils.InputSoftUtil;
 import com.osmeet.os.app.utils.WidgetUtil;
@@ -182,14 +181,9 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
             final int j = i;
             imageViewList.get(i).setOnLongClickListener(v -> {
                 if (isNoImage(j)) return false;
-                SAD.create(context, SAD.WARNING_TYPE)
-                        .setTitleText("删除这张照片？")
-                        .setConfirmClickListener(sweetAlertDialog -> {
-                            deleteImage(j);
-                            sweetAlertDialog.dismiss();
-                        })
-                        .setCancelClickListener(Dialog::dismiss)
-                        .show();
+                SelectDialog.show(context, "警告", "删除这张照片？",
+                        "确定", (dialog, which) -> deleteImage(j),
+                        "取消", (dialog, which) -> {});
                 return true;
             });
         }
@@ -280,12 +274,12 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
             G.img(context, user.getAvatar().getUrl(), img_avatar);
         }
         WidgetUtil.setTextNumber(tv_user_score, user.getCreditScore());
-        WidgetUtil.setTextNotNull(et_signature, user.getSignature());
-        WidgetUtil.setTextNotNull(et_username, user.getUsername());
-        WidgetUtil.setTextNotNull(et_birthday, user.getBirthdayFormat("yyyy-MM-dd"));
-        WidgetUtil.setTextNotNull(et_school, user.getSchool());
-        WidgetUtil.setTextNotNull(et_company, user.getCompany());
-        WidgetUtil.setTextNotNull(et_job, user.getJob());
+        WidgetUtil.setTextNonNull(et_signature, user.getSignature());
+        WidgetUtil.setTextNonNull(et_username, user.getUsername());
+        WidgetUtil.setTextNonNull(et_birthday, user.getBirthdayFormat("yyyy-MM-dd"));
+        WidgetUtil.setTextNonNull(et_school, user.getSchool());
+        WidgetUtil.setTextNonNull(et_company, user.getCompany());
+        WidgetUtil.setTextNonNull(et_job, user.getJob());
 
 
         List<FileInfo> images = user.getImages();

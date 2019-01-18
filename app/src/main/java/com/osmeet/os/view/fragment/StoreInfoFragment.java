@@ -2,12 +2,14 @@ package com.osmeet.os.view.fragment;
 
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.kongzue.dialog.v2.BottomMenu;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.Store;
@@ -19,6 +21,7 @@ import com.osmeet.os.presenter.StoreInfoPresenter;
 import com.osmeet.os.view.panel.StoreFrontPanel;
 import com.osmeet.os.view.panel.StoreInfoRecyclerPanel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -56,7 +59,7 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
         setTopBar();
         fl_panel.addView(getPanelView(0));
         fl_panel.addView(mTopBar);
-        storeInfoRecyclerPanel.bingView("v", ll_tap_bar);
+        storeInfoRecyclerPanel.bindView("v", ll_tap_bar);
     }
 
     private View mTopBar;
@@ -75,7 +78,16 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
         img_back.setOnClickListener(v -> mPresenter.finish());
         ImageView img_menu = mTopBar.findViewById(R.id.img_menu);
         img_menu.setOnClickListener(v -> {
-
+            List<String> list = new ArrayList<>();
+            list.add("举报");
+//            list.add("拉黑");
+            BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
+                switch (index) {
+                    case 0:
+                        mPresenter.toast(text);
+                        break;
+                }
+            }, true).setTitle("请选择！");
         });
     }
 
@@ -89,7 +101,7 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
         storeInfoRecyclerPanel.setStore(store);
 
         // bar
-        WidgetUtil.setTextNotNull(tv_name_top, store.getName());
+        WidgetUtil.setTextNonNull(tv_name_top, store.getName());
         if (store.getLogoImage() != null)
             G.img(context, store.getLogoImage().getUrl(), img_avatar_top);
     }
@@ -98,7 +110,7 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
     public void showStoreInfo(@NonNull Store store) {// 给自己的mPresenter调用。（刷新）
         storeInfoRecyclerPanel.setStore(store);
         // bar
-        WidgetUtil.setTextNotNull(tv_name_top, store.getName());
+        WidgetUtil.setTextNonNull(tv_name_top, store.getName());
         if (store.getLogoImage() != null)
             G.img(context, store.getLogoImage().getUrl(), img_avatar_top);
 

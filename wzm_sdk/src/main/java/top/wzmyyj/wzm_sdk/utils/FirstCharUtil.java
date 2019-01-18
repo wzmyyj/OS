@@ -1,14 +1,18 @@
 package top.wzmyyj.wzm_sdk.utils;
 
 /**
- * Created by yyj on 2017/06/12. email: 2209011667@qq.com
+ * Created by yyj on 2017/06/12
+ *
+ * 获取拼音首字母。
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 
 public class FirstCharUtil {
     // 简体中文的编码范围从B0A1（45217）一直到F7FE（63486）
-    private static int BEGIN = 45217;
-    private static int END = 63486;
+    private static final int BEGIN = 45217;
+    private static final int END = 63486;
 
     // 按照声 母表示，这个表是在GB2312中的出现的第一个汉字，也就是说“啊”是代表首字母a的第一个汉字。
     // i, u, v都不做声母, 自定规则跟随前面的字母
@@ -36,6 +40,10 @@ public class FirstCharUtil {
     // ------------------------public方法区------------------------
     // 根据一个包含汉字的字符串返回一个汉字拼音首字母的字符串 最重要的一个方法，思路如下：一个个字符读入、判断、输出
 
+    /**
+     * @param S
+     * @return first char
+     */
     public static String first(String S) {
         String Result = "";
         if (S == null || S.equals("")) {

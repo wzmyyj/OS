@@ -21,7 +21,11 @@ import android.widget.ImageView;
 import top.wzmyyj.wzm_sdk.R;
 
 /**
- * Created by wzm on 2018/04/23. email: 2209011667@qq.com
+ * Created by wzm on 2018/04/23.
+ *
+ * 圆形的ImageView。
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 @SuppressLint("AppCompatCustomView")
@@ -116,10 +120,16 @@ public class CircleImageView extends ImageView {
         setup();
     }
 
+    /**
+     * @return
+     */
     public int getBorderColor() {
         return mBorderColor;
     }
 
+    /**
+     * @param borderColor
+     */
     public void setBorderColor(int borderColor) {
         if (borderColor == mBorderColor) {
             return;
@@ -130,10 +140,16 @@ public class CircleImageView extends ImageView {
         invalidate();
     }
 
+    /**
+     * @return
+     */
     public int getBorderWidth() {
         return mBorderWidth;
     }
 
+    /**
+     * @param borderWidth
+     */
     public void setBorderWidth(int borderWidth) {
         if (borderWidth == mBorderWidth) {
             return;

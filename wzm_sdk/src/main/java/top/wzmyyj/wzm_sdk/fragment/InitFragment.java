@@ -11,7 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by wzm on 2018/04/23. email: 2209011667@qq.com
+ * Created by wzm on 2018/04/23.
+ *
+ * Init Fragment.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 
@@ -25,11 +29,18 @@ public abstract class InitFragment extends Fragment {
 
     private String title;
 
+    /**
+     * @param title
+     * @return this.
+     */
     public InitFragment setTitle(String title) {
         this.title = title;
         return this;
     }
 
+    /**
+     * @return title
+     */
     public String getTitle() {
         return title;
     }
@@ -58,18 +69,38 @@ public abstract class InitFragment extends Fragment {
         return mVRoot;
     }
 
+    /**
+     * set root view
+     */
     protected abstract void setRootView(ViewGroup container);
 
+    /**
+     * do something init.
+     *
+     * @param savedInstanceState
+     */
     protected void initSome(Bundle savedInstanceState) {
 
     }
 
+    /**
+     * do something about view.
+     */
     protected abstract void initView();
 
+    /**
+     * do something about data.
+     */
     protected abstract void initData();
 
+    /**
+     * do something about listener.
+     */
     protected abstract void initListener();
 
+    /**
+     * do something about event.
+     */
     protected void initEvent() {
     }
 

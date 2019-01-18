@@ -1,6 +1,7 @@
 package com.osmeet.os.view.activity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -49,7 +50,8 @@ public class GoodsActivity extends BaseActivity<GoodsContract.IPresenter> implem
 
     @OnClick(R.id.bt_goods_buy)
     void buy() {
-
+        if (simpleGoods != null)
+            mPresenter.goGoodsBuy(simpleGoods);
     }
 
     @Override
@@ -59,7 +61,9 @@ public class GoodsActivity extends BaseActivity<GoodsContract.IPresenter> implem
         fl_panel.addView(getPanelView(0));
         fl_panel.addView(mTopBar);
 
-        goodsNeScrollPanel.bingView("v", ll_tap_bar);
+        tv_goods_price_old.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+
+        goodsNeScrollPanel.bindView("v", ll_tap_bar);
     }
 
     private View mTopBar;
@@ -81,12 +85,16 @@ public class GoodsActivity extends BaseActivity<GoodsContract.IPresenter> implem
         mPresenter.loadGoods();
     }
 
+    private Goods.SimpleGoods simpleGoods;
+
     @Override
     public void showGoods(@NonNull Goods goods) {
         goodsNeScrollPanel.setGoods(goods);
-        WidgetUtil.setTextNotNull(tv_name, goods.getName());
-        WidgetUtil.setTextNotNull(tv_goods_price, "￥" + goods.getDiscountPrice());
-        WidgetUtil.setTextNotNull(tv_goods_price_old, "￥" + goods.getOriginalPrice());
+        WidgetUtil.setTextNonNull(tv_name, goods.getName());
+        WidgetUtil.setTextPrice(tv_goods_price, "￥", goods.getDiscountPrice());
+        WidgetUtil.setTextPrice(tv_goods_price_old, "￥", goods.getOriginalPrice());
+
+        simpleGoods = new Goods.SimpleGoods(goods);
     }
 
 }

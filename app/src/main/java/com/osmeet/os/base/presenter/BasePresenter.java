@@ -38,7 +38,7 @@ public class BasePresenter<V extends IBaseView> implements IBasePresenter {
 
     @Override
     public void finish() {
-        finish(mView.FINISH_DEAULT);
+        finish(mView.FINISH_DEFAULT);
     }
 
     @Override

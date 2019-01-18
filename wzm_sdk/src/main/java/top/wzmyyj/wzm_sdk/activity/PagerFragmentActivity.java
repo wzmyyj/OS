@@ -18,7 +18,11 @@ import top.wzmyyj.wzm_sdk.utils.TabLayoutUtil;
 import top.wzmyyj.wzm_sdk.widget.SlideViewPager;
 
 /**
- * Created by wzm on 2018/04/18. email: 2209011667@qq.com
+ * Created by wzm on 2018/04/18.
+ *
+ * ViewPager+Fragment Activity
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 
@@ -84,12 +88,7 @@ public abstract class PagerFragmentActivity extends InitActivity {
             mTabLayout.getLayoutParams().height = tabHeight;
             mTabLayout.requestLayout();
         }
-    }
 
-    protected abstract void initFTs(List<FT> fts);
-
-    @Override
-    protected void initData() {
         initFTs(mFTs);
         if (mFTs == null || mFTs.size() == 0) {
             return;
@@ -109,6 +108,11 @@ public abstract class PagerFragmentActivity extends InitActivity {
             mViewPager.setCurrentItem(which, false);
     }
 
+    /**
+     * @param fts
+     */
+    protected abstract void initFTs(List<FT> fts);
+
 
     protected int text_color_selected;
     protected int text_color_unselected;
@@ -121,21 +125,31 @@ public abstract class PagerFragmentActivity extends InitActivity {
 
     }
 
+    /**
+     * @return tab height.
+     */
     protected int initTabHeight() {
         return DensityUtil.dp2px(context, 55);
     }
 
     private TabLayoutUtil.TabLayoutStyle mTabLayoutStyle;
 
+    /**
+     * @param tabLayoutStyle
+     */
     protected void setTabLayoutStyle(TabLayoutUtil.TabLayoutStyle tabLayoutStyle) {
         this.mTabLayoutStyle = tabLayoutStyle;
     }
 
+    /**
+     * 给mTabLayoutStyle赋值。
+     */
     protected void initTabStyle() {
-        // setTabLayoutStyle()：给mTabLayoutStyle赋值。
+        // setTabLayoutStyle()：
     }
 
-    protected void defaultTabStyle() {
+
+    private void defaultTabStyle() {
         if (mTabLayoutStyle == null) {
             // 设置默认样式。
             setTabLayoutStyle(new TabLayoutUtil.TabLayoutStyle() {
@@ -177,6 +191,9 @@ public abstract class PagerFragmentActivity extends InitActivity {
     }
 
 
+    /**
+     * @return which.
+     */
     protected int firstWhich() {
         return 0;
     }

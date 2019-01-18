@@ -8,11 +8,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 /**
- * Created by yyj on 2019/01/02. email: 2209011667@qq.com
+ * Created by yyj on 2019/01/02.
+ *
+ * 添加fragment的两种方式。
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class FragmentUtil {
 
+    /**
+     * @param fm
+     * @param containerViewId
+     * @param fragment
+     * @param tag
+     */
     public static void addFragment(@NonNull FragmentManager fm, @IdRes int containerViewId,
                                    Fragment fragment, @Nullable String tag) {
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -20,6 +30,12 @@ public class FragmentUtil {
         fragmentTransaction.commit();
     }
 
+    /**
+     * @param fm
+     * @param containerViewId
+     * @param fragment
+     * @param tag
+     */
     public static void replaceFragment(@NonNull FragmentManager fm, @IdRes int containerViewId,
                                        Fragment fragment, @Nullable String tag) {
         FragmentTransaction fragmentTransaction = fm.beginTransaction();

@@ -20,8 +20,11 @@ import top.wzmyyj.wzm_sdk.R;
 
 
 /**
- * Created by wzm on 2018/04/21. email: 2209011667@qq.com
+ * Created by wzm on 2018/04/21.
+ *
  * 不用了。TAT..
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class TabMenu extends LinearLayout {

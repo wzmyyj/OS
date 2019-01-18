@@ -9,7 +9,11 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * Created by yyj on 2018/12/28. email: 2209011667@qq.com
+ * Created by yyj on 2018/12/28.
+ *
+ * 可以控制是否可滑动的ViewPager。
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class SlideViewPager extends ViewPager {
@@ -23,10 +27,16 @@ public class SlideViewPager extends ViewPager {
 
     private boolean isSlide = true;
 
+    /**
+     * @return
+     */
     public boolean isSlide() {
         return isSlide;
     }
 
+    /**
+     * @param slide
+     */
     public void setSlide(boolean slide) {
         isSlide = slide;
     }

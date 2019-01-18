@@ -3,10 +3,18 @@ package top.wzmyyj.wzm_sdk.utils;
 import android.support.design.widget.TabLayout;
 
 /**
- * Created by yyj on 2018/12/19. email: 2209011667@qq.com
+ * Created by yyj on 2018/12/19.
+ *
+ * TabLayout设置样式。
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class TabLayoutUtil {
+    /**
+     * @param tabLayout
+     * @param tabLayoutStyle
+     */
     public static void setStyle(TabLayout tabLayout, final TabLayoutStyle tabLayoutStyle) {
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             TabLayout.Tab tab = tabLayout.getTabAt(i);
@@ -36,6 +44,9 @@ public class TabLayoutUtil {
         });
     }
 
+    /**
+     * TabLayout Style.
+     */
     public interface TabLayoutStyle {
         void setCustomView(TabLayout.Tab tab);
 

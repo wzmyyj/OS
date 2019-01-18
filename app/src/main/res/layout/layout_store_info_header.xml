@@ -178,11 +178,26 @@
         android:layout_height="0.1dp"
         android:background="@color/colorLine" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_goods"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp" />
+        android:layout_height="wrap_content">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_goods"
+            android:layout_width="match_parent"
+            android:layout_height="110dp" />
+
+        <TextView
+            android:id="@+id/tv_no_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:text="@string/no_goods"
+            android:textColor="@color/colorGray_b"
+            android:textSize="14sp"
+            android:visibility="gone" />
+    </FrameLayout>
     <!--<View-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="0.1dp"-->

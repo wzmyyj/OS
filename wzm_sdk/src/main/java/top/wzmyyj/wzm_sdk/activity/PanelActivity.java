@@ -46,18 +46,23 @@ public abstract class PanelActivity extends InitActivity {
         mPanelManager.onCreate(savedInstanceState);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mPanelManager.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        mPanelManager.onRestart();
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
         mPanelManager.onResume();
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mPanelManager.onStart();
     }
 
     @Override
@@ -71,12 +76,6 @@ public abstract class PanelActivity extends InitActivity {
     protected void onStop() {
         super.onStop();
         mPanelManager.onStop();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        mPanelManager.onRestart();
     }
 
     @Override

@@ -7,7 +7,7 @@ import com.osmeet.os.app.bean.User;
  * Created by yyj on 2018/12/11. email: 2209011667@qq.com
  */
 
-public class Photo {
+public class PhotoStory {
     private User user;
     private FileInfo photo;
 

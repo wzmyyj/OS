@@ -11,17 +11,25 @@ import java.util.List;
 import top.wzmyyj.wzm_sdk.fragment.InitFragment;
 
 /**
- * Created by yyj on 2018/12/17. email: 2209011667@qq.com
+ * Created by yyj on 2018/12/17.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class InitFragmentPagerAdapter extends FragmentPagerAdapter {
     private List<InitFragment> mFragmentList;
 
-    public List<InitFragment> getmFragmentList() {
+    /**
+     * @return List<InitFragment> mFragmentList.
+     */
+    public List<InitFragment> getFragmentList() {
         return mFragmentList;
     }
 
-    public void setmFragmentList(List<InitFragment> mFragmentList) {
+    /**
+     * @param mFragmentList
+     */
+    public void setFragmentList(List<InitFragment> mFragmentList) {
         this.mFragmentList = mFragmentList;
         notifyDataSetChanged();
     }

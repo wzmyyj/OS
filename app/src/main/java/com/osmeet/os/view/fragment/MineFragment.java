@@ -121,8 +121,8 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
 
         getPanelView(1).setVisibility(View.GONE);
 
-        mineInfoRecyclerPanel.bingView("v", ll_tap_bar);
-        mineStoreRecyclerPanel.bingView("v", ll_tap_bar);
+        mineInfoRecyclerPanel.bindView("v", ll_tap_bar);
+        mineStoreRecyclerPanel.bindView("v", ll_tap_bar);
 
     }
 
@@ -181,14 +181,14 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
                 if (o.type == 1 && o.user != null) {
                     if (o.user.getAvatar() != null)
                         G.img(context, o.user.getAvatar().getUrl(), img_avatar);
-                    WidgetUtil.setTextNotNull(tv_name, o.user.getUsername());
+                    WidgetUtil.setTextNonNull(tv_name, o.user.getUsername());
                 } else if (o.type == 2 && o.store != null) {
                     if (o.store.getLogoImage() != null)
                         G.img(context, o.store.getLogoImage().getUrl(), img_avatar);
-                    WidgetUtil.setTextNotNull(tv_name, o.store.getName());
+                    WidgetUtil.setTextNonNull(tv_name, o.store.getName());
                 } else {
                     G.img(context, R.mipmap.ic_os_1, img_avatar);
-                    WidgetUtil.setTextNotNull(tv_name, "注册相对地点");
+                    WidgetUtil.setTextNonNull(tv_name, "注册相对地点");
                 }
                 if (whoChoice == position) {
                     img_tag.setVisibility(View.VISIBLE);
@@ -270,7 +270,7 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
         mineInfoRecyclerPanel.setUser(user);
         // bar
         tv_who.setText(R.string.mine);
-        WidgetUtil.setTextNotNull(tv_name_top, user.getUsername());
+        WidgetUtil.setTextNonNull(tv_name_top, user.getUsername());
         if (user.getAvatar() != null)
             G.img(context, user.getAvatar().getUrl(), img_avatar_top);
 

@@ -29,7 +29,7 @@ import com.osmeet.os.view.activity.UpdateInfoActivity;
 import com.osmeet.os.view.activity.VisitCardActivity;
 import com.osmeet.os.view.activity.WalletActivity;
 
-import top.wzmyyj.wzm_sdk.inter.IContext;
+import com.osmeet.os.base.contract.ip.IContext;
 
 /**
  * Created by yyj on 2018/10/30. email: 2209011667@qq.com
@@ -274,15 +274,16 @@ public class I {
         }
     }
 
-    public static void goGoodsBuyActivity(Context context) {
+    public static void goGoodsBuyActivity(Context context, com.osmeet.os.app.bean.Goods.SimpleGoods goods) {
         Intent intent = new Intent(context, GoodsBuyActivity.class);
+        intent.putExtra("goods", goods);
         context.startActivity(intent);
     }
 
     public interface GoodsBuy extends IContext {
-        default void goGoodsBuy() {
+        default void goGoodsBuy(com.osmeet.os.app.bean.Goods.SimpleGoods goods) {
             if (getContext() != null)
-                goGoodsBuyActivity(getContext());
+                goGoodsBuyActivity(getContext(), goods);
         }
     }
 

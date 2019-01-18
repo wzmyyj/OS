@@ -3,13 +3,17 @@ package com.osmeet.os.app.utils;
 import java.security.MessageDigest;
 
 /**
- * Created by yyj on 2018/12/06. email: 2209011667@qq.com
+ * Created by yyj on 2018/12/09.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class MD5Util {
 
     /**
      * 利用MD5进行加密
+     * @param str
+     * @return md5
      */
     public static String encrypt(String str) {
         MessageDigest md5 = null;

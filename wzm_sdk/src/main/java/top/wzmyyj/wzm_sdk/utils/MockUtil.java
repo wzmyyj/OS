@@ -5,13 +5,19 @@ import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 /**
- * Created by yyj on 2018/05/01. email: 2209011667@qq.com
+ * Created by yyj on 2018/05/01。
+ *
+ * 屏幕相关。
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class MockUtil {
 
     /***
      * 获取屏幕宽度
+     *
+     * @param context
      * @return 屏幕宽度（px）
      */
     public static int getScreenWidth(Context context) {
@@ -25,6 +31,7 @@ public class MockUtil {
     /**
      * 获取屏幕高度
      *
+     * @param context
      * @return 屏幕高度(px)
      */
     public static int getScreenHeight(Context context) {
@@ -39,6 +46,7 @@ public class MockUtil {
     /**
      * 获取状态栏高度
      *
+     * @param context
      * @return 高度（px）
      */
     public static int getStatusBarHeight(Context context) {

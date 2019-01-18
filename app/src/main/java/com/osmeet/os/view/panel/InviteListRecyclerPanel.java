@@ -61,7 +61,7 @@ public class InviteListRecyclerPanel extends BaseRecyclerPanel<MatchStoreInvite,
                 }
 
                 List<MatchInvite> inviteList = matchStore.getInviteList();
-                WidgetUtil.setTextNotNull(tv_store_name, store.getName());
+                WidgetUtil.setTextNonNull(tv_store_name, store.getName());
                 WidgetUtil.setTextNumber(tv_store_invite_num, inviteList.size());
 
                 for (int i = 0; i < 4 && i < inviteList.size(); i++) {

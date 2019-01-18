@@ -51,7 +51,7 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
         fl_panel.addView(getPanelView(0));
         fl_panel.addView(mTopBar);
 
-        messageNeScrollPanel.bingView("v", ll_tap_bar);
+        messageNeScrollPanel.bindView("v", ll_tap_bar);
     }
 
     private View mTopBar;

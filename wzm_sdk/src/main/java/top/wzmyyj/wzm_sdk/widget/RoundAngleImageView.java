@@ -13,8 +13,11 @@ import android.util.AttributeSet;
 import top.wzmyyj.wzm_sdk.R;
 
 /**
- * Created by yyj on 2018/12/07. email: 2209011667@qq.com
+ * Created by yyj on 2018/12/07.
+ *
  * 有圆角的ImageView。
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class RoundAngleImageView extends AppCompatImageView {
@@ -59,10 +62,16 @@ public class RoundAngleImageView extends AppCompatImageView {
         height = getHeight();
     }
 
+    /**
+     * @return
+     */
     public int getBorderColor() {
         return mBorderColor;
     }
 
+    /**
+     * @param borderColor
+     */
     public void setBorderColor(int borderColor) {
         if (borderColor == mBorderColor) {
             return;
@@ -71,10 +80,16 @@ public class RoundAngleImageView extends AppCompatImageView {
         invalidate();
     }
 
+    /**
+     * @return
+     */
     public int getBorderWidth() {
         return mBorderWidth;
     }
 
+    /**
+     * @param borderWidth
+     */
     public void setBorderWidth(int borderWidth) {
         if (borderWidth == mBorderWidth) {
             return;

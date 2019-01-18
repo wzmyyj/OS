@@ -3,6 +3,7 @@
  */
 package com.osmeet.os.app.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -193,4 +194,70 @@ public class Goods {
     }
 
 
+    public static class SimpleGoods implements Serializable {
+        private String id;
+        private float discountPrice;
+        private float originalPrice;
+        private String name;
+        private String nameEn;
+        private String imageUrl;
+
+        public SimpleGoods(Goods goods) {
+            this.id = goods.getId();
+            this.discountPrice = goods.getDiscountPrice();
+            this.originalPrice = goods.getOriginalPrice();
+            this.name = goods.getName();
+            this.nameEn = goods.getNameEn();
+            if (goods.getImages() != null && goods.getImages().size() > 0)
+                this.imageUrl = goods.getImages().get(0).getUrl();
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public float getDiscountPrice() {
+            return discountPrice;
+        }
+
+        public void setDiscountPrice(float discountPrice) {
+            this.discountPrice = discountPrice;
+        }
+
+        public float getOriginalPrice() {
+            return originalPrice;
+        }
+
+        public void setOriginalPrice(float originalPrice) {
+            this.originalPrice = originalPrice;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getNameEn() {
+            return nameEn;
+        }
+
+        public void setNameEn(String nameEn) {
+            this.nameEn = nameEn;
+        }
+
+        public String getImageUrl() {
+            return imageUrl;
+        }
+
+        public void setImageUrl(String imageUrl) {
+            this.imageUrl = imageUrl;
+        }
+    }
 }

@@ -21,7 +21,7 @@ import com.osmeet.os.app.tools.G;
 import com.osmeet.os.app.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.StoreInfoContract;
-import com.osmeet.os.view.panel.bean.Photo;
+import com.osmeet.os.view.panel.bean.PhotoStory;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -39,21 +39,21 @@ import top.wzmyyj.wzm_sdk.utils.MockUtil;
  * Created by yyj on 2018/12/11. email: 2209011667@qq.com
  */
 
-public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Photo, StoreInfoContract.IPresenter> {
+public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreInfoContract.IPresenter> {
     public StoreInfoRecyclerPanel(Context context, StoreInfoContract.IPresenter iPresenter) {
         super(context, iPresenter);
     }
 
     @Override
-    protected void setIVD(List<IVD<Photo>> ivd) {
-        ivd.add(new SingleIVD<Photo>() {
+    protected void setIVD(List<IVD<PhotoStory>> ivd) {
+        ivd.add(new SingleIVD<PhotoStory>() {
             @Override
             public int getItemViewLayoutId() {
                 return R.layout.layout_photo_item;
             }
 
             @Override
-            public void convert(ViewHolder holder, Photo photo, int position) {
+            public void convert(ViewHolder holder, PhotoStory photo, int position) {
 
             }
         });
@@ -86,7 +86,7 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Photo, StoreInfoCo
                 super.onScrolled(recyclerView, dx, dy);
                 mDistance += dy;
                 float percent = mDistance * 1f / maxDistance;//百分比
-                View bar = mViewMap.get("v");
+                View bar = getBindView("v");
                 if (bar != null)
                     bar.setAlpha(percent);
                 onScrolled1(dy);
@@ -105,10 +105,10 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Photo, StoreInfoCo
 
         if (store.getLogoImage() != null)
             G.img(context, store.getLogoImage().getUrl(), img_store_avatar);
-        WidgetUtil.setTextNotNull(tv_store_name, store.getName());
+        WidgetUtil.setTextNonNull(tv_store_name, store.getName());
         WidgetUtil.setTextNumber(tv_store_os_num, store.getMatchUnitCount());
-        WidgetUtil.setTextNotNull(tv_store_introduce, store.getIntroduce());
-        WidgetUtil.setTextNotNull(tv_store_distance, "127km");
+        WidgetUtil.setTextNonNull(tv_store_introduce, store.getIntroduce());
+        WidgetUtil.setTextNonNull(tv_store_distance, "127km");
 
         List<FileInfo> images = store.getImages();
         if (images != null && images.size() > 0) {
@@ -118,7 +118,7 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Photo, StoreInfoCo
 
         // data
         for (int i = 0; i < 100; i++) {
-            mData.add(new Photo());
+            mData.add(new PhotoStory());
         }
 
         notifyDataSetChanged();
@@ -129,6 +129,12 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Photo, StoreInfoCo
         mGoodsList.clear();
         mGoodsList.addAll(goodsList);
         mAdapter.notifyDataSetChanged();
+
+        if (goodsList.size() > 0) {
+            tv_no_goods.setVisibility(View.GONE);
+        } else {
+            tv_no_goods.setVisibility(View.VISIBLE);
+        }
     }
 
 
@@ -141,7 +147,7 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Photo, StoreInfoCo
 
     private List<Goods> mGoodsList;
     private CommonAdapter mAdapter;
-
+    private TextView tv_no_goods;
 
     @SuppressLint("InflateParams")
     @Override
@@ -179,6 +185,7 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Photo, StoreInfoCo
 
 
         // 商品。
+        tv_no_goods = mHeader.findViewById(R.id.tv_no_goods);
         RecyclerView rv_goods = mHeader.findViewById(R.id.rv_goods);
         RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
         rv_goods.setRecycledViewPool(viewPool);
@@ -193,9 +200,9 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Photo, StoreInfoCo
                 TextView tv_goods_price_old = holder.getView(R.id.tv_goods_price_old);
                 ImageView img_goods = holder.getView(R.id.img_goods);
                 tv_goods_price_old.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-                WidgetUtil.setTextNotNull(tv_goods_name, goods.getName());
-                WidgetUtil.setTextNotNull(tv_goods_price, "￥" + goods.getDiscountPrice());
-                WidgetUtil.setTextNotNull(tv_goods_price_old, "￥" + goods.getOriginalPrice());
+                WidgetUtil.setTextNonNull(tv_goods_name, goods.getName());
+                WidgetUtil.setTextPrice(tv_goods_price, "￥", goods.getDiscountPrice());
+                WidgetUtil.setTextPrice(tv_goods_price_old, "￥", goods.getOriginalPrice());
                 if (goods.getImages() != null && goods.getImages().size() > 0) {
                     G.img(context, goods.getImages().get(0).getUrl(), img_goods);
                 }

@@ -4,6 +4,7 @@ package com.osmeet.os.app.application;
 import android.support.annotation.NonNull;
 
 import com.igexin.sdk.PushManager;
+import com.kongzue.dialog.v2.DialogSettings;
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.GP;
@@ -40,12 +41,20 @@ public class App extends BaseApplication {
         userManager = UserManager.getInstance(this);
         settingManager = SettingManager.getInstance(this);
 
-
+        setDialog();
         GP.init(PackageUtil.getPackageName(this) + ".FileProvider", "/OsMeet/images");
 
 
         PushManager.getInstance().initialize(this.getApplicationContext(), PushService.class);
         PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), PushIntentService.class);
+    }
+
+
+    private void setDialog() {
+        DialogSettings.style = DialogSettings.STYLE_KONGZUE;
+        DialogSettings.tip_theme = DialogSettings.THEME_DARK;         //设置提示框主题
+        DialogSettings.dialog_theme = DialogSettings.THEME_LIGHT;       //设置对话框主题
+        DialogSettings.use_blur = true;
     }
 
     public static App getInstance() {

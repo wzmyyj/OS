@@ -16,7 +16,7 @@ import com.osmeet.os.app.tools.G;
 import com.osmeet.os.app.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.MineContract;
-import com.osmeet.os.view.panel.bean.Photo;
+import com.osmeet.os.view.panel.bean.PhotoStory;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
@@ -31,22 +31,22 @@ import top.wzmyyj.wzm_sdk.utils.MockUtil;
  * Created by yyj on 2018/12/11. email: 2209011667@qq.com
  */
 
-public class MineInfoRecyclerPanel extends BaseRecyclerPanel<Photo, MineContract.IPresenter> {
+public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineContract.IPresenter> {
     public MineInfoRecyclerPanel(Context context, MineContract.IPresenter iPresenter) {
         super(context, iPresenter);
     }
 
 
     @Override
-    protected void setIVD(List<IVD<Photo>> ivd) {
-        ivd.add(new SingleIVD<Photo>() {
+    protected void setIVD(List<IVD<PhotoStory>> ivd) {
+        ivd.add(new SingleIVD<PhotoStory>() {
             @Override
             public int getItemViewLayoutId() {
                 return R.layout.layout_photo_item;
             }
 
             @Override
-            public void convert(ViewHolder holder, Photo photo, int position) {
+            public void convert(ViewHolder holder, PhotoStory photo, int position) {
 
             }
         });
@@ -80,7 +80,7 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<Photo, MineContract
                 super.onScrolled(recyclerView, dx, dy);
                 mDistance += dy;
                 float percent = mDistance * 1f / maxDistance;//百分比
-                View bar = mViewMap.get("v");
+                View bar = getBindView("v");
                 if (bar != null)
                     bar.setAlpha(percent);
             }
@@ -97,18 +97,18 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<Photo, MineContract
         // header
         if (user.getAvatar() != null)
             G.img(context, user.getAvatar().getUrl(), img_user_avatar);
-        WidgetUtil.setTextNotNull(tv_user_name, user.getUsername());
+        WidgetUtil.setTextNonNull(tv_user_name, user.getUsername());
         WidgetUtil.setTextNumber(tv_user_age, user.getAge());
         WidgetUtil.setTextOrGone(tv_user_company, user.getCompany());
         WidgetUtil.setTextOrGone(tv_user_job, user.getJob());
         WidgetUtil.setTextOrGone(tv_user_school, user.getSchool());
-        WidgetUtil.setTextNotNull(tv_user_signature, user.getSignature());
+        WidgetUtil.setTextNonNull(tv_user_signature, user.getSignature());
         WidgetUtil.setTextNumber(tv_user_score, user.getCreditScore());
 
         List<FileInfo> images = user.getImages();
         if (images != null && images.size() > 0) {
             G.img(context, images.get(0).getUrl(), img_image);
-        }else{
+        } else {
             if (user.getAvatar() != null)
                 G.img(context, user.getAvatar().getUrl(), img_user_avatar);
         }
@@ -116,7 +116,7 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<Photo, MineContract
 
         mData.clear();
         for (int i = 0; i < 100; i++) {
-            mData.add(new Photo());
+            mData.add(new PhotoStory());
         }
 
         notifyDataSetChanged();
@@ -151,9 +151,7 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<Photo, MineContract
         img_image.requestLayout();
 
         TextView tv_update = mHeader.findViewById(R.id.tv_update);
-        tv_update.setOnClickListener(v -> {
-            mPresenter.goUpdateInfo();
-        });
+        tv_update.setOnClickListener(v -> mPresenter.goUpdateInfo());
 
     }
 

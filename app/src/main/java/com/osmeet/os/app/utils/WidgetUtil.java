@@ -13,12 +13,20 @@ import android.widget.TextView;
 
 import com.osmeet.os.R;
 
+import java.text.DecimalFormat;
+
 /**
- * Created by yyj on 2018/12/06. email: 2209011667@qq.com
+ * Created by yyj on 2018/12/06.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class WidgetUtil {
 
+    /**
+     * @param button
+     * @param isCanPressed
+     */
     @SuppressLint("NewApi")
     public static void setButtonState(Button button, boolean isCanPressed) {
         if (isCanPressed) {
@@ -30,6 +38,10 @@ public class WidgetUtil {
         }
     }
 
+    /**
+     * @param edit
+     * @param isCanSee
+     */
     public static void setPasswordEditState(EditText edit, boolean isCanSee) {
         if (isCanSee) {
             edit.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -40,6 +52,9 @@ public class WidgetUtil {
         setEditSelectionLast(edit);
     }
 
+    /**
+     * @param edit
+     */
     public static void setEditSelectionLast(EditText edit) {
         // 切换后将EditText光标置于末尾。
         CharSequence charSequence = edit.getText();
@@ -49,6 +64,10 @@ public class WidgetUtil {
         }
     }
 
+    /**
+     * @param textView
+     * @param s
+     */
     public static void setTextOrGone(TextView textView, String s) {
         if (!TextUtils.isEmpty(s)) {
             textView.setVisibility(View.VISIBLE);
@@ -58,7 +77,11 @@ public class WidgetUtil {
         }
     }
 
-    public static void setTextNotNull(TextView textView, String s) {
+    /**
+     * @param textView
+     * @param s
+     */
+    public static void setTextNonNull(TextView textView, String s) {
         if (s != null) {
             textView.setText(s);
         } else {
@@ -66,27 +89,77 @@ public class WidgetUtil {
         }
     }
 
+    /**
+     * @param textView
+     * @param i
+     */
     @SuppressLint("SetTextI18n")
     public static void setTextNumber(TextView textView, int i) {
         textView.setText("" + i);
     }
 
+    /**
+     * @param textView
+     * @param i
+     */
     @SuppressLint("SetTextI18n")
     public static void setTextNumber(TextView textView, long i) {
         textView.setText("" + i);
     }
 
+    /**
+     * @param textView
+     * @param i
+     */
     @SuppressLint("SetTextI18n")
     public static void setTextNumber(TextView textView, double i) {
         textView.setText("" + i);
     }
 
+    /**
+     * @param textView
+     * @param i
+     */
     @SuppressLint("SetTextI18n")
     public static void setTextNumber(TextView textView, float i) {
         textView.setText("" + i);
     }
 
+    /**
+     * @param textView
+     * @param unit
+     * @param i
+     */
+    @SuppressLint("SetTextI18n")
+    public static void setTextPrice(TextView textView, String unit, float i) {
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        if (unit == null) unit = "$";
+        textView.setText(unit + decimalFormat.format(i));
+    }
 
+
+    /**
+     * @param textView
+     * @param resId
+     */
+    @SuppressLint("NewApi")
+    public static void setTextColor(TextView textView, @AnyRes int resId) {
+        textView.setTextColor(textView.getContext().getResources().getColor(resId, null));
+    }
+
+
+    /**
+     * @param button
+     * @param resId
+     */
+    @SuppressLint("NewApi")
+    public static void setTextColor(Button button, @AnyRes int resId) {
+        button.setTextColor(button.getContext().getResources().getColor(resId, null));
+    }
+
+    /**
+     * @param vs
+     */
     public static void beSquareByWidth(View... vs) {
         for (View v : vs) {
             v.getLayoutParams().height = v.getWidth();
@@ -94,18 +167,9 @@ public class WidgetUtil {
         }
     }
 
-
-    @SuppressLint("NewApi")
-    public static void setTextColor(TextView textView, @AnyRes int resId) {
-        textView.setTextColor(textView.getContext().getResources().getColor(resId, null));
-    }
-
-
-    @SuppressLint("NewApi")
-    public static void setTextColor(Button button, @AnyRes int resId) {
-        button.setTextColor(button.getContext().getResources().getColor(resId, null));
-    }
-
+    /**
+     * @param vs
+     */
     public static void beSquareByHeight(View... vs) {
         for (View v : vs) {
             v.getLayoutParams().width = v.getHeight();

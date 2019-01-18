@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import java.util.List;
 
 /**
- * Created by wzm on 2018/04/17. email: 2209011667@qq.com
+ * Created by yyj on 2018/04/17.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 
@@ -37,6 +39,7 @@ public class ViewTitlePagerAdapter extends PagerAdapter {
     }
 
 
+    @Override
     public int getCount() {
         if (isLoop) {
             return Integer.MAX_VALUE;

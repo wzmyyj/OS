@@ -65,6 +65,7 @@ public class GoodsNeScrollPanel extends BaseNeScrollPanel<GoodsContract.IPresent
 
             @Override
             public void setBannerData(@NonNull final List<?> list) {
+                @SuppressWarnings("unchecked")
                 List<String> urlList = new ArrayList<>((Collection<? extends String>) list);
                 mBanner.update(urlList);
             }
@@ -92,7 +93,7 @@ public class GoodsNeScrollPanel extends BaseNeScrollPanel<GoodsContract.IPresent
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 mDistance = scrollY;
                 float percent = mDistance * 1f / maxDistance;//百分比
-                View bar = mViewMap.get("v");
+                View bar = getBindView("v");
                 if (bar != null)
                     bar.setAlpha(percent);
             }
@@ -115,10 +116,10 @@ public class GoodsNeScrollPanel extends BaseNeScrollPanel<GoodsContract.IPresent
             imageBannerPanel.setBannerData(urlList);
         }
 
-        WidgetUtil.setTextNotNull(tv_goods_name, goods.getName());
+        WidgetUtil.setTextNonNull(tv_goods_name, goods.getName());
         Store store = goods.getStore();
         if (store != null) {
-            WidgetUtil.setTextNotNull(tv_store_name, store.getName());
+            WidgetUtil.setTextNonNull(tv_store_name, store.getName());
             if (store.getLogoImage() != null)
                 G.img(context, store.getLogoImage().getUrl(), img_store_logo);
         }

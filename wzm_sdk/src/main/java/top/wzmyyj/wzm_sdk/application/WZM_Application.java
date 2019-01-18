@@ -6,7 +6,9 @@ import top.wzmyyj.wzm_sdk.tools.L;
 import top.wzmyyj.wzm_sdk.tools.T;
 
 /**
- * Created by yyj on 2018/09/19. email: 2209011667@qq.com
+ * Created by yyj on 2018/09/19.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class WZM_Application extends Application {
