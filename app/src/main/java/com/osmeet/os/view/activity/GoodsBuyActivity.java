@@ -11,6 +11,8 @@ import com.osmeet.os.contract.GoodsBuyContract;
 import com.osmeet.os.presenter.GoodsBuyPresenter;
 import com.osmeet.os.view.panel.GoodsBuyNeScrollPanel;
 
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -62,6 +64,11 @@ public class GoodsBuyActivity extends BaseActivity<GoodsBuyContract.IPresenter> 
         tv_goods_price_old.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         goodsBuyNeScrollPanel.bindView("v1", tv_goods_price);
         goodsBuyNeScrollPanel.bindView("v2", tv_goods_price_old);
+    }
+
+    @Override
+    public void showResult(Map<String, String> result) {
+
     }
 }
 

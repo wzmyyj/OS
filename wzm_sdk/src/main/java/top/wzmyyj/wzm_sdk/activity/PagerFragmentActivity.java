@@ -19,7 +19,7 @@ import top.wzmyyj.wzm_sdk.widget.SlideViewPager;
 
 /**
  * Created by wzm on 2018/04/18.
- *
+ * <p>
  * ViewPager+Fragment Activity
  *
  * @author wzmyyj email: 2209011667@qq.com
@@ -198,6 +198,10 @@ public abstract class PagerFragmentActivity extends InitActivity {
         return 0;
     }
 
+    @Override
+    protected void initData() {
+
+    }
 
     @Override
     protected void initListener() {

@@ -20,4 +20,9 @@ public class GoodsBuyPresenter extends BasePresenter<GoodsBuyContract.IView> imp
     public Goods.SimpleGoods getSimpleGoods() {
         return (Goods.SimpleGoods) getActivity().getIntent().getSerializableExtra("goods");
     }
+
+    @Override
+    public void pay(String info) {
+
+    }
 }

@@ -158,7 +158,7 @@ public class PopInfoActivity extends BaseActivity<PopInfoContract.IPresenter> im
     protected void initView() {
         super.initView();
         setSwipeBackEnable(false);
-        WidgetUtil.setButtonState(bt_open_os, false);
+        setButtonState(bt_open_os, false);
 
         AA.appear(img_bg_top);
         AA.enlarge(fl_center);
@@ -211,7 +211,17 @@ public class PopInfoActivity extends BaseActivity<PopInfoContract.IPresenter> im
     private void setButtonStateWithCheck() {
         int length = et_username.getText().toString().length();
         int length2 = et_birthday.getText().toString().length();
-        WidgetUtil.setButtonState(bt_open_os, length >= 1 && length <= 10 && length2 > 4 && sex > 0 && avatarPath != null);
+        setButtonState(bt_open_os, length >= 1 && length <= 10 && length2 > 4 && sex > 0 && avatarPath != null);
+    }
+
+    private void setButtonState(Button button, boolean isCanPressed) {
+        if (isCanPressed) {
+            button.setBackgroundResource(R.drawable.bg_button_selector);
+            WidgetUtil.setTextColor(button, R.color.colorWhite);
+        } else {
+            button.setBackgroundResource(R.drawable.bg_button_down);
+            WidgetUtil.setTextColor(button, R.color.colorAhp_d);
+        }
     }
 }
 

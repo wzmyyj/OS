@@ -57,7 +57,7 @@ public class LoginPasswordPanel extends BasePanel<LoginContract.IPresenter> {
     @Override
     protected void initView() {
         super.initView();
-        WidgetUtil.setButtonState(bt_login, false);
+        setButtonState(bt_login, false);
     }
 
     @Override
@@ -77,9 +77,19 @@ public class LoginPasswordPanel extends BasePanel<LoginContract.IPresenter> {
             @Override
             public void afterTextChanged(Editable s) {
                 int length = et_password.getText().toString().length();
-                WidgetUtil.setButtonState(bt_login, length >= 6 && length <= 12);
+                setButtonState(bt_login, length >= 6 && length <= 12);
             }
         });
+    }
+
+    private void setButtonState(Button button, boolean isCanPressed) {
+        if (isCanPressed) {
+            button.setBackgroundResource(R.drawable.bg_button_selector);
+            WidgetUtil.setTextColor(button, R.color.colorWhite);
+        } else {
+            button.setBackgroundResource(R.drawable.bg_button_down);
+            WidgetUtil.setTextColor(button, R.color.colorAhp_d);
+        }
     }
 
 }
