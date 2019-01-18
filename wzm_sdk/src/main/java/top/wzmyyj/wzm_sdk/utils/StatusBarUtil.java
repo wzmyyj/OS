@@ -23,17 +23,17 @@ public class StatusBarUtil {
 
     /**
      * 状态栏设置
-     * @param context
-     * @param isTint
+     * @param context .
+     * @param isTint .
      */
     public static void initStatusBar(Activity context, boolean isTint) {
         initStatusBar(context, isTint, false, false);
     }
 
     /**
-     * @param context
-     * @param isTint
-     * @param isDark
+     * @param context .
+     * @param isTint .
+     * @param isDark .
      */
     public static void initStatusBar(Activity context, boolean isTint, boolean isDark) {
         initStatusBar(context, isTint, isDark, false);
@@ -41,10 +41,10 @@ public class StatusBarUtil {
 
 
     /**
-     * @param context
-     * @param isTint
-     * @param isDark
-     * @param isTransparent
+     * @param context .
+     * @param isTint .
+     * @param isDark .
+     * @param isTransparent .
      */
     @SuppressLint("InlinedApi")
     public static void initStatusBar(Activity context, boolean isTint, boolean isDark, boolean isTransparent) {
@@ -80,7 +80,7 @@ public class StatusBarUtil {
     /**
      * 获取状态栏高度。
      *
-     * @param context
+     * @param context .
      * @return 高度（px）
      */
     public static int getStatusBarHeight(Context context) {
@@ -96,8 +96,8 @@ public class StatusBarUtil {
     /**
      * 让view高度=状态栏高度。
      *
-     * @param context
-     * @param views
+     * @param context .
+     * @param views .
      */
     public static void fitsStatusBarView(Context context, @NonNull View... views) {
         for (View view : views) {
@@ -109,7 +109,7 @@ public class StatusBarUtil {
     /**
      * 隐藏状态栏。
      *
-     * @param context
+     * @param context .
      */
     public static void fullScreen(Activity context) {
         context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -118,7 +118,7 @@ public class StatusBarUtil {
     /**
      * 显示状态栏。
      *
-     * @param context
+     * @param context .
      */
     public static void notFullScreen(Activity context) {
         context.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);

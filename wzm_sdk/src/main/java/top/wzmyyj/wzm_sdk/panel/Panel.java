@@ -54,7 +54,7 @@ public class Panel {
     }
 
     /**
-     * @param <A>
+     * @param <A> .
      * @return activity.
      */
     @SuppressWarnings("unchecked")
@@ -63,7 +63,7 @@ public class Panel {
     }
 
     /**
-     * @param <F>
+     * @param <F> .
      * @return fragment.
      */
     @SuppressWarnings("unchecked")
@@ -79,8 +79,8 @@ public class Panel {
     }
 
     /**
-     * @param title
-     * @param <P>
+     * @param title .
+     * @param <P> .
      * @return this.
      */
     @SuppressWarnings("unchecked")
@@ -89,6 +89,9 @@ public class Panel {
         return (P) this;
     }
 
+    /**
+     * @param context .
+     */
     public Panel(Context context) {
         this.activity = (Activity) context;
         this.context = context;
@@ -98,8 +101,8 @@ public class Panel {
     /**
      * bind fragment.
      *
-     * @param fragment
-     * @param <P>
+     * @param fragment .
+     * @param <P> .
      * @return this.
      */
     @SuppressWarnings("unchecked")
@@ -125,7 +128,7 @@ public class Panel {
     /**
      * when activity onCreate->initSome.
      *
-     * @param savedInstanceState
+     * @param savedInstanceState .
      */
     public void onCreate(Bundle savedInstanceState) {
         mState = CREATED;
@@ -169,7 +172,7 @@ public class Panel {
     /**
      * when fragment onActivityCreated
      *
-     * @param savedInstanceState
+     * @param savedInstanceState .
      */
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         mState = ACTIVITY_CREATED;
@@ -203,8 +206,8 @@ public class Panel {
     /**
      * 外部调用，用于绑定外界的View。可以控制外界的view。
      *
-     * @param key
-     * @param view
+     * @param key .
+     * @param view .
      */
     public void bindView(String key, View view) {
         Sure.sure(mState < ACTIVITY_CREATED, "bindView need when onCreate!");
@@ -212,8 +215,8 @@ public class Panel {
     }
 
     /**
-     * @param key
-     * @param <V>
+     * @param key .
+     * @param <V> .
      * @return view.
      */
     @SuppressWarnings("unchecked")
@@ -234,8 +237,8 @@ public class Panel {
     /**
      * 外部调用，用于绑定外界的Panel。可以控制外界的panel。
      *
-     * @param key
-     * @param panel
+     * @param key .
+     * @param panel .
      */
     public void bindPanel(String key, Panel panel) {
         Sure.sure(mState < ACTIVITY_CREATED, "bindPanel need when onCreate!");
@@ -243,8 +246,8 @@ public class Panel {
     }
 
     /**
-     * @param key
-     * @param <P>
+     * @param key .
+     * @param <P> .
      * @return panel.
      */
     @SuppressWarnings("unchecked")

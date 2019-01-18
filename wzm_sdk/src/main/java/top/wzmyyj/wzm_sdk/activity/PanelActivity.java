@@ -8,8 +8,11 @@ import top.wzmyyj.wzm_sdk.panel.Panel;
 import top.wzmyyj.wzm_sdk.panel.PanelManager;
 
 /**
- * Created by wzm on 2018/05/04. email: 2209011667@qq.com
- * 如果需要动态添加Panel，调用addPanels2(@NonNull Panel... panels)。
+ * Created by yyj on 2018/05/04.
+ *
+ * Panel in Activity.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 
@@ -17,24 +20,41 @@ public abstract class PanelActivity extends InitActivity {
 
     private PanelManager mPanelManager = new PanelManager();
 
+    /**
+     * @param panels .
+     */
     protected void addPanels(@NonNull Panel... panels) {
         mPanelManager.addPanels(panels);
     }
 
+    /**
+     * @param i .
+     * @return panel's view.
+     */
     public View getPanelView(int i) {
         return mPanelManager.getPanelView(i);
     }
 
+    /**
+     * @param i .
+     * @param <P> .
+     * @return panel.
+     */
     @SuppressWarnings("unchecked")
     public <P extends Panel> P getPanel(int i) {
         return (P) mPanelManager.get(i);
     }
 
+    /**
+     * @return mPanelManager.
+     */
     public PanelManager getPanelManager() {
         return mPanelManager;
     }
 
-    // 只能在这个方法里创建Panel。
+    /**
+     * 只能在这个方法里创建Panel。
+     */
     protected void initPanels() {
 
     }

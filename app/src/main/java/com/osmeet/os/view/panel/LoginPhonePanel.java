@@ -60,7 +60,7 @@ public class LoginPhonePanel extends BasePanel<LoginContract.IPresenter> {
     @Override
     protected void initView() {
         super.initView();
-        WidgetUtil.setButtonState(bt_next, false);
+        setButtonState(bt_next, false);
     }
 
     @Override
@@ -80,8 +80,18 @@ public class LoginPhonePanel extends BasePanel<LoginContract.IPresenter> {
             @Override
             public void afterTextChanged(Editable s) {
                 int length = et_phone.getText().toString().length();
-                WidgetUtil.setButtonState(bt_next, length == 11);
+                setButtonState(bt_next, length == 11);
             }
         });
+    }
+
+    private void setButtonState(Button button, boolean isCanPressed) {
+        if (isCanPressed) {
+            button.setBackgroundResource(R.drawable.bg_button_selector);
+            WidgetUtil.setTextColor(button, R.color.colorWhite);
+        } else {
+            button.setBackgroundResource(R.drawable.bg_button_down);
+            WidgetUtil.setTextColor(button, R.color.colorAhp_d);
+        }
     }
 }

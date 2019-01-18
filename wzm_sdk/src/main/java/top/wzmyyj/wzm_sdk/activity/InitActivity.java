@@ -77,7 +77,7 @@ public abstract class InitActivity extends SwipeBackActivity {
     /**
      * do something init.
      *
-     * @param savedInstanceState
+     * @param savedInstanceState bundle
      */
     protected void initSome(Bundle savedInstanceState) {
     }

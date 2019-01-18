@@ -121,14 +121,14 @@ public class CircleImageView extends ImageView {
     }
 
     /**
-     * @return
+     * @return mBorderColor.
      */
     public int getBorderColor() {
         return mBorderColor;
     }
 
     /**
-     * @param borderColor
+     * @param borderColor .
      */
     public void setBorderColor(int borderColor) {
         if (borderColor == mBorderColor) {
@@ -141,14 +141,14 @@ public class CircleImageView extends ImageView {
     }
 
     /**
-     * @return
+     * @return mBorderWidth.
      */
     public int getBorderWidth() {
         return mBorderWidth;
     }
 
     /**
-     * @param borderWidth
+     * @param borderWidth .
      */
     public void setBorderWidth(int borderWidth) {
         if (borderWidth == mBorderWidth) {

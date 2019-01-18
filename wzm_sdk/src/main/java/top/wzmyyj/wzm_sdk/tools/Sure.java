@@ -10,8 +10,8 @@ import android.support.annotation.NonNull;
 
 public class Sure {
     /**
-     * @param is
-     * @param msg
+     * @param is is true.
+     * @param msg .
      */
     public static void sure(boolean is, @NonNull String msg) {
         if (!is) {

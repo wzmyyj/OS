@@ -34,14 +34,14 @@ public class L {
     }
 
     /**
-     * @param TAG
+     * @param TAG tag
      */
     public static void setTAG(String TAG) {
         L.TAG = TAG;
     }
 
     /**
-     * @param debug
+     * @param debug is debug
      */
     public static void setDebug(boolean debug) {
         L.debug = debug;
@@ -50,7 +50,7 @@ public class L {
     /**
      * verbose log
      *
-     * @param msg
+     * @param msg .
      */
     public static void v(String msg) {
         if (debug)
@@ -60,7 +60,7 @@ public class L {
     /**
      * debug log
      *
-     * @param msg
+     * @param msg .
      */
     public static void d(String msg) {
         if (debug)
@@ -70,7 +70,7 @@ public class L {
     /**
      * info log
      *
-     * @param msg
+     * @param msg .
      */
     public static void i(String msg) {
         if (debug)
@@ -80,7 +80,7 @@ public class L {
     /**
      * warn log
      *
-     * @param msg
+     * @param msg .
      */
     public static void w(String msg) {
         if (debug)
@@ -90,7 +90,7 @@ public class L {
     /**
      * error log
      *
-     * @param msg
+     * @param msg .
      */
     public static void e(String msg) {
         if (debug)
@@ -100,7 +100,7 @@ public class L {
     /**
      * check msg if null
      *
-     * @param msg
+     * @param msg .
      * @return not null string
      */
     private static String check(String msg) {

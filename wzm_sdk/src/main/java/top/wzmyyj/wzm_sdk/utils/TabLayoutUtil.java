@@ -12,8 +12,8 @@ import android.support.design.widget.TabLayout;
 
 public class TabLayoutUtil {
     /**
-     * @param tabLayout
-     * @param tabLayoutStyle
+     * @param tabLayout .
+     * @param tabLayoutStyle .
      */
     public static void setStyle(TabLayout tabLayout, final TabLayoutStyle tabLayoutStyle) {
         for (int i = 0; i < tabLayout.getTabCount(); i++) {

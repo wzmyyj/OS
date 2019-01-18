@@ -17,7 +17,7 @@ public class PackageUtil {
     /**
      * 获取应用版本号名称。
      *
-     * @param context
+     * @param context .
      * @return 应用版本号名称(String)
      */
     public static String getVersionName(Context context) {
@@ -35,7 +35,7 @@ public class PackageUtil {
     /**
      * 获取应用版本号。
      *
-     * @param context
+     * @param context .
      * @return 应用版本号(int)
      */
     public static int getVersionCode(Context context) {
@@ -54,7 +54,7 @@ public class PackageUtil {
     /**
      * 获取应用包名。
      *
-     * @param context
+     * @param context .
      * @return 应用包名(String)
      */
     public static String getPackageName(Context context) {

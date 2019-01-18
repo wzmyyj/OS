@@ -1,6 +1,8 @@
 package top.wzmyyj.wzm_sdk.panel;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.support.annotation.LayoutRes;
 import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -12,26 +14,30 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import top.wzmyyj.wzm_sdk.R;
 
 /**
- * Created by wzm on 2018/05/05. email: 2209011667@qq.com
+ * Created by wzm on 2018/05/05.
+ * <p>
+ * NeScroll SmartRefresh Panel.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 
-public abstract class NeScrollPanel extends GroupPanel {
-
+public abstract class NeScrollPanel extends RefreshPanel {
 
     protected NestedScrollView mNestedScrollView;
     protected SmartRefreshLayout mRefreshLayout;
     protected FrameLayout mFrameLayout;
     protected View contentView;
 
-
-    protected int delayed_r = 1500, delayed_l = 1000;
-
+    /**
+     * @param context .
+     */
     public NeScrollPanel(Context context) {
         super(context);
     }
 
 
+    @SuppressLint("InflateParams")
     @Override
     protected void setRootView() {
         view = mInflater.inflate(R.layout.panel_ns, null);
@@ -51,6 +57,10 @@ public abstract class NeScrollPanel extends GroupPanel {
 
     }
 
+    /**
+     * @return LayoutRes.
+     */
+    @LayoutRes
     protected abstract int getContentViewId();
 
     @Override
@@ -63,34 +73,47 @@ public abstract class NeScrollPanel extends GroupPanel {
         mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
-                refreshLayout.finishLoadMore(delayed_l);
+                refreshLayout.finishLoadMore(getDelayed_l());
                 loadMore();
             }
 
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-                refreshLayout.finishRefresh(delayed_r);
+                refreshLayout.finishRefresh(getDelayed_r());
                 refresh();
             }
         });
     }
 
+    /**
+     * refresh.
+     */
+    @Override
     protected void refresh() {
         update();
     }
 
+    /**
+     * loadMore.
+     */
+    @Override
     protected void loadMore() {
 
     }
 
-    protected abstract void update();
-
+    /**
+     * updateWithView.
+     */
+    @Override
     public void updateWithView() {
         mRefreshLayout.autoRefresh();
         refresh();
-        mRefreshLayout.finishRefresh(delayed_r);
+        mRefreshLayout.finishRefresh(getDelayed_r());
     }
 
+    /**
+     * updateView.
+     */
     protected void updateView() {
 
     }

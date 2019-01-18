@@ -28,17 +28,17 @@ public class SlideViewPager extends ViewPager {
     private boolean isSlide = true;
 
     /**
-     * @return
+     * @return isSlide.
      */
     public boolean isSlide() {
         return isSlide;
     }
 
     /**
-     * @param slide
+     * @param isSlide .
      */
-    public void setSlide(boolean slide) {
-        isSlide = slide;
+    public void setSlide(boolean isSlide) {
+        this.isSlide = isSlide;
     }
 
     @SuppressLint("ClickableViewAccessibility")

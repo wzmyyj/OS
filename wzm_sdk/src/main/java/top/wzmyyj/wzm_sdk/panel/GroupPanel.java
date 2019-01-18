@@ -7,35 +7,59 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 /**
- * Created by yyj on 2019/01/12. email: 2209011667@qq.com
+ * Created by yyj on 2019/01/12.
+ *
+ * Group Panel: Panel in Panel.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public abstract class GroupPanel extends InitPanel {
+    /**
+     * @param context .
+     */
     public GroupPanel(Context context) {
         super(context);
     }
 
     private PanelManager mPanelManager = new PanelManager();
 
+    /**
+     * @param panels .
+     */
     protected void addPanels(@NonNull Panel... panels) {
         mPanelManager.addPanels(panels);
     }
 
+    /**
+     * @param i .
+     * @return panel's view
+     */
     public View getPanelView(int i) {
         return mPanelManager.getPanelView(i);
     }
 
+    /**
+     * @param i .
+     * @param <P> .
+     * @return panel.
+     */
     @SuppressWarnings("unchecked")
     public <P extends Panel> P getPanel(int i) {
         return (P) mPanelManager.get(i);
     }
 
+    /**
+     * @return mPanelManager.
+     */
     public PanelManager getPanelManager() {
         return mPanelManager;
     }
 
 
-    // 只能在这个方法里创建Panel。
+    /**
+     * 只能在这个方法里创建Panel。
+     */
     protected void initPanels() {
 
     }

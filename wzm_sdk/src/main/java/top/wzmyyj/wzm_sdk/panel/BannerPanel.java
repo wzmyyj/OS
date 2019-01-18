@@ -1,5 +1,6 @@
 package top.wzmyyj.wzm_sdk.panel;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
@@ -14,17 +15,25 @@ import java.util.List;
 import top.wzmyyj.wzm_sdk.R;
 
 /**
- * Created by wzm on 2018/07/03. email: 2209011667@qq.com
+ * Created by yyj on 2018/07/03.
+ *
+ * Banner Panel.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 public abstract class BannerPanel extends GroupPanel {
 
     protected Banner mBanner;
 
+    /**
+     * @param context .
+     */
     public BannerPanel(Context context) {
         super(context);
     }
 
+    @SuppressLint("InflateParams")
     @Override
     protected void setRootView() {
         view = mInflater.inflate(R.layout.panel_banner, null);
@@ -60,16 +69,29 @@ public abstract class BannerPanel extends GroupPanel {
         mBanner.start();
     }
 
+    /**
+     * @param banner .
+     */
     protected void setBanner(Banner banner) {
 
     }
 
+    /**
+     * @param images list.
+     * @param titles list.
+     */
     protected void setFirstData(List images, List<String> titles) {
 
     }
 
+    /**
+     * @param list .
+     */
     public abstract void setBannerData(@NonNull List<?> list);
 
+    /**
+     * @return ImageLoader.
+     */
     @NonNull
     protected abstract ImageLoader getImageLoader();
 

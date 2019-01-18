@@ -1,5 +1,6 @@
 package top.wzmyyj.wzm_sdk.panel;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,11 +23,15 @@ import top.wzmyyj.wzm_sdk.R;
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
 
 /**
- * Created by wzm on 2018/04/23. email: 2209011667@qq.com
+ * Created by wzm on 2018/04/23.
+ *
+ * Recycler SmartRefresh Panel.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
 
-public abstract class RecyclerPanel<T> extends GroupPanel
+public abstract class RecyclerPanel<T> extends RefreshPanel
         implements MultiItemTypeAdapter.OnItemClickListener {
 
     protected RecyclerView mRecyclerView;
@@ -45,14 +50,13 @@ public abstract class RecyclerPanel<T> extends GroupPanel
 
     protected FrameLayout mEmptyLayout;
 
-    protected int delayed_r = 1500, delayed_l = 1000;
-
 
     public RecyclerPanel(Context context) {
         super(context);
     }
 
 
+    @SuppressLint("InflateParams")
     @Override
     protected void setRootView() {
         view = mInflater.inflate(R.layout.panel_sr, null);
@@ -81,6 +85,9 @@ public abstract class RecyclerPanel<T> extends GroupPanel
     }
 
 
+    /**
+     * setFirstData.
+     */
     protected void setFirstData() {
 
     }
@@ -89,13 +96,22 @@ public abstract class RecyclerPanel<T> extends GroupPanel
     protected abstract void setIVD(List<IVD<T>> ivd);
 
 
+    /**
+     * setHeader.
+     */
     protected void setHeader() {
     }
 
 
+    /**
+     * setFooter.
+     */
     protected void setFooter() {
     }
 
+    /**
+     * setEmpty.
+     */
     protected void setEmpty() {
 
     }
@@ -139,49 +155,55 @@ public abstract class RecyclerPanel<T> extends GroupPanel
         mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
-                refreshLayout.finishLoadMore(delayed_l);
+                refreshLayout.finishLoadMore(getDelayed_l());
                 loadMore();
             }
 
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-                refreshLayout.finishRefresh(delayed_r);
+                refreshLayout.finishRefresh(getDelayed_r());
                 refresh();
             }
         });
     }
 
+    @Override
     protected void refresh() {
         update();
     }
 
+    @Override
     protected void loadMore() {
 
     }
 
-
+    @Override
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
 
     }
 
+    @Override
     public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
         return false;
     }
 
+    @Override
     public void updateWithView() {
         mRefreshLayout.autoRefresh();
         refresh();
-        mRefreshLayout.finishRefresh(delayed_r);
+        mRefreshLayout.finishRefresh(getDelayed_r());
     }
 
-    public abstract void update();
-
-
-    // 排序
+    /**
+     * 排序.
+     */
     protected void sort() {
 
     }
 
+    /**
+     * notifyDataSetChanged.
+     */
     protected void notifyDataSetChanged() {
         sort();
         mHeaderAndFooterWrapper.notifyDataSetChanged();
@@ -189,6 +211,9 @@ public abstract class RecyclerPanel<T> extends GroupPanel
         upEmpty();
     }
 
+    /**
+     * update mHeader And mFooter.
+     */
     protected void upHeaderAndFooter() {
         if (mFooter == null) return;
         if (mData.size() == 0) {
@@ -198,6 +223,9 @@ public abstract class RecyclerPanel<T> extends GroupPanel
         }
     }
 
+    /**
+     * update mEmpty.
+     */
     protected void upEmpty() {
         if (mEmpty == null) return;
         if (mData.size() == 0) {

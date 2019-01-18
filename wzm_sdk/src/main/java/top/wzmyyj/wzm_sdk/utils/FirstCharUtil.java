@@ -41,15 +41,15 @@ public class FirstCharUtil {
     // 根据一个包含汉字的字符串返回一个汉字拼音首字母的字符串 最重要的一个方法，思路如下：一个个字符读入、判断、输出
 
     /**
-     * @param S
+     * @param str string
      * @return first char
      */
-    public static String first(String S) {
+    public static String first(String str) {
         String Result = "";
-        if (S == null || S.equals("")) {
+        if (str == null || str.equals("")) {
             return "#";
         }
-        char cs = S.charAt(0);
+        char cs = str.charAt(0);
         try {
 
             Result += Char2Initial(cs);

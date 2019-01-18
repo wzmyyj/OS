@@ -11,8 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.osmeet.os.R;
-
 import java.text.DecimalFormat;
 
 /**
@@ -22,21 +20,6 @@ import java.text.DecimalFormat;
  */
 
 public class WidgetUtil {
-
-    /**
-     * @param button
-     * @param isCanPressed
-     */
-    @SuppressLint("NewApi")
-    public static void setButtonState(Button button, boolean isCanPressed) {
-        if (isCanPressed) {
-            button.setBackgroundResource(R.drawable.bg_button_selector);
-            button.setTextColor(button.getContext().getResources().getColor(R.color.colorWhite, null));
-        } else {
-            button.setBackgroundResource(R.drawable.bg_button_down);
-            button.setTextColor(button.getContext().getResources().getColor(R.color.colorAhp_d, null));
-        }
-    }
 
     /**
      * @param edit

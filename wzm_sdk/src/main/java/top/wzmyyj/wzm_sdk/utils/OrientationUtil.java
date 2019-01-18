@@ -15,7 +15,7 @@ public class OrientationUtil {
 
     /***
      * 竖屏。
-     * @param activity
+     * @param activity .
      */
     public static void portrait(Activity activity) {
         if (activity.getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
@@ -26,7 +26,7 @@ public class OrientationUtil {
 
     /***
      * 横屏。
-     * @param activity
+     * @param activity .
      */
     public static void landscape(Activity activity) {
         if (activity.getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {

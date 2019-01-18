@@ -28,7 +28,7 @@ public class T {
     }
 
     /**
-     * @param app
+     * @param app Application.
      */
     public static void init(Application app) {
         T.app = app;
@@ -37,7 +37,7 @@ public class T {
     /**
      * show short toast
      *
-     * @param msg
+     * @param msg .
      */
     public static void s(String msg) {
         if (app == null) return;
@@ -47,7 +47,7 @@ public class T {
     /**
      * show long toast
      *
-     * @param msg
+     * @param msg .
      */
     public static void l(String msg) {
         if (app == null) return;
@@ -57,8 +57,8 @@ public class T {
     /**
      * show short toast
      *
-     * @param context
-     * @param msg
+     * @param context .
+     * @param msg .
      */
     public static void s(Context context, String msg) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
@@ -68,8 +68,8 @@ public class T {
     /**
      * show long toast
      *
-     * @param context
-     * @param msg
+     * @param context .
+     * @param msg .
      */
     public static void l(Context context, String msg) {
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show();

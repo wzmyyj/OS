@@ -27,7 +27,7 @@ public class InitFragmentPagerAdapter extends FragmentPagerAdapter {
     }
 
     /**
-     * @param mFragmentList
+     * @param mFragmentList fragment list
      */
     public void setFragmentList(List<InitFragment> mFragmentList) {
         this.mFragmentList = mFragmentList;

@@ -109,7 +109,7 @@ public abstract class PagerFragmentActivity extends InitActivity {
     }
 
     /**
-     * @param fts
+     * @param fts list of FT.
      */
     protected abstract void initFTs(List<FT> fts);
 
@@ -135,7 +135,7 @@ public abstract class PagerFragmentActivity extends InitActivity {
     private TabLayoutUtil.TabLayoutStyle mTabLayoutStyle;
 
     /**
-     * @param tabLayoutStyle
+     * @param tabLayoutStyle style.
      */
     protected void setTabLayoutStyle(TabLayoutUtil.TabLayoutStyle tabLayoutStyle) {
         this.mTabLayoutStyle = tabLayoutStyle;

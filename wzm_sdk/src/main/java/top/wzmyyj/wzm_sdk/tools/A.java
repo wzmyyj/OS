@@ -41,10 +41,10 @@ public class A {
     /**
      * TranslateAnimation
      *
-     * @param fromX
-     * @param toX
-     * @param fromY
-     * @param toY
+     * @param fromX .
+     * @param toX .
+     * @param fromY .
+     * @param toY .
      * @return this
      */
     public A t(int fromX, int toX, int fromY, int toY) {
@@ -56,12 +56,12 @@ public class A {
     /**
      * RotateAnimation
      *
-     * @param fromDegrees
-     * @param toDegrees
-     * @param pivotXType
-     * @param pivotXValue
-     * @param pivotYType
-     * @param pivotYValue
+     * @param fromDegrees .
+     * @param toDegrees .
+     * @param pivotXType .
+     * @param pivotXValue .
+     * @param pivotYType .
+     * @param pivotYValue .
      * @return this
      */
     public A r(float fromDegrees, float toDegrees, int pivotXType, float pivotXValue,
@@ -76,14 +76,14 @@ public class A {
     /**
      * ScaleAnimation
      *
-     * @param fromX
-     * @param toX
-     * @param fromY
-     * @param toY
-     * @param pivotXType
-     * @param pivotXValue
-     * @param pivotYType
-     * @param pivotYValue
+     * @param fromX .
+     * @param toX .
+     * @param fromY .
+     * @param toY .
+     * @param pivotXType .
+     * @param pivotXValue .
+     * @param pivotYType .
+     * @param pivotYValue .
      * @return this
      */
     public A s(float fromX, float toX, float fromY, float toY,
@@ -115,8 +115,8 @@ public class A {
     /**
      * AlphaAnimation
      *
-     * @param fromAlpha
-     * @param toAlpha
+     * @param fromAlpha .
+     * @param toAlpha .
      * @return this
      */
     public A a(float fromAlpha, float toAlpha) {
@@ -126,7 +126,7 @@ public class A {
     }
 
     /**
-     * @param duration
+     * @param duration .
      * @return this
      */
     public A duration(long duration) {
@@ -135,7 +135,7 @@ public class A {
     }
 
     /**
-     * @param repeatMode
+     * @param repeatMode .
      * @return this
      */
     public A repeatMode(int repeatMode) {
@@ -144,7 +144,7 @@ public class A {
     }
 
     /**
-     * @param fillAfter
+     * @param fillAfter .
      * @return this
      */
     public A fillAfter(boolean fillAfter) {
@@ -153,7 +153,7 @@ public class A {
     }
 
     /**
-     * @param fillBefore
+     * @param fillBefore .
      * @return this
      */
     public A fillBefore(boolean fillBefore) {
@@ -162,7 +162,7 @@ public class A {
     }
 
     /**
-     * @param startOffset
+     * @param startOffset .
      * @return this
      */
     public A setStartOffset(long startOffset) {
@@ -173,7 +173,7 @@ public class A {
     /**
      * Animation.AnimationListener
      *
-     * @param listener
+     * @param listener .
      * @return this
      */
     public A listener(Animation.AnimationListener listener) {
@@ -201,7 +201,7 @@ public class A {
     /**
      * view start animation
      *
-     * @param view
+     * @param view .
      */
     public void into(View view) {
         view.setAnimation(animSet);

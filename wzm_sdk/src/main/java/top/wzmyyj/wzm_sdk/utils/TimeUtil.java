@@ -21,8 +21,8 @@ public class TimeUtil {
 
 
     /**
-     * @param l
-     * @param format
+     * @param l .
+     * @param format .
      * @return 时间戳。
      */
     public static String long2str(long l, String format) {
@@ -30,13 +30,12 @@ public class TimeUtil {
             return "";
         }
         SimpleDateFormat sdf = new SimpleDateFormat(format);
-        String s = sdf.format(new Date(l));
-        return s;
+        return sdf.format(new Date(l));
     }
 
     /**
-     * @param time
-     * @param format
+     * @param time .
+     * @param format .
      * @return 时间格式。
      */
     public static long str2long(String time, String format) {
@@ -59,7 +58,7 @@ public class TimeUtil {
     }
 
     /**
-     * @param date
+     * @param date .
      * @return 时间戳。
      */
     public static long getTime(Date date) {
@@ -75,7 +74,7 @@ public class TimeUtil {
     }
 
     /**
-     * @param date
+     * @param date .
      * @return minute.
      */
     public static int getMinute(Date date) {
@@ -93,7 +92,7 @@ public class TimeUtil {
     }
 
     /**
-     * @param date
+     * @param date .
      * @return hour in day.
      */
     public static int getHourInDay(Date date) {
@@ -111,7 +110,7 @@ public class TimeUtil {
     }
 
     /**
-     * @param date
+     * @param date .
      * @return week:0,1,2,3,4,5,6.
      */
     public static int getWeek(Date date) {
@@ -129,7 +128,7 @@ public class TimeUtil {
     }
 
     /**
-     * @param date
+     * @param date .
      * @return day
      */
     public static int getDay(Date date) {
@@ -147,7 +146,7 @@ public class TimeUtil {
     }
 
     /**
-     * @param date
+     * @param date .
      * @return month.
      */
     public static int getMonth(Date date) {
@@ -165,7 +164,7 @@ public class TimeUtil {
     }
 
     /**
-     * @param date
+     * @param date .
      * @return year.
      */
     public static int getYear(Date date) {
@@ -175,7 +174,7 @@ public class TimeUtil {
     }
 
     /**
-     * @param l
+     * @param l .
      * @return easy time format
      */
     @SuppressLint("SimpleDateFormat")
@@ -201,7 +200,7 @@ public class TimeUtil {
     }
 
     /**
-     * @param l
+     * @param l .
      * @return easy text.
      */
     public static String getEasyText(long l) {
@@ -227,8 +226,8 @@ public class TimeUtil {
     }
 
     /**
-     * @param l
-     * @param i
+     * @param l .
+     * @param i .
      * @return 是否在i天内.
      */
     public static boolean isInDay(long l, int i) {

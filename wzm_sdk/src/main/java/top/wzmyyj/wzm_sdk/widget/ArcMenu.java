@@ -40,7 +40,7 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
     private OnMenuItemClickListener mMenuItemClickListener;
 
     /**
-     * @param mMenuItemClickListener
+     * @param mMenuItemClickListener listener.
      */
     public void setOnMenuItemClickListener(
             OnMenuItemClickListener mMenuItemClickListener) {
@@ -180,7 +180,7 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
     }
 
     /**
-     * @param duration
+     * @param duration .
      */
     public void toggleMenu(int duration) {
         int count = getChildCount();

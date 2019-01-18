@@ -28,8 +28,8 @@ public class P {
     private SharedPreferences.Editor ed;
 
     /**
-     * @param context
-     * @param name
+     * @param context .
+     * @param name .
      */
     @SuppressLint("CommitPrefEdits")
     public P(Context context, String name) {
@@ -38,15 +38,15 @@ public class P {
     }
 
     /**
-     * @param context
+     * @param context .
      */
     public P(Context context) {
         this(context, NAME);
     }
 
     /**
-     * @param context
-     * @param name
+     * @param context .
+     * @param name .
      * @return P
      */
     public static P create(Context context, String name) {
@@ -62,8 +62,8 @@ public class P {
     }
 
     /**
-     * @param key
-     * @param defValue
+     * @param key .
+     * @param defValue .
      * @return int
      */
     public int getInt(String key, int defValue) {
@@ -71,8 +71,8 @@ public class P {
     }
 
     /**
-     * @param key
-     * @param defValue
+     * @param key .
+     * @param defValue .
      * @return long
      */
     public long getLong(String key, long defValue) {
@@ -80,8 +80,8 @@ public class P {
     }
 
     /**
-     * @param key
-     * @param defValue
+     * @param key .
+     * @param defValue .
      * @return float
      */
     public float getFloat(String key, float defValue) {
@@ -89,8 +89,8 @@ public class P {
     }
 
     /**
-     * @param key
-     * @param defValue
+     * @param key .
+     * @param defValue .
      * @return string
      */
     public String getString(String key, String defValue) {
@@ -105,8 +105,8 @@ public class P {
     }
 
     /**
-     * @param key
-     * @param defValue
+     * @param key .
+     * @param defValue .
      * @return string set
      */
     public Set<String> getStringSet(String key, Set<String> defValue) {
@@ -114,8 +114,8 @@ public class P {
     }
 
     /**
-     * @param key
-     * @param value
+     * @param key .
+     * @param value .
      * @return this
      */
     public P putBoolean(String key, boolean value) {
@@ -124,8 +124,8 @@ public class P {
     }
 
     /**
-     * @param key
-     * @param value
+     * @param key .
+     * @param value .
      * @return this
      */
     public P putInt(String key, int value) {
@@ -134,8 +134,8 @@ public class P {
     }
 
     /**
-     * @param key
-     * @param value
+     * @param key .
+     * @param value .
      * @return this
      */
     public P putLong(String key, long value) {
@@ -144,8 +144,8 @@ public class P {
     }
 
     /**
-     * @param key
-     * @param value
+     * @param key .
+     * @param value .
      * @return this
      */
     public P putFloat(String key, float value) {
@@ -154,8 +154,8 @@ public class P {
     }
 
     /**
-     * @param key
-     * @param value
+     * @param key .
+     * @param value .
      * @return this
      */
     public P putString(String key, String value) {
@@ -164,8 +164,8 @@ public class P {
     }
 
     /**
-     * @param key
-     * @param value
+     * @param key .
+     * @param value .
      * @return this
      */
     public P putStringSet(String key, Set<String> value) {
