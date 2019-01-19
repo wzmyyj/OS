@@ -73,14 +73,21 @@ public class BasePresenter<V extends IBaseView> implements IBasePresenter {
 
         @Override
         public void onError(Throwable e) {
+            onFinish();
             mView.showFail(mView.PROCESS_DEFAULT, "Error:" + e.getMessage());
             log("Error:" + e.getMessage());
         }
 
         @Override
         public void onComplete() {
+            onFinish();
             mView.showSuccess(mView.PROCESS_DEFAULT, "Complete!");
         }
+
+        protected void onFinish() {
+            mView.showFinish(mView.PROCESS_DEFAULT, "Finish!");
+        }
+
 
     }
 

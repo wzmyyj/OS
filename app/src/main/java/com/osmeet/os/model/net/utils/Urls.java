@@ -30,14 +30,14 @@ public class Urls {
 
 
     // 商品。
-    public static final String store_goods_get = "/store/goods";
-    public static final String store_goods_post = "/store/goods";
-    public static final String store_goods_put = "/store/goods";
-    public static final String store_goods_buyGoods = "/store/goods/buyGoods";
-    public static final String store_goods_byStoreId = "/store/goods/byStoreId";
-    public static final String store_goods_getAll = "/store/goods/getAll";
-    public static final String store_goods_getBE = "/store/goods/getBeforeEndTimeByStore";
-    public static final String store_goods_search = "/store/goods/search";
+    public static final String goods_get = "/store/goods";
+    public static final String goods_post = "/store/goods";
+    public static final String goods_put = "/store/goods";
+    public static final String goods_buyGoods = "/store/goods/buyGoods";
+    public static final String goods_byStoreId = "/store/goods/byStoreId";
+    public static final String goods_getAll = "/store/goods/getAll";
+    public static final String goods_getBE = "/store/goods/getBeforeEndTimeByStore";
+    public static final String goods_search = "/store/goods/search";
 
     // 商店。
     public static final String store = "/store";
@@ -121,6 +121,11 @@ public class Urls {
     public static final String trade_fundToAccount = "/trade/fundToAccount";
     public static final String trade_pay = "/trade/pay";
     public static final String trade_refund = "/trade/refund";
+
+    // 余额
+    public static final String balance = "/user/balance";
+    public static final String balance_getRecord = "/user/balance/getRecord";
+    public static final String balance_tx = "/trade/cf79cbb3efcaab10";
 
     // 评论。
     public static final String comment = "/comment";

@@ -116,4 +116,8 @@
     <string name="no_goods">暂无商品！</string>
     <string name="need_known">须知：</string>
     <string name="pay">支付</string>
+    <string name="remain">余额</string>
+    <string name="yuan">￥</string>
+    <string name="withdraw">提现</string>
+    <string name="_10">10</string>
 </resources>

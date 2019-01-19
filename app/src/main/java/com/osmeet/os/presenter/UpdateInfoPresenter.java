@@ -92,17 +92,9 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.IView>
                 }
                 log(box.getData());
             }
-
             @Override
-            public void onError(Throwable e) {
-                super.onError(e);
-                isFinishUpdateAvatar = true;
-                checkFinishAll();
-            }
-
-            @Override
-            public void onComplete() {
-                super.onComplete();
+            protected void onFinish() {
+                super.onFinish();
                 isFinishUpdateAvatar = true;
                 checkFinishAll();
             }
@@ -119,17 +111,9 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.IView>
                 }
                 log(box.getData());
             }
-
             @Override
-            public void onError(Throwable e) {
-                super.onError(e);
-                isFinishUpdateInfo = true;
-                checkFinishAll();
-            }
-
-            @Override
-            public void onComplete() {
-                super.onComplete();
+            protected void onFinish() {
+                super.onFinish();
                 isFinishUpdateInfo = true;
                 checkFinishAll();
             }
@@ -148,15 +132,8 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.IView>
             }
 
             @Override
-            public void onError(Throwable e) {
-                super.onError(e);
-                isFinishUpdateImages = true;
-                checkFinishAll();
-            }
-
-            @Override
-            public void onComplete() {
-                super.onComplete();
+            protected void onFinish() {
+                super.onFinish();
                 isFinishUpdateImages = true;
                 checkFinishAll();
             }

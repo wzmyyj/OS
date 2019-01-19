@@ -1,6 +1,6 @@
 package com.osmeet.os.model.net.service;
 
-import com.osmeet.os.app.bean.AliPay;
+import com.osmeet.os.app.bean.Trade;
 import com.osmeet.os.model.net.utils.Urls;
 import com.osmeet.os.model.net.utils.box.Box;
 
@@ -25,7 +25,7 @@ public interface TradeService {
             @Query("_timestamp") long _timestamp);
 
     @POST(Urls.trade_refund)
-    Observable<Box<AliPay>> trade_refund(
+    Observable<Box<Trade>> trade_refund(
             @Query("_requestData") String _requestData,
             @Query("_timestamp") long _timestamp);
 

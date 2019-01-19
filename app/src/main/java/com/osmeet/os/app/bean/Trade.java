@@ -1,23 +1,25 @@
 package com.osmeet.os.app.bean;
 
-import java.util.Date;
-
 /**
  * Created by yyj on 2018/12/04. email: 2209011667@qq.com
  */
 
-public class AliPay {
+public class Trade {
+
+    public static final String WAIT_PAY = "WP";
+    public static final String PAY = "P";
 
     private String alipay_buyer_id;
     private int alipay_state;
     private String alipay_trade_no;
-    private int amount;
-    private int amountPaid;
-    private Date createDate;
+    private float amount;
+    private float amountPaid;
+    private long createDate;
     private int enabledState;
-    private String goodsId;
+    private Goods goods;
     private String id;
-    private Date modifyDate;
+    private long lastExchangeDate;
+    private long modifyDate;
     private int purchaseAmount;
     private String qrcodeData;
     private String serialNumber;
@@ -49,27 +51,27 @@ public class AliPay {
         return alipay_trade_no;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(float amount) {
         this.amount = amount;
     }
 
-    public int getAmount() {
+    public float getAmount() {
         return amount;
     }
 
-    public void setAmountPaid(int amountPaid) {
+    public void setAmountPaid(float amountPaid) {
         this.amountPaid = amountPaid;
     }
 
-    public int getAmountPaid() {
+    public float getAmountPaid() {
         return amountPaid;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(long createDate) {
         this.createDate = createDate;
     }
 
-    public Date getCreateDate() {
+    public long getCreateDate() {
         return createDate;
     }
 
@@ -81,12 +83,12 @@ public class AliPay {
         return enabledState;
     }
 
-    public void setGoodsId(String goodsId) {
-        this.goodsId = goodsId;
+    public void setGoods(Goods goods) {
+        this.goods = goods;
     }
 
-    public String getGoodsId() {
-        return goodsId;
+    public Goods getGoods() {
+        return goods;
     }
 
     public void setId(String id) {
@@ -97,11 +99,19 @@ public class AliPay {
         return id;
     }
 
-    public void setModifyDate(Date modifyDate) {
+    public void setLastExchangeDate(long lastExchangeDate) {
+        this.lastExchangeDate = lastExchangeDate;
+    }
+
+    public long getLastExchangeDate() {
+        return lastExchangeDate;
+    }
+
+    public void setModifyDate(long modifyDate) {
         this.modifyDate = modifyDate;
     }
 
-    public Date getModifyDate() {
+    public long getModifyDate() {
         return modifyDate;
     }
 
@@ -151,6 +161,10 @@ public class AliPay {
 
     public String getUserId() {
         return userId;
+    }
+
+    public String getStateDesc() {
+        return "HA HA HA";
     }
 
 }

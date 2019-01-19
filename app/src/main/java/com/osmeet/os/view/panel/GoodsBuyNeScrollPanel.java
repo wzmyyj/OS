@@ -95,7 +95,8 @@ public class GoodsBuyNeScrollPanel extends BaseNeScrollPanel<GoodsBuyContract.IP
     private int count = 1;
 
     public void pay() {
-
+        if (count == 0) return;
+        mPresenter.buyGoods(simpleGoods.getId(), count);
     }
 
 }

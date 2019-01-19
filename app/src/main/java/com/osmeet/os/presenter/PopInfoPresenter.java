@@ -31,18 +31,18 @@ public class PopInfoPresenter extends BasePresenter<PopInfoContract.IView> imple
 
     @Override
     public void consummateMyInfo(@NonNull User user) {
-        isFinishConsummateInfo = false;
+        isSuccessConsummateInfo = false;
         consummateInfo(user);
     }
 
     @Override
     public void consummateMyAvatar(@NonNull String filePath) {
-        isFinishUpdateAvatar = false;
+        isSuccessUpdateAvatar = false;
         uploadFile(filePath);
     }
 
-    private boolean isFinishUpdateAvatar = true;
-    private boolean isFinishConsummateInfo = true;
+    private boolean isSuccessUpdateAvatar = true;
+    private boolean isSuccessConsummateInfo = true;
 
     private void uploadFile(@NonNull String filePath) {
         log(filePath);
@@ -72,7 +72,7 @@ public class PopInfoPresenter extends BasePresenter<PopInfoContract.IView> imple
                     toast(box.getMessage());
                     return;
                 }
-                isFinishUpdateAvatar = true;
+                isSuccessUpdateAvatar = true;
                 checkFinishAll();
             }
         }, id);
@@ -86,14 +86,14 @@ public class PopInfoPresenter extends BasePresenter<PopInfoContract.IView> imple
                     toast(box.getMessage());
                     return;
                 }
-                isFinishConsummateInfo = true;
+                isSuccessConsummateInfo = true;
                 checkFinishAll();
             }
         }, user);
     }
 
     private void checkFinishAll() {
-        if (isFinishConsummateInfo && isFinishUpdateAvatar) {
+        if (isSuccessConsummateInfo && isSuccessUpdateAvatar) {
             toast("完善信息成功!");
             App.getInstance().finish(LoginActivity.class);
             App.getInstance().setMyInfo(null);

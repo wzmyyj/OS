@@ -1,5 +1,7 @@
 package com.osmeet.os.contract;
 
+import android.support.annotation.NonNull;
+
 import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
@@ -20,7 +22,8 @@ public interface GoodsBuyContract {
     interface IPresenter extends IBasePresenter {
         Goods.SimpleGoods getSimpleGoods();
 
-        void pay(String info);
+        void buyGoods(@NonNull String goodsId, int count);
+
     }
 
 }

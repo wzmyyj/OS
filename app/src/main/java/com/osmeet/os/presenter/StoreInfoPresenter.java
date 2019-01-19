@@ -7,7 +7,7 @@ import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.StoreInfoContract;
-import com.osmeet.os.model.net.StoreGoodsModel;
+import com.osmeet.os.model.net.GoodsModel;
 import com.osmeet.os.model.net.StoreModel;
 import com.osmeet.os.model.net.utils.box.Box;
 import com.osmeet.os.model.net.utils.box.ListContent;
@@ -19,12 +19,12 @@ import com.osmeet.os.model.net.utils.box.ListContent;
 public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> implements StoreInfoContract.IPresenter {
 
     private StoreModel storeModel;
-    private StoreGoodsModel storeGoodsModel;
+    private GoodsModel goodsModel;
 
     public StoreInfoPresenter(Activity activity, StoreInfoContract.IView iv) {
         super(activity, iv);
         storeModel = new StoreModel();
-        storeGoodsModel = new StoreGoodsModel();
+        goodsModel = new GoodsModel();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
             toast("Store Id is a empty value!");
             return;
         }
-        storeGoodsModel.store_goods_byStoreId(new PObserver<Box<ListContent<Goods>>>() {
+        goodsModel.goods_byStoreId(new PObserver<Box<ListContent<Goods>>>() {
             @Override
             public void onNext(Box<ListContent<Goods>> box) {
                 if (box.getCode() != 0) {
