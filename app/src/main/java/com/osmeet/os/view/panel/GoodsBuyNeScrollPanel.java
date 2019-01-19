@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.tools.G;
-import com.osmeet.os.app.utils.WidgetUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseNeScrollPanel;
 import com.osmeet.os.contract.GoodsBuyContract;
 

@@ -1,4 +1,4 @@
-package com.osmeet.os.app.utils;
+package top.wzmyyj.wzm_sdk.utils;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;

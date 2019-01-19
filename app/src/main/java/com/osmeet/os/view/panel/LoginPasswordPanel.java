@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.osmeet.os.R;
-import com.osmeet.os.app.utils.WidgetUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BasePanel;
 import com.osmeet.os.contract.LoginContract;
 import com.osmeet.os.view.activity.LoginActivity;

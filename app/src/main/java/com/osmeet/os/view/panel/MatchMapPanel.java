@@ -16,7 +16,7 @@ import com.amap.api.maps.UiSettings;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.osmeet.os.R;
-import com.osmeet.os.app.utils.ApkUtil;
+import top.wzmyyj.wzm_sdk.utils.ApkUtil;
 import com.osmeet.os.base.panel.BasePanel;
 import com.osmeet.os.contract.MatchContract;
 import com.yanzhenjie.permission.AndPermission;

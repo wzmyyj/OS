@@ -14,7 +14,7 @@ import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.tools.G;
-import com.osmeet.os.app.utils.WidgetUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.fragment.BaseFragment;
 import com.osmeet.os.contract.StoreInfoContract;
 import com.osmeet.os.presenter.StoreInfoPresenter;

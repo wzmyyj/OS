@@ -13,7 +13,7 @@ import com.kongzue.dialog.v2.BottomMenu;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
-import com.osmeet.os.app.utils.WidgetUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.fragment.BaseFragment;
 import com.osmeet.os.contract.UserInfoContract;
 import com.osmeet.os.presenter.UserInfoPresenter;

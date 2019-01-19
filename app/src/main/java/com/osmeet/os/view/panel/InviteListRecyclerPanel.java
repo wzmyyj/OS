@@ -11,7 +11,7 @@ import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
-import com.osmeet.os.app.utils.WidgetUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.InviteListContract;
 import com.osmeet.os.view.panel.bean.MatchStoreInvite;

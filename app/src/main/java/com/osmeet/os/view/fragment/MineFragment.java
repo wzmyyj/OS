@@ -17,7 +17,7 @@ import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.event.MyInfoUpdateEvent;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.app.tools.GP;
-import com.osmeet.os.app.utils.WidgetUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.view.widget.MenuHorizontalScrollView;
 import com.osmeet.os.base.fragment.BaseFragment;
 import com.osmeet.os.contract.MineContract;

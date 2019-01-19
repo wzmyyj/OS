@@ -11,12 +11,12 @@ import android.widget.LinearLayout;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.User;
-import com.osmeet.os.app.tools.AA;
+import com.osmeet.os.app.utils.AnimationUtil;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.app.tools.GP;
 import com.osmeet.os.app.tools.SDT;
-import com.osmeet.os.app.utils.InputSoftUtil;
-import com.osmeet.os.app.utils.WidgetUtil;
+import top.wzmyyj.wzm_sdk.utils.InputSoftUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.activity.BaseActivity;
 import com.osmeet.os.contract.PopInfoContract;
 import com.osmeet.os.presenter.PopInfoPresenter;
@@ -160,9 +160,9 @@ public class PopInfoActivity extends BaseActivity<PopInfoContract.IPresenter> im
         setSwipeBackEnable(false);
         setButtonState(bt_open_os, false);
 
-        AA.appear(img_bg_top);
-        AA.enlarge(fl_center);
-        AA.next_in(ll_input);
+        AnimationUtil.appear(img_bg_top);
+        AnimationUtil.enlarge(fl_center);
+        AnimationUtil.next_in(ll_input);
     }
 
     @Override

@@ -18,8 +18,8 @@ import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.app.tools.GP;
 import com.osmeet.os.app.tools.SDT;
-import com.osmeet.os.app.utils.InputSoftUtil;
-import com.osmeet.os.app.utils.WidgetUtil;
+import top.wzmyyj.wzm_sdk.utils.InputSoftUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseNeScrollPanel;
 import com.osmeet.os.contract.UpdateInfoContract;
 

@@ -1,4 +1,4 @@
-package com.osmeet.os.app.tools;
+package com.osmeet.os.app.utils;
 
 import android.view.View;
 import android.view.animation.Animation;
@@ -11,7 +11,7 @@ import top.wzmyyj.wzm_sdk.tools.A;
  * 不要吐槽命名，常用就用最简单的方式，写代码容易啊啊啊啊。如果有意见，可以开发完成后重命名。
  */
 
-public class AA {
+public class AnimationUtil {
 
     private final static long Duration_1 = 800;
     private final static long Duration_2 = 1000;

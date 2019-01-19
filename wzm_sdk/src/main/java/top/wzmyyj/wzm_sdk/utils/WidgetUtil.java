@@ -1,4 +1,4 @@
-package com.osmeet.os.app.utils;
+package top.wzmyyj.wzm_sdk.utils;
 
 import android.annotation.SuppressLint;
 import android.support.annotation.AnyRes;
@@ -16,14 +16,16 @@ import java.text.DecimalFormat;
 /**
  * Created by yyj on 2018/12/06.
  *
+ * Widget辅助工具。
+ *
  * @author wzmyyj email: 2209011667@qq.com
  */
 
 public class WidgetUtil {
 
     /**
-     * @param edit
-     * @param isCanSee
+     * @param edit     .
+     * @param isCanSee .
      */
     public static void setPasswordEditState(EditText edit, boolean isCanSee) {
         if (isCanSee) {
@@ -36,7 +38,7 @@ public class WidgetUtil {
     }
 
     /**
-     * @param edit
+     * @param edit .
      */
     public static void setEditSelectionLast(EditText edit) {
         // 切换后将EditText光标置于末尾。
@@ -48,8 +50,8 @@ public class WidgetUtil {
     }
 
     /**
-     * @param textView
-     * @param s
+     * @param textView .
+     * @param s        .
      */
     public static void setTextOrGone(TextView textView, String s) {
         if (!TextUtils.isEmpty(s)) {
@@ -61,8 +63,8 @@ public class WidgetUtil {
     }
 
     /**
-     * @param textView
-     * @param s
+     * @param textView .
+     * @param s        .
      */
     public static void setTextNonNull(TextView textView, String s) {
         if (s != null) {
@@ -73,8 +75,8 @@ public class WidgetUtil {
     }
 
     /**
-     * @param textView
-     * @param i
+     * @param textView .
+     * @param i        .
      */
     @SuppressLint("SetTextI18n")
     public static void setTextNumber(TextView textView, int i) {
@@ -82,8 +84,8 @@ public class WidgetUtil {
     }
 
     /**
-     * @param textView
-     * @param i
+     * @param textView .
+     * @param i        .
      */
     @SuppressLint("SetTextI18n")
     public static void setTextNumber(TextView textView, long i) {
@@ -91,8 +93,8 @@ public class WidgetUtil {
     }
 
     /**
-     * @param textView
-     * @param i
+     * @param textView .
+     * @param i        .
      */
     @SuppressLint("SetTextI18n")
     public static void setTextNumber(TextView textView, double i) {
@@ -100,8 +102,8 @@ public class WidgetUtil {
     }
 
     /**
-     * @param textView
-     * @param i
+     * @param textView .
+     * @param i        .
      */
     @SuppressLint("SetTextI18n")
     public static void setTextNumber(TextView textView, float i) {
@@ -109,9 +111,9 @@ public class WidgetUtil {
     }
 
     /**
-     * @param textView
-     * @param unit
-     * @param i
+     * @param textView .
+     * @param unit     .
+     * @param i        .
      */
     @SuppressLint("SetTextI18n")
     public static void setTextPrice(TextView textView, String unit, float i) {
@@ -122,8 +124,8 @@ public class WidgetUtil {
 
 
     /**
-     * @param textView
-     * @param resId
+     * @param textView .
+     * @param resId    .
      */
     @SuppressLint("NewApi")
     public static void setTextColor(TextView textView, @AnyRes int resId) {
@@ -132,8 +134,8 @@ public class WidgetUtil {
 
 
     /**
-     * @param button
-     * @param resId
+     * @param button .
+     * @param resId  .
      */
     @SuppressLint("NewApi")
     public static void setTextColor(Button button, @AnyRes int resId) {
@@ -141,7 +143,7 @@ public class WidgetUtil {
     }
 
     /**
-     * @param vs
+     * @param vs .
      */
     public static void beSquareByWidth(View... vs) {
         for (View v : vs) {
@@ -151,7 +153,7 @@ public class WidgetUtil {
     }
 
     /**
-     * @param vs
+     * @param vs .
      */
     public static void beSquareByHeight(View... vs) {
         for (View v : vs) {

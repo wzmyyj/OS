@@ -7,7 +7,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.osmeet.os.R;
-import com.osmeet.os.app.tools.AA;
+import com.osmeet.os.app.utils.AnimationUtil;
 import com.osmeet.os.base.activity.BaseActivity;
 import com.osmeet.os.contract.LoginContract;
 import com.osmeet.os.presenter.LoginPresenter;
@@ -68,9 +68,9 @@ public class LoginActivity extends BaseActivity<LoginContract.IPresenter> implem
         v3.setVisibility(View.INVISIBLE);
 
 
-        AA.enlarge2narrow(img_ball_1);
-        AA.narrow2enlarge(img_ball_2);
-        AA.enlargeFromEnd(img_bg_end);
+        AnimationUtil.enlarge2narrow(img_ball_1);
+        AnimationUtil.narrow2enlarge(img_ball_2);
+        AnimationUtil.enlargeFromEnd(img_bg_end);
 
     }
 
@@ -140,7 +140,7 @@ public class LoginActivity extends BaseActivity<LoginContract.IPresenter> implem
         final View bView = getViewByWhat(b);
         aView.setVisibility(View.VISIBLE);
         bView.setVisibility(View.VISIBLE);
-        AA.next(aView, bView);
+        AnimationUtil.next(aView, bView);
     }
 
     private void backAnim(int w) {
@@ -148,7 +148,7 @@ public class LoginActivity extends BaseActivity<LoginContract.IPresenter> implem
         final View bView = getViewByWhat(w);
         aView.setVisibility(View.VISIBLE);
         bView.setVisibility(View.VISIBLE);
-        AA.back(aView, bView);
+        AnimationUtil.back(aView, bView);
     }
 
 
