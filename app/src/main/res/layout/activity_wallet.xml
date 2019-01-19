@@ -42,7 +42,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="20dp"
@@ -67,7 +67,7 @@
             android:id="@+id/tv_wallet_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_10"
+            android:text="@string/_0"
             android:textSize="25sp" />
 
     </LinearLayout>
@@ -113,10 +113,10 @@
             android:paddingRight="20dp">
 
             <TextView
-                android:id="@+id/tv_goods_price"
+                android:id="@+id/tv_wallet_money_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/_10_yuan"
+                android:text="@string/_0_yuan"
                 android:textColor="@color/colorGray_5"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -138,7 +138,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/bt_goods_buy"
+                android:id="@+id/bt_tx"
                 android:layout_width="100dp"
                 android:layout_height="37dp"
                 android:background="@drawable/bg_button_buy"

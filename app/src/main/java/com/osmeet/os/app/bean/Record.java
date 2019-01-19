@@ -8,28 +8,28 @@ package com.osmeet.os.app.bean;
 
 public class Record {
 
-    private int afterBalance;
-    private int changeAmount;
+    private float afterBalance;
+    private float changeAmount;
     private long createDate;
     private int enableStatus;
-    private int previousBalance;
+    private float previousBalance;
     private String relatedId;
     private int relatedStatus;
     private String title;
 
-    public void setAfterBalance(int afterBalance) {
+    public void setAfterBalance(float afterBalance) {
         this.afterBalance = afterBalance;
     }
 
-    public int getAfterBalance() {
+    public float getAfterBalance() {
         return afterBalance;
     }
 
-    public void setChangeAmount(int changeAmount) {
+    public void setChangeAmount(float changeAmount) {
         this.changeAmount = changeAmount;
     }
 
-    public int getChangeAmount() {
+    public float getChangeAmount() {
         return changeAmount;
     }
 
@@ -49,11 +49,11 @@ public class Record {
         return enableStatus;
     }
 
-    public void setPreviousBalance(int previousBalance) {
+    public void setPreviousBalance(float previousBalance) {
         this.previousBalance = previousBalance;
     }
 
-    public int getPreviousBalance() {
+    public float getPreviousBalance() {
         return previousBalance;
     }
 

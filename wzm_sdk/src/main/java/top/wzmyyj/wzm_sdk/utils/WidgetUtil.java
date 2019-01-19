@@ -15,7 +15,7 @@ import java.text.DecimalFormat;
 
 /**
  * Created by yyj on 2018/12/06.
- *
+ * <p>
  * Widget辅助工具。
  *
  * @author wzmyyj email: 2209011667@qq.com
@@ -116,7 +116,7 @@ public class WidgetUtil {
      * @param i        .
      */
     @SuppressLint("SetTextI18n")
-    public static void setTextPrice(TextView textView, String unit, float i) {
+    public static void setTextPrice(TextView textView, String unit, double i) {
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         if (unit == null) unit = "$";
         textView.setText(unit + decimalFormat.format(i));

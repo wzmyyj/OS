@@ -120,4 +120,5 @@
     <string name="yuan">￥</string>
     <string name="withdraw">提现</string>
     <string name="_10">10</string>
+    <string name="_0_yuan">￥0</string>
 </resources>

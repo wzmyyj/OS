@@ -17,14 +17,13 @@ import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.event.MyInfoUpdateEvent;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.app.tools.GP;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
-import com.osmeet.os.view.widget.MenuHorizontalScrollView;
 import com.osmeet.os.base.fragment.BaseFragment;
 import com.osmeet.os.contract.MineContract;
 import com.osmeet.os.presenter.MinePresenter;
 import com.osmeet.os.view.activity.MainActivity;
 import com.osmeet.os.view.panel.MineInfoRecyclerPanel;
 import com.osmeet.os.view.panel.MineStoreRecyclerPanel;
+import com.osmeet.os.view.widget.MenuHorizontalScrollView;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -37,6 +36,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -93,7 +93,7 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
 
     @OnClick(R.id.ll_menu_4)
     void menu_4() {
-
+        mPresenter.goWallet();
     }
 
     @OnClick(R.id.ll_menu_5)

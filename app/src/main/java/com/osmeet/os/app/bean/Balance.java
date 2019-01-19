@@ -8,16 +8,16 @@ package com.osmeet.os.app.bean;
 
 public class Balance {
 
-    private int availableBalance;
+    private float availableBalance;
     private long lastWithdrawDate;
-    private int usedBalanceCount;
+    private float usedBalanceCount;
     private String userId;
 
-    public void setAvailableBalance(int availableBalance) {
+    public void setAvailableBalance(float availableBalance) {
         this.availableBalance = availableBalance;
     }
 
-    public int getAvailableBalance() {
+    public float getAvailableBalance() {
         return availableBalance;
     }
 
@@ -29,11 +29,11 @@ public class Balance {
         return lastWithdrawDate;
     }
 
-    public void setUsedBalanceCount(int usedBalanceCount) {
+    public void setUsedBalanceCount(float usedBalanceCount) {
         this.usedBalanceCount = usedBalanceCount;
     }
 
-    public int getUsedBalanceCount() {
+    public float getUsedBalanceCount() {
         return usedBalanceCount;
     }
 
