@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
-import com.osmeet.os.app.utils.MD5Util;
+import com.osmeet.os.app.java.MD5Util;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.LoginContract;
 import com.osmeet.os.model.net.UserModel;

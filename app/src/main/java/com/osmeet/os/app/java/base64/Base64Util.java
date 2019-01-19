@@ -1,4 +1,4 @@
-package com.osmeet.os.app.utils.base64;
+package com.osmeet.os.app.java.base64;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

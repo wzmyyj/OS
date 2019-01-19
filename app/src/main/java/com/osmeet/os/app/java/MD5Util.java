@@ -1,4 +1,4 @@
-package com.osmeet.os.app.utils;
+package com.osmeet.os.app.java;
 
 import java.security.MessageDigest;
 

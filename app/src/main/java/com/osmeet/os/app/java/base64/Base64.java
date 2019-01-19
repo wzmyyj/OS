@@ -17,7 +17,7 @@
  * License version 2.1 along with this program.
  * If not, see <http://www.gnu.org/licenses/>.
  */
-package com.osmeet.os.app.utils.base64;
+package com.osmeet.os.app.java.base64;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

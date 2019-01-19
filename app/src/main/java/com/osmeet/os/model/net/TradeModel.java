@@ -1,9 +1,9 @@
 package com.osmeet.os.model.net;
 
 import com.osmeet.os.app.bean.Trade;
-import com.osmeet.os.app.utils.RSAUtil;
+import com.osmeet.os.app.java.RSAUtil;
 import com.osmeet.os.app.utils.SubscribeUtil;
-import com.osmeet.os.app.utils.base64.Base64Util;
+import com.osmeet.os.app.java.base64.Base64Util;
 import com.osmeet.os.model.net.service.TradeService;
 import com.osmeet.os.model.net.utils.RSA;
 import com.osmeet.os.model.net.utils.ReOk;

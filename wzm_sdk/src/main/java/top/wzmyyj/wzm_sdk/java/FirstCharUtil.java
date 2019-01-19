@@ -1,4 +1,4 @@
-package top.wzmyyj.wzm_sdk.utils;
+package top.wzmyyj.wzm_sdk.java;
 
 /**
  * Created by yyj on 2017/06/12
