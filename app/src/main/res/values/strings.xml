@@ -121,4 +121,5 @@
     <string name="withdraw">提现</string>
     <string name="_10">10</string>
     <string name="_0_yuan">￥0</string>
+    <string name="trade_core">相对订单中心</string>
 </resources>

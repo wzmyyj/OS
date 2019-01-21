@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 
+import java.util.List;
+
 import top.wzmyyj.wzm_sdk.panel.Panel;
 import top.wzmyyj.wzm_sdk.panel.PanelManager;
 
 /**
  * Created by yyj on 2018/05/04.
- *
+ * <p>
  * Panel in Activity.
  *
  * @author wzmyyj email: 2209011667@qq.com
@@ -26,7 +28,8 @@ public abstract class PanelActivity extends InitActivity {
      * @param panels .
      */
     protected void addPanels(@NonNull Panel... panels) {
-        mPanelManager.addPanels(panels);
+        if (mPanelManager.isCanAdd())
+            mPanelManager.addPanels(panels);
     }
 
     /**
@@ -38,13 +41,28 @@ public abstract class PanelActivity extends InitActivity {
     }
 
     /**
-     * @param i .
+     * @param i   .
      * @param <P> .
      * @return panel.
      */
     @SuppressWarnings("unchecked")
     public <P extends Panel> P getPanel(int i) {
         return (P) mPanelManager.get(i);
+    }
+
+
+    /**
+     * @return panel list.
+     */
+    public List<Panel> getPanelList() {
+        return mPanelManager.getPanelList();
+    }
+
+    /**
+     * @return panel list size.
+     */
+    public int getPanelCount() {
+        return mPanelManager.getSize();
     }
 
     /**
@@ -55,7 +73,7 @@ public abstract class PanelActivity extends InitActivity {
     }
 
     /**
-     * 只能在这个方法里创建Panel。
+     * 只能在这个方法里添加Panel。
      */
     protected void initPanels() {
 
@@ -64,7 +82,9 @@ public abstract class PanelActivity extends InitActivity {
     @Override
     protected void initSome(Bundle savedInstanceState) {
         super.initSome(savedInstanceState);
+        mPanelManager.canAddOnce();
         initPanels();
+        mPanelManager.alreadyAddOnce();
         mPanelManager.onCreate(savedInstanceState);
     }
 

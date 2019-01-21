@@ -3,6 +3,7 @@ package com.osmeet.os.model.net.service;
 import com.osmeet.os.app.bean.Trade;
 import com.osmeet.os.model.net.utils.Urls;
 import com.osmeet.os.model.net.utils.box.Box;
+import com.osmeet.os.model.net.utils.box.ListContent;
 
 import io.reactivex.Observable;
 import retrofit2.http.POST;
@@ -29,5 +30,15 @@ public interface TradeService {
             @Query("_requestData") String _requestData,
             @Query("_timestamp") long _timestamp);
 
+    @POST(Urls.trade_getTradePage)
+    Observable<Box<ListContent<Trade>>> trade_getTradePage(
+            @Query("_requestData") String _requestData,
+            @Query("_timestamp") long _timestamp,
+            @Query("pageNum") int pageNum,
+            @Query("pageSize") int pageSize);
 
+    @POST(Urls.trade_exchange)
+    Observable<Box<Trade>> trade_exchange(
+            @Query("_requestData") String _requestData,
+            @Query("_timestamp") long _timestamp);
 }

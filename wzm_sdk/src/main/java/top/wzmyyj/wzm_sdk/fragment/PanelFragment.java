@@ -5,12 +5,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import java.util.List;
+
 import top.wzmyyj.wzm_sdk.panel.Panel;
 import top.wzmyyj.wzm_sdk.panel.PanelManager;
 
 /**
  * Created by wzm on 2018/05/04.
- *
+ * <p>
  * Panel in Fragment.
  *
  * @author wzmyyj email: 2209011667@qq.com
@@ -27,7 +29,8 @@ public abstract class PanelFragment extends InitFragment {
      * @param panels .
      */
     protected void addPanels(@NonNull Panel... panels) {
-        mPanelManager.addPanels(panels);
+        if (mPanelManager.isCanAdd())
+            mPanelManager.addPanels(panels);
     }
 
     /**
@@ -39,13 +42,27 @@ public abstract class PanelFragment extends InitFragment {
     }
 
     /**
-     * @param i .
+     * @param i   .
      * @param <P> .
      * @return panel.
      */
     @SuppressWarnings("unchecked")
     public <P extends Panel> P getPanel(int i) {
         return (P) mPanelManager.get(i);
+    }
+
+    /**
+     * @return panel list.
+     */
+    public List<Panel> getPanelList() {
+        return mPanelManager.getPanelList();
+    }
+
+    /**
+     * @return panel list size.
+     */
+    public int getPanelCount() {
+        return mPanelManager.getSize();
     }
 
     /**
@@ -57,7 +74,7 @@ public abstract class PanelFragment extends InitFragment {
 
 
     /**
-     * 只能在这个方法里创建Panel。
+     * 只能在这个方法里添加Panel。
      */
     protected void initPanels() {
 
@@ -66,7 +83,9 @@ public abstract class PanelFragment extends InitFragment {
     @Override
     protected void initSome(Bundle savedInstanceState) {
         super.initSome(savedInstanceState);
+        mPanelManager.canAddOnce();
         initPanels();
+        mPanelManager.alreadyAddOnce();
         mPanelManager.onCreate(savedInstanceState);
     }
 

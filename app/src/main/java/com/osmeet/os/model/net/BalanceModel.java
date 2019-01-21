@@ -2,8 +2,6 @@ package com.osmeet.os.model.net;
 
 import com.osmeet.os.app.bean.Balance;
 import com.osmeet.os.app.bean.Record;
-import com.osmeet.os.app.java.RSAUtil;
-import com.osmeet.os.app.java.base64.Base64Util;
 import com.osmeet.os.app.utils.SubscribeUtil;
 import com.osmeet.os.model.net.service.BalanceService;
 import com.osmeet.os.model.net.utils.RSA;
@@ -40,13 +38,7 @@ public class BalanceModel {
     public void balance_tx(Observer<Box<String>> observer, String userId, String account, double amount, int way) {
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         String requestData = userId + "," + account + "," + decimalFormat.format(amount) + "," + way;
-        String _requestData = null;
-        try {
-            byte[] bytes = RSAUtil.encryptByRSA(Base64Util.decode(RSA.PUBLIC_KEY), requestData.getBytes());
-            _requestData = Base64Util.encode(bytes);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String _requestData = RSA.encrypt(requestData);
         long _timestamp = TimeUtil.getTime();
         Observable<Box<String>> observable = getService().balance_tx(_requestData, _timestamp);
         SubscribeUtil.io2main(observable, observer);

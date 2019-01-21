@@ -11,7 +11,7 @@ import android.content.Context;
  */
 
 
-public abstract class RefreshPanel extends GroupPanel {
+public abstract class RefreshPanel extends PanelGroup {
 
     private static final int DEFAULT_DELAYED_R = 1500;
     private static final int DEFAULT_DELAYED_L = 1000;

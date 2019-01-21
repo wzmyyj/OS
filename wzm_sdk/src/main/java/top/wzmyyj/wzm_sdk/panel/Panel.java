@@ -20,13 +20,13 @@ import top.wzmyyj.wzm_sdk.tools.Sure;
  * Panel可以放在Activity,Fragment，也可以放在GroupPanel里，形成层层套嵌模型。
  * Panel拥有Fragment类似的生命周期，子层比父层先执行，同层按顺序先执行。
  * Panel与父层通讯紧密时，可以用内部类。
- * Panel只能在initPanels()（见GroupPanel，PanelActivity，PanelFragment）中创建。
+ * Panel只能在initPanels()（见GroupPanel，PanelActivity，PanelFragment）中添加到父容器的PanelManager。
  * Panel不支持动态添加和销毁。只能跟着父容器创建并跟着父容器创建销毁。可以看做静态布局的一个局部控制器。
  *
  * @author wzmyyj email: 2209011667@qq.com
  * @see top.wzmyyj.wzm_sdk.activity.PanelActivity
  * @see top.wzmyyj.wzm_sdk.fragment.PanelFragment
- * @see top.wzmyyj.wzm_sdk.panel.GroupPanel
+ * @see top.wzmyyj.wzm_sdk.panel.PanelGroup
  * @see top.wzmyyj.wzm_sdk.panel.PanelManager
  */
 
@@ -47,8 +47,12 @@ public class Panel {
     protected Fragment fragment;
     protected LayoutInflater mInflater;
     protected View view;
-    protected String title = "";
+    private String title = "";
+    private Object tag = "";
 
+    /**
+     * @return content.
+     */
     public Context getContext() {
         return context;
     }
@@ -72,6 +76,24 @@ public class Panel {
     }
 
     /**
+     * @return tag.
+     */
+    public Object getTag() {
+        return tag;
+    }
+
+    /**
+     * @param tag .
+     * @param <P> .
+     * @return this.
+     */
+    @SuppressWarnings("unchecked")
+    public <P extends Panel> P setTag(Object tag) {
+        this.tag = tag;
+        return (P) this;
+    }
+
+    /**
      * @return title.
      */
     public String getTitle() {
@@ -80,7 +102,7 @@ public class Panel {
 
     /**
      * @param title .
-     * @param <P> .
+     * @param <P>   .
      * @return this.
      */
     @SuppressWarnings("unchecked")
@@ -102,7 +124,7 @@ public class Panel {
      * bind fragment.
      *
      * @param fragment .
-     * @param <P> .
+     * @param <P>      .
      * @return this.
      */
     @SuppressWarnings("unchecked")
@@ -206,7 +228,7 @@ public class Panel {
     /**
      * 外部调用，用于绑定外界的View。可以控制外界的view。
      *
-     * @param key .
+     * @param key  .
      * @param view .
      */
     public void bindView(String key, View view) {
@@ -237,7 +259,7 @@ public class Panel {
     /**
      * 外部调用，用于绑定外界的Panel。可以控制外界的panel。
      *
-     * @param key .
+     * @param key   .
      * @param panel .
      */
     public void bindPanel(String key, Panel panel) {

@@ -8,9 +8,11 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import top.wzmyyj.wzm_sdk.tools.Sure;
+
 /**
  * Created by yyj on 2018/07/04.
- *
+ * <p>
  * 多个Panel的管理类。
  *
  * @author wzmyyj email: 2209011667@qq.com
@@ -24,10 +26,41 @@ public class PanelManager {
         mPanelList = new ArrayList<>();
     }
 
+
+    private static final int NO_ADD_ONCE = 0x0;
+    private static final int CAN_ADD_ONCE = 0x1;
+    private static final int ALREADY_ADD_ONCE = 0x10;
+
+    private int addOnce = NO_ADD_ONCE;
+
+    /**
+     * can Add: can add panel later.
+     */
+    public void canAddOnce() {
+        addOnce = CAN_ADD_ONCE;
+    }
+
+
+    /**
+     * already Add: can not add panel later.
+     */
+    public void alreadyAddOnce() {
+        addOnce = ALREADY_ADD_ONCE;
+    }
+
+
+    /**
+     * @return is can add.
+     */
+    public boolean isCanAdd() {
+        return addOnce == CAN_ADD_ONCE;
+    }
+
     /**
      * @param panels .
      */
     public void addPanels(@NonNull Panel... panels) {
+        Sure.sure(addOnce == CAN_ADD_ONCE, "must add panels when PanelManager is can add!");
         for (Panel panel : panels)
             if (panel != null)
                 this.mPanelList.add(panel);
@@ -66,12 +99,6 @@ public class PanelManager {
         mPanelList.clear();
     }
 
-    /**
-     * @param mPanelList .
-     */
-    public void setPanelList(List<Panel> mPanelList) {
-        this.mPanelList = mPanelList;
-    }
 
     /**
      * @param i .

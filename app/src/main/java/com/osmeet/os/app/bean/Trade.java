@@ -6,8 +6,20 @@ package com.osmeet.os.app.bean;
 
 public class Trade {
 
+    public static final String ALL = "all";
     public static final String WAIT_PAY = "WP";
-    public static final String PAY = "P";
+    public static final String WP_USER_CANCEL = "WP-UC";
+    public static final String WP_SYSTEM_CANCEL = "WP-SC";
+    public static final String NOT_PAY_END = "N-P-E";
+    public static final String PAID = "P";
+    public static final String P_CANT_REFUND = "P-C-R";
+    public static final String P_REFUND = "P-R";
+    public static final String P_REFUND_BALANCE = "P-R-B";
+    public static final String SUCCESS_USED = "S-U";
+    public static final String FAILED_REFUND = "F-R";
+    public static final String P_REFUND_END = "P-R-E";
+    public static final String P_NO_REFUND_END = "P-N-R-E";
+
 
     private String alipay_buyer_id;
     private int alipay_state;
@@ -164,6 +176,7 @@ public class Trade {
     }
 
     public String getStateDesc() {
+
         return "HA HA HA";
     }
 

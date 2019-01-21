@@ -6,20 +6,22 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import java.util.List;
+
 /**
  * Created by yyj on 2019/01/12.
- *
+ * <p>
  * Group Panel: Panel in Panel.
  *
  * @author wzmyyj email: 2209011667@qq.com
  * @see top.wzmyyj.wzm_sdk.panel.PanelManager
  */
 
-public abstract class GroupPanel extends InitPanel {
+public abstract class PanelGroup extends InitPanel {
     /**
      * @param context .
      */
-    public GroupPanel(Context context) {
+    public PanelGroup(Context context) {
         super(context);
     }
 
@@ -29,7 +31,8 @@ public abstract class GroupPanel extends InitPanel {
      * @param panels .
      */
     protected void addPanels(@NonNull Panel... panels) {
-        mPanelManager.addPanels(panels);
+        if (mPanelManager.isCanAdd())
+            mPanelManager.addPanels(panels);
     }
 
     /**
@@ -41,13 +44,27 @@ public abstract class GroupPanel extends InitPanel {
     }
 
     /**
-     * @param i .
+     * @param i   .
      * @param <P> .
      * @return panel.
      */
     @SuppressWarnings("unchecked")
     public <P extends Panel> P getPanel(int i) {
         return (P) mPanelManager.get(i);
+    }
+
+    /**
+     * @return panel list.
+     */
+    public List<Panel> getPanelList() {
+        return mPanelManager.getPanelList();
+    }
+
+    /**
+     * @return panel list size.
+     */
+    public int getPanelCount() {
+        return mPanelManager.getSize();
     }
 
     /**
@@ -59,7 +76,7 @@ public abstract class GroupPanel extends InitPanel {
 
 
     /**
-     * 只能在这个方法里创建Panel。
+     * 只能在这个方法里添加Panel。
      */
     protected void initPanels() {
 
@@ -68,7 +85,9 @@ public abstract class GroupPanel extends InitPanel {
     @Override
     protected void initSome(Bundle savedInstanceState) {
         super.initSome(savedInstanceState);
+        mPanelManager.canAddOnce();
         initPanels();
+        mPanelManager.alreadyAddOnce();
         mPanelManager.onCreate(savedInstanceState);
     }
 

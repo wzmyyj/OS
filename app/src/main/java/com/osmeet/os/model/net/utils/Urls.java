@@ -121,6 +121,9 @@ public class Urls {
     public static final String trade_fundToAccount = "/trade/fundToAccount";
     public static final String trade_pay = "/trade/pay";
     public static final String trade_refund = "/trade/refund";
+    public static final String trade_getTradePage = "/trade/getTradePage";
+    public static final String trade_exchange = "/trade/exchange";
+
 
     // 余额
     public static final String balance = "/user/balance";

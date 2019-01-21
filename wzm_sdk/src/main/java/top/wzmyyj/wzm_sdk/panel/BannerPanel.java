@@ -22,7 +22,7 @@ import top.wzmyyj.wzm_sdk.R;
  * @author wzmyyj email: 2209011667@qq.com
  */
 
-public abstract class BannerPanel extends GroupPanel {
+public abstract class BannerPanel extends PanelGroup {
 
     protected Banner mBanner;
 

@@ -116,7 +116,7 @@ public class WalletActivity extends BaseActivity<WalletContract.IPresenter> impl
         super.initView();
         List<View> viewList = new ArrayList<>();
         List<String> titles = new ArrayList<>();
-        for (Panel p : getPanelManager().getPanelList()) {
+        for (Panel p : getPanelList()) {
             viewList.add(p.getView());
             titles.add(p.getTitle());
         }
