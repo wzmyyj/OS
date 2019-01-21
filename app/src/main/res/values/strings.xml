@@ -122,4 +122,10 @@
     <string name="_10">10</string>
     <string name="_0_yuan">￥0</string>
     <string name="trade_core">相对订单中心</string>
+    <string name="goods_sum_price">商品总价：</string>
+    <string name="trade_message">订单信息</string>
+    <string name="trade_number_is">订单编号：</string>
+    <string name="trade_time_is">下单时间：</string>
+    <string name="buy_count_is">购买数量：</string>
+    <string name="os">相对</string>
 </resources>

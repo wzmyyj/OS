@@ -34,7 +34,7 @@ public class TradeListActivity extends BaseActivity<TradeListContract.IPresenter
 
     TradeListRecyclerPanel tradeListRecyclerPanel_0;
     TradeListRecyclerPanel tradeListRecyclerPanel_1;
-    TradeListRecyclerPanel tradeListRecyclerPanel_2;
+//    TradeListRecyclerPanel tradeListRecyclerPanel_2;
     TradeListRecyclerPanel tradeListRecyclerPanel_3;
     TradeListRecyclerPanel tradeListRecyclerPanel_4;
 
@@ -44,8 +44,8 @@ public class TradeListActivity extends BaseActivity<TradeListContract.IPresenter
         addPanels(
                 tradeListRecyclerPanel_0 = new TradeListRecyclerPanel(context, mPresenter).setTitle("全部").setTag(Trade.ALL),
                 tradeListRecyclerPanel_1 = new TradeListRecyclerPanel(context, mPresenter).setTitle("待付款").setTag(Trade.WAIT_PAY),
-                tradeListRecyclerPanel_2 = new TradeListRecyclerPanel(context, mPresenter).setTitle("待匹配").setTag(Trade.PAID),
-                tradeListRecyclerPanel_3 = new TradeListRecyclerPanel(context, mPresenter).setTitle("待使用").setTag(Trade.SUCCESS_USED),
+//                tradeListRecyclerPanel_2 = new TradeListRecyclerPanel(context, mPresenter).setTitle("待匹配").setTag(Trade.),
+                tradeListRecyclerPanel_3 = new TradeListRecyclerPanel(context, mPresenter).setTitle("待使用").setTag(Trade.PAID),
                 tradeListRecyclerPanel_4 = new TradeListRecyclerPanel(context, mPresenter).setTitle("退款").setTag(Trade.P_REFUND_END)
         );
     }
@@ -85,7 +85,9 @@ public class TradeListActivity extends BaseActivity<TradeListContract.IPresenter
     @Override
     public void showTradeList(@NonNull List<Trade> tradeList, @NonNull String state) {
         for (Panel p : getPanelList()) {
-            mPresenter.loadTradeList(p.getTag().toString(), 0);
+            if (state.equals(p.getTag().toString())) {
+                ((TradeListRecyclerPanel) p).setTradeList(tradeList);
+            }
         }
     }
 }

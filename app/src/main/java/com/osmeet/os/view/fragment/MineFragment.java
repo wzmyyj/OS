@@ -76,19 +76,24 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
         mMenuHorizontalScrollView.closeMenu();
     }
 
+    @OnClick(R.id.ll_menu_0)
+    void menu_0() {
+        mPresenter.goMatchList();
+    }
+
     @OnClick(R.id.ll_menu_1)
     void menu_1() {
-
+        mPresenter.goTradeList();
     }
 
     @OnClick(R.id.ll_menu_2)
     void menu_2() {
-
+        mPresenter.toast("menu 2");
     }
 
     @OnClick(R.id.ll_menu_3)
     void menu_3() {
-
+        mPresenter.toast("menu 3");
     }
 
     @OnClick(R.id.ll_menu_4)
@@ -98,7 +103,7 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
 
     @OnClick(R.id.ll_menu_5)
     void menu_5() {
-
+        mPresenter.toast("menu 5");
     }
 
     @OnClick(R.id.ll_menu_6)
@@ -305,6 +310,12 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
         if (event.isUpdate()) {
             mPresenter.freshMyInfo();
         }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mMenuHorizontalScrollView.closeMenuNoSmooth();
     }
 
     @Override

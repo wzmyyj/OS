@@ -16,10 +16,11 @@ import java.util.Map;
 public interface GoodsBuyContract {
 
     interface IView extends IBaseView {
-        void showResult(Map<String, String> result);
+        void showResult(@NonNull Map<String, String> result);
     }
 
     interface IPresenter extends IBasePresenter {
+
         Goods.SimpleGoods getSimpleGoods();
 
         void buyGoods(@NonNull String goodsId, int count);

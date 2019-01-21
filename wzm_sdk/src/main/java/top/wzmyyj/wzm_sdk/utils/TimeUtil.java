@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * Created by yyj on 2018/04/26.
- *
+ * <p>
  * Vanessa 凡妮莎，第八个七骑士，拥有控制时间的沙漏和魔法。
  * 时间转换工具类。
  *
@@ -19,9 +19,15 @@ import java.util.Date;
 @SuppressLint("SimpleDateFormat")
 public class TimeUtil {
 
+    public static final String YYYY_MM_DD = "yyyy-MM-dd";
+    public static final String YYYY_MM_DD_HH_MM = "yyyy-MM-dd hh:mm";
+    public static final String MM_DD = "MM-dd";
+    public static final String MM_DD_HH_MM = "MM-dd hh:mm";
+    public static final String HH_MM = "hh:mm";
+    public static final String HH_MM_SS = "hh:mm:ss";
 
     /**
-     * @param l .
+     * @param l      .
      * @param format .
      * @return 时间戳。
      */
@@ -34,7 +40,7 @@ public class TimeUtil {
     }
 
     /**
-     * @param time .
+     * @param time   .
      * @param format .
      * @return 时间格式。
      */
@@ -44,7 +50,7 @@ public class TimeUtil {
         try {
             l = sdf.parse(time).getTime();
         } catch (ParseException e) {
-           //e.printStackTrace();
+            //e.printStackTrace();
         }
         return l;
     }
@@ -68,7 +74,7 @@ public class TimeUtil {
     /**
      * @return minute.
      */
-    public static int getMinute(){
+    public static int getMinute() {
         Date d = new Date();
         return getMinute(d);
     }
@@ -182,18 +188,21 @@ public class TimeUtil {
         Date d = new Date();
         String s;
         long t = Math.abs(d.getTime() - l);
-        //一天内
-        if (t < 24L * 60 * 60 * 1000) {
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+
+        if (t < 60 * 60 * 1000) {//一小时内
+            SimpleDateFormat sdf = new SimpleDateFormat(HH_MM_SS);
+            s = sdf.format(new Date(l));
+        }else if (t < 24L * 60 * 60 * 1000) { //一天内
+            SimpleDateFormat sdf = new SimpleDateFormat(HH_MM);
             s = sdf.format(new Date(l));
         } else if (t < 30L * 24 * 60 * 60 * 1000) {// 30天内
-            SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm");
+            SimpleDateFormat sdf = new SimpleDateFormat(MM_DD_HH_MM);
             s = sdf.format(new Date(l));
         } else if (t < 12L * 30 * 24 * 60 * 60 * 1000) {// 12个月内
-            SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat(MM_DD);
             s = sdf.format(new Date(l));
         } else {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat(YYYY_MM_DD);
             s = sdf.format(new Date(l));
         }
         return s;

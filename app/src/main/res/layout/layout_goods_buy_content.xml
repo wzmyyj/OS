@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/number"
+            android:textColor="@color/colorGray_6"
             android:textSize="14sp" />
 
         <ImageView
@@ -89,6 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/sum"
+            android:textColor="@color/colorGray_6"
             android:textSize="14sp" />
 
 

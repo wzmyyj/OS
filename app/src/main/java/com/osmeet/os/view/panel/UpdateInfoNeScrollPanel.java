@@ -18,8 +18,6 @@ import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.app.tools.GP;
 import com.osmeet.os.app.tools.SDT;
-import top.wzmyyj.wzm_sdk.utils.InputSoftUtil;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseNeScrollPanel;
 import com.osmeet.os.contract.UpdateInfoContract;
 
@@ -30,7 +28,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 import top.wzmyyj.wzm_sdk.activity.InitActivity;
+import top.wzmyyj.wzm_sdk.utils.InputSoftUtil;
 import top.wzmyyj.wzm_sdk.utils.TimeUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 /**
  * Created by yyj on 2018/12/26. email: 2209011667@qq.com
@@ -101,7 +101,7 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
             }
         })
                 .setDefaultYear(TimeUtil.getYear() - 17)
-                .setDefaultDateTime(TimeUtil.str2long(time, "yyyy-MM-dd"), !TextUtils.isEmpty(time))
+                .setDefaultDateTime(TimeUtil.str2long(time, TimeUtil.YYYY_MM_DD), !TextUtils.isEmpty(time))
                 .show(((InitActivity) activity).getSupportFragmentManager(), "dialog_time");
 
         InputSoftUtil.close(activity);
@@ -276,7 +276,7 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
         WidgetUtil.setTextNumber(tv_user_score, user.getCreditScore());
         WidgetUtil.setTextNonNull(et_signature, user.getSignature());
         WidgetUtil.setTextNonNull(et_username, user.getUsername());
-        WidgetUtil.setTextNonNull(et_birthday, user.getBirthdayFormat("yyyy-MM-dd"));
+        WidgetUtil.setTextNonNull(et_birthday, user.getBirthdayFormat(TimeUtil.YYYY_MM_DD));
         WidgetUtil.setTextNonNull(et_school, user.getSchool());
         WidgetUtil.setTextNonNull(et_company, user.getCompany());
         WidgetUtil.setTextNonNull(et_job, user.getJob());

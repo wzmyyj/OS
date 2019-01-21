@@ -22,7 +22,18 @@ public class TradeModel {
         return ReOk.bind().create(TradeService.class);
     }
 
-    public void trade_fundToAccount(Observer<Box<String>> observer, String _requestData, long _timestamp) {
+    public void trade_get(Observer<Box<Trade>> observer, String userId, String tradeId) {
+        String requestData = userId + "," + tradeId;
+        String _requestData = RSA.encrypt(requestData);
+        long _timestamp = TimeUtil.getTime();
+        Observable<Box<Trade>> observable = getService().trade_get(_requestData, _timestamp);
+        SubscribeUtil.io2main(observable, observer);
+    }
+
+    public void trade_fundToAccount(Observer<Box<String>> observer, String userId, String tradeId) {
+        String requestData = userId + "," + tradeId;
+        String _requestData = RSA.encrypt(requestData);
+        long _timestamp = TimeUtil.getTime();
         Observable<Box<String>> observable = getService().trade_fundToAccount(_requestData, _timestamp);
         SubscribeUtil.io2main(observable, observer);
     }
@@ -36,7 +47,10 @@ public class TradeModel {
     }
 
 
-    public void trade_refund(Observer<Box<Trade>> observer, String _requestData, long _timestamp) {
+    public void trade_refund(Observer<Box<Trade>> observer, String userId, String tradeId) {
+        String requestData = "" + tradeId;
+        String _requestData = RSA.encrypt(requestData);
+        long _timestamp = TimeUtil.getTime();
         Observable<Box<Trade>> observable = getService().trade_refund(_requestData, _timestamp);
         SubscribeUtil.io2main(observable, observer);
     }

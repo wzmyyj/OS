@@ -11,12 +11,10 @@ import android.widget.LinearLayout;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.User;
-import com.osmeet.os.app.utils.AnimationUtil;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.app.tools.GP;
 import com.osmeet.os.app.tools.SDT;
-import top.wzmyyj.wzm_sdk.utils.InputSoftUtil;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
+import com.osmeet.os.app.utils.AnimationUtil;
 import com.osmeet.os.base.activity.BaseActivity;
 import com.osmeet.os.contract.PopInfoContract;
 import com.osmeet.os.presenter.PopInfoPresenter;
@@ -26,7 +24,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import top.wzmyyj.wzm_sdk.utils.InputSoftUtil;
 import top.wzmyyj.wzm_sdk.utils.TimeUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -89,7 +89,7 @@ public class PopInfoActivity extends BaseActivity<PopInfoContract.IPresenter> im
         SDT.create().Listener(new SDT.Listener() {
             @Override
             public void onPositiveButtonClick(Date date) {
-                et_birthday.setText(TimeUtil.long2str(date.getTime(), "yyyy-MM-dd"));
+                et_birthday.setText(TimeUtil.long2str(date.getTime(), TimeUtil.YYYY_MM_DD));
 
             }
 
@@ -99,7 +99,7 @@ public class PopInfoActivity extends BaseActivity<PopInfoContract.IPresenter> im
             }
         })
                 .setDefaultYear(TimeUtil.getYear() - 17)
-                .setDefaultDateTime(TimeUtil.str2long(time, "yyyy-MM-dd"), !TextUtils.isEmpty(time))
+                .setDefaultDateTime(TimeUtil.str2long(time, TimeUtil.YYYY_MM_DD), !TextUtils.isEmpty(time))
                 .show(getSupportFragmentManager(), "dialog_time");
 
         InputSoftUtil.close(activity);

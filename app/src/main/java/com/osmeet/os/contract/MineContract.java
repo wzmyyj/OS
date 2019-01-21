@@ -23,7 +23,8 @@ public interface MineContract {
         void showMyStoreList(@NonNull List<Store> storeList);
     }
 
-    interface IPresenter extends IBasePresenter, I.UpdateInfo ,I.Setting,I.Wallet{
+    interface IPresenter extends IBasePresenter, I.UpdateInfo, I.Setting,
+            I.MatchList, I.TradeList, I.Wallet {
         void loadMyInfo();
 
         void freshMyInfo();

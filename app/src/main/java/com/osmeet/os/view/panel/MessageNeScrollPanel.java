@@ -18,12 +18,10 @@ import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseNeScrollPanel;
 import com.osmeet.os.contract.MessageContract;
-import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.osmeet.os.view.adapter.MatchTeamAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +29,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 import top.wzmyyj.wzm_sdk.utils.DensityUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 
 /**
@@ -57,7 +56,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
     RecyclerView rv_list;
     @BindView(R.id.fl_when_empty)
     FrameLayout fl_when_empty;
-    private CommonAdapter mAdapter;
+    private MatchTeamAdapter mAdapter;
     private List<MatchTeam> mData;
 
     @Override
@@ -65,34 +64,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         super.initView();
         mData = new ArrayList<>();
         rv_list.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        rv_list.setAdapter(mAdapter = new CommonAdapter<MatchTeam>(context,
-                R.layout.layout_message_match_item, mData) {
-
-            @Override
-            protected void convert(ViewHolder holder, MatchTeam matchTeam, int position) {
-                ImageView img_os_bg = holder.getView(R.id.img_os_bg);
-                ImageView img_user_avatar_1 = holder.getView(R.id.img_user_avatar_1);
-                ImageView img_user_avatar_2 = holder.getView(R.id.img_user_avatar_2);
-                TextView tv_os_when = holder.getView(R.id.tv_os_when);
-                ImageView img_shop_logo = holder.getView(R.id.img_shop_logo);
-
-                Store store = matchTeam.getStore();
-                User user1 = matchTeam.getUnita().getUser();
-                User user2 = matchTeam.getUnitb().getUser();
-
-                if (user1.getAvatar() != null) {
-                    G.img(context, user1.getAvatar().getUrl(), img_user_avatar_1);
-                }
-                if (user2.getAvatar() != null) {
-                    G.img(context, user2.getAvatar().getUrl(), img_user_avatar_2);
-                }
-                if (store.getLogoImage() != null) {
-                    G.img(context, store.getLogoImage().getUrl(), img_shop_logo);
-                }
-                img_os_bg.setImageResource(R.color.colorLittleBlue);
-                WidgetUtil.setTextNonNull(tv_os_when, "" + matchTeam.getUnita().getMatchStatus());
-            }
-        });
+        rv_list.setAdapter(mAdapter = new MatchTeamAdapter(context, mData));
 
     }
 

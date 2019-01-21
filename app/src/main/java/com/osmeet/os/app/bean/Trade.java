@@ -176,8 +176,18 @@ public class Trade {
     }
 
     public String getStateDesc() {
+        if (WAIT_PAY.equals(state)) {
+            return "待付款";
+        } else if (PAID.equals(state)) {
+            return "待使用";
+        }else if (P_REFUND_END.equals(state)) {
+            return "退款";
+        } else if (WP_USER_CANCEL.equals(state) || WP_SYSTEM_CANCEL.equals(state)) {
+            return "已取消";
+        }else{
+            return state;
+        }
 
-        return "HA HA HA";
     }
 
 }

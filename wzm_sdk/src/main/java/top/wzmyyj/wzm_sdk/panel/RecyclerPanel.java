@@ -62,6 +62,7 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
         view = mInflater.inflate(R.layout.panel_sr, null);
     }
 
+
     @Override
     protected void initView() {
         mFrameLayout = view.findViewById(R.id.frameLayout);
@@ -74,7 +75,6 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
         mRefreshLayout.setPrimaryColorsId(R.color.colorRefresh, R.color.colorWhite);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-        setFirstData();
         setIVD(mIVD);
         setHeader();
         setFooter();
@@ -82,6 +82,22 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
         if (mEmpty != null) {
             mEmptyLayout.addView(mEmpty);
         }
+
+        setFirstData();
+
+        MultiItemTypeAdapter<T> mAdapter = new MyMultiItemTypeAdapter(context, mData);
+
+        for (ItemViewDelegate<T> ivd : mIVD) {
+            mAdapter.addItemViewDelegate(ivd);
+        }
+
+        mAdapter.setOnItemClickListener(this);
+        mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(mAdapter);
+        if (mHeader != null)
+            mHeaderAndFooterWrapper.addHeaderView(mHeader);
+        if (mFooter != null)
+            mHeaderAndFooterWrapper.addFootView(mFooter);
+        mRecyclerView.setAdapter(mHeaderAndFooterWrapper);
     }
 
 
@@ -129,25 +145,11 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
         }
     }
 
+    protected void viewRecycled(@NonNull ViewHolder holder) {
+
+    }
     @Override
     protected void initData() {
-        MultiItemTypeAdapter<T> mAdapter = new MyMultiItemTypeAdapter(context, mData);
-
-        for (ItemViewDelegate<T> ivd : mIVD) {
-            mAdapter.addItemViewDelegate(ivd);
-        }
-
-        mAdapter.setOnItemClickListener(this);
-        mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(mAdapter);
-        if (mHeader != null)
-            mHeaderAndFooterWrapper.addHeaderView(mHeader);
-        if (mFooter != null)
-            mHeaderAndFooterWrapper.addFootView(mFooter);
-        mRecyclerView.setAdapter(mHeaderAndFooterWrapper);
-    }
-
-    public void viewRecycled(@NonNull ViewHolder holder) {
-
     }
 
     @Override

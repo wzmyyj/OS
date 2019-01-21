@@ -118,6 +118,7 @@ public class Urls {
     public static final String coupon_getUserStoreRedPacket = "/coupon/getUserStoreRedPacket";
 
     // 订单。
+    public static final String trade_get = "/trade";
     public static final String trade_fundToAccount = "/trade/fundToAccount";
     public static final String trade_pay = "/trade/pay";
     public static final String trade_refund = "/trade/refund";

@@ -86,7 +86,7 @@ public class MenuHorizontalScrollView extends HorizontalScrollView {
 
 
     /**
-     * 打开菜单
+     * 打开菜单.
      */
     public void openMenu() {
         if (isOpen)
@@ -95,10 +95,23 @@ public class MenuHorizontalScrollView extends HorizontalScrollView {
         isOpen = true;
     }
 
+    /**
+     * 关闭菜单.
+     */
     public void closeMenu() {
         if (!isOpen)
             return;
         this.smoothScrollTo(0, 0);
+        isOpen = false;
+    }
+
+    /**
+     * 快速关闭菜单.
+     */
+    public void closeMenuNoSmooth() {
+        if (!isOpen)
+            return;
+        this.scrollTo(0, 0);
         isOpen = false;
     }
 

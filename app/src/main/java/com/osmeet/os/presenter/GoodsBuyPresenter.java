@@ -93,7 +93,9 @@ public class GoodsBuyPresenter extends BasePresenter<GoodsBuyContract.IView> imp
         aliPayModel.pay(new PObserver<Map<String, String>>() {
             @Override
             public void onNext(Map<String, String> map) {
-
+                if (map != null) {
+                    mView.showResult(map);
+                }
             }
         }, getActivity(), info);
     }

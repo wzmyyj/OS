@@ -6,6 +6,7 @@ import com.osmeet.os.model.net.utils.box.Box;
 import com.osmeet.os.model.net.utils.box.ListContent;
 
 import io.reactivex.Observable;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -14,6 +15,12 @@ import retrofit2.http.Query;
  */
 
 public interface TradeService {
+
+
+    @GET(Urls.trade_get)
+    Observable<Box<Trade>> trade_get(
+            @Query("_requestData") String _requestData,
+            @Query("_timestamp") long _timestamp);
 
     @POST(Urls.trade_fundToAccount)
     Observable<Box<String>> trade_fundToAccount(

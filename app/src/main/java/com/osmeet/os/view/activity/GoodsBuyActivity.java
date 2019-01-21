@@ -1,6 +1,7 @@
 package com.osmeet.os.view.activity;
 
 import android.graphics.Paint;
+import android.support.annotation.NonNull;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -67,7 +68,7 @@ public class GoodsBuyActivity extends BaseActivity<GoodsBuyContract.IPresenter> 
     }
 
     @Override
-    public void showResult(Map<String, String> result) {
+    public void showResult(@NonNull Map<String, String> result) {
 
     }
 }

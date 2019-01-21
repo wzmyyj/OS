@@ -214,15 +214,16 @@ public class I {
         }
     }
 
-    public static void goTradeActivity(Context context) {
+    public static void goTradeActivity(Context context, String tradeId) {
         Intent intent = new Intent(context, TradeActivity.class);
+        intent.putExtra("tradeId", tradeId);
         context.startActivity(intent);
     }
 
     public interface Trade extends IContext {
-        default void goTrade() {
+        default void goTrade(String tradeId) {
             if (getContext() != null)
-                goTradeActivity(getContext());
+                goTradeActivity(getContext(), tradeId);
         }
     }
 
