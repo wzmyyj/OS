@@ -13,18 +13,17 @@ import com.osmeet.os.R;
 import com.osmeet.os.app.bean.FileInfo;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.tools.G;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.MineContract;
+import com.osmeet.os.view.adapter.ivd.PhotoStoryIVD;
 import com.osmeet.os.view.panel.bean.PhotoStory;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
 
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
-import top.wzmyyj.wzm_sdk.adapter.ivd.SingleIVD;
 import top.wzmyyj.wzm_sdk.utils.DensityUtil;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 
 /**
@@ -39,17 +38,7 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
 
     @Override
     protected void setIVD(List<IVD<PhotoStory>> ivd) {
-        ivd.add(new SingleIVD<PhotoStory>() {
-            @Override
-            public int getItemViewLayoutId() {
-                return R.layout.layout_photo_item;
-            }
-
-            @Override
-            public void convert(ViewHolder holder, PhotoStory story, int position) {
-
-            }
-        });
+        ivd.add(new PhotoStoryIVD(context));
     }
 
     @Override

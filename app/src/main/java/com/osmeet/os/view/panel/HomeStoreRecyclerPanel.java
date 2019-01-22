@@ -11,7 +11,7 @@ import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.HomeStoreContract;
-import com.osmeet.os.view.adapter.HomeStoreIVD;
+import com.osmeet.os.view.adapter.ivd.HomeStoreIVD;
 
 import java.util.List;
 

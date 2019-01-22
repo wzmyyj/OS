@@ -18,9 +18,9 @@ import com.osmeet.os.app.bean.FileInfo;
 import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.tools.G;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.StoreInfoContract;
+import com.osmeet.os.view.adapter.ivd.PhotoStoryIVD;
 import com.osmeet.os.view.panel.bean.PhotoStory;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
@@ -31,9 +31,9 @@ import java.util.List;
 
 import top.wzmyyj.wzm_sdk.activity.PanelActivity;
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
-import top.wzmyyj.wzm_sdk.adapter.ivd.SingleIVD;
 import top.wzmyyj.wzm_sdk.utils.DensityUtil;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 /**
  * Created by yyj on 2018/12/11. email: 2209011667@qq.com
@@ -46,17 +46,7 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
 
     @Override
     protected void setIVD(List<IVD<PhotoStory>> ivd) {
-        ivd.add(new SingleIVD<PhotoStory>() {
-            @Override
-            public int getItemViewLayoutId() {
-                return R.layout.layout_photo_item;
-            }
-
-            @Override
-            public void convert(ViewHolder holder, PhotoStory photo, int position) {
-
-            }
-        });
+        ivd.add(new PhotoStoryIVD(context));
     }
 
 

@@ -13,19 +13,18 @@ import com.osmeet.os.R;
 import com.osmeet.os.app.bean.FileInfo;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.UserInfoContract;
+import com.osmeet.os.view.adapter.ivd.PhotoStoryIVD;
 import com.osmeet.os.view.panel.bean.PhotoStory;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
 
 import top.wzmyyj.wzm_sdk.activity.PanelActivity;
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
-import top.wzmyyj.wzm_sdk.adapter.ivd.SingleIVD;
 import top.wzmyyj.wzm_sdk.utils.DensityUtil;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 
 /**
@@ -40,17 +39,7 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
 
     @Override
     protected void setIVD(List<IVD<PhotoStory>> ivd) {
-        ivd.add(new SingleIVD<PhotoStory>() {
-            @Override
-            public int getItemViewLayoutId() {
-                return R.layout.layout_photo_item;
-            }
-
-            @Override
-            public void convert(ViewHolder holder, PhotoStory photo, int position) {
-
-            }
-        });
+        ivd.add(new PhotoStoryIVD(context));
     }
 
     @Override
@@ -80,7 +69,7 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
                 super.onScrolled(recyclerView, dx, dy);
                 mDistance += dy;
                 float percent = mDistance * 1f / maxDistance;//百分比
-                View bar =getBindView("v");
+                View bar = getBindView("v");
                 if (bar != null)
                     bar.setAlpha(percent);
                 onScrolled1(dy);

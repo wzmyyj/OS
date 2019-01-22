@@ -6,7 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.MatchListContract;
-import com.osmeet.os.view.adapter.MatchTeamIVD;
+import com.osmeet.os.view.adapter.ivd.MatchTeamIVD;
 
 import java.util.List;
 

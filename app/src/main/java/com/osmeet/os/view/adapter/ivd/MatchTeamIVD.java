@@ -1,4 +1,4 @@
-package com.osmeet.os.view.adapter;
+package com.osmeet.os.view.adapter.ivd;
 
 import android.content.Context;
 import android.widget.ImageView;
@@ -9,7 +9,7 @@ import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
-import com.osmeet.os.base.adapter.BaseRecyclerIVD;
+import com.osmeet.os.base.adapter.BaseIVD;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
@@ -20,7 +20,7 @@ import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
  * @author wzmyyj email: 2209011667@qq.com
  */
 
-public class MatchTeamIVD extends BaseRecyclerIVD<MatchTeam> {
+public class MatchTeamIVD extends BaseIVD<MatchTeam> {
 
     public MatchTeamIVD(Context context) {
         super(context);

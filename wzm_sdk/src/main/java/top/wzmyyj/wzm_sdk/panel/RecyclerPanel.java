@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
-import com.zhy.adapter.recyclerview.base.ItemViewDelegate;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.adapter.recyclerview.wrapper.EmptyWrapper;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
@@ -36,7 +35,7 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
     protected RecyclerView mRecyclerView;
     protected FrameLayout mFrameLayout;
     protected List<T> mData = new ArrayList<>();
-    protected List<IVD<T>> mIVD = new ArrayList<>();
+    protected final List<IVD<T>> mIVD = new ArrayList<>();
     protected RecyclerView.Adapter mAdapter;
     protected View mHeader;
     protected View mFooter;
@@ -70,7 +69,7 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
             defaultIVD();
         }
         MultiItemTypeAdapter<T> multiItemTypeAdapter = new MyMultiItemTypeAdapter(context, mData);
-        for (ItemViewDelegate<T> ivd : mIVD) {
+        for (IVD<T> ivd : mIVD) {
             multiItemTypeAdapter.addItemViewDelegate(ivd);
         }
         multiItemTypeAdapter.setOnItemClickListener(this);
