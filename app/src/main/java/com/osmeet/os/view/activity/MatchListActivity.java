@@ -61,6 +61,12 @@ public class MatchListActivity extends BaseActivity<MatchListContract.IPresenter
     }
 
     @Override
+    protected void initData() {
+        super.initData();
+        mPresenter.loadMatchTeamList(0);
+    }
+
+    @Override
     public void showMatchTeamList(@NonNull List<MatchTeam> matchTeamList, int pageNum) {
         matchListRecyclerPanel_0.setDataList(matchTeamList, pageNum == 0);
         List<MatchTeam> matchTeamList_1 = new ArrayList<>();

@@ -28,7 +28,7 @@ public class MatchTeamIVD extends BaseIVD<MatchTeam> {
 
     @Override
     public int getItemViewLayoutId() {
-        return R.layout.layout_message_match_item;
+        return R.layout.layout_match_team_item;
     }
 
     @Override

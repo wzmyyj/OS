@@ -30,7 +30,7 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_panel;
+        return R.layout.fragment_message;
     }
 
     MessageNeScrollPanel messageNeScrollPanel;

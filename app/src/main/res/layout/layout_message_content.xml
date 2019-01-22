@@ -11,7 +11,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
         android:gravity="center_vertical"
@@ -26,7 +26,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_list"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="155dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
 
@@ -63,7 +63,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
         android:gravity="center_vertical"
@@ -78,7 +78,6 @@
         <include layout="@layout/layout_message_invite_item" />
 
         <LinearLayout
-            android:visibility="gone"
             android:id="@+id/ll_invite_empty"
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -86,7 +85,8 @@
             android:paddingBottom="5dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -119,7 +119,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
         android:gravity="center_vertical"

@@ -2,9 +2,13 @@ package top.wzmyyj.wzm_sdk.tools;
 
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by yyj on 2018/01/10.
- *
+ * <p>
  * 日志打印类。
  * 不要吐槽命名，常用就用最简单的方式，写代码容易啊啊啊啊。
  *
@@ -28,27 +32,27 @@ public class L {
     private static boolean debug = true;
 
     /**
-     * private constructor
+     * private constructor.
      */
     private L() {
     }
 
     /**
-     * @param TAG tag
+     * @param TAG tag.
      */
     public static void setTAG(String TAG) {
         L.TAG = TAG;
     }
 
     /**
-     * @param debug is debug
+     * @param debug is debug.
      */
     public static void setDebug(boolean debug) {
         L.debug = debug;
     }
 
     /**
-     * verbose log
+     * verbose log.
      *
      * @param msg .
      */
@@ -58,7 +62,7 @@ public class L {
     }
 
     /**
-     * debug log
+     * debug log.
      *
      * @param msg .
      */
@@ -68,7 +72,7 @@ public class L {
     }
 
     /**
-     * info log
+     * info log.
      *
      * @param msg .
      */
@@ -78,7 +82,7 @@ public class L {
     }
 
     /**
-     * warn log
+     * warn log.
      *
      * @param msg .
      */
@@ -88,7 +92,7 @@ public class L {
     }
 
     /**
-     * error log
+     * error log.
      *
      * @param msg .
      */
@@ -105,6 +109,39 @@ public class L {
      */
     private static String check(String msg) {
         return msg == null ? "msg is null" : msg;
+    }
+
+    /**
+     * json log.
+     *
+     * @param msg .
+     */
+    public static void json(String msg) {
+        if (debug)
+            Log.d(TAG, getPrettyJson(check(msg)));
+    }
+
+    private static final int JSON_INDENT = 2;
+
+    /**
+     * @param jsonStr .
+     * @return json .
+     */
+    private static String getPrettyJson(String jsonStr) {
+        try {
+            jsonStr = jsonStr.trim();
+            if (jsonStr.startsWith("{")) {
+                JSONObject jsonObject = new JSONObject(jsonStr);
+                return jsonObject.toString(JSON_INDENT);
+            }
+            if (jsonStr.startsWith("[")) {
+                JSONArray jsonArray = new JSONArray(jsonStr);
+                return jsonArray.toString(JSON_INDENT);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "Invalid Json, Please Check: " + jsonStr;
     }
 
 }

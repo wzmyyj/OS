@@ -64,7 +64,7 @@ public class ReOk {
                 .connectTimeout(10, TimeUnit.SECONDS)// 设置超时时间。
                 .readTimeout(10, TimeUnit.SECONDS)// 设置读取超时时间。
                 .writeTimeout(10, TimeUnit.SECONDS)// 设置写入超时时间。
-                .addInterceptor(new HttpLoggingInterceptor(L::d).setLevel(HttpLoggingInterceptor.Level.BODY))// 拦截日志。
+                .addInterceptor(new HttpLoggingInterceptor(L::json).setLevel(HttpLoggingInterceptor.Level.BODY))// 拦截日志。
                 .addInterceptor(ReOk::intercept)
                 .build();
     }
