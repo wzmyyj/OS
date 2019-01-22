@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.osmeet.os">
 
-
+    <!--允许程序设置内置sd卡的读权限-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <!--打开相机-->
+    <uses-permission android:name="android.permission.CAMERA"/>
     <!--允许程序打开网络套接字-->
     <uses-permission android:name="android.permission.INTERNET" />
     <!--允许程序设置内置sd卡的写权限-->
@@ -38,7 +39,7 @@
         tools:replace="android:icon">
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities=".FileProvider"
+            android:authorities="${applicationId}.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

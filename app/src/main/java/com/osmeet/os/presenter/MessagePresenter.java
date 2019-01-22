@@ -36,7 +36,7 @@ public class MessagePresenter extends BasePresenter<MessageContract.IView> imple
                     mView.showMatchTeamList(box.getData().getContent());
                 }
             }
-        }, 0, 20);
+        }, 0, 100);
     }
 
     @Override

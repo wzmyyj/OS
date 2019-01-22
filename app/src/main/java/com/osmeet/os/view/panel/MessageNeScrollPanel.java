@@ -2,25 +2,21 @@ package com.osmeet.os.view.panel;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchTeam;
-import com.osmeet.os.app.bean.Store;
-import com.osmeet.os.app.bean.User;
-import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.panel.BaseNeScrollPanel;
 import com.osmeet.os.contract.MessageContract;
 import com.osmeet.os.view.adapter.MatchTeamAdapter;
+import com.osmeet.os.view.adapter.ivd.InviteGroupIVD;
+import com.osmeet.os.view.widget.listener.AlphaNeScrollListener;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
 import java.util.ArrayList;
@@ -28,8 +24,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import top.wzmyyj.wzm_sdk.utils.DensityUtil;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
+import top.wzmyyj.wzm_sdk.adapter.ivh.IvdViewHolder;
 
 
 /**
@@ -66,25 +61,14 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         rv_list.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         rv_list.setAdapter(mAdapter = new MatchTeamAdapter(context, mData));
 
+        ivdViewHolder = new IvdViewHolder(context, new InviteGroupIVD(context), fl_ivd);
     }
 
     @Override
     protected void initListener() {
         super.initListener();
-        mNestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-            //当距离在[0,maxDistance]变化时，透明度在[0,255之间变化]
-            int maxDistance = DensityUtil.dp2px(context, 150);
-            int mDistance = 0;
-
-            @Override
-            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                mDistance = scrollY;
-                float percent = mDistance * 1f / maxDistance;//百分比
-                View bar = getBindView("v");
-                if (bar != null)
-                    bar.setAlpha(percent);
-            }
-        });
+        mNestedScrollView.setOnScrollChangeListener(
+                new AlphaNeScrollListener(context, this::barAlpha));
 
         mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
@@ -102,6 +86,13 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         });
     }
 
+    private void barAlpha(float alpha) {
+        View bar = getBindView("v");
+        if (bar != null) {
+            bar.setAlpha(alpha);
+        }
+    }
+
     public void matchTeamList(@NonNull List<MatchTeam> matchTeamList) {
         if (matchTeamList.size() == 0) {
             fl_when_empty.setVisibility(View.VISIBLE);
@@ -113,63 +104,25 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         mAdapter.notifyDataSetChanged();
     }
 
-    @BindView(R.id.img_store_logo)
-    ImageView img_store_logo;
-    @BindView(R.id.tv_store_name)
-    TextView tv_store_name;
-    @BindView(R.id.tv_store_invite_num)
-    TextView tv_store_invite_num;
 
-    @OnClick(R.id.ll_invite)
+    @OnClick(R.id.fl_ivd)
     void go_invite() {
-        mPresenter.loadMatchTeamList();
+        mPresenter.goInviteList();
     }
 
+    @BindView(R.id.fl_ivd)
+    FrameLayout fl_ivd;
     @BindView(R.id.ll_invite_empty)
     LinearLayout ll_invite_empty;
-    @BindView(R.id.img_u_1)
-    ImageView img_u_1;
-    @BindView(R.id.img_u_2)
-    ImageView img_u_2;
-    @BindView(R.id.img_u_3)
-    ImageView img_u_3;
-    @BindView(R.id.img_u_4)
-    ImageView img_u_4;
 
-    public void matchInviteList(@NonNull List<MatchInvite> matchInviteList) {
-        if (matchInviteList.size() == 0) {
+    private IvdViewHolder ivdViewHolder;
+
+    public void setMatchInviteGroup(MatchInvite.Group group) {
+        if (group == null) {
             ll_invite_empty.setVisibility(View.VISIBLE);
-            return;
+        } else {
+            ll_invite_empty.setVisibility(View.GONE);
+            ivdViewHolder.convert(group);
         }
-        ll_invite_empty.setVisibility(View.GONE);
-        MatchInvite invite = matchInviteList.get(0);
-        Store store = invite.getMatchUnit().getStore();
-
-        List<MatchInvite> inviteList = new ArrayList<>();
-        for (MatchInvite matchInvite : matchInviteList) {
-            if (matchInvite.getMatchUnit().getStore().getId().equals(store.getId())) {
-                inviteList.add(matchInvite);
-            }
-        }
-        if (store.getLogoImage() != null) {
-            G.img(context, store.getLogoImage().getUrl(), img_store_logo);
-        }
-        WidgetUtil.setTextNonNull(tv_store_name, store.getName());
-        WidgetUtil.setTextNumber(tv_store_invite_num, inviteList.size());
-
-        List<ImageView> imageViewList = new ArrayList<>();
-        imageViewList.add(img_u_1);
-        imageViewList.add(img_u_2);
-        imageViewList.add(img_u_3);
-        imageViewList.add(img_u_4);
-
-
-        for (int i = 0; i < 4 && i < inviteList.size(); i++) {
-            User user = inviteList.get(i).getMatchUnit().getUser();
-            if (user.getAvatar() != null) {
-                G.img(context, user.getAvatar().getUrl(), imageViewList.get(i));
-            }
-        }
-
     }
 }

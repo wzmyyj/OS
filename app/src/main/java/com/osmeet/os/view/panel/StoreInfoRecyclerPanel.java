@@ -22,6 +22,7 @@ import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.StoreInfoContract;
 import com.osmeet.os.view.adapter.ivd.PhotoStoryIVD;
 import com.osmeet.os.view.panel.bean.PhotoStory;
+import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -31,7 +32,6 @@ import java.util.List;
 
 import top.wzmyyj.wzm_sdk.activity.PanelActivity;
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
-import top.wzmyyj.wzm_sdk.utils.DensityUtil;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
@@ -66,24 +66,20 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
     @Override
     protected void initListener() {
         super.initListener();
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            //当距离在[0,maxDistance]变化时，透明度在[0,255之间变化]
-            int maxDistance = DensityUtil.dp2px(context, 150);
-            int mDistance = 0;
-
+        mRecyclerView.addOnScrollListener(new AlphaReScrollListener(context, this::barAlpha) {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                mDistance += dy;
-                float percent = mDistance * 1f / maxDistance;//百分比
-                View bar = getBindView("v");
-                if (bar != null)
-                    bar.setAlpha(percent);
                 onScrolled1(dy);
             }
         });
     }
-
+    private void barAlpha(float alpha) {
+        View bar = getBindView("v");
+        if (bar != null) {
+            bar.setAlpha(alpha);
+        }
+    }
     @Override
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
         super.onItemClick(view, holder, position);

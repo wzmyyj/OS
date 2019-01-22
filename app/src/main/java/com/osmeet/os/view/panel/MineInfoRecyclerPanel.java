@@ -16,14 +16,15 @@ import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.MineContract;
 import com.osmeet.os.view.adapter.ivd.PhotoStoryIVD;
+import com.osmeet.os.view.adapter.ivd.UserIVD;
 import com.osmeet.os.view.panel.bean.PhotoStory;
+import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
 
 import java.util.List;
 
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
-import top.wzmyyj.wzm_sdk.utils.DensityUtil;
+import top.wzmyyj.wzm_sdk.adapter.ivh.IvdViewHolder;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 
 /**
@@ -59,21 +60,15 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
     @Override
     protected void initListener() {
         super.initListener();
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            //当距离在[0,maxDistance]变化时，透明度在[0,255之间变化]
-            int maxDistance = DensityUtil.dp2px(context, 150);
-            int mDistance = 0;
+        mRecyclerView.addOnScrollListener(
+                new AlphaReScrollListener(context, this::barAlpha));
+    }
 
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                mDistance += dy;
-                float percent = mDistance * 1f / maxDistance;//百分比
-                View bar = getBindView("v");
-                if (bar != null)
-                    bar.setAlpha(percent);
-            }
-        });
+    private void barAlpha(float alpha) {
+        View bar = getBindView("v");
+        if (bar != null) {
+            bar.setAlpha(alpha);
+        }
     }
 
     @Override
@@ -84,22 +79,14 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
 
     public void setUser(@NonNull User user) {
         // header
-        if (user.getAvatar() != null)
-            G.img(context, user.getAvatar().getUrl(), img_user_avatar);
-        WidgetUtil.setTextNonNull(tv_user_name, user.getUsername());
-        WidgetUtil.setTextNumber(tv_user_age, user.getAge());
-        WidgetUtil.setTextOrGone(tv_user_company, user.getCompany());
-        WidgetUtil.setTextOrGone(tv_user_job, user.getJob());
-        WidgetUtil.setTextOrGone(tv_user_school, user.getSchool());
-        WidgetUtil.setTextNonNull(tv_user_signature, user.getSignature());
-        WidgetUtil.setTextNumber(tv_user_score, user.getCreditScore());
+        ivdViewHolder.convert(user);
 
         List<FileInfo> images = user.getImages();
         if (images != null && images.size() > 0) {
             G.img(context, images.get(0).getUrl(), img_image);
         } else {
             if (user.getAvatar() != null)
-                G.img(context, user.getAvatar().getUrl(), img_user_avatar);
+                G.img(context, user.getAvatar().getUrl(), img_image);
         }
 
 
@@ -111,29 +98,20 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
         notifyDataSetChanged();
     }
 
-    private ImageView img_user_avatar;
-    private TextView tv_user_name;
-    private TextView tv_user_age;
-    private TextView tv_user_job;
-    private TextView tv_user_company;
-    private TextView tv_user_school;
-    private TextView tv_user_signature;
-    private TextView tv_user_score;
     private ImageView img_image;
+
+    private IvdViewHolder ivdViewHolder;
 
     @SuppressLint("InflateParams")
     @Override
     protected void setHeader() {
         super.setHeader();
         mHeader = mInflater.inflate(R.layout.layout_mine_info_header, null);
-        img_user_avatar = mHeader.findViewById(R.id.img_user_avatar);
-        tv_user_name = mHeader.findViewById(R.id.tv_user_name);
-        tv_user_age = mHeader.findViewById(R.id.tv_user_age);
-        tv_user_company = mHeader.findViewById(R.id.tv_user_company);
-        tv_user_job = mHeader.findViewById(R.id.tv_user_job);
-        tv_user_school = mHeader.findViewById(R.id.tv_user_school);
-        tv_user_signature = mHeader.findViewById(R.id.tv_user_signature);
-        tv_user_score = mHeader.findViewById(R.id.tv_user_score);
+
+        ivdViewHolder = new IvdViewHolder(context,
+                new UserIVD(context),
+                mHeader.findViewById(R.id.fl_ivd),
+                mHeader.findViewById(R.id.tv_user_score));
 
         img_image = mHeader.findViewById(R.id.img_image);
         img_image.getLayoutParams().height = MockUtil.getScreenWidth(context);

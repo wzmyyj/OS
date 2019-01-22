@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.igexin.sdk.PushManager;
 import com.kongzue.dialog.v2.DialogSettings;
+import com.osmeet.os.BuildConfig;
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.GP;
@@ -42,7 +43,7 @@ public class App extends BaseApplication {
         settingManager = SettingManager.getInstance(this);
 
         setDialog();
-        GP.init(PackageUtil.getPackageName(this) + ".FileProvider", "/OsMeet/images");
+        GP.init(BuildConfig.APPLICATION_ID + ".FileProvider", "/OsMeet/images");
 
 
         PushManager.getInstance().initialize(this.getApplicationContext(), PushService.class);

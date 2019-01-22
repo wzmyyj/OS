@@ -56,6 +56,6 @@ public class InviteListActivity extends BaseActivity<InviteListContract.IPresent
 
     @Override
     public void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList) {
-        inviteListRecyclerPanel.matchInviteList(matchInviteList);
+        inviteListRecyclerPanel.setDataList(MatchInvite.getGroupList(matchInviteList));
     }
 }

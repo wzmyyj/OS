@@ -107,7 +107,9 @@ public class GP {
 
     public void openWithPermission(final Activity activity) {
         AndPermission.with(activity)
-                .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .permission(
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.CAMERA)
                 .onGranted(permissions -> this.open(activity))
                 .onDenied(permissions -> T.s("No Permission"))
                 .start();

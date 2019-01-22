@@ -124,12 +124,12 @@ public class L {
     private static final int JSON_INDENT = 2;
 
     /**
-     * @param jsonStr .
+     * @param str .
      * @return json .
      */
-    private static String getPrettyJson(String jsonStr) {
+    private static String getPrettyJson(String str) {
         try {
-            jsonStr = jsonStr.trim();
+            String jsonStr = str.trim();
             if (jsonStr.startsWith("{")) {
                 JSONObject jsonObject = new JSONObject(jsonStr);
                 return jsonObject.toString(JSON_INDENT);
@@ -141,7 +141,7 @@ public class L {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return "Invalid Json, Please Check: " + jsonStr;
+        return "Invalid Json, Please Check: " + str;
     }
 
 }
