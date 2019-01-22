@@ -12,9 +12,9 @@ import top.wzmyyj.wzm_sdk.adapter.IvdRecyclerAdapter;
  * @author wzmyyj email: 2209011667@qq.com
  */
 
-public abstract class BaseRecyclerAdapter<T> extends IvdRecyclerAdapter<T> {
+public abstract class BaseIvdAdapter<T> extends IvdRecyclerAdapter<T> {
 
-    public BaseRecyclerAdapter(Context context, List<T> data) {
+    public BaseIvdAdapter(Context context, List<T> data) {
         super(context, data);
     }
 }
