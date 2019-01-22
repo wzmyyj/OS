@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.TextView;
 
 import com.kongzue.dialog.v2.InputDialog;
@@ -21,8 +20,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import top.wzmyyj.wzm_sdk.adapter.ViewTitlePagerAdapter;
-import top.wzmyyj.wzm_sdk.panel.Panel;
+import top.wzmyyj.wzm_sdk.utils.PanelUtil;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 public class WalletActivity extends BaseActivity<WalletContract.IPresenter> implements WalletContract.IView {
@@ -71,7 +69,6 @@ public class WalletActivity extends BaseActivity<WalletContract.IPresenter> impl
             return;
         }
         dialogInput1();
-
     }
 
     private void dialogInput1() {
@@ -114,16 +111,7 @@ public class WalletActivity extends BaseActivity<WalletContract.IPresenter> impl
     @Override
     protected void initView() {
         super.initView();
-        List<View> viewList = new ArrayList<>();
-        List<String> titles = new ArrayList<>();
-        for (Panel p : getPanelList()) {
-            viewList.add(p.getView());
-            titles.add(p.getTitle());
-        }
-        ViewTitlePagerAdapter pagerAdapter = new ViewTitlePagerAdapter(viewList, titles);
-        mViewPager.setAdapter(pagerAdapter);
-        mTabLayout.setupWithViewPager(mViewPager);
-
+        PanelUtil.in(getPanelList(), mTabLayout, mViewPager);
     }
 
     @Override
@@ -144,7 +132,7 @@ public class WalletActivity extends BaseActivity<WalletContract.IPresenter> impl
 
     @Override
     public void showRecordList(@NonNull List<Record> recordList) {
-        walletRecyclerPanel_0.setRecordList(recordList);
+        walletRecyclerPanel_0.setDataList(recordList);
         List<Record> recordList1 = new ArrayList<>();
         List<Record> recordList2 = new ArrayList<>();
         for (Record record : recordList) {
@@ -154,8 +142,8 @@ public class WalletActivity extends BaseActivity<WalletContract.IPresenter> impl
                 recordList2.add(record);
             }
         }
-        walletRecyclerPanel_1.setRecordList(recordList1);
-        walletRecyclerPanel_2.setRecordList(recordList2);
+        walletRecyclerPanel_1.setDataList(recordList1);
+        walletRecyclerPanel_2.setDataList(recordList2);
     }
 }
 

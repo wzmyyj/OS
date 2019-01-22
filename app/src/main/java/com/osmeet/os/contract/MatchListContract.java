@@ -16,11 +16,11 @@ import java.util.List;
 public interface MatchListContract {
 
     interface IView extends IBaseView {
-        void showMatchTeamList(@NonNull List<MatchTeam> matchTeamList);
+        void showMatchTeamList(@NonNull List<MatchTeam> matchTeamList, int pageNum);
     }
 
     interface IPresenter extends IBasePresenter {
-        void loadMatchTeamList();
+        void loadMatchTeamList(final int pageNum);
     }
 
 }

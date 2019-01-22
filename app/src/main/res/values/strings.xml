@@ -57,7 +57,7 @@
     <string name="_20">20</string>
     <string name="update_info">编辑资料</string>
     <string name="sentence_example">纵然伤心，也不要愁眉不展，因为你不知是谁会爱上你的笑容。 [Never frown, even when you are sad, because you never know who is falling in love with your smile.]</string>
-    <string name="_2018_01_01">2018-01-01</string>
+    <string name="_2018_01_01">2018–01–01</string>
     <string name="person">个人</string>
     <string name="setting">设置</string>
     <string name="save">保存</string>
@@ -128,4 +128,5 @@
     <string name="trade_time_is">下单时间：</string>
     <string name="buy_count_is">购买数量：</string>
     <string name="os">相对</string>
+    <string name="my_os">我的相对</string>
 </resources>

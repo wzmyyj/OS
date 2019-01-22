@@ -41,7 +41,7 @@ public class HomeStorePresenter extends BasePresenter<HomeStoreContract.IView> i
     }
 
     @Override
-    public void loadStoreList(int pageNum) {
+    public void loadStoreList(final int pageNum) {
         if (TextUtils.isEmpty(categoryId)) {
             toast("Category Id is a empty value!");
             return;
@@ -57,7 +57,7 @@ public class HomeStorePresenter extends BasePresenter<HomeStoreContract.IView> i
                 if (box.getData() != null) {
 //                    toast("加载成功");
                     setAvatarUrls(box.getData().getContent());
-                    mView.showStoreList(box.getData().getContent());
+                    mView.showStoreList(box.getData().getContent(), pageNum);
                 }
 
             }

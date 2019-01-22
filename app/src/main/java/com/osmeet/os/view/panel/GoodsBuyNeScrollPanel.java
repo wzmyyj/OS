@@ -7,12 +7,12 @@ import android.widget.TextView;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.tools.G;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BaseNeScrollPanel;
 import com.osmeet.os.contract.GoodsBuyContract;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 
 /**
@@ -61,9 +61,8 @@ public class GoodsBuyNeScrollPanel extends BaseNeScrollPanel<GoodsBuyContract.IP
     }
 
     @Override
-    protected void initView() {
-        super.initView();
-        mRefreshLayout.setEnablePureScrollMode(true);
+    protected boolean isEnablePureScrollMode() {
+        return true;
     }
 
     @Override

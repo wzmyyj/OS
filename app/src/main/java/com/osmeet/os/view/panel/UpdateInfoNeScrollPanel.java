@@ -129,9 +129,13 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
     private List<ImageView> imageViewList = new ArrayList<>();
 
     @Override
+    protected boolean isEnablePureScrollMode() {
+        return true;
+    }
+
+    @Override
     protected void initView() {
         super.initView();
-        mRefreshLayout.setEnablePureScrollMode(true);
         et_signature.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         et_signature.setHorizontallyScrolling(false);
         et_signature.setSingleLine(false);
@@ -183,7 +187,8 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
                 if (isNoImage(j)) return false;
                 SelectDialog.show(context, "警告", "删除这张照片？",
                         "确定", (dialog, which) -> deleteImage(j),
-                        "取消", (dialog, which) -> {});
+                        "取消", (dialog, which) -> {
+                        });
                 return true;
             });
         }

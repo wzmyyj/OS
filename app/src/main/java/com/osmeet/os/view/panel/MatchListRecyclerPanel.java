@@ -28,6 +28,10 @@ public class MatchListRecyclerPanel extends BaseRecyclerPanel<MatchTeam, MatchLi
         ivd.add(new MatchTeamIVD(context));
     }
 
+    @Override
+    protected boolean isEnableLoadMore() {
+        return true;
+    }
 
     @Override
     protected void initView() {
@@ -37,6 +41,14 @@ public class MatchListRecyclerPanel extends BaseRecyclerPanel<MatchTeam, MatchLi
 
     @Override
     protected void update() {
-        mPresenter.loadMatchTeamList();
+        mPresenter.loadMatchTeamList(pageNum);
     }
+
+
+    @Override
+    protected void loadMore() {
+        super.loadMore();
+        mPresenter.loadMatchTeamList(pageNum);
+    }
+
 }

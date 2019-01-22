@@ -38,9 +38,22 @@ public abstract class RefreshPanel extends PanelGroup {
     protected void setRefreshLayout(SmartRefreshLayout refreshLayout) {
         refreshLayout.setHeaderHeight(100);
         refreshLayout.setFooterHeight(100);
-        refreshLayout.setEnableRefresh(true);
-        refreshLayout.setEnableLoadMore(false);
+        refreshLayout.setEnableRefresh(isEnableRefresh());
+        refreshLayout.setEnableLoadMore(isEnableLoadMore());
+        refreshLayout.setEnablePureScrollMode(isEnablePureScrollMode());
         refreshLayout.setPrimaryColorsId(R.color.colorRefresh, R.color.colorWhite);
+    }
+
+    protected boolean isEnableRefresh() {
+        return true;
+    }
+
+    protected boolean isEnableLoadMore() {
+        return false;
+    }
+
+    protected boolean isEnablePureScrollMode() {
+        return false;
     }
 
     @Override
@@ -61,7 +74,6 @@ public abstract class RefreshPanel extends PanelGroup {
         });
     }
 
-
     /**
      * refresh.
      */
@@ -73,7 +85,6 @@ public abstract class RefreshPanel extends PanelGroup {
      * loadMore.
      */
     protected void loadMore() {
-
     }
 
     /**

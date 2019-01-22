@@ -38,11 +38,10 @@ public class HomeStoreRecyclerPanel extends BaseRecyclerPanel<Store, HomeStoreCo
     }
 
     @Override
-    public void update() {
-        num = 0;
-        mPresenter.log(mPresenter.getCategoryId());
-        mPresenter.loadStoreList(num);
+    protected boolean isEnableLoadMore() {
+        return true;
     }
+
 
     @Override
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
@@ -55,29 +54,16 @@ public class HomeStoreRecyclerPanel extends BaseRecyclerPanel<Store, HomeStoreCo
         }
     }
 
-    private int num = 0;
-
-    public void setStoreList(List<Store> storeList) {
-        if (num == 0) {// 刷新或者第一次加载。
-            mData.clear();
-        }
-        mData.addAll(storeList);
-        mData.addAll(storeList);
-        mData.addAll(storeList);
-        mData.addAll(storeList);
-        mData.addAll(storeList);
-        mData.addAll(storeList);
-        mData.addAll(storeList);
-        mData.addAll(storeList);
-        mData.addAll(storeList);
-        notifyDataSetChanged();
+    @Override
+    public void update() {
+        mPresenter.log(mPresenter.getCategoryId());
+        mPresenter.loadStoreList(pageNum);
     }
 
     @Override
     protected void loadMore() {
         super.loadMore();
-        num++;
-        mPresenter.loadStoreList(num);
+        mPresenter.loadStoreList(pageNum);
     }
 
     @SuppressLint("InflateParams")

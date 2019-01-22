@@ -1,7 +1,6 @@
 package com.osmeet.os.view.panel;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -44,9 +43,4 @@ public class TradeListRecyclerPanel extends BaseRecyclerPanel<Trade, TradeListCo
     }
 
 
-    public void setTradeList(@NonNull List<Trade> tradeList) {
-        mData.clear();
-        mData.addAll(tradeList);
-        notifyDataSetChanged();
-    }
 }

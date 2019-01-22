@@ -17,7 +17,7 @@ public interface HomeStoreContract {
 
     interface IView extends IBaseView {
 
-        void showStoreList(@NonNull List<Store> storeList);
+        void showStoreList(@NonNull List<Store> storeList, int pageNum);
     }
 
     interface IPresenter extends IBasePresenter, I.Store {
@@ -26,7 +26,7 @@ public interface HomeStoreContract {
 
         String getCategoryId();
 
-        void loadStoreList(int pageNum);
+        void loadStoreList(final int pageNum);
     }
 
 }

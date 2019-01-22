@@ -3,7 +3,6 @@ package com.osmeet.os.view.activity;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Trade;
@@ -12,13 +11,12 @@ import com.osmeet.os.contract.TradeListContract;
 import com.osmeet.os.presenter.TradeListPresenter;
 import com.osmeet.os.view.panel.TradeListRecyclerPanel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import top.wzmyyj.wzm_sdk.adapter.ViewTitlePagerAdapter;
 import top.wzmyyj.wzm_sdk.panel.Panel;
+import top.wzmyyj.wzm_sdk.utils.PanelUtil;
 
 public class TradeListActivity extends BaseActivity<TradeListContract.IPresenter> implements TradeListContract.IView {
     @Override
@@ -63,15 +61,7 @@ public class TradeListActivity extends BaseActivity<TradeListContract.IPresenter
     @Override
     protected void initView() {
         super.initView();
-        List<View> viewList = new ArrayList<>();
-        List<String> titles = new ArrayList<>();
-        for (Panel p : getPanelList()) {
-            viewList.add(p.getView());
-            titles.add(p.getTitle());
-        }
-        ViewTitlePagerAdapter pagerAdapter = new ViewTitlePagerAdapter(viewList, titles);
-        mViewPager.setAdapter(pagerAdapter);
-        mTabLayout.setupWithViewPager(mViewPager);
+        PanelUtil.in(getPanelList(), mTabLayout, mViewPager);
     }
 
     @Override
@@ -86,7 +76,7 @@ public class TradeListActivity extends BaseActivity<TradeListContract.IPresenter
     public void showTradeList(@NonNull List<Trade> tradeList, @NonNull String state) {
         for (Panel p : getPanelList()) {
             if (state.equals(p.getTag().toString())) {
-                ((TradeListRecyclerPanel) p).setTradeList(tradeList);
+                ((TradeListRecyclerPanel) p).setDataList(tradeList);
             }
         }
     }

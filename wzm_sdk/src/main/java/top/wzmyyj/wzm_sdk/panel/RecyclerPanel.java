@@ -138,7 +138,48 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
     }
 
 
+    /**
+     * @param ivd .
+     */
     protected abstract void setIVD(List<IVD<T>> ivd);
+
+
+    /**
+     * @return is need clear date list when setDataList.
+     */
+    protected boolean isNeedClear() {
+        return true;
+    }
+
+    /**
+     * @param dataList .
+     */
+    public void setDataList(@NonNull List<T> dataList) {
+        setDataList(dataList, isNeedClear());
+    }
+
+
+    /**
+     * @param dataList    .
+     * @param isNeedClear .
+     */
+    public void setDataList(@NonNull List<T> dataList, boolean isNeedClear) {
+        if (isNeedClear) {
+            mData.clear();
+        }
+        mData.addAll(dataList);
+        notifyDataSetChanged();
+    }
+
+    /**
+     * for load more .
+     *
+     * @param dataList .
+     */
+    public void addDataList(@NonNull List<T> dataList) {
+        mData.addAll(dataList);
+        notifyDataSetChanged();
+    }
 
 
     /**
@@ -182,14 +223,18 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
     protected void initData() {
     }
 
+    protected int pageNum = 0;
+
     @Override
     protected void refresh() {
-        update();
+        pageNum = 0;
+        super.refresh();
     }
 
     @Override
     protected void loadMore() {
-
+        pageNum++;
+        super.loadMore();
     }
 
     @Override

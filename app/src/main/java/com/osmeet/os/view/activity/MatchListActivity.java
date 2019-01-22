@@ -1,14 +1,22 @@
 package com.osmeet.os.view.activity;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.activity.BaseActivity;
 import com.osmeet.os.contract.MatchListContract;
 import com.osmeet.os.presenter.MatchListPresenter;
+import com.osmeet.os.view.panel.MatchListRecyclerPanel;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+import top.wzmyyj.wzm_sdk.utils.PanelUtil;
 
 public class MatchListActivity extends BaseActivity<MatchListContract.IPresenter> implements MatchListContract.IView {
     @Override
@@ -21,9 +29,51 @@ public class MatchListActivity extends BaseActivity<MatchListContract.IPresenter
         return R.layout.activity_match_list;
     }
 
-    @Override
-    public void showMatchTeamList(@NonNull List<MatchTeam> matchTeamList) {
+    MatchListRecyclerPanel matchListRecyclerPanel_0;
+    MatchListRecyclerPanel matchListRecyclerPanel_1;
+    MatchListRecyclerPanel matchListRecyclerPanel_2;
 
+    @Override
+    protected void initPanels() {
+        super.initPanels();
+        addPanels(
+                matchListRecyclerPanel_0 = new MatchListRecyclerPanel(context, mPresenter).setTitle("全部"),
+                matchListRecyclerPanel_1 = new MatchListRecyclerPanel(context, mPresenter).setTitle("正在相对"),
+                matchListRecyclerPanel_2 = new MatchListRecyclerPanel(context, mPresenter).setTitle("相对历史")
+        );
+
+    }
+
+    @BindView(R.id.tab_1)
+    TabLayout mTabLayout;
+    @BindView(R.id.vp_1)
+    ViewPager mViewPager;
+
+    @OnClick(R.id.img_back)
+    void back() {
+        mPresenter.finish();
+    }
+
+    @Override
+    protected void initView() {
+        super.initView();
+        PanelUtil.in(getPanelList(), mTabLayout, mViewPager);
+    }
+
+    @Override
+    public void showMatchTeamList(@NonNull List<MatchTeam> matchTeamList, int pageNum) {
+        matchListRecyclerPanel_0.setDataList(matchTeamList, pageNum == 0);
+        List<MatchTeam> matchTeamList_1 = new ArrayList<>();
+        List<MatchTeam> matchTeamList_2 = new ArrayList<>();
+        for (MatchTeam matchTeam : matchTeamList) {
+            if (matchTeam.getMatchStatus() == MatchTeam.MATCH_NOW) {
+                matchTeamList_1.add(matchTeam);
+            } else {
+                matchTeamList_2.add(matchTeam);
+            }
+        }
+        matchListRecyclerPanel_1.setDataList(matchTeamList_1, pageNum == 0);
+        matchListRecyclerPanel_2.setDataList(matchTeamList_2, pageNum == 0);
     }
 }
 

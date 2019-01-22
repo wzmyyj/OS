@@ -6,6 +6,11 @@ package com.osmeet.os.app.bean;
 
 public class MatchTeam {
 
+    public static final int MATCH_NOW = 0;
+    public static final int MATCH_SUCCESS = 1;
+    public static final int MATCH_FAIL = 2;
+    public static final int MATCH_CANCEL = -1;
+
     private String id;
     private long matchEndTime;
     private long matchStartTime;
@@ -17,6 +22,7 @@ public class MatchTeam {
     private long awantMeetTime;
     private int btimeStatus;
     private long bwantMeetTime;
+    private int matchStatus;
 
     public void setId(String id) {
         this.id = id;
@@ -105,5 +111,13 @@ public class MatchTeam {
 
     public void setBwantMeetTime(long bwantMeetTime) {
         this.bwantMeetTime = bwantMeetTime;
+    }
+
+    public int getMatchStatus() {
+        return matchStatus;
+    }
+
+    public void setMatchStatus(int matchStatus) {
+        this.matchStatus = matchStatus;
     }
 }

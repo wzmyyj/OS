@@ -1,7 +1,6 @@
 package com.osmeet.os.view.panel;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.Record;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
@@ -35,9 +34,4 @@ public class WalletRecyclerPanel extends BaseRecyclerPanel<Record, WalletContrac
         mPresenter.loadRecordList(0);
     }
 
-    public void setRecordList(@NonNull List<Record> recordList) {
-        mData.clear();
-        mData.addAll(recordList);
-        notifyDataSetChanged();
-    }
 }
