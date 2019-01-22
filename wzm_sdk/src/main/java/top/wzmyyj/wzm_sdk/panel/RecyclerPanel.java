@@ -8,12 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ItemViewDelegate;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
+import com.zhy.adapter.recyclerview.wrapper.EmptyWrapper;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
 import java.util.ArrayList;
@@ -21,10 +19,11 @@ import java.util.List;
 
 import top.wzmyyj.wzm_sdk.R;
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
+import top.wzmyyj.wzm_sdk.adapter.ivd.SingleIVD;
 
 /**
  * Created by wzm on 2018/04/23.
- *
+ * <p>
  * Recycler SmartRefresh Panel.
  *
  * @author wzmyyj email: 2209011667@qq.com
@@ -35,20 +34,14 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
         implements MultiItemTypeAdapter.OnItemClickListener {
 
     protected RecyclerView mRecyclerView;
-    protected SmartRefreshLayout mRefreshLayout;
-
-
     protected FrameLayout mFrameLayout;
     protected List<T> mData = new ArrayList<>();
     protected List<IVD<T>> mIVD = new ArrayList<>();
-    protected HeaderAndFooterWrapper mHeaderAndFooterWrapper;
-
+    protected RecyclerView.Adapter mAdapter;
     protected View mHeader;
     protected View mFooter;
 
     protected View mEmpty;
-
-    protected FrameLayout mEmptyLayout;
 
 
     public RecyclerPanel(Context context) {
@@ -68,38 +61,75 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
         mFrameLayout = view.findViewById(R.id.frameLayout);
         mRecyclerView = view.findViewById(R.id.recyclerView);
         mRefreshLayout = view.findViewById(R.id.refreshLayout);
-        mEmptyLayout = view.findViewById(R.id.fl_empty);
-        mRefreshLayout.setHeaderHeight(100);
-        mRefreshLayout.setFooterHeight(100);
-        mRefreshLayout.setEnableLoadMore(false);
-        mRefreshLayout.setPrimaryColorsId(R.color.colorRefresh, R.color.colorWhite);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-
-        setIVD(mIVD);
-        setHeader();
-        setFooter();
-        setEmpty();
-        if (mEmpty != null) {
-            mEmptyLayout.addView(mEmpty);
-        }
+        setRefreshLayout(mRefreshLayout);
+        mRecyclerView.setLayoutManager(layoutManager());
 
         setFirstData();
-
-        MultiItemTypeAdapter<T> mAdapter = new MyMultiItemTypeAdapter(context, mData);
-
+        setIVD(mIVD);
+        if (mIVD.size() == 0) {
+            defaultIVD();
+        }
+        MultiItemTypeAdapter<T> multiItemTypeAdapter = new MyMultiItemTypeAdapter(context, mData);
         for (ItemViewDelegate<T> ivd : mIVD) {
-            mAdapter.addItemViewDelegate(ivd);
+            multiItemTypeAdapter.addItemViewDelegate(ivd);
+        }
+        multiItemTypeAdapter.setOnItemClickListener(this);
+        mAdapter = multiItemTypeAdapter;
+
+        setHeader();
+        setFooter();
+        if (mHeader != null || mFooter != null) {
+            HeaderAndFooterWrapper headerAndFooterWrapper = new HeaderAndFooterWrapper(mAdapter);
+            if (mHeader != null)
+                headerAndFooterWrapper.addHeaderView(mHeader);
+            if (mFooter != null)
+                headerAndFooterWrapper.addFootView(mFooter);
+            mAdapter = headerAndFooterWrapper;
         }
 
-        mAdapter.setOnItemClickListener(this);
-        mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(mAdapter);
-        if (mHeader != null)
-            mHeaderAndFooterWrapper.addHeaderView(mHeader);
-        if (mFooter != null)
-            mHeaderAndFooterWrapper.addFootView(mFooter);
-        mRecyclerView.setAdapter(mHeaderAndFooterWrapper);
+        setEmpty();
+        if (mEmpty != null) {
+            EmptyWrapper emptyWrapper = new EmptyWrapper(mAdapter);
+            emptyWrapper.setEmptyView(mEmpty);
+            mAdapter = emptyWrapper;
+        }
+
+        mRecyclerView.setAdapter(mAdapter);
     }
 
+    /**
+     * @return a RecyclerView.LayoutManager.
+     */
+    @NonNull
+    protected RecyclerView.LayoutManager layoutManager() {
+        return new LinearLayoutManager(context);
+    }
+
+    /**
+     * @param <A> extends RecyclerView.Adapter.
+     * @return mAdapter.
+     */
+    @SuppressWarnings("unchecked")
+    public <A extends RecyclerView.Adapter> A getAdapter() {
+        return (A) mAdapter;
+    }
+
+    /**
+     * when mIVD.size() is 0, add default IVD. just use look.
+     */
+    private void defaultIVD() {
+        mIVD.add(new SingleIVD<T>() {
+            @Override
+            public int getItemViewLayoutId() {
+                return R.layout.layout_default_ivd;
+            }
+
+            @Override
+            public void convert(ViewHolder holder, T t, int position) {
+                holder.setText(R.id.tv_item, "item: " + position);
+            }
+        });
+    }
 
     /**
      * setFirstData.
@@ -148,25 +178,9 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
     protected void viewRecycled(@NonNull ViewHolder holder) {
 
     }
+
     @Override
     protected void initData() {
-    }
-
-    @Override
-    protected void initListener() {
-        mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
-            @Override
-            public void onLoadMore(RefreshLayout refreshLayout) {
-                refreshLayout.finishLoadMore(getDelayed_l());
-                loadMore();
-            }
-
-            @Override
-            public void onRefresh(RefreshLayout refreshLayout) {
-                refreshLayout.finishRefresh(getDelayed_r());
-                refresh();
-            }
-        });
     }
 
     @Override
@@ -189,13 +203,6 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
         return false;
     }
 
-    @Override
-    public void updateWithView() {
-        mRefreshLayout.autoRefresh();
-        refresh();
-        mRefreshLayout.finishRefresh(getDelayed_r());
-    }
-
     /**
      * 排序.
      */
@@ -208,33 +215,23 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
      */
     protected void notifyDataSetChanged() {
         sort();
-        mHeaderAndFooterWrapper.notifyDataSetChanged();
-        upHeaderAndFooter();
-        upEmpty();
+        mAdapter.notifyDataSetChanged();
+        updateHeaderAndFooter();
+        updateEmpty();
     }
 
     /**
      * update mHeader And mFooter.
      */
-    protected void upHeaderAndFooter() {
-        if (mFooter == null) return;
-        if (mData.size() == 0) {
-            mFooter.setVisibility(View.GONE);
-        } else {
-            mFooter.setVisibility(View.VISIBLE);
-        }
+    protected void updateHeaderAndFooter() {
+
     }
 
     /**
      * update mEmpty.
      */
-    protected void upEmpty() {
-        if (mEmpty == null) return;
-        if (mData.size() == 0) {
-            mEmpty.setVisibility(View.VISIBLE);
-        } else {
-            mEmpty.setVisibility(View.GONE);
-        }
+    protected void updateEmpty() {
+
     }
 
 

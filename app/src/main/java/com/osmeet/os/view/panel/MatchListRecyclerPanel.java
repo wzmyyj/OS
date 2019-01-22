@@ -1,6 +1,7 @@
 package com.osmeet.os.view.panel;
 
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
 
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
@@ -31,10 +32,11 @@ public class MatchListRecyclerPanel extends BaseRecyclerPanel<MatchTeam, MatchLi
     @Override
     protected void initView() {
         super.initView();
+        mRecyclerView.setLayoutManager(new GridLayoutManager(context, 3));
     }
 
     @Override
     protected void update() {
-
+        mPresenter.loadMatchTeamList();
     }
 }

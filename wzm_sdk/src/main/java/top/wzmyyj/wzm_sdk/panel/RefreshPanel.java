@@ -2,9 +2,15 @@ package top.wzmyyj.wzm_sdk.panel;
 
 import android.content.Context;
 
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+
+import top.wzmyyj.wzm_sdk.R;
+
 /**
  * Created by wzm on 2018/05/05.
- *
+ * <p>
  * Refresh Panel.
  *
  * @author wzmyyj email: 2209011667@qq.com
@@ -13,39 +19,13 @@ import android.content.Context;
 
 public abstract class RefreshPanel extends PanelGroup {
 
-    private static final int DEFAULT_DELAYED_R = 1500;
-    private static final int DEFAULT_DELAYED_L = 1000;
+    private static final int DEFAULT_DELAYED_REFRESH = 1500;
+    private static final int DEFAULT_DELAYED_LOAD_MORE = 1000;
 
-    private int delayed_r = DEFAULT_DELAYED_R;
-    private int delayed_l = DEFAULT_DELAYED_L;
+    protected int delayed_Refresh = DEFAULT_DELAYED_REFRESH;
+    protected int delayed_LoadMore = DEFAULT_DELAYED_LOAD_MORE;
 
-    /**
-     * @param delayed_r .
-     */
-    public void setDelayed_r(int delayed_r) {
-        this.delayed_r = delayed_r;
-    }
-
-    /**
-     * @param delayed_l .
-     */
-    public void setDelayed_l(int delayed_l) {
-        this.delayed_l = delayed_l;
-    }
-
-    /**
-     * @return delayed_r.
-     */
-    public int getDelayed_r() {
-        return delayed_r;
-    }
-
-    /**
-     * @return delayed_l.
-     */
-    public int getDelayed_l() {
-        return delayed_l;
-    }
+    protected SmartRefreshLayout mRefreshLayout;
 
     /**
      * @param context .
@@ -55,15 +35,46 @@ public abstract class RefreshPanel extends PanelGroup {
     }
 
 
+    protected void setRefreshLayout(SmartRefreshLayout refreshLayout) {
+        refreshLayout.setHeaderHeight(100);
+        refreshLayout.setFooterHeight(100);
+        refreshLayout.setEnableRefresh(true);
+        refreshLayout.setEnableLoadMore(false);
+        refreshLayout.setPrimaryColorsId(R.color.colorRefresh, R.color.colorWhite);
+    }
+
+    @Override
+    protected void initListener() {
+        if (mRefreshLayout == null) return;
+        mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshLayout) {
+                refreshLayout.finishRefresh(delayed_Refresh);
+                refresh();
+            }
+
+            @Override
+            public void onLoadMore(RefreshLayout refreshLayout) {
+                refreshLayout.finishLoadMore(delayed_LoadMore);
+                loadMore();
+            }
+        });
+    }
+
+
     /**
      * refresh.
      */
-    protected abstract void refresh();
+    protected void refresh() {
+        update();
+    }
 
     /**
      * loadMore.
      */
-    protected abstract void loadMore();
+    protected void loadMore() {
+
+    }
 
     /**
      * update.
@@ -73,6 +84,10 @@ public abstract class RefreshPanel extends PanelGroup {
     /**
      * updateWithView.
      */
-    public abstract void updateWithView();
+    public void updateWithView() {
+        mRefreshLayout.autoRefresh();
+        refresh();
+        mRefreshLayout.finishRefresh(delayed_Refresh);
+    }
 
 }
