@@ -88,7 +88,10 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
     @Override
     public void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList) {
         List<MatchInvite.Group> groupList = MatchInvite.getGroupList(matchInviteList);
-        if (groupList.size() > 0)
+        if (groupList.size() > 0) {
             messageNeScrollPanel.setMatchInviteGroup(groupList.get(0));
+        } else {
+            messageNeScrollPanel.setMatchInviteGroup(null);
+        }
     }
 }

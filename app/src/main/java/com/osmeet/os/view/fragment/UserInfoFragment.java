@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kongzue.dialog.v2.BottomMenu;
+import com.kongzue.dialog.v2.SelectDialog;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
@@ -136,6 +137,12 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
         super.showSuccess(what, objects);
         if (what == 1) {
             userInfoRecyclerPanel.showMatchSuccess(true);
+        } else if (what == 2) {
+            SelectDialog.show(context, "提示",
+                    "对方已经邀请过你，是否接受？",
+                    "是", (dialog, which) -> mPresenter.matchInvite_accept(),
+                    "否", (dialog, which) -> {
+                    });
         }
     }
 }

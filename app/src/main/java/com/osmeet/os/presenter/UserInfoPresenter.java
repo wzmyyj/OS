@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.bean.User;
@@ -89,43 +90,57 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
         return getActivity().getIntent().getStringExtra("storeId");
     }
 
-    private int getMode() {
+    @Override
+    public int getMode() {
         return getActivity().getIntent().getIntExtra("mode", 0);
     }
 
     @Override
     public void matchInvite() {
         String storeId = getStoreId();
-        int mode = getMode();
-        if (mode == 0) {
-            matchModel.matchInvite(new PObserver<Box<MatchInvite>>() {
-                @Override
-                public void onNext(Box<MatchInvite> box) {
-                    if (box.getCode() != 0) {
-                        toast(box.getMessage());
-                        mView.showFail(1, box.getMessage());
-                        return;
-                    }
-                    if (box.getData() != null) {
-                        mView.showSuccess(1, box.getData());
-                    }
-                }
-            }, storeId, unitId);
-        }else{
-            matchModel.matchInvite_accept(new PObserver<Box<MatchTeam>>() {
-                @Override
-                public void onNext(Box<MatchTeam> box) {
-                    if (box.getCode() != 0) {
-                        toast(box.getMessage());
-                        mView.showFail(1, box.getMessage());
-                        return;
-                    }
-                    if (box.getData() != null) {
-                        goMatchBegin();
-                        mView.showSuccess(1, box.getData());
-                    }
-                }
-            },inviteId);
+        if (getMode() != 0) {
+            matchInvite_accept();
+            return;
         }
+        matchModel.matchInvite(new PObserver<Box<MatchInvite>>() {
+            @Override
+            public void onNext(Box<MatchInvite> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    mView.showFail(1, box.getMessage());
+                    return;
+                }
+                if (box.getData() != null) {
+                    if (box.getData().getMatchUnit().getUser().getId()
+                            .equals(App.getInstance().getMyInfo().getId())) {
+                        inviteId = box.getData().getId();
+                        mView.showSuccess(2, box.getData());
+                    } else {
+                        mView.showSuccess(1, box.getData());
+                    }
+
+                }
+            }
+        }, storeId, unitId);
     }
+
+    @Override
+    public void matchInvite_accept() {
+        matchModel.matchInvite_accept(new PObserver<Box<MatchTeam>>() {
+            @Override
+            public void onNext(Box<MatchTeam> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    mView.showFail(1, box.getMessage());
+                    return;
+                }
+                if (box.getData() != null) {
+                    goMatchBegin();
+                    finish();
+                }
+            }
+        }, inviteId);
+    }
+
+
 }

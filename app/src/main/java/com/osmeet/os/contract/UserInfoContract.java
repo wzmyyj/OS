@@ -30,8 +30,12 @@ public interface UserInfoContract {
 
         String getInviteId();
 
+        int getMode();
+
         void loadUserInfo();
 
         void matchInvite();
+
+        void matchInvite_accept();
     }
 }

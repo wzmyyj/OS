@@ -1,6 +1,9 @@
 package com.osmeet.os.view.panel;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.view.View;
 
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
@@ -31,5 +34,14 @@ public class InviteListRecyclerPanel extends BaseRecyclerPanel<MatchInvite.Group
         mPresenter.loadMatchInviteList();
     }
 
-
+    @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        super.onItemClick(view, holder, position);
+        String id = mData.get(position).getStore().getId();
+        if (!TextUtils.isEmpty(id)) {
+            mPresenter.goStore(id,1);
+        } else {
+            mPresenter.toast("Store Id is a empty value!");
+        }
+    }
 }
