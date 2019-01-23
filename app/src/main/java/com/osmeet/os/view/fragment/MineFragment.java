@@ -88,7 +88,7 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
 
     @OnClick(R.id.ll_menu_2)
     void menu_2() {
-        mPresenter.toast("menu 2");
+        mPresenter.goVisitCard();
     }
 
     @OnClick(R.id.ll_menu_3)
@@ -103,7 +103,7 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
 
     @OnClick(R.id.ll_menu_5)
     void menu_5() {
-        mPresenter.toast("menu 5");
+        mPresenter.goNewFriends();
     }
 
     @OnClick(R.id.ll_menu_6)

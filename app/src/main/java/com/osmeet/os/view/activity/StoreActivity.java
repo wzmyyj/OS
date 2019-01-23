@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.osmeet.os.R;
+import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchUnit;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.bean.User;
@@ -91,28 +92,11 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
     protected void initData() {
         super.initData();
         mPresenter.loadStoreInfo();
-        mPresenter.loadMatchUnitList();
-    }
-
-    @Override
-    protected void initListener() {
-        super.initListener();
-//        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                storeFrontPanel.whenSwitch(position);
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
+        if (mPresenter.getMode() == 0) {
+            mPresenter.loadMatchUnitList();
+        } else {
+            mPresenter.loadMatchInviteList(0);
+        }
     }
 
     @Override
@@ -126,19 +110,43 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
 
         mFragmentList.clear();
         mFragmentList.add(storeInfoFragment);
-        for (int i = 0; i < matchUnitList.size(); i++) {
-            UserInfoFragment userInfoFragment = new UserInfoFragment();
-            userInfoFragment.setUserId(matchUnitList.get(i).getUser().getId());
-            userInfoFragment.setUnitId(matchUnitList.get(i).getId());
-            mFragmentList.add(userInfoFragment);
-        }
-        mAdapter.notifyDataSetChanged();
 
         List<User> userList = new ArrayList<>();
         for (MatchUnit matchUnit : matchUnitList) {
+            UserInfoFragment userInfoFragment = new UserInfoFragment();
+            String userId = matchUnit.getUser().getId();
+            String unitId = matchUnit.getId();
+            userInfoFragment.setInit(userId, unitId, "");
+            mFragmentList.add(userInfoFragment);
+
             User user = matchUnit.getUser();
             userList.add(user);
         }
+        mAdapter.notifyDataSetChanged();
+
+        storeFrontPanel.setUserList(userList);
+    }
+
+    @Override
+    public void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList) {
+        mFragmentList.clear();
+        mFragmentList.add(storeInfoFragment);
+
+        List<User> userList = new ArrayList<>();
+
+        for (MatchInvite matchInvite : matchInviteList) {
+            UserInfoFragment userInfoFragment = new UserInfoFragment();
+            String userId = matchInvite.getMatchUnit().getUser().getId();
+            String unitId = matchInvite.getMatchUnit().getId();
+            String inviteId = matchInvite.getId();
+            userInfoFragment.setInit(userId, unitId, inviteId);
+            mFragmentList.add(userInfoFragment);
+
+            User user = matchInvite.getMatchUnit().getUser();
+            userList.add(user);
+        }
+        mAdapter.notifyDataSetChanged();
+
         storeFrontPanel.setUserList(userList);
     }
 

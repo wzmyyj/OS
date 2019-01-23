@@ -1,4 +1,4 @@
-package com.osmeet.os.view.fragment;
+package com.osmeet.os.view.activity;
 
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
@@ -13,11 +13,10 @@ import com.kongzue.dialog.v2.BottomMenu;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
-import com.osmeet.os.base.fragment.BaseFragment;
-import com.osmeet.os.contract.UserInfoContract;
-import com.osmeet.os.presenter.UserInfoPresenter;
-import com.osmeet.os.view.activity.StoreActivity;
-import com.osmeet.os.view.panel.UserInfoRecyclerPanel;
+import com.osmeet.os.base.activity.BaseActivity;
+import com.osmeet.os.contract.UserInfo2Contract;
+import com.osmeet.os.presenter.UserInfo2Presenter;
+import com.osmeet.os.view.panel.UserInfo2RecyclerPanel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,39 +24,23 @@ import java.util.List;
 import butterknife.BindView;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
-/**
- * Created by yyj on 2018/12/17. email: 2209011667@qq.com
- */
-
-public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> implements UserInfoContract.IView {
+public class UserInfo2Activity extends BaseActivity<UserInfo2Contract.IPresenter> implements UserInfo2Contract.IView {
     @Override
     protected void initPresenter() {
-        mPresenter = new UserInfoPresenter(activity, this);
+        mPresenter = new UserInfo2Presenter(activity, this);
     }
-
-
-    public void setInit(String userId, String unitId, String inviteId) {
-        this.userId = userId;
-        this.unitId = unitId;
-        this.inviteId = inviteId;
-    }
-
-    private String userId;
-    private String unitId;
-    private String inviteId;
-
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_panel;
+        return R.layout.activity_panel;
     }
 
-    UserInfoRecyclerPanel userInfoRecyclerPanel;
+    UserInfo2RecyclerPanel userInfo2RecyclerPanel;
 
     @Override
     protected void initPanels() {
         super.initPanels();
-        addPanels(userInfoRecyclerPanel = new UserInfoRecyclerPanel(context, mPresenter).inFragment(this));
+        addPanels(userInfo2RecyclerPanel = new UserInfo2RecyclerPanel(context, mPresenter));
     }
 
     @BindView(R.id.fl_panel)
@@ -69,7 +52,7 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
         setTopBar();
         fl_panel.addView(getPanelView(0));
         fl_panel.addView(mTopBar);
-        userInfoRecyclerPanel.bindView("v", ll_tap_bar);
+        userInfo2RecyclerPanel.bindView("v", ll_tap_bar);
     }
 
     private View mTopBar;
@@ -85,7 +68,7 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
         ll_tap_bar = mTopBar.findViewById(R.id.ll_top_abr);
         ll_tap_bar.setAlpha(0f);
         ImageView img_back = mTopBar.findViewById(R.id.img_back);
-        img_back.setOnClickListener(v -> ((StoreActivity) activity).setCurrentItem(0));
+        img_back.setOnClickListener(v -> mPresenter.finish());
         ImageView img_menu = mTopBar.findViewById(R.id.img_menu);
         img_menu.setOnClickListener(v -> {
             List<String> list = new ArrayList<>();
@@ -108,34 +91,16 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
     @Override
     protected void initData() {
         super.initData();
-        mPresenter.setUserId(userId);
-        mPresenter.setUnitId(unitId);
-        mPresenter.setInviteId(inviteId);
         mPresenter.loadUserInfo();
     }
 
     @Override
     public void showUserInfo(@NonNull User user) {
-        userInfoRecyclerPanel.setUser(user);
+        userInfo2RecyclerPanel.setUser(user);
         // bar
         WidgetUtil.setTextNonNull(tv_name_top, user.getUsername());
         if (user.getAvatar() != null)
             G.img(context, user.getAvatar().getUrl(), img_avatar_top);
     }
-
-    @Override
-    public void showFail(int what, Object... objects) {
-        super.showFail(what, objects);
-        if (what == 1) {
-            userInfoRecyclerPanel.showMatchSuccess(false);
-        }
-    }
-
-    @Override
-    public void showSuccess(int what, Object... objects) {
-        super.showSuccess(what, objects);
-        if (what == 1) {
-            userInfoRecyclerPanel.showMatchSuccess(true);
-        }
-    }
 }
+

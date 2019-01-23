@@ -19,8 +19,8 @@ import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
  * @author wzmyyj email: 2209011667@qq.com
  */
 
-public class UserIVD extends BaseIVD<User> {
-    public UserIVD(Context context) {
+public class UserInfoIVD extends BaseIVD<User> {
+    public UserInfoIVD(Context context) {
         super(context);
     }
 

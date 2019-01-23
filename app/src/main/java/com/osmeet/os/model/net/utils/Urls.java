@@ -51,7 +51,7 @@ public class Urls {
 
     // 好友。
     public static final String friends_get = "/friends";
-    public static final String friends_post = "/friends";
+    public static final String friends_add = "/friends";
     public static final String friends_del = "/friends";
     public static final String friends_agree = "/friends/agree";
     public static final String friends_block_get = "/friends/block";

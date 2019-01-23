@@ -7,8 +7,21 @@ package com.osmeet.os.app.bean;
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
  */
 
-public class RyToken {
+public class RcToken {
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public boolean isEmpty() {
+        return token == null || token.isEmpty();
+    }
+
+    private String token;
     private String additionalProp1;
     private String additionalProp2;
     private String additionalProp3;

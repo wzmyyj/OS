@@ -24,8 +24,8 @@ public interface FriendsService {
             @Query("pageNum") int pageNum,
             @Query("pageSize") int pageSize);
 
-    @POST(Urls.friends_post)
-    Observable<Box<String>> friends_post(
+    @POST(Urls.friends_add)
+    Observable<Box<String>> friends_add(
             @Query("userId") String userId,
             @Query("message") String message);
 

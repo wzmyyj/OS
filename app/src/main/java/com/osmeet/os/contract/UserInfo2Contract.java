@@ -3,7 +3,6 @@ package com.osmeet.os.contract;
 import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.User;
-import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
 
@@ -12,26 +11,15 @@ import com.osmeet.os.base.contract.IBaseView;
  * 用户资料。
  */
 
-public interface UserInfoContract {
+public interface UserInfo2Contract {
     interface IView extends IBaseView {
         void showUserInfo(@NonNull User user);
     }
 
-    interface IPresenter extends IBasePresenter, I.MatchBegin {
-        void setUserId(@NonNull String userId);
-
-        void setUnitId(@NonNull String unitId);
-
-        void setInviteId(@NonNull String inviteId);
-
-        String getUserId();
-
-        String getUnitId();
-
-        String getInviteId();
+    interface IPresenter extends IBasePresenter {
 
         void loadUserInfo();
 
-        void matchInvite();
+        void addFriend(@NonNull String message);
     }
 }

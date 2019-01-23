@@ -2,7 +2,7 @@ package com.osmeet.os.model.net;
 
 import android.text.TextUtils;
 
-import com.osmeet.os.app.bean.RyToken;
+import com.osmeet.os.app.bean.RcToken;
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.bean.WechatInfo;
@@ -66,8 +66,8 @@ public class UserModel {
         SubscribeUtil.io2main(observable, observer);
     }
 
-    public void user_getRyToken(Observer<Box<RyToken>> observer) {
-        Observable<Box<RyToken>> observable = getService().user_getRyToken();
+    public void user_getRyToken(Observer<Box<RcToken>> observer) {
+        Observable<Box<RcToken>> observable = getService().user_getRyToken();
         SubscribeUtil.io2main(observable, observer);
     }
 

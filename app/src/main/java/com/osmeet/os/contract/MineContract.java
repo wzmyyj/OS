@@ -15,7 +15,7 @@ import java.util.List;
  * 我的。
  */
 
-public interface MineContract {
+public interface MineContract extends LaunchContract{
 
     interface IView extends IBaseView {
         void showMyInfo(@NonNull User user);
@@ -24,7 +24,7 @@ public interface MineContract {
     }
 
     interface IPresenter extends IBasePresenter, I.UpdateInfo, I.Setting,
-            I.MatchList, I.TradeList, I.Wallet {
+            I.MatchList, I.TradeList, I.Wallet,I.NewFriends,I.VisitCard {
         void loadMyInfo();
 
         void freshMyInfo();

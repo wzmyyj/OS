@@ -2,6 +2,7 @@ package com.osmeet.os.contract;
 
 import android.support.annotation.NonNull;
 
+import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchUnit;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.base.contract.IBasePresenter;
@@ -20,13 +21,19 @@ public interface StoreContract {
         void showStoreInfo(@NonNull Store store);
 
         void showMatchUnitList(@NonNull List<MatchUnit> matchUnitList);
+
+        void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList);
     }
 
     interface IPresenter extends IBasePresenter {
 
+        int getMode();
+
         void loadStoreInfo();
 
         void loadMatchUnitList();
+
+        void loadMatchInviteList(int pageNum);
     }
 
 }

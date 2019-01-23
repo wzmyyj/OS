@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.osmeet.os.app.bean.MatchInvite;
+import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.UserInfoContract;
@@ -46,10 +47,21 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
         this.unitId = unitId;
     }
 
-
     @Override
     public String getUnitId() {
         return this.unitId;
+    }
+
+    private String inviteId;
+
+    @Override
+    public void setInviteId(@NonNull String inviteId) {
+        this.inviteId = inviteId;
+    }
+
+    @Override
+    public String getInviteId() {
+        return inviteId;
     }
 
     @Override
@@ -77,21 +89,43 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
         return getActivity().getIntent().getStringExtra("storeId");
     }
 
+    private int getMode() {
+        return getActivity().getIntent().getIntExtra("mode", 0);
+    }
+
     @Override
     public void matchInvite() {
         String storeId = getStoreId();
-        matchModel.matchInvite(new PObserver<Box<MatchInvite>>() {
-            @Override
-            public void onNext(Box<MatchInvite> box) {
-                if (box.getCode() != 0) {
-                    toast(box.getMessage());
-                    mView.showFail(1, box.getMessage());
-                    return;
+        int mode = getMode();
+        if (mode == 0) {
+            matchModel.matchInvite(new PObserver<Box<MatchInvite>>() {
+                @Override
+                public void onNext(Box<MatchInvite> box) {
+                    if (box.getCode() != 0) {
+                        toast(box.getMessage());
+                        mView.showFail(1, box.getMessage());
+                        return;
+                    }
+                    if (box.getData() != null) {
+                        mView.showSuccess(1, box.getData());
+                    }
                 }
-                if (box.getData() != null) {
-                    mView.showSuccess(1, box.getData());
+            }, storeId, unitId);
+        }else{
+            matchModel.matchInvite_accept(new PObserver<Box<MatchTeam>>() {
+                @Override
+                public void onNext(Box<MatchTeam> box) {
+                    if (box.getCode() != 0) {
+                        toast(box.getMessage());
+                        mView.showFail(1, box.getMessage());
+                        return;
+                    }
+                    if (box.getData() != null) {
+                        goMatchBegin();
+                        mView.showSuccess(1, box.getData());
+                    }
                 }
-            }
-        }, storeId, unitId);
+            },inviteId);
+        }
     }
 }

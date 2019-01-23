@@ -5,16 +5,17 @@ import android.support.annotation.NonNull;
 
 import com.igexin.sdk.PushManager;
 import com.kongzue.dialog.v2.DialogSettings;
-import com.osmeet.os.BuildConfig;
+import com.osmeet.os.app.bean.RcToken;
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.GP;
+import com.osmeet.os.assembly.service.PushIntentService;
+import com.osmeet.os.assembly.service.PushService;
 import com.osmeet.os.base.application.BaseApplication;
 import com.osmeet.os.model.net.utils.ReOk;
 import com.osmeet.os.model.net.utils.Urls;
-import com.osmeet.os.service.PushIntentService;
-import com.osmeet.os.service.PushService;
 
+import io.rong.imkit.RongIM;
 import top.wzmyyj.wzm_sdk.tools.L;
 import top.wzmyyj.wzm_sdk.utils.PackageUtil;
 
@@ -30,6 +31,7 @@ public class App extends BaseApplication {
 
     private UserManager userManager;
     private SettingManager settingManager;
+    private RcManager rcManager;
 
     @Override
     public void onCreate() {
@@ -41,13 +43,15 @@ public class App extends BaseApplication {
         app = this;
         userManager = UserManager.getInstance(this);
         settingManager = SettingManager.getInstance(this);
+        rcManager = RcManager.getInstance(this);
 
         setDialog();
-        GP.init(BuildConfig.APPLICATION_ID + ".FileProvider", "/OsMeet/images");
+        GP.init("provider.GPFileProvider", "/OsMeet/images");
 
-
+        RongIM.init(this.getApplicationContext());
         PushManager.getInstance().initialize(this.getApplicationContext(), PushService.class);
         PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), PushIntentService.class);
+
     }
 
 
@@ -68,11 +72,24 @@ public class App extends BaseApplication {
         }
     }
 
+    public void setRcToken(RcToken rcToken) {
+        rcManager.setmRcToken(rcToken);
+    }
+
+    public RcToken getRcToken() {
+        return rcManager.getmRcToken();
+    }
+
+    public void connectRc() {
+        rcManager.connect();
+    }
+
     public void clearToken() {
         if (userManager.getMyInfo() != null) {
             PushManager.getInstance().unBindAlias(this, userManager.getMyInfo().getId(), false);
         }
         userManager.clearToken();
+        rcManager.clearToken();
     }
 
     public void setMyInfo(User user) {

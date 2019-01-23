@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.SearchContract;
@@ -13,5 +14,15 @@ public class SearchPresenter extends BasePresenter<SearchContract.IView> impleme
 
     public SearchPresenter(Activity activity, SearchContract.IView iv) {
         super(activity, iv);
+    }
+
+    @Override
+    public void searchUser(@NonNull String word, int pageNum) {
+
+    }
+
+    @Override
+    public void searchStore(@NonNull String word, int pageNum) {
+
     }
 }

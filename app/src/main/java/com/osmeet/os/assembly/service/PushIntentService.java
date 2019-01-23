@@ -1,4 +1,4 @@
-package com.osmeet.os.service;
+package com.osmeet.os.assembly.service;
 
 import android.content.Context;
 

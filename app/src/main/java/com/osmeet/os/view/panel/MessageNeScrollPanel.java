@@ -24,7 +24,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import top.wzmyyj.wzm_sdk.adapter.ivh.IvdVhHelper;
+import top.wzmyyj.wzm_sdk.helper.IvdVhHelper;
 
 
 /**

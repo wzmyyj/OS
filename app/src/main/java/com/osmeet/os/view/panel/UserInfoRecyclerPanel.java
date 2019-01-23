@@ -16,7 +16,7 @@ import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.UserInfoContract;
 import com.osmeet.os.view.adapter.ivd.PhotoStoryIVD;
-import com.osmeet.os.view.adapter.ivd.UserIVD;
+import com.osmeet.os.view.adapter.ivd.UserInfoIVD;
 import com.osmeet.os.view.panel.bean.PhotoStory;
 import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
 
@@ -24,7 +24,7 @@ import java.util.List;
 
 import top.wzmyyj.wzm_sdk.activity.PanelActivity;
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
-import top.wzmyyj.wzm_sdk.adapter.ivh.IvdVhHelper;
+import top.wzmyyj.wzm_sdk.helper.IvdVhHelper;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
@@ -120,12 +120,11 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
         mHeader = mInflater.inflate(R.layout.layout_user_info_header, null);
 
         ivdVhHelper = new IvdVhHelper(context,
-                new UserIVD(context),
+                new UserInfoIVD(context),
                 mHeader.findViewById(R.id.ll_user_info));
 
         tv_user_score = mHeader.findViewById(R.id.tv_user_score);
 
-        img_b_1 = mHeader.findViewById(R.id.img_b_1);
         img_image = mHeader.findViewById(R.id.img_image);
         img_image.getLayoutParams().height = MockUtil.getScreenWidth(context);
         img_image.requestLayout();

@@ -1,7 +1,6 @@
 package com.osmeet.os.view.activity;
 
 import android.os.Bundle;
-import android.os.Handler;
 
 import com.osmeet.os.R;
 import com.osmeet.os.base.activity.BaseActivity;
@@ -30,24 +29,14 @@ public class LaunchActivity extends BaseActivity<LaunchContract.IPresenter> impl
         super.initSome(savedInstanceState);
         mPresenter.checkPermission();
         mPresenter.init();
+
     }
 
 
     @Override
     protected void initEvent() {
         super.initEvent();
-        long delayMillis = mPresenter.delayMillis();
-        mHandler.postDelayed(mRunnable, delayMillis);
+        mPresenter.go();
     }
-
-    private Handler mHandler = new Handler();
-    private Runnable mRunnable = () -> mPresenter.go();
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mHandler.removeCallbacks(mRunnable);
-    }
-
 }
 

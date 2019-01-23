@@ -3,18 +3,19 @@ package com.osmeet.os.view.panel;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.kongzue.dialog.v2.InputDialog;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.FileInfo;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
-import com.osmeet.os.contract.MineContract;
+import com.osmeet.os.contract.UserInfo2Contract;
 import com.osmeet.os.view.adapter.ivd.PhotoStoryIVD;
 import com.osmeet.os.view.adapter.ivd.UserInfoIVD;
 import com.osmeet.os.view.panel.bean.PhotoStory;
@@ -32,8 +33,8 @@ import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
  * Created by yyj on 2018/12/11. email: 2209011667@qq.com
  */
 
-public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineContract.IPresenter> {
-    public MineInfoRecyclerPanel(Context context, MineContract.IPresenter iPresenter) {
+public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInfo2Contract.IPresenter> {
+    public UserInfo2RecyclerPanel(Context context, UserInfo2Contract.IPresenter iPresenter) {
         super(context, iPresenter);
     }
 
@@ -45,8 +46,7 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
 
     @Override
     public void update() {
-        mPresenter.freshMyInfo();
-        mPresenter.loadMyStoreList();
+        mPresenter.loadUserInfo();
     }
 
 
@@ -55,14 +55,13 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
         super.initView();
         // 消除mRecyclerView刷新的动画。
         ((SimpleItemAnimator) mRecyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
-//        setTopBar();
     }
+
 
     @Override
     protected void initListener() {
         super.initListener();
-        mRecyclerView.addOnScrollListener(
-                new AlphaReScrollListener(context, this::barAlpha));
+        mRecyclerView.addOnScrollListener(new AlphaReScrollListener(context, this::barAlpha));
     }
 
     private void barAlpha(float alpha) {
@@ -72,11 +71,6 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
         }
     }
 
-    @Override
-    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-        super.onItemClick(view, holder, position);
-
-    }
 
     public void setUser(@NonNull User user) {
         // header
@@ -91,8 +85,7 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
             if (user.getAvatar() != null)
                 G.img(context, user.getAvatar().getUrl(), img_image);
         }
-
-
+        // data
         mData.clear();
         for (int i = 0; i < 100; i++) {
             mData.add(new PhotoStory());
@@ -100,6 +93,7 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
 
         notifyDataSetChanged();
     }
+
 
     private TextView tv_user_score;
     private ImageView img_image;
@@ -110,7 +104,7 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
     @Override
     protected void setHeader() {
         super.setHeader();
-        mHeader = mInflater.inflate(R.layout.layout_mine_info_header, null);
+        mHeader = mInflater.inflate(R.layout.layout_user_info_header, null);
 
         ivdVhHelper = new IvdVhHelper(context,
                 new UserInfoIVD(context),
@@ -122,10 +116,23 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
         img_image.getLayoutParams().height = MockUtil.getScreenWidth(context);
         img_image.requestLayout();
 
-        TextView tv_update = mHeader.findViewById(R.id.tv_update);
-        tv_update.setOnClickListener(v -> mPresenter.goUpdateInfo());
-
+        mHeader.findViewById(R.id.img_b_1).setVisibility(View.GONE);
+        mHeader.findViewById(R.id.tv_add_friends).setVisibility(View.VISIBLE);
+        mHeader.findViewById(R.id.tv_add_friends)
+                .setOnClickListener(v -> addFriends());
     }
+
+    private void addFriends() {
+        InputDialog.show(context, "添加好友", "向新朋友问候",
+                "提交", (dialog, inputText) -> {
+                    if (TextUtils.isEmpty(inputText)) return;
+                    mPresenter.addFriend(inputText);
+                    dialog.dismiss();
+                }, "取消", (dialog, which) -> {
+                    mPresenter.toast("取消！");
+                });
+    }
+
 
     @SuppressLint("InflateParams")
     @Override
@@ -133,6 +140,5 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
         super.setFooter();
         mFooter = mInflater.inflate(R.layout.layout_footer, null);
     }
-
 
 }

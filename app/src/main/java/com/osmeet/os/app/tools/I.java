@@ -3,10 +3,12 @@ package com.osmeet.os.app.tools;
 import android.content.Context;
 import android.content.Intent;
 
+import com.osmeet.os.base.contract.ip.IContext;
 import com.osmeet.os.view.activity.AdActivity;
 import com.osmeet.os.view.activity.CameraActivity;
 import com.osmeet.os.view.activity.ChatActivity;
 import com.osmeet.os.view.activity.ChatInviteActivity;
+import com.osmeet.os.view.activity.FriendsActivity;
 import com.osmeet.os.view.activity.GoodsActivity;
 import com.osmeet.os.view.activity.GoodsBuyActivity;
 import com.osmeet.os.view.activity.GuideActivity;
@@ -26,10 +28,9 @@ import com.osmeet.os.view.activity.StoreActivity;
 import com.osmeet.os.view.activity.TradeActivity;
 import com.osmeet.os.view.activity.TradeListActivity;
 import com.osmeet.os.view.activity.UpdateInfoActivity;
+import com.osmeet.os.view.activity.UserInfo2Activity;
 import com.osmeet.os.view.activity.VisitCardActivity;
 import com.osmeet.os.view.activity.WalletActivity;
-
-import com.osmeet.os.base.contract.ip.IContext;
 
 /**
  * Created by yyj on 2018/10/30. email: 2209011667@qq.com
@@ -116,16 +117,22 @@ public class I {
         }
     }
 
-    public static void goStoreActivity(Context context, String storeId) {
+    public static void goStoreActivity(Context context, String storeId, int mode) {
         Intent intent = new Intent(context, StoreActivity.class);
         intent.putExtra("storeId", storeId);
+        intent.putExtra("mode", mode);
         context.startActivity(intent);
     }
 
     public interface Store extends IContext {
+        default void goStore(String storeId, int mode) {
+            if (getContext() != null)
+                goStoreActivity(getContext(), storeId, mode);
+        }
+
         default void goStore(String storeId) {
             if (getContext() != null)
-                goStoreActivity(getContext(), storeId);
+                goStoreActivity(getContext(), storeId, 0);
         }
     }
 
@@ -371,6 +378,30 @@ public class I {
         default void goAMap(String uri) {
             if (getContext() != null)
                 goAMapApp(getContext(), uri);
+        }
+    }
+
+    public static void goFriendsActivity(Context context) {
+        Intent intent = new Intent(context, FriendsActivity.class);
+        context.startActivity(intent);
+    }
+
+    public interface Friends extends IContext {
+        default void goFriends() {
+            if (getContext() != null)
+                goFriendsActivity(getContext());
+        }
+    }
+
+    public static void goUserInfo2Activity(Context context, String userId) {
+        Intent intent = new Intent(context, UserInfo2Activity.class);
+        context.startActivity(intent);
+    }
+
+    public interface UserInfo2 extends IContext {
+        default void goUserInfo2(String userId) {
+            if (getContext() != null)
+                goUserInfo2Activity(getContext(), userId);
         }
     }
 

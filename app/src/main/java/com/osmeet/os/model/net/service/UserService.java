@@ -1,6 +1,6 @@
 package com.osmeet.os.model.net.service;
 
-import com.osmeet.os.app.bean.RyToken;
+import com.osmeet.os.app.bean.RcToken;
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.bean.WechatInfo;
@@ -50,7 +50,7 @@ public interface UserService {
             @Body User user);
 
     @POST(Urls.user_getRyToken)
-    Observable<Box<RyToken>> user_getRyToken();
+    Observable<Box<RcToken>> user_getRyToken();
 
     @POST(Urls.user_getUserList)
     Observable<Box<List<User>>> user_getUserList(

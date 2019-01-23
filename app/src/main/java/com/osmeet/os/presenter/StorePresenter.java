@@ -3,6 +3,7 @@ package com.osmeet.os.presenter;
 import android.app.Activity;
 import android.text.TextUtils;
 
+import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchUnit;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.base.presenter.BasePresenter;
@@ -11,6 +12,7 @@ import com.osmeet.os.model.net.MatchModel;
 import com.osmeet.os.model.net.StoreModel;
 import com.osmeet.os.model.net.utils.box.Box;
 import com.osmeet.os.model.net.utils.box.ConditionBody;
+import com.osmeet.os.model.net.utils.box.ListContent;
 
 import java.util.List;
 
@@ -29,6 +31,11 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
         matchModel = new MatchModel();
     }
 
+
+    @Override
+    public int getMode() {
+        return getActivity().getIntent().getIntExtra("mode", 0);
+    }
 
     @Override
     public void loadStoreInfo() {
@@ -73,6 +80,7 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
             toast("Store Id is a empty value!");
             return;
         }
+
         matchModel.matchUnit_getMatchsInStore(new PObserver<Box<List<MatchUnit>>>() {
             @Override
             public void onNext(Box<List<MatchUnit>> box) {
@@ -85,6 +93,27 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
                 }
             }
         }, storeId, ConditionBody.defaultCondition());
+    }
+
+    @Override
+    public void loadMatchInviteList(int pageNum) {
+        String storeId = getActivity().getIntent().getStringExtra("storeId");
+        if (TextUtils.isEmpty(storeId)) {
+            toast("Store Id is a empty value!");
+            return;
+        }
+        matchModel.matchInvite_geBeInvitedByStore(new PObserver<Box<ListContent<MatchInvite>>>() {
+            @Override
+            public void onNext(Box<ListContent<MatchInvite>> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                if (box.getData() != null) {
+                    mView.showMatchInviteList(box.getData().getContent());
+                }
+            }
+        }, storeId, pageNum, 100);
     }
 
 

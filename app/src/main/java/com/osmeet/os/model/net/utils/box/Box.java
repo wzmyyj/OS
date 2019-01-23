@@ -40,4 +40,9 @@ public class Box<T> {
         return data;
     }
 
+
+    public static <B> void check(Box<B> box) {
+
+    }
+
 }

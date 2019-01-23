@@ -26,8 +26,8 @@ public class FriendsModel {
         SubscribeUtil.io2main(observable, observer);
     }
 
-    public void friends_post(Observer<Box<String>> observer, String userId, String message) {
-        Observable<Box<String>> observable = getService().friends_post(userId, message);
+    public void friends_add(Observer<Box<String>> observer, String userId, String message) {
+        Observable<Box<String>> observable = getService().friends_add(userId, message);
         SubscribeUtil.io2main(observable, observer);
     }
 

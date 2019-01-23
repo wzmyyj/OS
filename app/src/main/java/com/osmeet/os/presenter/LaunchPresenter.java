@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.os.Handler;
 
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.base.presenter.BasePresenter;
@@ -26,8 +27,8 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
         App.getInstance().setMyInfo(null);
     }
 
-    @Override
-    public long delayMillis() {
+
+    private long delayMillis() {
         if (App.getInstance().getSetting().isOnce()) {
             return 1000;
         } else if (App.getInstance().getSetting().isAd()) {
@@ -37,9 +38,7 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
         }
     }
 
-
-    @Override
-    public void go() {
+    private void goTo() {
         if (App.getInstance().getSetting().isOnce()) {
             goGuide();// 前往引导页。
         } else if (App.getInstance().getSetting().isAd()) {
@@ -49,4 +48,11 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
         }
         finish(mView.FINISH_FADE_IN_OUT);
     }
+
+    @Override
+    public void go() {
+        new Handler().postDelayed(this::goTo, delayMillis());
+    }
+
+
 }

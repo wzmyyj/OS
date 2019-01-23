@@ -3,23 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.osmeet.os">
 
-    <!--允许程序设置内置sd卡的读权限-->
+    <!-- 允许程序设置内置sd卡的读权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!--打开相机-->
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <!--允许程序打开网络套接字-->
+    <!-- 打开相机 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 允许程序打开网络套接字 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--允许程序设置内置sd卡的写权限-->
+    <!-- 允许程序设置内置sd卡的写权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--允许程序获取网络状态-->
+    <!-- 允许程序获取网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--允许程序访问WiFi网络信息-->
+    <!-- 允许程序访问WiFi网络信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--允许程序读写手机状态和身份-->
+    <!-- 允许程序读写手机状态和身份 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!--允许程序访问FINE来获取粗略的位置-->
+    <!-- 允许程序访问FINE来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <!-- iBeancon功能所需权限 -->
@@ -38,8 +38,8 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
         <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="${applicationId}.FileProvider"
+            android:name=".assembly.provider.GPFileProvider"
+            android:authorities="provider.GPFileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -47,21 +47,30 @@
                 android:resource="@xml/file_path" />
         </provider>
 
-
-        <!--高德地图开发者申请的key-->
+        <!-- 高德地图开发者申请的key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="5e0bc70116ada6769679b8fc018fd371" />
 
         <service android:name="com.amap.api.location.APSService" />
 
+        <provider
+            android:name=".assembly.provider.RcFileProvider"
+            android:authorities="com.osmeet.os.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/rc_file_path" />
+        </provider>
+
         <service
-            android:name=".service.PushService"
+            android:name=".assembly.service.PushService"
             android:exported="true"
             android:label="PushService"
-            android:process=":pushservice"
-            android:permission="1" />
-        <service android:name=".service.PushIntentService"/>
+            android:permission="1"
+            android:process=":pushservice" />
+        <service android:name=".assembly.service.PushIntentService" />
 
         <activity android:name=".view.activity.LaunchActivity">
             <intent-filter>
@@ -97,6 +106,8 @@
         <activity android:name=".view.activity.ChatInviteActivity" />
         <activity android:name=".view.activity.ScanActivity" />
         <activity android:name=".view.activity.VisitCardActivity" />
+        <activity android:name=".view.activity.FriendsActivity" />
+        <activity android:name=".view.activity.UserInfo2Activity"></activity>
     </application>
 
 </manifest>
