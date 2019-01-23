@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.FileInfo;
@@ -23,8 +24,9 @@ import java.util.List;
 
 import top.wzmyyj.wzm_sdk.activity.PanelActivity;
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
-import top.wzmyyj.wzm_sdk.adapter.ivh.IvdViewHolder;
+import top.wzmyyj.wzm_sdk.adapter.ivh.IvdVhHelper;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 
 /**
@@ -84,7 +86,9 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
 
     public void setUser(@NonNull User user) {
         // header
-        ivdViewHolder.convert(user);
+        ivdVhHelper.convert(user);
+
+        WidgetUtil.setTextNumber(tv_user_score, user.getCreditScore());
 
         List<FileInfo> images = user.getImages();
         if (images != null && images.size() > 0) {
@@ -103,10 +107,11 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
     }
 
 
+    private TextView tv_user_score;
     private ImageView img_b_1;
     private ImageView img_image;
 
-    private IvdViewHolder ivdViewHolder;
+    private IvdVhHelper ivdVhHelper;
 
     @SuppressLint("InflateParams")
     @Override
@@ -114,10 +119,11 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
         super.setHeader();
         mHeader = mInflater.inflate(R.layout.layout_user_info_header, null);
 
-        ivdViewHolder = new IvdViewHolder(context,
+        ivdVhHelper = new IvdVhHelper(context,
                 new UserIVD(context),
-                mHeader.findViewById(R.id.fl_ivd),
-                mHeader.findViewById(R.id.tv_user_score));
+                mHeader.findViewById(R.id.ll_user_info));
+
+        tv_user_score = mHeader.findViewById(R.id.tv_user_score);
 
         img_b_1 = mHeader.findViewById(R.id.img_b_1);
         img_image = mHeader.findViewById(R.id.img_image);

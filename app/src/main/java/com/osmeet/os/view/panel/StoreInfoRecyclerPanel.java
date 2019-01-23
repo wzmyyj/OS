@@ -2,7 +2,6 @@ package com.osmeet.os.view.panel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,12 +19,11 @@ import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.StoreInfoContract;
+import com.osmeet.os.view.adapter.GoodsAdapter;
 import com.osmeet.os.view.adapter.ivd.PhotoStoryIVD;
 import com.osmeet.os.view.panel.bean.PhotoStory;
 import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
-import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,7 +130,7 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
     private ImageView img_image;
 
     private List<Goods> mGoodsList;
-    private CommonAdapter mAdapter;
+    private MultiItemTypeAdapter mAdapter;
     private TextView tv_no_goods;
 
     @SuppressLint("InflateParams")
@@ -177,23 +175,7 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
         rv_goods.setRecycledViewPool(viewPool);
         rv_goods.setLayoutManager(new LinearLayoutManager(context, LinearLayout.HORIZONTAL, false));
         mGoodsList = new ArrayList<>();
-        rv_goods.setAdapter(mAdapter = new CommonAdapter<Goods>(context, R.layout.layout_store_goods_item, mGoodsList) {
-
-            @Override
-            protected void convert(ViewHolder holder, Goods goods, int position) {
-                TextView tv_goods_name = holder.getView(R.id.tv_goods_name);
-                TextView tv_goods_price = holder.getView(R.id.tv_goods_price);
-                TextView tv_goods_price_old = holder.getView(R.id.tv_goods_price_old);
-                ImageView img_goods = holder.getView(R.id.img_goods);
-                tv_goods_price_old.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-                WidgetUtil.setTextNonNull(tv_goods_name, goods.getName());
-                WidgetUtil.setTextPrice(tv_goods_price, "￥", goods.getDiscountPrice());
-                WidgetUtil.setTextPrice(tv_goods_price_old, "￥", goods.getOriginalPrice());
-                if (goods.getImages() != null && goods.getImages().size() > 0) {
-                    G.img(context, goods.getImages().get(0).getUrl(), img_goods);
-                }
-            }
-        });
+        rv_goods.setAdapter(mAdapter = new GoodsAdapter(context,mGoodsList));
         mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {

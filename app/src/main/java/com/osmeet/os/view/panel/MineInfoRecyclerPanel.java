@@ -23,8 +23,9 @@ import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
 import java.util.List;
 
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
-import top.wzmyyj.wzm_sdk.adapter.ivh.IvdViewHolder;
+import top.wzmyyj.wzm_sdk.adapter.ivh.IvdVhHelper;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 
 /**
@@ -79,7 +80,9 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
 
     public void setUser(@NonNull User user) {
         // header
-        ivdViewHolder.convert(user);
+        ivdVhHelper.convert(user);
+
+        WidgetUtil.setTextNumber(tv_user_score, user.getCreditScore());
 
         List<FileInfo> images = user.getImages();
         if (images != null && images.size() > 0) {
@@ -98,9 +101,10 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
         notifyDataSetChanged();
     }
 
+    private TextView tv_user_score;
     private ImageView img_image;
 
-    private IvdViewHolder ivdViewHolder;
+    private IvdVhHelper ivdVhHelper;
 
     @SuppressLint("InflateParams")
     @Override
@@ -108,10 +112,11 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
         super.setHeader();
         mHeader = mInflater.inflate(R.layout.layout_mine_info_header, null);
 
-        ivdViewHolder = new IvdViewHolder(context,
+        ivdVhHelper = new IvdVhHelper(context,
                 new UserIVD(context),
-                mHeader.findViewById(R.id.fl_ivd),
-                mHeader.findViewById(R.id.tv_user_score));
+                mHeader.findViewById(R.id.ll_user_info));
+
+        tv_user_score = mHeader.findViewById(R.id.tv_user_score);
 
         img_image = mHeader.findViewById(R.id.img_image);
         img_image.getLayoutParams().height = MockUtil.getScreenWidth(context);

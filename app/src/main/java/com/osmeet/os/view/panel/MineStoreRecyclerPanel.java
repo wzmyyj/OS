@@ -98,11 +98,7 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
         notifyDataSetChanged();
     }
 
-//    public void setGoodsList(@NonNull List<Goods> goodsList) {
-//        mGoodsList.clear();
-//        mGoodsList.addAll(goodsList);
-//        mAdapter.notifyDataSetChanged();
-//    }
+
 
     private ImageView img_store_avatar;
     private TextView tv_store_name;
@@ -111,8 +107,7 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
     private TextView tv_store_introduce;
     private ImageView img_image;
 
-//    private List<Goods> mGoodsList;
-//    private CommonAdapter mAdapter;
+
 
     @SuppressLint("InflateParams")
     @Override
@@ -139,34 +134,7 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
 
         });
 
-        // 商品。
-//        RecyclerView rv_goods = mHeader.findViewById(R.id.rv_goods);
-//        rv_goods.setLayoutManager(new LinearLayoutManager(context, LinearLayout.HORIZONTAL, false));
-//        mGoodsList = new ArrayList<>();
-//        rv_goods.setAdapter(mAdapter = new CommonAdapter<Goods>(context, R.layout.layout_store_goods_item, mGoodsList) {
-//
-//            @Override
-//            protected void convert(ViewHolder holder, Goods goods, int position) {
-//                TextView tv_goods_name = holder.getView(R.id.tv_goods_name);
-//                TextView tv_goods_price = holder.getView(R.id.tv_goods_price);
-//                TextView tv_goods_price_old = holder.getView(R.id.tv_goods_price_old);
-//                tv_goods_price_old.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-//                WidgetUtil.setTextNonNull(tv_goods_name, goods.getName());
-//                WidgetUtil.setTextNonNull(tv_goods_price, "￥" + goods.getDiscountPrice());
-//                WidgetUtil.setTextNonNull(tv_goods_price_old, "￥" + goods.getDiscountPrice());
-//            }
-//        });
-//        mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-//
-//            }
-//
-//            @Override
-//            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
-//                return false;
-//            }
-//        });
+
     }
 
     @SuppressLint("InflateParams")

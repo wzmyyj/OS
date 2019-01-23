@@ -76,12 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp">
 
-        <FrameLayout
-            android:id="@+id/fl_ivd"
-            android:layout_width="match_parent"
-            android:layout_height="80dp">
-
-        </FrameLayout>
+        <include layout="@layout/layout_invite_item" />
 
         <LinearLayout
             android:id="@+id/ll_invite_empty"

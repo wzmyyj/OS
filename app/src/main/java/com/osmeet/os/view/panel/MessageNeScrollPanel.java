@@ -24,7 +24,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import top.wzmyyj.wzm_sdk.adapter.ivh.IvdViewHolder;
+import top.wzmyyj.wzm_sdk.adapter.ivh.IvdVhHelper;
 
 
 /**
@@ -61,7 +61,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         rv_list.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         rv_list.setAdapter(mAdapter = new MatchTeamAdapter(context, mData));
 
-        ivdViewHolder = new IvdViewHolder(context, new InviteGroupIVD(context), fl_ivd);
+        ivdVhHelper = new IvdVhHelper(context, new InviteGroupIVD(context), ll_invite);
     }
 
     @Override
@@ -105,24 +105,24 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
     }
 
 
-    @OnClick(R.id.fl_ivd)
+    @OnClick(R.id.ll_invite)
     void go_invite() {
         mPresenter.goInviteList();
     }
 
-    @BindView(R.id.fl_ivd)
-    FrameLayout fl_ivd;
+    @BindView(R.id.ll_invite)
+    LinearLayout ll_invite;
     @BindView(R.id.ll_invite_empty)
     LinearLayout ll_invite_empty;
 
-    private IvdViewHolder ivdViewHolder;
+    private IvdVhHelper ivdVhHelper;
 
     public void setMatchInviteGroup(MatchInvite.Group group) {
         if (group == null) {
             ll_invite_empty.setVisibility(View.VISIBLE);
         } else {
             ll_invite_empty.setVisibility(View.GONE);
-            ivdViewHolder.convert(group);
+            ivdVhHelper.convert(group);
         }
     }
 }

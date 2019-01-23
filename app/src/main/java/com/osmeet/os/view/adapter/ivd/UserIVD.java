@@ -38,7 +38,6 @@ public class UserIVD extends BaseIVD<User> {
         TextView tv_user_job = holder.getView(R.id.tv_user_job);
         TextView tv_user_school = holder.getView(R.id.tv_user_school);
         TextView tv_user_signature = holder.getView(R.id.tv_user_signature);
-        TextView tv_user_score = holder.getView(R.id.tv_user_score);
 
         if (user.getAvatar() != null)
             G.img(context, user.getAvatar().getUrl(), img_user_avatar);
@@ -49,7 +48,5 @@ public class UserIVD extends BaseIVD<User> {
         WidgetUtil.setTextOrGone(tv_user_school, user.getSchool());
         WidgetUtil.setTextNonNull(tv_user_signature, user.getSignature());
 
-        if (tv_user_score != null)
-            WidgetUtil.setTextNumber(tv_user_score, user.getCreditScore());
     }
 }

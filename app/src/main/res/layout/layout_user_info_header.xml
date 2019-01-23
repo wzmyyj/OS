@@ -8,12 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
-    <FrameLayout
-        android:id="@+id/fl_ivd"
-        android:layout_width="match_parent"
-        android:layout_height="105dp">
-
-    </FrameLayout>
+    <include layout="@layout/layout_user_info" />
 
 
     <LinearLayout
