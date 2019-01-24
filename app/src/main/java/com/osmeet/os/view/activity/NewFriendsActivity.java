@@ -7,17 +7,17 @@ import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Friend;
 import com.osmeet.os.base.activity.BaseActivity;
 import com.osmeet.os.contract.NewFriendListContract;
-import com.osmeet.os.presenter.NewFriendListPresenter;
-import com.osmeet.os.view.panel.NewFriendListRecyclerPanel;
+import com.osmeet.os.presenter.NewFriendsPresenter;
+import com.osmeet.os.view.panel.NewFriendsRecyclerPanel;
 
 import java.util.List;
 
 import butterknife.BindView;
 
-public class NewFriendListActivity extends BaseActivity<NewFriendListContract.IPresenter> implements NewFriendListContract.IView {
+public class NewFriendsActivity extends BaseActivity<NewFriendListContract.IPresenter> implements NewFriendListContract.IView {
     @Override
     protected void initPresenter() {
-        mPresenter = new NewFriendListPresenter(activity, this);
+        mPresenter = new NewFriendsPresenter(activity, this);
     }
 
     @Override
@@ -26,13 +26,13 @@ public class NewFriendListActivity extends BaseActivity<NewFriendListContract.IP
     }
 
 
-    NewFriendListRecyclerPanel newFriendListRecyclerPanel;
+    NewFriendsRecyclerPanel newFriendsRecyclerPanel;
 
     @Override
     protected void initPanels() {
         super.initPanels();
         addPanels(
-                newFriendListRecyclerPanel = new NewFriendListRecyclerPanel(context, mPresenter)
+                newFriendsRecyclerPanel = new NewFriendsRecyclerPanel(context, mPresenter)
         );
     }
 
@@ -53,12 +53,12 @@ public class NewFriendListActivity extends BaseActivity<NewFriendListContract.IP
 
     @Override
     public void showNewFriendList(@NonNull List<Friend> friendList, int pageNum) {
-        newFriendListRecyclerPanel.setDataList(friendList, pageNum);
+        newFriendsRecyclerPanel.setDataList(friendList, pageNum);
     }
 
     @Override
     public void showAgreeNewFriend(@NonNull String userId) {
-        newFriendListRecyclerPanel.agreeSuccess(userId);
+        newFriendsRecyclerPanel.agreeSuccess(userId);
     }
 }
 

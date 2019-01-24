@@ -17,11 +17,11 @@ import org.greenrobot.eventbus.EventBus;
  * Created by yyj on 2019/01/03. email: 2209011667@qq.com
  */
 
-public class NewFriendListPresenter extends BasePresenter<NewFriendListContract.IView> implements NewFriendListContract.IPresenter {
+public class NewFriendsPresenter extends BasePresenter<NewFriendListContract.IView> implements NewFriendListContract.IPresenter {
 
     private FriendModel friendModel;
 
-    public NewFriendListPresenter(Activity activity, NewFriendListContract.IView iv) {
+    public NewFriendsPresenter(Activity activity, NewFriendListContract.IView iv) {
         super(activity, iv);
         friendModel = new FriendModel();
     }

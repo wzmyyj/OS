@@ -12,10 +12,12 @@ public interface InviteFriendsContract {
 
     interface IView extends IBaseView {
 
+//        void showFriendList(@NonNull List<User> userList, int pageNum);
     }
 
-    interface IPresenter extends IBasePresenter{
+    interface IPresenter extends IBasePresenter {
 
+//        void loadFriendList(int pageNum);
     }
 
 }

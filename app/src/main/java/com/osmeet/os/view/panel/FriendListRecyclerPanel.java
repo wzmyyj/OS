@@ -70,6 +70,6 @@ public class FriendListRecyclerPanel extends BaseRecyclerPanel<User, FriendListC
         G.img(context, R.mipmap.ic_menu_add_friends, img_avatar);
         WidgetUtil.setTextNonNull(tv_name, context.getString(R.string.new_friends));
         WidgetUtil.setTextColor(tv_desc, R.color.colorPay);
-        mHeader.setOnClickListener(v -> mPresenter.goNewFriendList());
+        mHeader.setOnClickListener(v -> mPresenter.goNewFriends());
     }
 }

@@ -20,8 +20,8 @@ import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
  * @author wzmyyj email: 2209011667@qq.com
  */
 
-public class NewFriendListRecyclerPanel extends BaseRecyclerPanel<Friend, NewFriendListContract.IPresenter> {
-    public NewFriendListRecyclerPanel(Context context, NewFriendListContract.IPresenter iPresenter) {
+public class NewFriendsRecyclerPanel extends BaseRecyclerPanel<Friend, NewFriendListContract.IPresenter> {
+    public NewFriendsRecyclerPanel(Context context, NewFriendListContract.IPresenter iPresenter) {
         super(context, iPresenter);
     }
 

@@ -23,7 +23,7 @@ public interface FriendListContract {
         void showNewFriendNum(int num);
     }
 
-    interface IPresenter extends IBasePresenter, I.NewFriendList {
+    interface IPresenter extends IBasePresenter, I.NewFriends {
 
         void loadFriendList(int pageNum);
 

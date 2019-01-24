@@ -111,7 +111,7 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
     private ImageView img_b_1;
     private ImageView img_image;
 
-    private IvdVhHelper ivdVhHelper;
+    private IvdVhHelper<User> ivdVhHelper;
 
     @SuppressLint("InflateParams")
     @Override

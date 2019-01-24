@@ -19,7 +19,7 @@ import com.osmeet.os.view.activity.MainActivity;
 import com.osmeet.os.view.activity.MatchActivity;
 import com.osmeet.os.view.activity.MatchBeginActivity;
 import com.osmeet.os.view.activity.MatchListActivity;
-import com.osmeet.os.view.activity.NewFriendListActivity;
+import com.osmeet.os.view.activity.NewFriendsActivity;
 import com.osmeet.os.view.activity.PopInfoActivity;
 import com.osmeet.os.view.activity.ScanActivity;
 import com.osmeet.os.view.activity.SearchActivity;
@@ -209,15 +209,15 @@ public class I {
         }
     }
 
-    public static void goNewFriendListActivity(Context context) {
-        Intent intent = new Intent(context, NewFriendListActivity.class);
+    public static void goNewFriendsActivity(Context context) {
+        Intent intent = new Intent(context, NewFriendsActivity.class);
         context.startActivity(intent);
     }
 
-    public interface NewFriendList extends IContext {
-        default void goNewFriendList() {
+    public interface NewFriends extends IContext {
+        default void goNewFriends() {
             if (getContext() != null)
-                goNewFriendListActivity(getContext());
+                goNewFriendsActivity(getContext());
         }
     }
 
@@ -246,15 +246,16 @@ public class I {
         }
     }
 
-    public static void goInviteFriendsActivity(Context context) {
+    public static void goInviteFriendsActivity(Context context, String storeId) {
         Intent intent = new Intent(context, InviteFriendsActivity.class);
+        intent.putExtra("storeId", storeId);
         context.startActivity(intent);
     }
 
     public interface InviteFriends extends IContext {
-        default void goInviteFriends() {
+        default void goInviteFriends(String storeId) {
             if (getContext() != null)
-                goInviteFriendsActivity(getContext());
+                goInviteFriendsActivity(getContext(), storeId);
         }
     }
 

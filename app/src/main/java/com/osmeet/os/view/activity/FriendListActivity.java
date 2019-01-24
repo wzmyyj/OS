@@ -53,6 +53,7 @@ public class FriendListActivity extends BaseActivity<FriendListContract.IPresent
     protected void initData() {
         super.initData();
         mPresenter.loadFriendList(0);
+        mPresenter.loadNewFriendNum();
     }
 
 
@@ -78,6 +79,7 @@ public class FriendListActivity extends BaseActivity<FriendListContract.IPresent
     public void onEvent(FriendListChangeEvent event) {
         if (event.isChange()) {
             mPresenter.loadFriendList(0);
+            mPresenter.loadNewFriendNum();
         }
     }
 
