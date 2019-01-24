@@ -1,8 +1,10 @@
 package com.osmeet.os.model.net;
 
 import com.osmeet.os.app.bean.MatchInvite;
+import com.osmeet.os.app.bean.MatchInvite2;
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.bean.MatchUnit;
+import com.osmeet.os.app.java.StringUtil;
 import com.osmeet.os.app.utils.SubscribeUtil;
 import com.osmeet.os.model.net.service.MatchService;
 import com.osmeet.os.model.net.utils.ReOk;
@@ -128,6 +130,22 @@ public class MatchModel {
 
     public void matchInvite_getInviteByStore(Observer<Box<ListContent<MatchInvite>>> observer, String storeId, int pageNum, int pageSize) {
         Observable<Box<ListContent<MatchInvite>>> observable = getService().matchInvite_getInviteByStore(storeId, pageNum, pageSize);
+        SubscribeUtil.io2main(observable, observer);
+    }
+
+    public void matchInvite_friends(Observer<Box<List<MatchInvite2>>> observer, String storeId, List<String> userIdList) {
+        String str = StringUtil.str(userIdList, ",");
+        Observable<Box<List<MatchInvite2>>> observable = getService().matchInvite_friends(storeId, str);
+        SubscribeUtil.io2main(observable, observer);
+    }
+
+    public void matchInvite_friends_accept(Observer<Box<MatchTeam>> observer, String matchInviteId) {
+        Observable<Box<MatchTeam>> observable = getService().matchInvite_friends_accept(matchInviteId);
+        SubscribeUtil.io2main(observable, observer);
+    }
+
+    public void matchInvite_friends_cancel(Observer<Box<MatchInvite2>> observer, String matchInviteId) {
+        Observable<Box<MatchInvite2>> observable = getService().matchInvite_friends_cancel(matchInviteId);
         SubscribeUtil.io2main(observable, observer);
     }
 }

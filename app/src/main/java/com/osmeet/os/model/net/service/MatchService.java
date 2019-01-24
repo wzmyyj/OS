@@ -1,5 +1,6 @@
 package com.osmeet.os.model.net.service;
 
+import com.osmeet.os.app.bean.MatchInvite2;
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.bean.MatchUnit;
@@ -26,8 +27,7 @@ public interface MatchService {
     @GET(Urls.matchUnit)
     Observable<Box<ListContent<MatchUnit>>> matchUnit(
             @Query("pageNum") int pageNum,
-            @Query("pageSize") int pageSize
-    );
+            @Query("pageSize") int pageSize);
 
     @GET(Urls.matchUnit_changeMeetTime)
     Observable<Box<MatchUnit>> matchUnit_changeMeetTime(
@@ -58,14 +58,12 @@ public interface MatchService {
     @GET(Urls.matchTeam)
     Observable<Box<ListContent<MatchTeam>>> matchTeam(
             @Query("pageNum") int pageNum,
-            @Query("pageSize") int pageSize
-    );
+            @Query("pageSize") int pageSize);
 
     @GET(Urls.matchTeam_going)
     Observable<Box<ListContent<MatchTeam>>> matchTeam_going(
             @Query("pageNum") int pageNum,
-            @Query("pageSize") int pageSize
-    );
+            @Query("pageSize") int pageSize);
 
 
     @GET(Urls.matchTeam_acceptTime)
@@ -131,6 +129,23 @@ public interface MatchService {
 
 
     @GET(Urls.matchInvite_friends)
-    Observable<Box> matchInvite_friends(
+    Observable<Box<List<MatchInvite2>>> matchInvite_friends(
+            @Query("storeId") String storeId,
+            @Query("userIdList") String userIdList);
+
+    @GET(Urls.matchInvite_friends_accept)
+    Observable<Box<MatchTeam>> matchInvite_friends_accept(
+            @Query("matchInviteId") String matchInviteId);
+
+    @GET(Urls.matchInvite_friends_cancel)
+    Observable<Box<MatchInvite2>> matchInvite_friends_cancel(
+            @Query("matchInviteId") String matchInviteId);
+
+    @GET(Urls.matchInvite_friends_fromMe)
+    Observable<Box> matchInvite_friends_fromMe(
+    );
+
+    @GET(Urls.matchInvite_friends_toMe)
+    Observable<Box> matchInvite_friends_toMe(
     );
 }

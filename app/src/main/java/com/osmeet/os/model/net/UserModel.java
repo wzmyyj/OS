@@ -6,6 +6,7 @@ import com.osmeet.os.app.bean.RcToken;
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.bean.WechatInfo;
+import com.osmeet.os.app.java.StringUtil;
 import com.osmeet.os.app.utils.SubscribeUtil;
 import com.osmeet.os.model.net.service.FileService;
 import com.osmeet.os.model.net.service.UserService;
@@ -177,7 +178,8 @@ public class UserModel {
             builder.addFormDataPart("files", "image.jpg", requestFile);
         }
         if (isPathsAllEmpty) {
-            Observable<Box<String>> observable = getService().user_updateDisplayImages(fIds(fileIds));
+            String str=StringUtil.str(fileIds,",");
+            Observable<Box<String>> observable = getService().user_updateDisplayImages(str);
             SubscribeUtil.io2main(observable, observer);
             return;
         }
@@ -190,25 +192,12 @@ public class UserModel {
                             j++;
                         }
                     }
-                    return getService().user_updateDisplayImages(fIds(fileIds)).blockingLast();
+                    String str=StringUtil.str(fileIds,",");
+                    return getService().user_updateDisplayImages(str).blockingLast();
                 });
         SubscribeUtil.io2main(observable, observer);
     }
 
-
-    private String fIds(String[] fileIds) {
-        StringBuilder builder = new StringBuilder();
-        for (String s : fileIds) {
-            if (TextUtils.isEmpty(s)) continue;
-            builder.append(s);
-            builder.append(",");
-        }
-        int i = builder.lastIndexOf(",");
-        if (i > 0)
-            builder.deleteCharAt(i);
-        String s = builder.toString();
-        return TextUtils.isEmpty(s) ? "" : s;
-    }
 //    public void user_updateDisplayImages(Observer<Box<String>> observer, String fileIds) {
 //        Observable<Box<String>> observable = getService().user_updateDisplayImages(fileIds);
 //        SubscribeUtil.io2main(observable, observer);
