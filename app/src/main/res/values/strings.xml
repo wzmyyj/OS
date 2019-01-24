@@ -138,4 +138,5 @@
     <string name="delete">删除</string>
     <string name="block">拉黑</string>
     <string name="new_friends">新好友</string>
+    <string name="my_friends">我的好友</string>
 </resources>

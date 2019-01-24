@@ -72,8 +72,8 @@ public class FriendModel {
     }
 
 
-    public void friends_me(Observer<Box<ListContent<User>>> observer, int pageNum, int pageSize) {
-        Observable<Box<ListContent<User>>> observable = getService().friends_me(pageNum, pageSize);
+    public void friends_me(Observer<Box<ListContent<Friend>>> observer, int pageNum, int pageSize) {
+        Observable<Box<ListContent<Friend>>> observable = getService().friends_me(pageNum, pageSize);
         SubscribeUtil.io2main(observable, observer);
     }
 

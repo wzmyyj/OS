@@ -38,11 +38,6 @@ public class SearchUserPanel extends BaseRecyclerPanel<User, SearchContract.IPre
     }
 
     @Override
-    protected boolean isEnableLoadMore() {
-        return true;
-    }
-
-    @Override
     protected void loadMore() {
         super.loadMore();
         if (getTag() != null)

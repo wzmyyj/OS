@@ -29,7 +29,7 @@ public class NewFriendIVD extends BaseIVD<Friend> {
 
     @Override
     public int getItemViewLayoutId() {
-        return R.layout.layout_new_friends_item;
+        return R.layout.layout_friend_item;
     }
 
     @Override

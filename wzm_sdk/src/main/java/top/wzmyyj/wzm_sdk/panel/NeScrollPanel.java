@@ -60,6 +60,11 @@ public abstract class NeScrollPanel extends RefreshPanel {
 
     }
 
+    @Override
+    protected boolean isEnableLoadMore() {
+        return false;
+    }
+
     /**
      * updateView.
      */

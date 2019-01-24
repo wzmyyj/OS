@@ -215,7 +215,7 @@ public class I {
     }
 
     public interface NewFriendList extends IContext {
-        default void goNewFriends() {
+        default void goNewFriendList() {
             if (getContext() != null)
                 goNewFriendListActivity(getContext());
         }

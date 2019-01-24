@@ -38,12 +38,6 @@ public class HomeStoreRecyclerPanel extends BaseRecyclerPanel<Store, HomeStoreCo
     }
 
     @Override
-    protected boolean isEnableLoadMore() {
-        return true;
-    }
-
-
-    @Override
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
         super.onItemClick(view, holder, position);
         String id = mData.get(position).getId();

@@ -155,30 +155,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_menu_5"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/click_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
 
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:contentDescription="@string/icon"
-                android:src="@mipmap/ic_menu_add_friends" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp"
-                android:text="@string/add_friends"
-                android:textSize="16sp" />
-
-        </LinearLayout>
 
 
     </LinearLayout>
@@ -189,7 +166,7 @@
         android:background="@color/colorLine" />
 
     <LinearLayout
-        android:id="@+id/ll_menu_6"
+        android:id="@+id/ll_menu_setting"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@drawable/click_bg"

@@ -129,6 +129,8 @@
         android:textColor="@color/colorGray_5"
         android:textSize="18sp" />
 
+    <!--<include layout="@layout/layout_user_item" />-->
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

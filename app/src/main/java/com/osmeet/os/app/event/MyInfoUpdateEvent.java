@@ -6,7 +6,7 @@ package com.osmeet.os.app.event;
 
 public class MyInfoUpdateEvent {
 
-    boolean isUpdate;
+    private boolean isUpdate;
 
     public MyInfoUpdateEvent(boolean isUpdate) {
         this.isUpdate = isUpdate;

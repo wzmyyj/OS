@@ -64,7 +64,7 @@ public interface FriendService {
             @Query("userId") String userId);
 
     @GET(Urls.friends_me)
-    Observable<Box<ListContent<User>>> friends_me(
+    Observable<Box<ListContent<Friend>>> friends_me(
             @Query("pageNum") int pageNum,
             @Query("pageSize") int pageSize);
 

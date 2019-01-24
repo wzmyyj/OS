@@ -9,12 +9,12 @@
         android:id="@+id/bt_add"
         android:layout_width="60dp"
         android:layout_height="25dp"
-        android:textSize="14sp"
-        android:textColor="@color/colorWhite"
-        android:text="@string/agree"
         android:layout_gravity="end|center_vertical"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/bg_button_add" />
+        android:background="@drawable/bg_button_add"
+        android:text="@string/agree"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp" />
 
 </FrameLayout>

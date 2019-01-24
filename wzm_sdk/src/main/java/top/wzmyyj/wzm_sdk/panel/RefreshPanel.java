@@ -49,7 +49,7 @@ public abstract class RefreshPanel extends PanelGroup {
     }
 
     protected boolean isEnableLoadMore() {
-        return false;
+        return true;
     }
 
     protected boolean isEnablePureScrollMode() {

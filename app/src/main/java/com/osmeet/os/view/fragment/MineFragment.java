@@ -1,7 +1,6 @@
 package com.osmeet.os.view.fragment;
 
 import android.annotation.SuppressLint;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -101,12 +100,8 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
         mPresenter.goWallet();
     }
 
-    @OnClick(R.id.ll_menu_5)
-    void menu_5() {
-        mPresenter.goNewFriends();
-    }
 
-    @OnClick(R.id.ll_menu_6)
+    @OnClick(R.id.ll_menu_setting)
     void menu_6() {
         mPresenter.goSetting();
     }
@@ -298,8 +293,8 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
 
 
     @Override
-    protected void initSome(Bundle savedInstanceState) {
-        super.initSome(savedInstanceState);
+    protected void initEvent() {
+        super.initEvent();
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }

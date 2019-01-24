@@ -36,10 +36,6 @@ public class SearchStorePanel extends BaseRecyclerPanel<Store, SearchContract.IP
             mPresenter.searchStore(getTag().toString(), 0);
     }
 
-    @Override
-    protected boolean isEnableLoadMore() {
-        return true;
-    }
 
     @Override
     protected void loadMore() {

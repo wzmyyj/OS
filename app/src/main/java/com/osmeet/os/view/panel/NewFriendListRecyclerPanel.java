@@ -1,15 +1,10 @@
 package com.osmeet.os.view.panel;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.widget.ImageView;
 
 import com.osmeet.os.R;
-import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.Friend;
-import com.osmeet.os.app.bean.User;
-import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.NewFriendListContract;
 import com.osmeet.os.view.adapter.ivd.NewFriendIVD;
@@ -51,11 +46,6 @@ public class NewFriendListRecyclerPanel extends BaseRecyclerPanel<Friend, NewFri
     }
 
     @Override
-    protected boolean isEnableLoadMore() {
-        return true;
-    }
-
-    @Override
     protected void loadMore() {
         super.loadMore();
         mPresenter.loadNewFriendList(nextPageNum());
@@ -71,19 +61,19 @@ public class NewFriendListRecyclerPanel extends BaseRecyclerPanel<Friend, NewFri
         }
     }
 
-    @SuppressLint("InflateParams")
-    @Override
-    protected void setHeader() {
-        super.setHeader();
-        mHeader = mInflater.inflate(R.layout.layout_new_friend_header, null);
-        mHeader.findViewById(R.id.img_scan).setOnClickListener(v -> mPresenter.goScan());
-        mHeader.findViewById(R.id.img_friend_list).setOnClickListener(v -> mPresenter.goFriendList());
-
-        ImageView img_avatar = mHeader.findViewById(R.id.img_avatar);
-        User user = App.getInstance().getMyInfo();
-        if (user.getAvatar() != null) {
-            G.img(context, user.getAvatar().getUrl(), img_avatar);
-        }
-        img_avatar.setOnClickListener(v -> mPresenter.goVisitCard());
-    }
+//    @SuppressLint("InflateParams")
+//    @Override
+//    protected void setHeader() {
+//        super.setHeader();
+//        mHeader = mInflater.inflate(R.layout.layout_new_friend_header, null);
+//        mHeader.findViewById(R.id.img_scan).setOnClickListener(v -> mPresenter.goScan());
+//        mHeader.findViewById(R.id.img_friend_list).setOnClickListener(v -> mPresenter.goFriendList());
+//
+//        ImageView img_avatar = mHeader.findViewById(R.id.img_avatar);
+//        User user = App.getInstance().getMyInfo();
+//        if (user.getAvatar() != null) {
+//            G.img(context, user.getAvatar().getUrl(), img_avatar);
+//        }
+//        img_avatar.setOnClickListener(v -> mPresenter.goVisitCard());
+//    }
 }

@@ -22,7 +22,7 @@ public class NewFriendListActivity extends BaseActivity<NewFriendListContract.IP
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_new_friends;
+        return R.layout.activity_new_friend_list;
     }
 
 
@@ -43,6 +43,12 @@ public class NewFriendListActivity extends BaseActivity<NewFriendListContract.IP
     protected void initView() {
         super.initView();
         fl_panel.addView(getPanelView(0));
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+        mPresenter.loadNewFriendList(0);
     }
 
     @Override
