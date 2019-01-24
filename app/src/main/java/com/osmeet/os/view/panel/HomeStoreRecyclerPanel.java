@@ -57,13 +57,13 @@ public class HomeStoreRecyclerPanel extends BaseRecyclerPanel<Store, HomeStoreCo
     @Override
     public void update() {
         mPresenter.log(mPresenter.getCategoryId());
-        mPresenter.loadStoreList(pageNum);
+        mPresenter.loadStoreList(0);
     }
 
     @Override
     protected void loadMore() {
         super.loadMore();
-        mPresenter.loadStoreList(pageNum);
+        mPresenter.loadStoreList(nextPageNum());
     }
 
     @SuppressLint("InflateParams")

@@ -23,7 +23,7 @@ public interface MessageContract {
         void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList);
     }
 
-    interface IPresenter extends IBasePresenter, I.Match,I.InviteList {
+    interface IPresenter extends IBasePresenter, I.Match,I.InviteList,I.Search,I.Scan {
 
         void loadMatchTeamList();
 

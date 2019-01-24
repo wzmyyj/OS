@@ -67,10 +67,11 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
     }
 
     private void search() {
-
+        mPresenter.goSearch();
     }
 
     private void scan() {
+        mPresenter.goScan();
     }
 
     @Override

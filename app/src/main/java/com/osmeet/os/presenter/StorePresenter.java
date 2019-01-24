@@ -39,7 +39,7 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
 
     @Override
     public void loadStoreInfo() {
-        String storeId = getActivity().getIntent().getStringExtra("storeId");
+        final String storeId = getActivity().getIntent().getStringExtra("storeId");
         if (TextUtils.isEmpty(storeId)) {
             toast("Store Id is a empty value!");
             return;
@@ -53,11 +53,16 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
                 }
                 if (box.getData() != null) {
                     mView.showStoreInfo(box.getData());
+                    goToStore(storeId);
                 }
 
             }
         }, storeId);
 
+
+    }
+
+    private void goToStore(String storeId) {
         // 进入商店。
         matchModel.matchUnit_goToMatchInStore(new PObserver<Box<MatchUnit>>() {
             @Override

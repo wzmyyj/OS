@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Category;
 import com.osmeet.os.app.tools.G;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.fragment.BaseFragment;
 import com.osmeet.os.contract.HomeContract;
 import com.osmeet.os.presenter.HomePresenter;
@@ -21,10 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import top.wzmyyj.wzm_sdk.adapter.InitFragmentPagerAdapter;
 import top.wzmyyj.wzm_sdk.fragment.InitFragment;
 import top.wzmyyj.wzm_sdk.utils.DensityUtil;
 import top.wzmyyj.wzm_sdk.utils.TabLayoutUtil;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -41,6 +42,16 @@ public class HomeFragment extends BaseFragment<HomeContract.IPresenter> implemen
         return R.layout.fragment_home;
     }
 
+
+    @OnClick(R.id.img_search)
+    void search() {
+        mPresenter.goSearch();
+    }
+
+    @OnClick(R.id.img_scan)
+    void scan() {
+        mPresenter.goScan();
+    }
 
     @BindView(R.id.tab_top)
     TabLayout mTabLayout;

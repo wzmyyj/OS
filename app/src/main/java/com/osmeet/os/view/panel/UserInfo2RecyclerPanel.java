@@ -98,7 +98,7 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserIn
     private TextView tv_user_score;
     private ImageView img_image;
 
-    private IvdVhHelper ivdVhHelper;
+    private IvdVhHelper<User> ivdVhHelper;
 
     @SuppressLint("InflateParams")
     @Override

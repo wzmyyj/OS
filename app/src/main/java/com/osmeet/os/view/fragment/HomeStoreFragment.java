@@ -77,6 +77,6 @@ public class HomeStoreFragment extends BaseFragment<HomeStoreContract.IPresenter
         list.addAll(storeList);
         list.addAll(storeList);
         list.addAll(storeList);
-        storeListRecyclerPanel.setDataList(list, pageNum == 0);
+        storeListRecyclerPanel.setDataList(list, pageNum);
     }
 }

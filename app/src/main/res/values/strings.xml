@@ -130,4 +130,6 @@
     <string name="os">相对</string>
     <string name="my_os">我的相对</string>
     <string name="add_be_friends">加为好友</string>
+    <string name="have">有</string>
+    <string name="user_and_place">地点、好友</string>
 </resources>

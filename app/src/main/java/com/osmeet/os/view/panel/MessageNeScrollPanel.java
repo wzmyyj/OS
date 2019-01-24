@@ -53,6 +53,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
     FrameLayout fl_when_empty;
     private MatchTeamAdapter mAdapter;
     private List<MatchTeam> mData;
+    private IvdVhHelper<MatchInvite.Group> ivdVhHelper;
 
     @Override
     protected void initView() {
@@ -115,7 +116,6 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
     @BindView(R.id.ll_invite_empty)
     LinearLayout ll_invite_empty;
 
-    private IvdVhHelper ivdVhHelper;
 
     public void setMatchInviteGroup(MatchInvite.Group group) {
         if (group == null) {

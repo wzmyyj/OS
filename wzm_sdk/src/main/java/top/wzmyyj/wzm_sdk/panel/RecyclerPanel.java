@@ -145,25 +145,27 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
 
 
     /**
-     * @return is need clear date list when setDataList.
+     * @param dataList .
      */
-    protected boolean isNeedClear() {
-        return true;
+    public void setDataList(@NonNull List<T> dataList) {
+        setDataList(dataList, 0);
     }
 
     /**
      * @param dataList .
+     * @param pageNum  .
      */
-    public void setDataList(@NonNull List<T> dataList) {
-        setDataList(dataList, isNeedClear());
+    public void setDataList(@NonNull List<T> dataList, int pageNum) {
+        setDataList(dataList, pageNum, pageNum == 0);
     }
-
 
     /**
      * @param dataList    .
+     * @param pageNum     .
      * @param isNeedClear .
      */
-    public void setDataList(@NonNull List<T> dataList, boolean isNeedClear) {
+    public void setDataList(@NonNull List<T> dataList, int pageNum, boolean isNeedClear) {
+        this.pageNum = pageNum;
         if (isNeedClear) {
             mData.clear();
         }
@@ -171,16 +173,15 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
         notifyDataSetChanged();
     }
 
-    /**
-     * for load more .
-     *
-     * @param dataList .
-     */
-    public void addDataList(@NonNull List<T> dataList) {
-        mData.addAll(dataList);
-        notifyDataSetChanged();
+    private int pageNum = 0;
+
+    protected int pageNum() {
+        return pageNum;
     }
 
+    protected int nextPageNum() {
+        return pageNum + 1;
+    }
 
     /**
      * setHeader.
@@ -223,19 +224,6 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
     protected void initData() {
     }
 
-    protected int pageNum = 0;
-
-    @Override
-    protected void refresh() {
-        pageNum = 0;
-        super.refresh();
-    }
-
-    @Override
-    protected void loadMore() {
-        pageNum++;
-        super.loadMore();
-    }
 
     @Override
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {

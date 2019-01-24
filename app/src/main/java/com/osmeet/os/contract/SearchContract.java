@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.bean.User;
+import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
 
@@ -23,7 +24,7 @@ public interface SearchContract {
         void showSearchStoreResult(@NonNull List<Store> storeList, @NonNull String word, int pageNum);
     }
 
-    interface IPresenter extends IBasePresenter {
+    interface IPresenter extends IBasePresenter, I.Store, I.UserInfo2 {
         void searchUser(@NonNull String word, int pageNum);
 
         void searchStore(@NonNull String word, int pageNum);
