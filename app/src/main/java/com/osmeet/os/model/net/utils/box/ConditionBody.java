@@ -9,8 +9,13 @@ public class ConditionBody {
     private int maxAge;
     private int minAge;
     private int sex;
+    private String name;
 
     public ConditionBody() {
+    }
+
+    public ConditionBody(String name) {
+        this.name = name;
     }
 
     public ConditionBody(int distance, int maxAge, int minAge, int sex) {
@@ -54,5 +59,13 @@ public class ConditionBody {
 
     public int getSex() {
         return sex;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

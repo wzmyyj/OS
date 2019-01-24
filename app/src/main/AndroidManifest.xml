@@ -93,7 +93,7 @@
         <activity android:name=".view.activity.InviteListActivity" />
         <activity android:name=".view.activity.MatchActivity" />
         <activity android:name=".view.activity.MatchListActivity" />
-        <activity android:name=".view.activity.NewFriendsActivity" />
+        <activity android:name=".view.activity.NewFriendListActivity" />
         <activity android:name=".view.activity.TradeActivity" />
         <activity android:name=".view.activity.TradeListActivity" />
         <activity android:name=".view.activity.InviteFriendsActivity" />
@@ -106,7 +106,7 @@
         <activity android:name=".view.activity.ChatInviteActivity" />
         <activity android:name=".view.activity.ScanActivity" />
         <activity android:name=".view.activity.VisitCardActivity" />
-        <activity android:name=".view.activity.FriendsActivity" />
+        <activity android:name=".view.activity.FriendListActivity" />
         <activity android:name=".view.activity.UserInfo2Activity"></activity>
     </application>
 

@@ -1,26 +1,37 @@
 package com.osmeet.os.app.bean;
 
-import java.util.Date;
-
 /**
  * Created by yyj on 2018/12/05. email: 2209011667@qq.com
  */
 
-public class Friends {
+public class Friend {
+    //0申请,1取消,2同意 ,3 拒绝,4删除,10申请者拉黑,11接受人拉黑,12好友双方拉黑,13 A陌生人拉黑,14 B陌生人拉黑,15 陌生人双方拉黑
+    public static final int APPLY = 0;
+    public static final int CANCEL = 1;
+    public static final int AGREE = 2;
+    public static final int REFUSE = 3;
+    public static final int DELETE = 4;
+    public static final int BLOCK_BY_APPLY = 10;
+    public static final int BLOCK_BY_ACCEPT = 11;
+    public static final int BLOCK_BY_FRIEND = 12;
+    public static final int BLOCK_BY_STRANGER_A = 13;
+    public static final int BLOCK_BY_STRANGER_B = 14;
+    public static final int BLOCK_BY_STRANGER = 15;
 
-    private Date createDate;
+
+    private long createDate;
     private String message;
-    private Date modifyDate;
+    private long modifyDate;
     private int readStatus;
     private int side;
     private int status;
     private User user;
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(long createDate) {
         this.createDate = createDate;
     }
 
-    public Date getCreateDate() {
+    public long getCreateDate() {
         return createDate;
     }
 
@@ -32,11 +43,11 @@ public class Friends {
         return message;
     }
 
-    public void setModifyDate(Date modifyDate) {
+    public void setModifyDate(long modifyDate) {
         this.modifyDate = modifyDate;
     }
 
-    public Date getModifyDate() {
+    public long getModifyDate() {
         return modifyDate;
     }
 

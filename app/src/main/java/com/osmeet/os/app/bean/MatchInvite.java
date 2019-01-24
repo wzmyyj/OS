@@ -17,7 +17,7 @@ public class MatchInvite {
     private String id;
     private int inviteMode;
     private MatchUnit invitedMatchUnit;
-    private MatchUnit matchUnit;
+    private MatchUnit matchUnit;// 发起邀请的单位。
     private Store store;
     private int status;
 

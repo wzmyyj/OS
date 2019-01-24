@@ -8,7 +8,7 @@ import com.osmeet.os.view.activity.AdActivity;
 import com.osmeet.os.view.activity.CameraActivity;
 import com.osmeet.os.view.activity.ChatActivity;
 import com.osmeet.os.view.activity.ChatInviteActivity;
-import com.osmeet.os.view.activity.FriendsActivity;
+import com.osmeet.os.view.activity.FriendListActivity;
 import com.osmeet.os.view.activity.GoodsActivity;
 import com.osmeet.os.view.activity.GoodsBuyActivity;
 import com.osmeet.os.view.activity.GuideActivity;
@@ -19,7 +19,7 @@ import com.osmeet.os.view.activity.MainActivity;
 import com.osmeet.os.view.activity.MatchActivity;
 import com.osmeet.os.view.activity.MatchBeginActivity;
 import com.osmeet.os.view.activity.MatchListActivity;
-import com.osmeet.os.view.activity.NewFriendsActivity;
+import com.osmeet.os.view.activity.NewFriendListActivity;
 import com.osmeet.os.view.activity.PopInfoActivity;
 import com.osmeet.os.view.activity.ScanActivity;
 import com.osmeet.os.view.activity.SearchActivity;
@@ -209,15 +209,15 @@ public class I {
         }
     }
 
-    public static void goNewFriendsActivity(Context context) {
-        Intent intent = new Intent(context, NewFriendsActivity.class);
+    public static void goNewFriendListActivity(Context context) {
+        Intent intent = new Intent(context, NewFriendListActivity.class);
         context.startActivity(intent);
     }
 
-    public interface NewFriends extends IContext {
+    public interface NewFriendList extends IContext {
         default void goNewFriends() {
             if (getContext() != null)
-                goNewFriendsActivity(getContext());
+                goNewFriendListActivity(getContext());
         }
     }
 
@@ -381,15 +381,15 @@ public class I {
         }
     }
 
-    public static void goFriendsActivity(Context context) {
-        Intent intent = new Intent(context, FriendsActivity.class);
+    public static void goFriendListActivity(Context context) {
+        Intent intent = new Intent(context, FriendListActivity.class);
         context.startActivity(intent);
     }
 
-    public interface Friends extends IContext {
-        default void goFriends() {
+    public interface FriendList extends IContext {
+        default void goFriendList() {
             if (getContext() != null)
-                goFriendsActivity(getContext());
+                goFriendListActivity(getContext());
         }
     }
 

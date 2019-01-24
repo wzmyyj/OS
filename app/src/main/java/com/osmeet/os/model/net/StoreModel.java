@@ -33,8 +33,8 @@ public class StoreModel {
         SubscribeUtil.io2main(observable, observer);
     }
 
-    public void store_findByCondition(Observer<Box<Store>> observer, ConditionBody body) {
-        Observable<Box<Store>> observable = getService().store_findByCondition(body);
+    public void store_findByCondition(Observer<Box<ListContent<Store>>> observer, ConditionBody body, int pageNum, int pageSize) {
+        Observable<Box<ListContent<Store>>> observable = getService().store_findByCondition(body, pageNum, pageSize);
         SubscribeUtil.io2main(observable, observer);
     }
 

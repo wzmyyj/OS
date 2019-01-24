@@ -28,8 +28,10 @@ public interface StoreService {
     Observable<Box<List<Store>>> store_getStore();
 
     @POST(Urls.store_findByCondition)
-    Observable<Box<Store>> store_findByCondition(
-            @Body ConditionBody body);
+    Observable<Box<ListContent<Store>>> store_findByCondition(
+            @Body ConditionBody body,
+            @Query("pageNum") int pageNum,
+            @Query("pageSize") int pageSize);
 
     @GET(Urls.store_list)
     Observable<Box<ListContent<Store>>> store_list(

@@ -1,0 +1,20 @@
+package com.osmeet.os.view.activity;
+
+import com.osmeet.os.R;
+import com.osmeet.os.base.activity.BaseActivity;
+import com.osmeet.os.contract.FriendListContract;
+import com.osmeet.os.presenter.FriendListPresenter;
+
+public class FriendListActivity extends BaseActivity<FriendListContract.IPresenter> implements FriendListContract.IView {
+    @Override
+    protected void initPresenter() {
+        mPresenter = new FriendListPresenter(activity, this);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_friends;
+    }
+
+}
+

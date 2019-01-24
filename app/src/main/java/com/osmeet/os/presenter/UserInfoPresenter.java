@@ -111,8 +111,8 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
                     return;
                 }
                 if (box.getData() != null) {
-                    if (box.getData().getMatchUnit().getUser().getId()
-                            .equals(App.getInstance().getMyInfo().getId())) {
+                    if (!box.getData().getMatchUnit().getUser().getId()
+                            .equals(App.getInstance().getMyInfo().getId())) {// 发起人不是自己，说明别人邀请我过了。
                         inviteId = box.getData().getId();
                         mView.showSuccess(2, box.getData());
                     } else {

@@ -12,6 +12,7 @@
         android:id="@+id/img_avatar"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:src="@color/colorGray_e"
         app:border_color="@color/colorLine"
         app:border_width="0.1dp" />
 
@@ -29,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:gravity="center_vertical"
+            android:lines="1"
             android:textColor="@color/colorGray_5"
             android:textSize="14sp" />
 
@@ -37,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:gravity="center_vertical"
+            android:lines="1"
             android:textColor="@color/colorGray_7"
             android:textSize="12sp" />
     </LinearLayout>

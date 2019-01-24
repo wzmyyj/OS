@@ -41,14 +41,14 @@ public class MatchListRecyclerPanel extends BaseRecyclerPanel<MatchTeam, MatchLi
 
     @Override
     protected void update() {
-        mPresenter.loadMatchTeamList(pageNum);
+        mPresenter.loadMatchTeamList(0);
     }
 
 
     @Override
     protected void loadMore() {
         super.loadMore();
-        mPresenter.loadMatchTeamList(pageNum);
+        mPresenter.loadMatchTeamList(nextPageNum());
     }
 
 }

@@ -132,4 +132,10 @@
     <string name="add_be_friends">加为好友</string>
     <string name="have">有</string>
     <string name="user_and_place">地点、好友</string>
+    <string name="agree">同意</string>
+    <string name="already_add">已加</string>
+    <string name="refuse">拒绝</string>
+    <string name="delete">删除</string>
+    <string name="block">拉黑</string>
+    <string name="new_friends">新好友</string>
 </resources>

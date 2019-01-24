@@ -1,6 +1,5 @@
 package com.osmeet.os.contract;
 
-import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
 
@@ -9,13 +8,13 @@ import com.osmeet.os.base.contract.IBaseView;
  * 广告。
  */
 
-public interface NewFriendsContract {
+public interface FriendListContract {
 
     interface IView extends IBaseView {
 
     }
 
-    interface IPresenter extends IBasePresenter, I.VisitCard, I.Friends {
+    interface IPresenter extends IBasePresenter{
 
     }
 
