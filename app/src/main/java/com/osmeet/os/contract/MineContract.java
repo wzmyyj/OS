@@ -24,7 +24,7 @@ public interface MineContract extends LaunchContract{
     }
 
     interface IPresenter extends IBasePresenter, I.UpdateInfo, I.Setting,
-            I.MatchList, I.TradeList, I.Wallet,I.NewFriends,I.VisitCard {
+            I.MatchList, I.TradeList, I.Wallet,I.NewFriendList,I.VisitCard {
         void loadMyInfo();
 
         void freshMyInfo();

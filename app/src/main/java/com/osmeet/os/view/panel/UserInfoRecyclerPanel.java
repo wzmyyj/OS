@@ -119,7 +119,7 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
         super.setHeader();
         mHeader = mInflater.inflate(R.layout.layout_user_info_header, null);
 
-        ivdVhHelper = new IvdVhHelper(context,
+        ivdVhHelper = new IvdVhHelper<User>(context,
                 new UserInfoIVD(context),
                 mHeader.findViewById(R.id.ll_user_info));
 

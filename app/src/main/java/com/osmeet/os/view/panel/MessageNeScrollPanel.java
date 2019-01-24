@@ -62,7 +62,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         rv_list.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         rv_list.setAdapter(mAdapter = new MatchTeamAdapter(context, mData));
 
-        ivdVhHelper = new IvdVhHelper(context, new InviteGroupIVD(context), ll_invite);
+        ivdVhHelper = new IvdVhHelper<MatchInvite.Group>(context, new InviteGroupIVD(context), ll_invite);
     }
 
     @Override

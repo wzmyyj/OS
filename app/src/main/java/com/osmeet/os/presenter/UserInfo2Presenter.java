@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.UserInfo2Contract;
-import com.osmeet.os.model.net.FriendsModel;
+import com.osmeet.os.model.net.FriendModel;
 import com.osmeet.os.model.net.UserModel;
 import com.osmeet.os.model.net.utils.box.Box;
 
@@ -18,12 +18,12 @@ import com.osmeet.os.model.net.utils.box.Box;
 public class UserInfo2Presenter extends BasePresenter<UserInfo2Contract.IView> implements UserInfo2Contract.IPresenter {
 
     private UserModel userModel;
-    private FriendsModel friendsModel;
+    private FriendModel friendsModel;
 
     public UserInfo2Presenter(Activity activity, UserInfo2Contract.IView iv) {
         super(activity, iv);
         userModel = new UserModel();
-        friendsModel = new FriendsModel();
+        friendsModel = new FriendModel();
     }
 
 

@@ -112,7 +112,7 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
         super.setHeader();
         mHeader = mInflater.inflate(R.layout.layout_mine_info_header, null);
 
-        ivdVhHelper = new IvdVhHelper(context,
+        ivdVhHelper = new IvdVhHelper<User>(context,
                 new UserInfoIVD(context),
                 mHeader.findViewById(R.id.ll_user_info));
 

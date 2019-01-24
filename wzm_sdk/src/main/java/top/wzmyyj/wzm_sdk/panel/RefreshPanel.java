@@ -75,20 +75,20 @@ public abstract class RefreshPanel extends PanelGroup {
     }
 
     /**
-     * refresh.
+     * refresh. use by mRefreshLayout.
      */
     protected void refresh() {
         update();
     }
 
     /**
-     * loadMore.
+     * loadMore. use by mRefreshLayout.
      */
     protected void loadMore() {
     }
 
     /**
-     * update.
+     * update. use by mRefreshLayout or other.
      */
     protected abstract void update();
 

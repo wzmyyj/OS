@@ -68,7 +68,7 @@ public class MatchListActivity extends BaseActivity<MatchListContract.IPresenter
 
     @Override
     public void showMatchTeamList(@NonNull List<MatchTeam> matchTeamList, int pageNum) {
-        matchListRecyclerPanel_0.setDataList(matchTeamList, pageNum == 0);
+        matchListRecyclerPanel_0.setDataList(matchTeamList, pageNum);
         List<MatchTeam> matchTeamList_1 = new ArrayList<>();
         List<MatchTeam> matchTeamList_2 = new ArrayList<>();
         for (MatchTeam matchTeam : matchTeamList) {
@@ -78,8 +78,8 @@ public class MatchListActivity extends BaseActivity<MatchListContract.IPresenter
                 matchTeamList_2.add(matchTeam);
             }
         }
-        matchListRecyclerPanel_1.setDataList(matchTeamList_1, pageNum == 0);
-        matchListRecyclerPanel_2.setDataList(matchTeamList_2, pageNum == 0);
+        matchListRecyclerPanel_1.setDataList(matchTeamList_1, pageNum);
+        matchListRecyclerPanel_2.setDataList(matchTeamList_2, pageNum);
     }
 }
 
