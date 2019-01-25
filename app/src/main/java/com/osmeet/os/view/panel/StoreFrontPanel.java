@@ -109,7 +109,7 @@ public class StoreFrontPanel extends BasePanel<StoreContract.IPresenter> {
                 int p = tab.getPosition();
                 StoreActivity storeActivity = getActivity();
                 if (p == 0) {
-                    mPresenter.toast("邀请好友");
+                    mPresenter.inviteFriends();
                 } else {
                     UserInfoFragment userInfoFragment = storeActivity.getFragment(p);
                     userInfoFragment.getPresenter().matchInvite();

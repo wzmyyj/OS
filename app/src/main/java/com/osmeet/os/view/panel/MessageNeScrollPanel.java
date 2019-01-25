@@ -105,10 +105,14 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         mAdapter.notifyDataSetChanged();
     }
 
+    private boolean isHaveInvite = false;
 
     @OnClick(R.id.ll_invite)
     void go_invite() {
-        mPresenter.goInviteList();
+        if (isHaveInvite) {
+            mPresenter.goInviteList();
+        }
+
     }
 
     @BindView(R.id.ll_invite)
@@ -120,9 +124,11 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
     public void setMatchInviteGroup(MatchInvite.Group group) {
         if (group == null) {
             ll_invite_empty.setVisibility(View.VISIBLE);
+            isHaveInvite = false;
         } else {
             ll_invite_empty.setVisibility(View.GONE);
             ivdVhHelper.convert(group);
+            isHaveInvite = true;
         }
     }
 }

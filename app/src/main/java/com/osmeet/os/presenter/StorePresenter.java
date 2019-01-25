@@ -38,6 +38,16 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
     }
 
     @Override
+    public void inviteFriends() {
+        final String storeId = getActivity().getIntent().getStringExtra("storeId");
+        if (TextUtils.isEmpty(storeId)) {
+            toast("Store Id is a empty value!");
+            return;
+        }
+        goInviteFriends(storeId);
+    }
+
+    @Override
     public void loadStoreInfo() {
         final String storeId = getActivity().getIntent().getStringExtra("storeId");
         if (TextUtils.isEmpty(storeId)) {

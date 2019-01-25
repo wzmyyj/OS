@@ -33,6 +33,11 @@
 
     </FrameLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
+
     <FrameLayout
         android:id="@+id/fl_panel"
         android:layout_width="match_parent"

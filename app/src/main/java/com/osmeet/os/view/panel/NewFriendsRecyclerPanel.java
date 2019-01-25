@@ -3,12 +3,10 @@ package com.osmeet.os.view.panel;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Friend;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.NewFriendListContract;
 import com.osmeet.os.view.adapter.ivd.NewFriendIVD;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
 
@@ -27,17 +25,11 @@ public class NewFriendsRecyclerPanel extends BaseRecyclerPanel<Friend, NewFriend
 
     @Override
     protected void setIVD(List<IVD<Friend>> ivd) {
-        ivd.add(new NewFriendIVD(context) {
-            @Override
-            public void convert(ViewHolder holder, final Friend friend, int position) {
-                super.convert(holder, friend, position);
-                holder.setOnClickListener(R.id.bt_add, v -> {
-                    if (friend.getStatus() == Friend.APPLY) {
-                        mPresenter.postAgreeNewFriend(friend.getUser().getId());
-                    }
-                });
+        ivd.add(new NewFriendIVD(context).setOnAddClickListener((v, friend, position) -> {
+            if (friend.getStatus() == Friend.APPLY) {
+                mPresenter.postAgreeNewFriend(friend.getUser().getId());
             }
-        });
+        }));
     }
 
     @Override

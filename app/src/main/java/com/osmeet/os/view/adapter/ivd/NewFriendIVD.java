@@ -1,6 +1,7 @@
 package com.osmeet.os.view.adapter.ivd;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,23 +30,23 @@ public class NewFriendIVD extends BaseIVD<Friend> {
 
     @Override
     public int getItemViewLayoutId() {
-        return R.layout.layout_friend_item;
+        return R.layout.layout_new_friend_item;
     }
 
     @Override
-    public void convert(ViewHolder holder, final Friend friends, final int position) {
-        User user = friends.getUser();
+    public void convert(ViewHolder holder, final Friend friend, final int position) {
+        User user = friend.getUser();
         ImageView img_avatar = holder.getView(R.id.img_avatar);
         TextView tv_name = holder.getView(R.id.tv_name);
         TextView tv_desc = holder.getView(R.id.tv_desc);
-        Button bt_add = holder.getView(R.id.bt_add);
+
         if (user.getAvatar() != null)
             G.img(context, user.getAvatar().getUrl(), img_avatar);
         WidgetUtil.setTextNonNull(tv_name, user.getUsername());
-        WidgetUtil.setTextNonNull(tv_desc, friends.getMessage());
+        WidgetUtil.setTextNonNull(tv_desc, friend.getMessage());
 
-
-        switch (friends.getStatus()) {
+        Button bt_add = holder.getView(R.id.bt_add);
+        switch (friend.getStatus()) {
             case Friend.APPLY:
                 bt_add.setText(R.string.agree);
                 bt_add.setBackgroundResource(R.drawable.bg_button_add);
@@ -72,6 +73,24 @@ public class NewFriendIVD extends BaseIVD<Friend> {
                 break;
         }
 
+
+        bt_add.setOnClickListener(v -> {
+            if (onAddClickListener != null) {
+                onAddClickListener.onClick(v, friend, position);
+            }
+        });
+
+    }
+
+    private OnAddClickListener onAddClickListener;
+
+    public NewFriendIVD setOnAddClickListener(OnAddClickListener onAddClickListener) {
+        this.onAddClickListener = onAddClickListener;
+        return this;
+    }
+
+    public interface OnAddClickListener {
+        void onClick(View v, Friend friend, int position);
     }
 
 }

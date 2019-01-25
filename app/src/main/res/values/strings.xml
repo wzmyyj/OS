@@ -139,4 +139,6 @@
     <string name="block">拉黑</string>
     <string name="new_friends">新好友</string>
     <string name="my_friends">我的好友</string>
+    <string name="invite_friends_match">邀请好友相对</string>
+    <string name="send">发送</string>
 </resources>

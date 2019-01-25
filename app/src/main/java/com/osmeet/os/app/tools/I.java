@@ -396,6 +396,7 @@ public class I {
 
     public static void goUserInfo2Activity(Context context, String userId) {
         Intent intent = new Intent(context, UserInfo2Activity.class);
+        intent.putExtra("userId", userId);
         context.startActivity(intent);
     }
 

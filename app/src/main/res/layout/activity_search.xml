@@ -74,7 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         app:tabIndicatorHeight="1dp"
-        app:tabMode="scrollable"
+        app:tabMode="fixed"
         app:tabSelectedTextColor="@color/colorPay"
         app:tabTextAppearance="@style/MyTabLayoutTextAppearance2"
         app:tabTextColor="@color/colorGray_7">

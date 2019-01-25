@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchUnit;
 import com.osmeet.os.app.bean.Store;
+import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
 
@@ -25,9 +26,11 @@ public interface StoreContract {
         void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList);
     }
 
-    interface IPresenter extends IBasePresenter {
+    interface IPresenter extends IBasePresenter, I.InviteFriends {
 
         int getMode();
+
+        void inviteFriends();
 
         void loadStoreInfo();
 
