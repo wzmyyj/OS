@@ -14,6 +14,7 @@ import com.osmeet.os.assembly.service.PushService;
 import com.osmeet.os.base.application.BaseApplication;
 import com.osmeet.os.model.net.utils.ReOk;
 import com.osmeet.os.model.net.utils.Urls;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import io.rong.imkit.RongIM;
 import top.wzmyyj.wzm_sdk.tools.L;
@@ -48,6 +49,8 @@ public class App extends BaseApplication {
         setDialog();
         GP.init("provider.GPFileProvider", "/OsMeet/images");
 
+        ZXingLibrary.initDisplayOpinion(this);
+        
         RongIM.init(this.getApplicationContext());
         PushManager.getInstance().initialize(this.getApplicationContext(), PushService.class);
         PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), PushIntentService.class);

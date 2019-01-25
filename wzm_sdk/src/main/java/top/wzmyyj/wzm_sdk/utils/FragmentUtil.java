@@ -23,8 +23,8 @@ public class FragmentUtil {
      * @param fragment .
      * @param tag .
      */
-    public static void addFragment(@NonNull FragmentManager fm, @IdRes int containerViewId,
-                                   Fragment fragment, @Nullable String tag) {
+    public static void add(@NonNull FragmentManager fm, @IdRes int containerViewId,
+                           Fragment fragment, @Nullable String tag) {
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(containerViewId, fragment, tag);
         fragmentTransaction.commit();
@@ -36,8 +36,8 @@ public class FragmentUtil {
      * @param fragment .
      * @param tag .
      */
-    public static void replaceFragment(@NonNull FragmentManager fm, @IdRes int containerViewId,
-                                       Fragment fragment, @Nullable String tag) {
+    public static void replace(@NonNull FragmentManager fm, @IdRes int containerViewId,
+                               Fragment fragment, @Nullable String tag) {
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(containerViewId, fragment, tag);
         fragmentTransaction.commit();

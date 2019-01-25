@@ -93,15 +93,16 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
             list.add("举报");
             list.add("拉黑");
             BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
-                switch (index) {
-                    case 0:
-                        mPresenter.toast(text);
-                        break;
-                    case 1:
-                        mPresenter.toast(text);
-                        break;
-                }
-            }, true).setTitle("请选择！");
+                        switch (index) {
+                            case 0:
+                                mPresenter.toast(text);
+                                break;
+                            case 1:
+                                mPresenter.toast(text);
+                                break;
+                        }
+                    }, true, context.getString(R.string.cancel)
+            ).setTitle("请选择！");
         });
     }
 

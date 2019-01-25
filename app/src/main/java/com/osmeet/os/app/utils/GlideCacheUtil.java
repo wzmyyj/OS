@@ -21,7 +21,7 @@ public class GlideCacheUtil {
     /**
      * 清除图片磁盘缓存
      *
-     * @param context
+     * @param context .
      */
     public static void clearImageDiskCache(final Context context) {
         if (Looper.myLooper() != Looper.getMainLooper()) {//不能在主线程执行
@@ -32,7 +32,7 @@ public class GlideCacheUtil {
     /**
      * 清除图片内存缓存
      *
-     * @param context
+     * @param context .
      */
     public static void clearImageMemoryCache(Context context) {
         if (Looper.myLooper() == Looper.getMainLooper()) { //只能在主线程执行
@@ -44,8 +44,8 @@ public class GlideCacheUtil {
     /**
      * 清除文件夹。
      *
-     * @param context
-     * @param deleteThisPath
+     * @param context .
+     * @param deleteThisPath .
      */
     public static void clearFolderFile(Context context,boolean deleteThisPath) {
         String ImageExternalCatchDir = context.getExternalCacheDir() + ExternalPreferredCacheDiskCacheFactory.DEFAULT_DISK_CACHE_DIR;
@@ -55,7 +55,7 @@ public class GlideCacheUtil {
     /**
      * 获取Glide造成的缓存大小
      *
-     * @param context
+     * @param context .
      * @return CacheSize
      */
     public static String getCacheSize(Context context) {

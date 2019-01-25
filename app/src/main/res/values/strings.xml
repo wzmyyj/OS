@@ -103,7 +103,7 @@
     <string name="no_os">您没有正在相对！前往相对。</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
-    <string name="you_not_be_invite">您还有被邀请</string>
+    <string name="you_not_be_invite">您还没有被邀请</string>
     <string name="success_create_match">成功创建相对</string>
     <string name="image">image</string>
     <string name="goods_how_use">不可叠加 | 过期自动退 | 随时退 | 免预约</string>

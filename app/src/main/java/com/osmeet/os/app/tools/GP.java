@@ -25,7 +25,7 @@ public class GP {
 
     private static String provider;
     private static String filePath;
-    private GalleryConfig galleryConfig;
+    private GalleryConfig.Builder builder;
 
     // "包名.FileProvider"
     public static void init(String p, String fp) {
@@ -33,8 +33,7 @@ public class GP {
         filePath = fp;
     }
 
-    private GP(GalleryConfig galleryConfig) {
-        this.galleryConfig = galleryConfig;
+    private GP() {
     }
 
 
@@ -53,7 +52,8 @@ public class GP {
 
         List<String> path = new ArrayList<>();
         //init galleryConfig
-        GalleryConfig galleryConfig = new GalleryConfig.Builder()
+        GP gp = new GP();
+        gp.builder = new GalleryConfig.Builder()
                 .imageLoader(new GlideGalleryImageLoader())    // ImageLoader 加载框架（必填）
                 .iHandlerCallBack(iHandlerCallBack)     // 监听接口（必填）
                 .provider(provider)   // provider(必填)
@@ -65,44 +65,44 @@ public class GP {
                 .crop(true, 1, 1, 5000, 5000)             // 配置裁剪功能的参数，   默认裁剪比例 1:1
                 .isShowCamera(true)                     // 是否现实相机按钮  默认：false
                 .isOpenCamera(false)                    // 是否直接打开相机
-                .filePath(filePath)          // 图片存放路径
-                .build();
-        return new GP(galleryConfig);
+                .filePath(filePath);         // 图片存放路径
+
+        return gp;
     }
 
     public GP multiSelect(boolean multiSelect, int maxSize) {
-        getConfigBuilder().multiSelect(multiSelect, maxSize);
+        this.builder.multiSelect(multiSelect, maxSize);
         return this;
     }
 
     public GP crop(boolean isCrop) {
-        getConfigBuilder().crop(isCrop);
+        this.builder.crop(isCrop);
         return this;
     }
 
     public GP isShowCamera(boolean isShowCamera) {
-        getConfigBuilder().isShowCamera(isShowCamera);
+        this.builder.isShowCamera(isShowCamera);
         return this;
     }
 
     public GP isOpenCamera(boolean isOpenCamera) {
-        getConfigBuilder().isOpenCamera(isOpenCamera);
+        this.builder.isOpenCamera(isOpenCamera);
         return this;
     }
 
     public GP filePath(String filePath) {
-        getConfigBuilder().filePath(filePath);
+        this.builder.filePath(filePath);
         return this;
     }
 
 
     public GalleryConfig.Builder getConfigBuilder() {
-        return galleryConfig.getBuilder();
+        return this.builder;
     }
 
 
     public void open(Activity activity) {
-        GalleryPick.getInstance().setGalleryConfig(this.galleryConfig).open(activity);
+        GalleryPick.getInstance().setGalleryConfig(this.builder.build()).open(activity);
     }
 
     public void openWithPermission(final Activity activity) {

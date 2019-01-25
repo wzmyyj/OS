@@ -9,6 +9,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+
+        multiDexEnabled true
+
         manifestPlaceholders = [
                 GETUI_APP_ID    : "QDHthkn2ao6ZYpIDvdeStA",
                 GETUI_APP_KEY   : "yb6urXd5048maViJ6NZfE",
@@ -58,16 +62,18 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     //    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'//配合Rxjava 使用
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-    implementation 'com.github.Rukey7:TagLayout:1.0.6'
+//    implementation 'com.github.Rukey7:TagLayout:1.0.6'
     implementation 'org.greenrobot:eventbus:3.1.1'
-    implementation 'org.greenrobot:greendao:3.2.2'
+//    implementation 'org.greenrobot:greendao:3.2.2'
     implementation 'com.yanzhenjie:permission:2.0.0-rc4'
     implementation 'com.xw.repo:bubbleseekbar:3.19'
     implementation 'com.github.Kunzisoft:Android-SwitchDateTimePicker:1.4'
-    implementation 'rouchuan.viewpagerlayoutmanager:viewpagerlayoutmanager:2.0.22'
+//    implementation 'rouchuan.viewpagerlayoutmanager:viewpagerlayoutmanager:2.0.22'
     implementation 'com.github.YancyYe:GalleryPick:1.2.1'
     implementation 'cn.yipianfengye.android:zxing-library:2.2'
     implementation 'com.kongzue.dialog:dialog:2.4.6'
+
+    implementation 'com.android.support:multidex:1.0.3'
 
     //3D地图so及jar
     implementation 'com.amap.api:3dmap:6.2.0'

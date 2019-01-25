@@ -1,5 +1,6 @@
 package com.osmeet.os.view.activity;
 
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,8 +14,6 @@ import com.osmeet.os.presenter.MainPresenter;
 import com.osmeet.os.view.fragment.HomeFragment;
 import com.osmeet.os.view.fragment.MessageFragment;
 import com.osmeet.os.view.fragment.MineFragment;
-
-import org.greenrobot.greendao.annotation.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,7 +102,7 @@ public class MainActivity extends BaseMainActivity<MainContract.IPresenter> impl
 
 
     @Override
-    public void showMyInfo(@NotNull User user) {
+    public void showMyInfo(@NonNull  User user) {
         G.img(context, user.getAvatar().getUrl(), img_avatar);
     }
 }

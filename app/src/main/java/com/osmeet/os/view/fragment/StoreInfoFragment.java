@@ -14,7 +14,6 @@ import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.tools.G;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.fragment.BaseFragment;
 import com.osmeet.os.contract.StoreInfoContract;
 import com.osmeet.os.presenter.StoreInfoPresenter;
@@ -26,6 +25,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import top.wzmyyj.wzm_sdk.activity.PanelActivity;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 /**
  * Created by yyj on 2018/12/17. email: 2209011667@qq.com
@@ -82,12 +82,13 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
             list.add("举报");
 //            list.add("拉黑");
             BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
-                switch (index) {
-                    case 0:
-                        mPresenter.toast(text);
-                        break;
-                }
-            }, true).setTitle("请选择！");
+                        switch (index) {
+                            case 0:
+                                mPresenter.toast(text);
+                                break;
+                        }
+                    }, true, context.getString(R.string.cancel)
+            ).setTitle("请选择！");
         });
     }
 
