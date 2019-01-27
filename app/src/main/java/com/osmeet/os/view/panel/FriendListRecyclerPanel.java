@@ -98,7 +98,11 @@ public class FriendListRecyclerPanel extends BaseRecyclerPanel<User, FriendListC
     }
 
     public void setNewFriendNum(int num) {
-        WidgetUtil.setTextNonNull(tv_desc, "+" + num);
+        if (num == 0) {
+            WidgetUtil.setTextNonNull(tv_desc, "");
+        } else {
+            WidgetUtil.setTextNonNull(tv_desc, "+" + num);
+        }
     }
 
 
