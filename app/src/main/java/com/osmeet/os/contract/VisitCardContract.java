@@ -1,5 +1,10 @@
 package com.osmeet.os.contract;
 
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+
+import com.osmeet.os.app.bean.User;
+import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
 
@@ -11,11 +16,18 @@ import com.osmeet.os.base.contract.IBaseView;
 public interface VisitCardContract {
 
     interface IView extends IBaseView {
+        void showMyInfo(@NonNull User user);
+
+        void showCodeText(@NonNull String text);
 
     }
 
-    interface IPresenter extends IBasePresenter{
+    interface IPresenter extends IBasePresenter, I.Scan {
+        void loadMyInfo();
 
+        void loadCodeText();
+
+        void saveCardBitmap(@NonNull Bitmap bitmap);
     }
 
 }

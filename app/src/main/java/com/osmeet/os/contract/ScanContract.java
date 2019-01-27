@@ -1,5 +1,6 @@
 package com.osmeet.os.contract;
 
+import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
 
@@ -14,7 +15,7 @@ public interface ScanContract {
 
     }
 
-    interface IPresenter extends IBasePresenter{
+    interface IPresenter extends IBasePresenter, I.UserInfo2,I.Store{
 
     }
 

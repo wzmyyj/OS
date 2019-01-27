@@ -141,4 +141,8 @@
     <string name="my_friends">我的好友</string>
     <string name="invite_friends_match">邀请好友相对</string>
     <string name="send">发送</string>
+    <string name="scan_and_be_friends">扫码成为相对好友</string>
+    <string name="add_me_on_os">Add me on OS</string>
+    <string name="save_album">保存到相册</string>
+    <string name="scan_card">扫描名片</string>
 </resources>

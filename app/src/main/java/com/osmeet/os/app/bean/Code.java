@@ -7,6 +7,14 @@ package com.osmeet.os.app.bean;
  */
 
 public class Code {
+
+    public static final String CODE_BEGIN = "www.osmeet.com/";
+    public static final int CODE_UN_KNOW = -0x1;
+    public static final int CODE_OS_BUT_USELESS = 0;
+    public static final int CODE_USER_ID = 0x1;
+    public static final int CODE_STORE_ID = 0x10;
+    public static final int CODE_GOODS_ID = 0x11;
+
     private int type;
     private String info;
     private String whole;
@@ -33,22 +41,5 @@ public class Code {
 
     public void setWhole(String whole) {
         this.whole = whole;
-    }
-
-    public static Code decode(String s) {
-        if (s == null) return null;
-        Code code = new Code();
-        code.setWhole(s);
-        if(!s.contains("www.osmeet.com")){
-            code.setType(-1);
-        }else if(!s.contains("userId")){
-            code.setType(1);
-            code.setInfo("");
-        }else if(s.contains("storeId")){
-
-        }else{
-
-        }
-        return code;
     }
 }
