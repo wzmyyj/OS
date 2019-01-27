@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.presenter.BasePresenter;
@@ -54,5 +55,19 @@ public class FriendListPresenter extends BasePresenter<FriendListContract.IView>
                 }
             }
         });
+    }
+
+    @Override
+    public void deleteFriend(final @NonNull String userId) {
+        friendModel.friends_delete(new PObserver<Box<String>>() {
+            @Override
+            public void onNext(Box<String> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                mView.showDeleteFriend(userId, true);
+            }
+        }, userId);
     }
 }

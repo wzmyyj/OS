@@ -13,6 +13,7 @@ import com.kongzue.dialog.v2.InputDialog;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.FileInfo;
 import com.osmeet.os.app.bean.User;
+import com.osmeet.os.app.other.IvdVhHelper;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.UserInfo2Contract;
@@ -24,7 +25,6 @@ import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
 import java.util.List;
 
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
-import top.wzmyyj.wzm_sdk.helper.IvdVhHelper;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
@@ -85,6 +85,11 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserIn
             if (user.getAvatar() != null)
                 G.img(context, user.getAvatar().getUrl(), img_image);
         }
+        if (isFriend = user.getFriendRelationship() == 2) {
+            tv_add_friends.setText(R.string.send_message);
+        } else {
+            tv_add_friends.setText(R.string.add_be_friends);
+        }
         // data
         mData.clear();
         for (int i = 0; i < 100; i++) {
@@ -97,6 +102,8 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserIn
 
     private TextView tv_user_score;
     private ImageView img_image;
+    private TextView tv_add_friends;
+    private boolean isFriend = false;
 
     private IvdVhHelper<User> ivdVhHelper;
 
@@ -117,9 +124,16 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserIn
         img_image.requestLayout();
 
         mHeader.findViewById(R.id.img_b_1).setVisibility(View.GONE);
-        mHeader.findViewById(R.id.tv_add_friends).setVisibility(View.VISIBLE);
-        mHeader.findViewById(R.id.tv_add_friends)
-                .setOnClickListener(v -> addFriends());
+        tv_add_friends = mHeader.findViewById(R.id.tv_add_friends);
+        tv_add_friends.setVisibility(View.VISIBLE);
+        tv_add_friends.setOnClickListener(v -> {
+            if (isFriend) {
+                String userId = mPresenter.getUserId();
+                mPresenter.goChat(userId);
+            } else {
+                addFriends();
+            }
+        });
     }
 
     private void addFriends() {

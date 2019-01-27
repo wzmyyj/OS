@@ -24,11 +24,9 @@ public class FileUtil {
 
     public static boolean saveBitmap(@NonNull Bitmap bitmap, @NonNull String filePath, @NonNull String fileName, Context context) {
         File f = new File(filePath, fileName + ".png");
-
+        f.deleteOnExit();
         try {
-            f.deleteOnExit();
-            boolean c = f.createNewFile();
-            if (!c) return false;
+            f.createNewFile();
             FileOutputStream out = new FileOutputStream(f);
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
             out.flush();

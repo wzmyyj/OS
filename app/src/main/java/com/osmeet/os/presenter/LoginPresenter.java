@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.text.TextUtils;
 
 import com.osmeet.os.app.application.App;
-import com.osmeet.os.app.bean.RcToken;
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.java.MD5Util;
@@ -29,12 +28,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
     @Override
     public void checkToken() {
         if (!App.getInstance().getToken().isEmpty()) {
-//            loadUserInfo();
-            if (!App.getInstance().getRcToken().isEmpty()) {
-                App.getInstance().connectRc();
-            } else {
-                loadRcToken();
-            }
             goMainAndFinish();
         }
     }
@@ -89,7 +82,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                     App.getInstance().setToken(box.getData());
                     toast("登录成功!");
                     loadUserInfo();
-                    loadRcToken();
                 }
             }
         }, zoneCode, phone, smsCode);
@@ -110,7 +102,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                     App.getInstance().setToken(box.getData());
                     toast("登录成功!");
                     loadUserInfo();
-                    loadRcToken();
                 }
             }
         }, zoneCode, phone, md5password);
@@ -172,23 +163,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
             public void onError(Throwable e) {
                 super.onError(e);
                 mView.showFail(1, "Fail");
-            }
-        });
-    }
-
-    @Override
-    public void loadRcToken() {
-        userModel.user_getRyToken(new PObserver<Box<RcToken>>() {
-            @Override
-            public void onNext(Box<RcToken> box) {
-                if (box.getCode() != 0) {
-                    toast(box.getMessage());
-                    return;
-                }
-                if (box.getData() != null) {
-                    App.getInstance().setRcToken(box.getData());
-                    App.getInstance().connectRc();
-                }
             }
         });
     }

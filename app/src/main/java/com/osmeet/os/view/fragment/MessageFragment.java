@@ -17,6 +17,7 @@ import com.osmeet.os.view.panel.MessageNeScrollPanel;
 import java.util.List;
 
 import butterknife.BindView;
+import io.rong.imkit.RongIM;
 
 /**
  * Created by yyj on 2018/12/19. email: 2209011667@qq.com
@@ -71,7 +72,8 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
     }
 
     private void scan() {
-        mPresenter.goScan();
+//        mPresenter.goScan();
+        mPresenter.goFriendList();
     }
 
     @Override
@@ -79,6 +81,8 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
         super.initData();
         mPresenter.loadMatchTeamList();
         mPresenter.loadMatchInviteList();
+        mPresenter.loadRcToken();
+
     }
 
     @Override
@@ -94,5 +98,11 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
         } else {
             messageNeScrollPanel.setMatchInviteGroup(null);
         }
+    }
+
+    @Override
+    public void showRcTokenConnect(boolean isSuccess) {
+        if (isSuccess)
+            RongIM.getInstance().startConversationList(context );
     }
 }

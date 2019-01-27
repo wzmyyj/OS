@@ -13,6 +13,7 @@ import com.osmeet.os.view.panel.NewFriendsRecyclerPanel;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class NewFriendsActivity extends BaseActivity<NewFriendListContract.IPresenter> implements NewFriendListContract.IView {
     @Override
@@ -34,6 +35,11 @@ public class NewFriendsActivity extends BaseActivity<NewFriendListContract.IPres
         addPanels(
                 newFriendsRecyclerPanel = new NewFriendsRecyclerPanel(context, mPresenter)
         );
+    }
+
+    @OnClick(R.id.img_back)
+    void back() {
+        mPresenter.finish();
     }
 
     @BindView(R.id.fl_panel)

@@ -1,4 +1,4 @@
-package top.wzmyyj.wzm_sdk.utils;
+package top.wzmyyj.wzm_sdk.panel;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import top.wzmyyj.wzm_sdk.adapter.ViewTitlePagerAdapter;
-import top.wzmyyj.wzm_sdk.panel.Panel;
 
 /**
  * Created by yyj on 2019/01/22.

@@ -31,7 +31,7 @@
 
     <application
         android:name=".app.application.App"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_app_os"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -81,7 +81,18 @@
         </activity>
         <activity
             android:name=".view.activity.MainActivity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.osmeet.os"
+                    android:pathPrefix="/conversationlist"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.GuideActivity" />
         <activity android:name=".view.activity.AdActivity" />
@@ -102,7 +113,18 @@
         <activity android:name=".view.activity.GoodsBuyActivity" />
         <activity android:name=".view.activity.GoodsActivity" />
         <activity android:name=".view.activity.MatchBeginActivity" />
-        <activity android:name=".view.activity.ChatActivity" />
+        <activity android:name=".view.activity.ChatActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.osmeet.os"
+                    android:pathPrefix="/conversation/"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
         <activity android:name=".view.activity.ChatInviteActivity" />
         <activity android:name=".view.activity.ScanActivity" />
         <activity android:name=".view.activity.VisitCardActivity" />

@@ -16,7 +16,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import top.wzmyyj.wzm_sdk.utils.PanelUtil;
+import top.wzmyyj.wzm_sdk.panel.PanelUtil;
 
 public class MatchListActivity extends BaseActivity<MatchListContract.IPresenter> implements MatchListContract.IView {
     @Override

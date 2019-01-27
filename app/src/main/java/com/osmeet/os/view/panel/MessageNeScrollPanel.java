@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchTeam;
+import com.osmeet.os.app.other.IvdVhHelper;
 import com.osmeet.os.base.panel.BaseNeScrollPanel;
 import com.osmeet.os.contract.MessageContract;
 import com.osmeet.os.view.adapter.MatchTeamAdapter;
@@ -24,7 +25,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import top.wzmyyj.wzm_sdk.helper.IvdVhHelper;
 
 
 /**
@@ -45,6 +45,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
     public void update() {
         mPresenter.loadMatchTeamList();
         mPresenter.loadMatchInviteList();
+        mPresenter.loadRcToken();
     }
 
     @BindView(R.id.rv_list)

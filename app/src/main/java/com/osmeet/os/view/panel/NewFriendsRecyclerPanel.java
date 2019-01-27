@@ -2,6 +2,8 @@ package com.osmeet.os.view.panel;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.osmeet.os.app.bean.Friend;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
@@ -41,6 +43,12 @@ public class NewFriendsRecyclerPanel extends BaseRecyclerPanel<Friend, NewFriend
     protected void loadMore() {
         super.loadMore();
         mPresenter.loadNewFriendList(nextPageNum());
+    }
+
+    @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        super.onItemClick(view, holder, position);
+        mPresenter.goUserInfo2(mData.get(position).getUser().getId());
     }
 
     public void agreeSuccess(@NonNull String userId) {

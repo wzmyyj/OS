@@ -3,6 +3,7 @@ package com.osmeet.os.contract;
 import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.User;
+import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
 
@@ -16,10 +17,14 @@ public interface UserInfo2Contract {
         void showUserInfo(@NonNull User user);
     }
 
-    interface IPresenter extends IBasePresenter {
+    interface IPresenter extends IBasePresenter, I.Chat {
+
+        String getUserId();
 
         void loadUserInfo();
 
         void addFriend(@NonNull String message);
+
+
     }
 }

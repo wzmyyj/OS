@@ -21,13 +21,17 @@ public interface MessageContract {
         void showMatchTeamList(@NonNull List<MatchTeam> matchTeamList);
 
         void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList);
+
+        void showRcTokenConnect(boolean isSuccess);
     }
 
-    interface IPresenter extends IBasePresenter, I.Match,I.InviteList,I.Search,I.Scan ,I.FriendList{
+    interface IPresenter extends IBasePresenter, I.Match, I.InviteList, I.Search, I.Scan, I.FriendList {
 
         void loadMatchTeamList();
 
         void loadMatchInviteList();
+
+        void loadRcToken();
 
     }
 

@@ -80,12 +80,9 @@ public class App extends BaseApplication {
     }
 
     public RcToken getRcToken() {
-        return rcManager.getmRcToken();
+        return rcManager.getRcToken();
     }
 
-    public void connectRc() {
-        rcManager.connect();
-    }
 
     public void clearToken() {
         if (userManager.getMyInfo() != null) {

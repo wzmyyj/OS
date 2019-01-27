@@ -17,10 +17,10 @@ import top.wzmyyj.wzm_sdk.tools.Sure;
  * Created by yyj on 2018/04/23.
  * <p>
  * Panel意为面板。设计初衷是希望有个类似Fragment，但比Fragment简洁，小规模的View的控制器。
- * Panel可以放在Activity,Fragment，也可以放在GroupPanel里，形成层层套嵌模型。
+ * Panel可以放在Activity,Fragment，也可以放在PanelGroup里，形成层层套嵌模型。
  * Panel拥有Fragment类似的生命周期，子层比父层先执行，同层按顺序先执行。
  * Panel与父层通讯紧密时，可以用内部类。
- * Panel只能在initPanels()（见GroupPanel，PanelActivity，PanelFragment）中添加到父容器的PanelManager。
+ * Panel只能在initPanels()（见PanelGroup，PanelActivity，PanelFragment）中添加到父容器的PanelManager。
  * Panel不支持动态添加和销毁。只能跟着父容器创建并跟着父容器创建销毁。可以看做静态布局的一个局部控制器。
  *
  * @author wzmyyj email: 2209011667@qq.com

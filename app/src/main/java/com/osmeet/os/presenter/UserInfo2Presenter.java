@@ -28,6 +28,11 @@ public class UserInfo2Presenter extends BasePresenter<UserInfo2Contract.IView> i
 
 
     @Override
+    public String getUserId() {
+        return getActivity().getIntent().getStringExtra("userId");
+    }
+
+    @Override
     public void loadUserInfo() {
         String userId = getActivity().getIntent().getStringExtra("userId");
         if (TextUtils.isEmpty(userId)) {

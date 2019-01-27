@@ -20,7 +20,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import top.wzmyyj.wzm_sdk.utils.PanelUtil;
+import top.wzmyyj.wzm_sdk.panel.PanelUtil;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 public class WalletActivity extends BaseActivity<WalletContract.IPresenter> implements WalletContract.IView {

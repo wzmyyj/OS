@@ -321,15 +321,16 @@ public class I {
         }
     }
 
-    public static void goChatActivity(Context context) {
+    public static void goChatActivity(Context context, String userId) {
         Intent intent = new Intent(context, ChatActivity.class);
+        intent.putExtra("userId", userId);
         context.startActivity(intent);
     }
 
     public interface Chat extends IContext {
-        default void goChat() {
+        default void goChat(String userId) {
             if (getContext() != null)
-                goChatActivity(getContext());
+                goChatActivity(getContext(), userId);
         }
     }
 

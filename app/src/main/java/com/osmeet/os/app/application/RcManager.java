@@ -4,11 +4,7 @@ import android.app.Application;
 
 import com.osmeet.os.app.bean.RcToken;
 
-import io.rong.imkit.RongIM;
-import io.rong.imlib.RongIMClient;
-import top.wzmyyj.wzm_sdk.tools.L;
 import top.wzmyyj.wzm_sdk.tools.P;
-import top.wzmyyj.wzm_sdk.tools.T;
 
 /**
  * Created by yyj on 2019/01/23.
@@ -51,7 +47,7 @@ public class RcManager {
 
     private RcToken mRcToken;
 
-    public RcToken getmRcToken() {
+    public RcToken getRcToken() {
         if (mRcToken == null) {
             mRcToken = new RcToken();
             String token = P.create(context).getString("RcToken", "");
@@ -59,25 +55,6 @@ public class RcManager {
         }
         return mRcToken;
 
-    }
-
-    public void connect() {
-        if (mRcToken == null) return;
-        RongIM.connect(mRcToken.getToken(), new RongIMClient.ConnectCallback() {
-            @Override
-            public void onTokenIncorrect() {
-            }
-
-            @Override
-            public void onSuccess(String userId) {
-                L.d("Success userId= " + userId);
-            }
-
-            @Override
-            public void onError(RongIMClient.ErrorCode errorCode) {
-                T.s("ErrorCode=" + errorCode);
-            }
-        });
     }
 
 }

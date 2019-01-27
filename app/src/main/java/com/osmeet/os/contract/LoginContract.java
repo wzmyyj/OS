@@ -38,8 +38,6 @@ public interface LoginContract {
 
         void loadUserInfo();
 
-        void loadRcToken();
-
     }
 
 }

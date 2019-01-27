@@ -17,6 +17,7 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class FriendListActivity extends BaseActivity<FriendListContract.IPresenter> implements FriendListContract.IView {
     @Override
@@ -38,6 +39,11 @@ public class FriendListActivity extends BaseActivity<FriendListContract.IPresent
         addPanels(
                 friendListRecyclerPanel = new FriendListRecyclerPanel(context, mPresenter)
         );
+    }
+
+    @OnClick(R.id.img_back)
+    void back() {
+        mPresenter.finish();
     }
 
     @BindView(R.id.fl_panel)
@@ -65,6 +71,13 @@ public class FriendListActivity extends BaseActivity<FriendListContract.IPresent
     @Override
     public void showNewFriendNum(int num) {
         friendListRecyclerPanel.setNewFriendNum(num);
+    }
+
+    @Override
+    public void showDeleteFriend(@NonNull String userId, boolean isSuccess) {
+        if (isSuccess) {
+            friendListRecyclerPanel.removeFriend(userId);
+        }
     }
 
     @Override

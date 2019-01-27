@@ -21,13 +21,17 @@ public interface FriendListContract {
         void showFriendList(@NonNull List<User> userList, int pageNum);
 
         void showNewFriendNum(int num);
+
+        void showDeleteFriend(@NonNull String userId,boolean isSuccess);
     }
 
-    interface IPresenter extends IBasePresenter, I.NewFriends {
+    interface IPresenter extends IBasePresenter, I.NewFriends, I.UserInfo2 {
 
         void loadFriendList(int pageNum);
 
         void loadNewFriendNum();
+
+        void deleteFriend(@NonNull String userId);
     }
 
 }

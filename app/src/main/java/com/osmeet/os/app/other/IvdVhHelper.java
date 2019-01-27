@@ -1,4 +1,4 @@
-package top.wzmyyj.wzm_sdk.helper;
+package com.osmeet.os.app.other;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -18,7 +18,7 @@ import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
  * @author wzmyyj email: 2209011667@qq.com
  */
 
-public final class IvdVhHelper<T> {
+public  class IvdVhHelper<T> {
     private ViewHolder viewHolder;
     private IVD<T> ivd;
 
