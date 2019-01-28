@@ -1,6 +1,7 @@
 package com.osmeet.os.view.panel;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +26,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.rong.imkit.fragment.ConversationListFragment;
+import io.rong.imkit.fragment.IHistoryDataResultCallback;
+import io.rong.imkit.widget.adapter.ConversationListAdapter;
+import io.rong.imlib.model.Conversation;
+import top.wzmyyj.wzm_sdk.utils.FragmentUtil;
 
 
 /**
@@ -45,7 +51,6 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
     public void update() {
         mPresenter.loadMatchTeamList();
         mPresenter.loadMatchInviteList();
-        mPresenter.loadRcToken();
     }
 
     @BindView(R.id.rv_list)
@@ -56,6 +61,8 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
     private List<MatchTeam> mData;
     private IvdVhHelper<MatchInvite.Group> ivdVhHelper;
 
+    private ConversationListFragment conversationListFragment;
+
     @Override
     protected void initView() {
         super.initView();
@@ -64,6 +71,47 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         rv_list.setAdapter(mAdapter = new MatchTeamAdapter(context, mData));
 
         ivdVhHelper = new IvdVhHelper<MatchInvite.Group>(context, new InviteGroupIVD(context), ll_invite);
+
+
+        conversationListFragment = new ConversationListFragment();
+        FragmentUtil.add(fragment.getChildFragmentManager(), R.id.fl_fragment, conversationListFragment, "");
+    }
+
+    Conversation.ConversationType[] mConversationsTypes;
+
+    @Override
+    protected void initData() {
+        super.initData();
+        Uri uri = Uri.parse("rong://" + context.getApplicationInfo().packageName).buildUpon()
+                .appendPath("conversationlist")
+                .appendQueryParameter(Conversation.ConversationType.PRIVATE.getName(), "false") //设置私聊会话是否聚合显示
+                .appendQueryParameter(Conversation.ConversationType.GROUP.getName(), "false")//群组
+                .appendQueryParameter(Conversation.ConversationType.PUBLIC_SERVICE.getName(), "false")//公共服务号
+                .appendQueryParameter(Conversation.ConversationType.APP_PUBLIC_SERVICE.getName(), "false")//订阅号
+                .appendQueryParameter(Conversation.ConversationType.SYSTEM.getName(), "true")//系统
+                .build();
+        conversationListFragment.setUri(uri);
+        conversationListFragment.setAdapter(new ConversationListAdapter(context));
+
+        mConversationsTypes = new Conversation.ConversationType[]{Conversation.ConversationType.PRIVATE,
+                Conversation.ConversationType.GROUP,
+                Conversation.ConversationType.PUBLIC_SERVICE,
+                Conversation.ConversationType.APP_PUBLIC_SERVICE,
+                Conversation.ConversationType.SYSTEM
+        };
+
+        conversationListFragment.getConversationList(mConversationsTypes, new IHistoryDataResultCallback<List<Conversation>>() {
+            @Override
+            public void onResult(List<Conversation> conversations) {
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+
     }
 
     @Override
@@ -132,4 +180,5 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
             isHaveInvite = true;
         }
     }
+
 }

@@ -22,7 +22,6 @@ public interface MessageContract {
 
         void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList);
 
-        void showRcTokenConnect(boolean isSuccess);
     }
 
     interface IPresenter extends IBasePresenter, I.Match, I.InviteList, I.Search, I.Scan, I.FriendList {
@@ -30,8 +29,6 @@ public interface MessageContract {
         void loadMatchTeamList();
 
         void loadMatchInviteList();
-
-        void loadRcToken();
 
     }
 

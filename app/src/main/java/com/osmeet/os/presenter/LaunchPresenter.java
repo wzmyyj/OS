@@ -25,17 +25,12 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
     @Override
     public void init() {
         App.getInstance().setMyInfo(null);
+        App.getInstance().connectRc();
     }
 
 
     private long delayMillis() {
-        if (App.getInstance().getSetting().isOnce()) {
-            return 1000;
-        } else if (App.getInstance().getSetting().isAd()) {
-            return 500;
-        } else {
-            return 300;
-        }
+        return 1000;
     }
 
     private void goTo() {

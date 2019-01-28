@@ -17,6 +17,7 @@ import com.osmeet.os.model.net.utils.Urls;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
 import top.wzmyyj.wzm_sdk.tools.L;
 import top.wzmyyj.wzm_sdk.utils.PackageUtil;
 
@@ -50,7 +51,7 @@ public class App extends BaseApplication {
         GP.init("provider.GPFileProvider", "/OsMeet/images");
 
         ZXingLibrary.initDisplayOpinion(this);
-        
+
         RongIM.init(this.getApplicationContext());
         PushManager.getInstance().initialize(this.getApplicationContext(), PushService.class);
         PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), PushIntentService.class);
@@ -122,4 +123,25 @@ public class App extends BaseApplication {
         return settingManager;
     }
 
+
+    public void connectRc() {
+        RcToken mRcToken = getRcToken();
+        if (mRcToken == null) return;
+        RongIM.connect(mRcToken.getToken(), new RongIMClient.ConnectCallback() {
+            @Override
+            public void onTokenIncorrect() {
+
+            }
+
+            @Override
+            public void onSuccess(String userId) {
+                L.d("Success userId= " + userId);
+            }
+
+            @Override
+            public void onError(RongIMClient.ErrorCode errorCode) {
+                L.e("ErrorCode=" + errorCode);
+            }
+        });
+    }
 }

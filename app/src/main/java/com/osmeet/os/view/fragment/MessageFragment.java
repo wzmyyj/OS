@@ -14,13 +14,9 @@ import com.osmeet.os.contract.MessageContract;
 import com.osmeet.os.presenter.MessagePresenter;
 import com.osmeet.os.view.panel.MessageNeScrollPanel;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
-import io.rong.imkit.RongIM;
-import io.rong.imlib.model.Conversation;
 
 /**
  * Created by yyj on 2018/12/19. email: 2209011667@qq.com
@@ -42,11 +38,12 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
     @Override
     protected void initPanels() {
         super.initPanels();
-        addPanels(messageNeScrollPanel = new MessageNeScrollPanel(context, mPresenter));
+        addPanels(messageNeScrollPanel = new MessageNeScrollPanel(context, mPresenter).inFragment(fragment));
     }
 
     @BindView(R.id.fl_panel)
     FrameLayout fl_panel;
+
 
     @Override
     protected void initView() {
@@ -84,7 +81,6 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
         super.initData();
         mPresenter.loadMatchTeamList();
         mPresenter.loadMatchInviteList();
-        mPresenter.loadRcToken();
 
     }
 
@@ -101,15 +97,5 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
         } else {
             messageNeScrollPanel.setMatchInviteGroup(null);
         }
-    }
-
-    @Override
-    public void showRcTokenConnect(boolean isSuccess) {
-        if (isSuccess) {
-            Map<String, Boolean> supportedConversation = new HashMap<>();
-            supportedConversation.put(Conversation.ConversationType.PRIVATE.getName(), false);
-            RongIM.getInstance().startConversationList(context, supportedConversation);
-        }
-
     }
 }

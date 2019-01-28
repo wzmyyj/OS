@@ -73,7 +73,8 @@ public class SettingManager {
     }
 
     public boolean isOnce() {
-        return P.create(context, "setting").getBoolean("os_is_once", true);
+        return false;
+//        return P.create(context, "setting").getBoolean("os_is_once", true);
     }
 
 

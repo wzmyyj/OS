@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
+import com.osmeet.os.app.bean.RcToken;
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.java.MD5Util;
@@ -82,6 +83,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                 if (box.getData() != null) {
                     App.getInstance().setToken(box.getData());
                     toast(getContext().getString(R.string.login_success));
+                    loadRcToken();
                     loadUserInfo();
                 }
             }
@@ -102,6 +104,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                 if (box.getData() != null) {
                     App.getInstance().setToken(box.getData());
                     toast(getContext().getString(R.string.login_success));
+                    loadRcToken();
                     loadUserInfo();
                 }
             }
@@ -176,5 +179,22 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                 }
             }
         }, zoneCode, phone);
+    }
+
+    @Override
+    public void loadRcToken() {
+        userModel.user_getRyToken(new PObserver<Box<RcToken>>() {
+            @Override
+            public void onNext(Box<RcToken> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                if (box.getData() != null) {
+                    App.getInstance().setRcToken(box.getData());
+                    App.getInstance().connectRc();
+                }
+            }
+        });
     }
 }
