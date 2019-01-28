@@ -81,11 +81,11 @@ public class TradeNeScrollPanel extends BaseNeScrollPanel<TradeContract.IPresent
 
         TextView v1 = getBindView("v1");
         if (v1 != null) {
-            WidgetUtil.setTextPrice(v1, "￥", trade.getAmountPaid());
+            WidgetUtil.setTextPrice(v1, context.getString(R.string.yuan), trade.getAmountPaid());
         }
         TextView v2 = getBindView("v2");
         if (v2 != null) {
-            WidgetUtil.setTextPrice(v2, "￥", trade.getAmount());
+            WidgetUtil.setTextPrice(v2, context.getString(R.string.yuan), trade.getAmount());
         }
     }
 

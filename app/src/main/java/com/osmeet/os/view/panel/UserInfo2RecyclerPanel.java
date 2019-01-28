@@ -137,13 +137,13 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserIn
     }
 
     private void addFriends() {
-        InputDialog.show(context, "添加好友", "向新朋友问候",
-                "提交", (dialog, inputText) -> {
+        InputDialog.show(context, context.getString(R.string.add_be_friends), context.getString(R.string.greet_to_new_friend),
+                context.getString(R.string.submit), (dialog, inputText) -> {
                     if (TextUtils.isEmpty(inputText)) return;
                     mPresenter.addFriend(inputText);
                     dialog.dismiss();
-                }, "取消", (dialog, which) -> {
-                    mPresenter.toast("取消！");
+                }, context.getString(R.string.cancel), (dialog, which) -> {
+                    mPresenter.toast(context.getString(R.string.cancel));
                 });
     }
 

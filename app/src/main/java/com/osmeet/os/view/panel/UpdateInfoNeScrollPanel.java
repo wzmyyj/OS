@@ -123,7 +123,7 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
 
     @OnClick(R.id.bt_validate)
     void validate() {
-        mPresenter.toast("哈哈哈！");
+        mPresenter.toast(context.getString(R.string.validate_your_account));
     }
 
     private List<ImageView> imageViewList = new ArrayList<>();
@@ -185,9 +185,9 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
             final int j = i;
             imageViewList.get(i).setOnLongClickListener(v -> {
                 if (isNoImage(j)) return false;
-                SelectDialog.show(context, "警告", "删除这张照片？",
-                        "确定", (dialog, which) -> deleteImage(j),
-                        "取消", (dialog, which) -> {
+                SelectDialog.show(context, context.getString(R.string.warm), context.getString(R.string.delete_this_photo),
+                        context.getString(R.string.ok), (dialog, which) -> deleteImage(j),
+                        context.getString(R.string.cancel), (dialog, which) -> {
                         });
                 return true;
             });
@@ -200,9 +200,9 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
         int length = et_username.getText().toString().length();
         int length2 = et_birthday.getText().toString().length();
         if (length < 1 || length > 10) {
-            mPresenter.toast("昵称长度1~10个字符！");
+            mPresenter.toast(context.getString(R.string.name_length_1_10_char));
         } else if (length2 < 8) {
-            mPresenter.toast("请完善生日！");
+            mPresenter.toast(context.getString(R.string.pop_birthday));
         } else {
             updateInfo();
         }

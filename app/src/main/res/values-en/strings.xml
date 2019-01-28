@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">相对</string>
+    <string name="app_name">OS</string>
     <string name="welcome">welcome</string>
     <string name="ad">广告</string>
     <string name="guide">引导</string>

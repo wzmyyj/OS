@@ -3,6 +3,7 @@ package com.osmeet.os.presenter;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 
+import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.FileInfo;
 import com.osmeet.os.app.bean.User;
@@ -56,7 +57,6 @@ public class PopInfoPresenter extends BasePresenter<PopInfoContract.IView> imple
                 FileInfo info = box.getData();
                 if (info.getId() != null) {
                     log("fileId=" + info.getId());
-                    log("文件上传成功！");
                     updateAvatar(info.getId());
                 }
 
@@ -94,7 +94,7 @@ public class PopInfoPresenter extends BasePresenter<PopInfoContract.IView> imple
 
     private void checkFinishAll() {
         if (isSuccessConsummateInfo && isSuccessUpdateAvatar) {
-            toast("完善信息成功!");
+            toast(getContext().getString(R.string.pop_info_success));
             App.getInstance().finish(LoginActivity.class);
             App.getInstance().setMyInfo(null);
             App.getInstance().setComplete(true);

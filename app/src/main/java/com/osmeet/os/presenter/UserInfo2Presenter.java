@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import com.osmeet.os.R;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.UserInfo2Contract;
@@ -68,7 +69,7 @@ public class UserInfo2Presenter extends BasePresenter<UserInfo2Contract.IView> i
                     toast(box.getMessage());
                     return;
                 }
-                toast("申请成功！");
+                toast(getContext().getString(R.string.apply_success));
 
             }
         }, userId, message);

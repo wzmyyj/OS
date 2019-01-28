@@ -40,11 +40,15 @@ public class TradeListActivity extends BaseActivity<TradeListContract.IPresenter
     protected void initPanels() {
         super.initPanels();
         addPanels(
-                tradeListRecyclerPanel_0 = new TradeListRecyclerPanel(context, mPresenter).setTitle("全部").setTag(Trade.ALL),
-                tradeListRecyclerPanel_1 = new TradeListRecyclerPanel(context, mPresenter).setTitle("待付款").setTag(Trade.WAIT_PAY),
+                tradeListRecyclerPanel_0 = new TradeListRecyclerPanel(context, mPresenter)
+                        .setTitle(context.getString(R.string.all)).setTag(Trade.ALL),
+                tradeListRecyclerPanel_1 = new TradeListRecyclerPanel(context, mPresenter)
+                        .setTitle(context.getString(R.string.wait_pay)).setTag(Trade.WAIT_PAY),
 //                tradeListRecyclerPanel_2 = new TradeListRecyclerPanel(context, mPresenter).setTitle("待匹配").setTag(Trade.),
-                tradeListRecyclerPanel_3 = new TradeListRecyclerPanel(context, mPresenter).setTitle("待使用").setTag(Trade.PAID),
-                tradeListRecyclerPanel_4 = new TradeListRecyclerPanel(context, mPresenter).setTitle("退款").setTag(Trade.P_REFUND_END)
+                tradeListRecyclerPanel_3 = new TradeListRecyclerPanel(context, mPresenter)
+                        .setTitle(context.getString(R.string.wait_use)).setTag(Trade.PAID),
+                tradeListRecyclerPanel_4 = new TradeListRecyclerPanel(context, mPresenter)
+                        .setTitle(context.getString(R.string.pay_back)).setTag(Trade.P_REFUND_END)
         );
     }
 

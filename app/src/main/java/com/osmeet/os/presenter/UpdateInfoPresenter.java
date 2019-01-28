@@ -3,6 +3,7 @@ package com.osmeet.os.presenter;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 
+import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.event.MyInfoUpdateEvent;
@@ -33,7 +34,6 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.IView>
             mView.showMyInfo(App.getInstance().getMyInfo());
             return;
         }
-        log("正在获取用户信息!");
         userModel.user(new PObserver<Box<User>>() {
             @Override
             public void onNext(Box<User> box) {
@@ -142,7 +142,7 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.IView>
 
     private void checkFinishAll() {
         if (isFinishUpdateInfo && isFinishUpdateAvatar && isFinishUpdateImages) {
-            toast("修改信息成功!");
+            toast(getContext().getString(R.string.update_info_success));
             App.getInstance().setMyInfo(null);
             EventBus.getDefault().post(new MyInfoUpdateEvent(true));
             finish();

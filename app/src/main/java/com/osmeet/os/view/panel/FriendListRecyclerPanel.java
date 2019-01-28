@@ -76,14 +76,15 @@ public class FriendListRecyclerPanel extends BaseRecyclerPanel<User, FriendListC
                             break;
                     }
                 }, true, context.getString(R.string.cancel)
-        ).setTitle("请选择！");
+        ).setTitle(context.getString(R.string.please_choose));
     }
 
     private void dialog() {
-        SelectDialog.show(context, "警告", "删除这位好友？",
-                "确定", (dialog, which) ->
+        SelectDialog.show(context, context.getString(R.string.warm),
+                context.getString(R.string.delete_this_friend),
+                context.getString(R.string.ok), (dialog, which) ->
                         mPresenter.deleteFriend(mData.get(mLongClickPosition - 1).getId()),
-                "取消", (dialog, which) -> {
+                context.getString(R.string.cancel), (dialog, which) -> {
                 });
     }
 

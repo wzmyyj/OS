@@ -90,8 +90,8 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
         ImageView img_menu = mTopBar.findViewById(R.id.img_menu);
         img_menu.setOnClickListener(v -> {
             List<String> list = new ArrayList<>();
-            list.add("举报");
-            list.add("拉黑");
+            list.add(context.getString(R.string.report));
+            list.add(context.getString(R.string.block));
             BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
                         switch (index) {
                             case 0:
@@ -101,8 +101,9 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
                                 mPresenter.toast(text);
                                 break;
                         }
-                    }, true, context.getString(R.string.cancel)
-            ).setTitle("请选择！");
+                    }, true,
+                    context.getString(R.string.cancel)
+            ).setTitle(context.getString(R.string.please_choose));
         });
     }
 
@@ -139,10 +140,10 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
         if (what == 1) {
             userInfoRecyclerPanel.showMatchSuccess(true);
         } else if (what == 2) {
-            SelectDialog.show(context, "提示",
-                    "对方已经邀请过你，是否接受？",
-                    "是", (dialog, which) -> mPresenter.matchInvite_accept(),
-                    "否", (dialog, which) -> {
+            SelectDialog.show(context, context.getString(R.string.tip),
+                    context.getString(R.string.he_invite_before),
+                    context.getString(R.string.yes), (dialog, which) -> mPresenter.matchInvite_accept(),
+                    context.getString(R.string.no), (dialog, which) -> {
                     });
         }
     }

@@ -42,9 +42,9 @@ public class WalletActivity extends BaseActivity<WalletContract.IPresenter> impl
     protected void initPanels() {
         super.initPanels();
         addPanels(
-                walletRecyclerPanel_0 = new WalletRecyclerPanel(context, mPresenter).setTitle("全部"),
-                walletRecyclerPanel_1 = new WalletRecyclerPanel(context, mPresenter).setTitle("收入"),
-                walletRecyclerPanel_2 = new WalletRecyclerPanel(context, mPresenter).setTitle("支出")
+                walletRecyclerPanel_0 = new WalletRecyclerPanel(context, mPresenter).setTitle(context.getString(R.string.all)),
+                walletRecyclerPanel_1 = new WalletRecyclerPanel(context, mPresenter).setTitle(context.getString(R.string.income)),
+                walletRecyclerPanel_2 = new WalletRecyclerPanel(context, mPresenter).setTitle(context.getString(R.string.expend))
         );
     }
 
@@ -65,43 +65,45 @@ public class WalletActivity extends BaseActivity<WalletContract.IPresenter> impl
     @OnClick(R.id.bt_tx)
     void tx() {
         if (money < 0.001) {
-            mPresenter.toast("提现余额需不少于0.01￥！");
+            mPresenter.toast(context.getString(R.string.tx_je_not_blow_0_01));
             return;
         }
         dialogInput1();
     }
 
     private void dialogInput1() {
-        InputDialog.show(context, "提示", "请输入支付宝账号：",
-                "提交", (dialog, inputText) -> {
+        InputDialog.show(context, context.getString(R.string.tip),
+                context.getString(R.string.input_alipay_account),
+                context.getString(R.string.submit), (dialog, inputText) -> {
                     if (TextUtils.isEmpty(inputText)) {
-                        mPresenter.toast("支付宝账号不能为空！");
+                        mPresenter.toast(context.getString(R.string.alipay_account_can_not_empty));
                         return;
                     }
                     aliPayAccount = inputText;
                     dialog.dismiss();
                     dialogInput2();
-                }, "取消", (dialog, which) -> {
-                    mPresenter.toast("操作已取消！");
+                }, context.getString(R.string.cancel), (dialog, which) -> {
+                    mPresenter.toast(context.getString(R.string.submit));
                 });
     }
 
     private void dialogInput2() {
-        InputDialog.show(context, "提示", "请提现金额：",
-                "提交", (dialog, inputText) -> {
+        InputDialog.show(context, context.getString(R.string.tip),
+                context.getString(R.string.tx_je),
+                context.getString(R.string.submit), (dialog, inputText) -> {
                     txMoney = Float.parseFloat(inputText);
                     if (txMoney > money) {
-                        mPresenter.toast("余额不足！");
+                        mPresenter.toast(getString(R.string.ye_bz));
                         return;
                     } else if (txMoney < 0.011) {
-                        mPresenter.toast("提现金额需不少于0.1￥！");
+                        mPresenter.toast(getString(R.string.tx_je_can_not_blow_0_01));
                         return;
                     } else {
                         mPresenter.loadTX(aliPayAccount, txMoney);
                     }
                     dialog.dismiss();
-                }, "取消", (dialog, which) -> {
-                    mPresenter.toast("操作已取消！");
+                }, context.getString(R.string.cancel), (dialog, which) -> {
+                    mPresenter.toast(context.getString(R.string.cancel));
                 });
     }
 
@@ -127,7 +129,7 @@ public class WalletActivity extends BaseActivity<WalletContract.IPresenter> impl
     public void showBalance(@NonNull Balance balance) {
         money = balance.getAvailableBalance();
         WidgetUtil.setTextPrice(tv_wallet_money, "", money);
-        WidgetUtil.setTextPrice(tv_wallet_money_2, "￥", money);
+        WidgetUtil.setTextPrice(tv_wallet_money_2, context.getString(R.string.yuan), money);
     }
 
     @Override

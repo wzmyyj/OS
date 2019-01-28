@@ -3,6 +3,7 @@ package com.osmeet.os.presenter;
 import android.app.Activity;
 import android.text.TextUtils;
 
+import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
@@ -39,7 +40,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
 
     private void goPopInfoAndFinish() {
         goPopInfo();
-        toast("用户信息不完整，请完善信息！");
+        toast(getContext().getString(R.string.please_pop_user_info));
         finish(mView.FINISH_FADE_IN_OUT);
     }
 
@@ -60,10 +61,10 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                 }
                 if (box.getData()) {
                     mView.showWhat(mView.LOGIN_SMS);
-                    toast("账号已存在，请登录！");
+                    toast(getContext().getString(R.string.account_exist_please_login));
                 } else {
                     mView.showWhat(mView.LOGIN_REGISTER);
-                    toast("账号不存在，先注册！");
+                    toast(getContext().getString(R.string.account_not_exist_please_register));
                 }
             }
         }, zoneCode, phone);
@@ -80,7 +81,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                 }
                 if (box.getData() != null) {
                     App.getInstance().setToken(box.getData());
-                    toast("登录成功!");
+                    toast(getContext().getString(R.string.login_success));
                     loadUserInfo();
                 }
             }
@@ -100,7 +101,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                 }
                 if (box.getData() != null) {
                     App.getInstance().setToken(box.getData());
-                    toast("登录成功!");
+                    toast(getContext().getString(R.string.login_success));
                     loadUserInfo();
                 }
             }
@@ -119,7 +120,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                 }
                 if (box.getData() != null) {
                     App.getInstance().setToken(box.getData());
-                    toast("注册成功:请完善信息！");
+                    toast(getContext().getString(R.string.register_success_please_pop_info));
                     goPopInfoAndFinish();
                 }
             }
@@ -129,7 +130,6 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
 
     @Override
     public void loadUserInfo() {
-        log("正在获取用户信息!");
         userModel.user(new PObserver<Box<User>>() {
             @Override
             public void onNext(Box<User> box) {
@@ -145,11 +145,9 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                             && user.getSex() > 0
                             && !TextUtils.isEmpty(user.getUsername())
                             && !TextUtils.isEmpty(user.getUsername())) {
-                        log("用户信息完整！");
                         App.getInstance().setComplete(true);
                         goMainAndFinish();
                     } else {
-                        log("用户信息不完整！");
                         App.getInstance().setComplete(true);
                         goPopInfoAndFinish();
                     }

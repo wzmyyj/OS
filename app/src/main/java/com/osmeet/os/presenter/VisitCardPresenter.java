@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 
+import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.Code;
 import com.osmeet.os.app.bean.User;
@@ -47,9 +48,9 @@ public class VisitCardPresenter extends BasePresenter<VisitCardContract.IView> i
                 "code" + App.getInstance().getMyInfo().getId(),
                 getContext());
         if (is) {
-            toast("保存成功！");
+            toast(getContext().getString(R.string.save_success));
         } else {
-            toast("保存失败！");
+            toast(getContext().getString(R.string.save_fail));
         }
     }
 }

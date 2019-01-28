@@ -111,13 +111,13 @@ public class PopInfoActivity extends BaseActivity<PopInfoContract.IPresenter> im
         int length = et_username.getText().toString().length();
         int length2 = et_birthday.getText().toString().length();
         if (sex == 0) {
-            mPresenter.toast("请选择性别！");
+            mPresenter.toast(context.getString(R.string.please_choose_sex));
         } else if (length < 1 || length > 10) {
-            mPresenter.toast("昵称长度1~10个字符！");
+            mPresenter.toast(context.getString(R.string.name_length_1_10_char));
         } else if (length2 < 8) {
-            mPresenter.toast("请完善生日！");
+            mPresenter.toast(context.getString(R.string.pop_birthday));
         } else if (avatarPath == null) {
-            mPresenter.toast("请选择头像！");
+            mPresenter.toast(context.getString(R.string.choose_avatar));
         } else {
             consummate();
         }
@@ -183,7 +183,7 @@ public class PopInfoActivity extends BaseActivity<PopInfoContract.IPresenter> im
             public void afterTextChanged(Editable s) {
                 String str = et_username.getText().toString();
                 if (str.length() > 10) {
-                    mPresenter.toast("长度不能超过10");
+                    mPresenter.toast(context.getString(R.string.length_can_not_over_10));
                     et_username.setText(str.substring(0, 9));
                     WidgetUtil.setEditSelectionLast(et_username);
                 }

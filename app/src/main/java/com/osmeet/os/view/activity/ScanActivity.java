@@ -37,7 +37,7 @@ public class ScanActivity extends BaseActivity<ScanContract.IPresenter> implemen
     @OnClick(R.id.img_menu)
     void menu() {
         List<String> list = new ArrayList<>();
-        list.add("相册中选取");
+        list.add(context.getString(R.string.choose_in_album));
         BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
                     switch (index) {
                         case 0:
@@ -45,7 +45,7 @@ public class ScanActivity extends BaseActivity<ScanContract.IPresenter> implemen
                             break;
                     }
                 }, true, context.getString(R.string.cancel)
-        ).setTitle("请选择！");
+        ).setTitle(context.getString(R.string.please_choose));
     }
 
     private void openGallery() {
@@ -87,12 +87,12 @@ public class ScanActivity extends BaseActivity<ScanContract.IPresenter> implemen
         analyzeCallback = new CodeUtils.AnalyzeCallback() {
             @Override
             public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
-                mPresenter.toast("识别二维码:" + result);
+                mPresenter.toast(context.getString(R.string.rec_2d_code) + result);
             }
 
             @Override
             public void onAnalyzeFailed() {
-                mPresenter.toast("未能识别二维码！");
+                mPresenter.toast(context.getString(R.string.can_not_rec_2d_code));
             }
         };
         captureFragment.setAnalyzeCallback(analyzeCallback);

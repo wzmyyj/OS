@@ -80,7 +80,7 @@ public class InviteFriendsActivity extends BaseActivity<InviteFriendsContract.IP
     @Override
     public void showInviteFriendList(@NonNull List<MatchInvite2> matchInvite2List) {
         if (matchInvite2List.size() > 0){
-            mPresenter.toast("邀请成功！");
+            mPresenter.toast(context.getString(R.string.invite_success));
             mPresenter.finish();
         }
 

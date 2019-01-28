@@ -3,6 +3,7 @@ package com.osmeet.os.presenter;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 
+import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.Balance;
 import com.osmeet.os.app.bean.Record;
@@ -66,7 +67,7 @@ public class WalletPresenter extends BasePresenter<WalletContract.IView> impleme
                     toast(box.getMessage());
                     return;
                 }
-                toast("提现成功！");
+                toast(getContext().getString(R.string.tx_success));
                 loadBalance();
                 loadRecordList(0);
             }

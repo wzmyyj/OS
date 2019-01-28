@@ -34,9 +34,9 @@ public class MainActivity extends BaseMainActivity<MainContract.IPresenter> impl
 
     @Override
     protected void initFTs(List<FT> fts) {
-        fts.add(new FT(new MessageFragment(), "消息", R.mipmap.ic_message, R.mipmap.ic_message_selected));
-        fts.add(new FT(new HomeFragment(), "主页", R.mipmap.ic_home, R.mipmap.ic_home_selected));
-        fts.add(new FT(new MineFragment(), "我的", R.color.colorClarity, R.mipmap.ic_mine_selected));
+        fts.add(new FT(new MessageFragment(), context.getString(R.string.message), R.mipmap.ic_message, R.mipmap.ic_message_selected));
+        fts.add(new FT(new HomeFragment(), context.getString(R.string.home), R.mipmap.ic_home, R.mipmap.ic_home_selected));
+        fts.add(new FT(new MineFragment(), context.getString(R.string.mine), R.color.colorClarity, R.mipmap.ic_mine_selected));
     }
 
     @Override
@@ -102,7 +102,7 @@ public class MainActivity extends BaseMainActivity<MainContract.IPresenter> impl
 
 
     @Override
-    public void showMyInfo(@NonNull  User user) {
+    public void showMyInfo(@NonNull User user) {
         G.img(context, user.getAvatar().getUrl(), img_avatar);
     }
 }

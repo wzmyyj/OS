@@ -3,6 +3,7 @@ package com.osmeet.os.presenter;
 import android.app.Activity;
 import android.text.TextUtils;
 
+import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.presenter.BasePresenter;
@@ -43,12 +44,12 @@ public class MainPresenter extends BasePresenter<MainContract.IView> implements 
                             && user.getSex() > 0
                             && !TextUtils.isEmpty(user.getUsername())
                             && !TextUtils.isEmpty(user.getUsername())) {
-                        log("用户信息完整！");
+                        log("user info complete");
                         App.getInstance().setComplete(true);
                         App.getInstance().setMyInfo(user);
                         mView.showMyInfo(user);
                     } else {
-                        log("用户信息不完整！");
+                        log("user info not complete");
                         App.getInstance().setComplete(false);
                         goPopInfoAndFinish();
                     }
@@ -59,7 +60,7 @@ public class MainPresenter extends BasePresenter<MainContract.IView> implements 
 
     private void goPopInfoAndFinish() {
         goPopInfo();
-        toast("用户信息不完整，请完善信息！");
+        toast(getContext().getString(R.string.user_info_not_complete_please_pop_info));
         finish();
         getActivity().overridePendingTransition(android.R.anim.fade_in,
                 android.R.anim.fade_out);

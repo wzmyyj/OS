@@ -8,12 +8,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.osmeet.os.R;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BasePanel;
 import com.osmeet.os.contract.LoginContract;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -39,7 +39,7 @@ public class LoginPhonePanel extends BasePanel<LoginContract.IPresenter> {
 
     @OnClick(R.id.tv_zoneCode)
     void zoneCode() {
-        mPresenter.toast("区号");
+        mPresenter.toast(context.getString(R.string.zone_code));
     }
 
     @OnClick(R.id.bt_next)
@@ -54,7 +54,7 @@ public class LoginPhonePanel extends BasePanel<LoginContract.IPresenter> {
 
     @OnClick(R.id.tv_user_protocol)
     void user_protocol() {
-        mPresenter.toast("这是用户协议");
+        mPresenter.toast(context.getString(R.string.user_protocol));
     }
 
     @Override

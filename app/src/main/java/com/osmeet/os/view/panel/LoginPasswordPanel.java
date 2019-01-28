@@ -7,13 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.osmeet.os.R;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 import com.osmeet.os.base.panel.BasePanel;
 import com.osmeet.os.contract.LoginContract;
 import com.osmeet.os.view.activity.LoginActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -51,7 +51,7 @@ public class LoginPasswordPanel extends BasePanel<LoginContract.IPresenter> {
 
     @OnClick(R.id.tv_cannot_login)
     void cannot_login() {
-        mPresenter.toast("不能登录，请联系开发商。");
+        mPresenter.toast(context.getString(R.string.can_not_login_please_call_dev));
     }
 
     @Override

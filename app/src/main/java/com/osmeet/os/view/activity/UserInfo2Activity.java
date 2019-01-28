@@ -72,8 +72,8 @@ public class UserInfo2Activity extends BaseActivity<UserInfo2Contract.IPresenter
         ImageView img_menu = mTopBar.findViewById(R.id.img_menu);
         img_menu.setOnClickListener(v -> {
             List<String> list = new ArrayList<>();
-            list.add("举报");
-            list.add("拉黑");
+            list.add(context.getString(R.string.report));
+            list.add(context.getString(R.string.block));
             BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
                         switch (index) {
                             case 0:
@@ -84,7 +84,7 @@ public class UserInfo2Activity extends BaseActivity<UserInfo2Contract.IPresenter
                                 break;
                         }
                     }, true, context.getString(R.string.cancel)
-            ).setTitle("请选择！");
+            ).setTitle(context.getString(R.string.please_choose));
         });
     }
 

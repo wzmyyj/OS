@@ -40,7 +40,6 @@ public class MinePresenter extends BasePresenter<MineContract.IView> implements 
 
     @Override
     public void freshMyInfo() {
-        log("正在获取用户信息!");
         userModel.user(new PObserver<Box<User>>() {
             @Override
             public void onNext(Box<User> box) {
@@ -59,7 +58,6 @@ public class MinePresenter extends BasePresenter<MineContract.IView> implements 
 
     @Override
     public void loadMyStoreList() {
-        log("正在获取用户商店列表!");
         storeModel.store_getStore(new PObserver<Box<List<Store>>>() {
             @Override
             public void onNext(Box<List<Store>> box) {

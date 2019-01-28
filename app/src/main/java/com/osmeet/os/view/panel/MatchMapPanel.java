@@ -16,13 +16,13 @@ import com.amap.api.maps.UiSettings;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.osmeet.os.R;
-import top.wzmyyj.wzm_sdk.utils.ApkUtil;
 import com.osmeet.os.base.panel.BasePanel;
 import com.osmeet.os.contract.MatchContract;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
 import butterknife.BindView;
+import top.wzmyyj.wzm_sdk.utils.ApkUtil;
 
 /**
  * Created by yyj on 2019/01/03. email: 2209011667@qq.com
@@ -172,7 +172,7 @@ public class MatchMapPanel extends BasePanel<MatchContract.IPresenter> implement
 
 
             } else {
-                mPresenter.toast("定位失败:" + " code=" + code + " info=" + msg);
+                mPresenter.toast(context.getString(R.string.location_fail) + " code=" + code + " info=" + msg);
             }
         }
     }
@@ -214,7 +214,7 @@ public class MatchMapPanel extends BasePanel<MatchContract.IPresenter> implement
                         Permission.READ_PHONE_STATE
                 )
                 .onGranted(permissions -> location())
-                .onDenied(permissions -> mPresenter.toast("没有申请权限"))
+                .onDenied(permissions -> mPresenter.toast(context.getString(R.string.no_permission)))
                 .start();
     }
 
@@ -230,7 +230,7 @@ public class MatchMapPanel extends BasePanel<MatchContract.IPresenter> implement
                     .append("&t=").append(0);
             mPresenter.goAMap(builder.toString());
         } else {
-            mPresenter.toast("没有安装高德地图");
+            mPresenter.toast(context.getString(R.string.not_installed_amap));
         }
     }
 

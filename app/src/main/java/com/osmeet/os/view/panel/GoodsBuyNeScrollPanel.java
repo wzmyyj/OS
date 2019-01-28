@@ -78,14 +78,14 @@ public class GoodsBuyNeScrollPanel extends BaseNeScrollPanel<GoodsBuyContract.IP
 
     private void setPrice() {
         WidgetUtil.setTextNumber(tv_goods_num, count);
-        WidgetUtil.setTextPrice(tv_goods_sum_price, "￥", simpleGoods.getDiscountPrice() * count);
+        WidgetUtil.setTextPrice(tv_goods_sum_price, context.getString(R.string.yuan), simpleGoods.getDiscountPrice() * count);
         TextView v1 = getBindView("v1");
         if (v1 != null) {
-            WidgetUtil.setTextPrice(v1, "￥", simpleGoods.getDiscountPrice() * count);
+            WidgetUtil.setTextPrice(v1, context.getString(R.string.yuan), simpleGoods.getDiscountPrice() * count);
         }
         TextView v2 = getBindView("v2");
         if (v2 != null) {
-            WidgetUtil.setTextPrice(v2, "￥", simpleGoods.getOriginalPrice() * count);
+            WidgetUtil.setTextPrice(v2, context.getString(R.string.yuan), simpleGoods.getOriginalPrice() * count);
         }
 
     }

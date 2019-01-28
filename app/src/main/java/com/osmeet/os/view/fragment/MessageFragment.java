@@ -14,10 +14,13 @@ import com.osmeet.os.contract.MessageContract;
 import com.osmeet.os.presenter.MessagePresenter;
 import com.osmeet.os.view.panel.MessageNeScrollPanel;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import io.rong.imkit.RongIM;
+import io.rong.imlib.model.Conversation;
 
 /**
  * Created by yyj on 2018/12/19. email: 2209011667@qq.com
@@ -102,7 +105,11 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
 
     @Override
     public void showRcTokenConnect(boolean isSuccess) {
-        if (isSuccess)
-            RongIM.getInstance().startConversationList(context );
+        if (isSuccess) {
+            Map<String, Boolean> supportedConversation = new HashMap<>();
+            supportedConversation.put(Conversation.ConversationType.PRIVATE.getName(), false);
+            RongIM.getInstance().startConversationList(context, supportedConversation);
+        }
+
     }
 }

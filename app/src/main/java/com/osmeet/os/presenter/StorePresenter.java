@@ -82,7 +82,7 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
                     return;
                 }
                 if (box.getData() != null) {
-                    log("进入商店成功！");
+                    log("into store success！");
                 }
             }
         }, storeId);

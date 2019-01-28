@@ -79,7 +79,7 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
         ImageView img_menu = mTopBar.findViewById(R.id.img_menu);
         img_menu.setOnClickListener(v -> {
             List<String> list = new ArrayList<>();
-            list.add("举报");
+            list.add(context.getString(R.string.report));
 //            list.add("拉黑");
             BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
                         switch (index) {
@@ -87,8 +87,9 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
                                 mPresenter.toast(text);
                                 break;
                         }
-                    }, true, context.getString(R.string.cancel)
-            ).setTitle("请选择！");
+                    }, true,
+                    context.getString(R.string.cancel)
+            ).setTitle(context.getString(R.string.please_choose));
         });
     }
 

@@ -188,7 +188,7 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
                     WidgetUtil.setTextNonNull(tv_name, o.store.getName());
                 } else {
                     G.img(context, R.mipmap.ic_os_1, img_avatar);
-                    WidgetUtil.setTextNonNull(tv_name, "注册相对地点");
+                    WidgetUtil.setTextNonNull(tv_name, context.getString(R.string.register_os_place));
                 }
                 if (whoChoice == position) {
                     img_tag.setVisibility(View.VISIBLE);
@@ -217,7 +217,7 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
                     mChoiceAdapter.notifyDataSetChanged();
 
                 } else {
-                    mPresenter.toast("等级不够，无法注册！");
+                    mPresenter.toast(context.getString(R.string.cant_register));
                 }
 
                 closeChoice();
@@ -325,7 +325,7 @@ public class MineFragment extends BaseFragment<MineContract.IPresenter> implemen
         User user;
         Store store;
 
-        public UserStore() {
+         UserStore() {
             type = 3;
         }
 

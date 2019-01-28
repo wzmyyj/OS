@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 
+import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.application.SettingManager;
 import com.osmeet.os.base.presenter.BasePresenter;
@@ -21,7 +22,7 @@ public class SettingPresenter extends BasePresenter<SettingContract.IView> imple
     public void logout() {
         App.getInstance().clearToken();
         App.getInstance().finishAll();
-        toast("登出成功！");
+        toast(getContext().getString(R.string.logout_success));
         goLogin();
         finish(mView.FINISH_FADE_IN_OUT);
     }
