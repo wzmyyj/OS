@@ -199,4 +199,7 @@
     <string name="login_success">登录成功!</string>
     <string name="account_not_exist_please_register">账号不存在，先注册！</string>
     <string name="account_exist_please_login">账号已存在，请登录！</string>
+    <string name="comfirm_time">确定时间</string>
+    <string name="punch_card">打卡</string>
+    <string name="write_story">发布故事</string>
 </resources>

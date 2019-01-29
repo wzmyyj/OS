@@ -77,6 +77,18 @@ public class WidgetUtil {
 
     /**
      * @param textView .
+     * @param res .
+     */
+    public static void setTextRes(TextView textView, @AnyRes int res) {
+        if (res != 0) {
+            textView.setText(res);
+        } else {
+            textView.setText("");
+        }
+    }
+
+    /**
+     * @param textView .
      * @param i        .
      */
     @SuppressLint("SetTextI18n")

@@ -37,7 +37,7 @@ public class MatchTeamIVD extends BaseIVD<MatchTeam> {
         ImageView img_user_avatar_1 = holder.getView(R.id.img_user_avatar_1);
         ImageView img_user_avatar_2 = holder.getView(R.id.img_user_avatar_2);
         TextView tv_os_when = holder.getView(R.id.tv_os_when);
-        ImageView img_shop_logo = holder.getView(R.id.img_shop_logo);
+        ImageView img_store_logo = holder.getView(R.id.img_store_logo);
 
         Store store = matchTeam.getStore();
         User user1 = matchTeam.getUnita().getUser();
@@ -50,9 +50,26 @@ public class MatchTeamIVD extends BaseIVD<MatchTeam> {
             G.img(context, user2.getAvatar().getUrl(), img_user_avatar_2);
         }
         if (store.getLogoImage() != null) {
-            G.img(context, store.getLogoImage().getUrl(), img_shop_logo);
+            G.img(context, store.getLogoImage().getUrl(), img_store_logo);
         }
-        img_os_bg.setImageResource(R.color.colorLittleBlue);
-        WidgetUtil.setTextNonNull(tv_os_when, "" + matchTeam.getUnita().getMatchStatus());
+        if (MatchTeam.Wait_Accept_Meet_Time.equals(matchTeam.getTogetherState())) {
+            img_os_bg.setImageResource(R.color.colorWMT);
+            WidgetUtil.setTextRes(tv_os_when, R.string.comfirm_time);
+            WidgetUtil.setTextColor(tv_os_when, R.color.colorWhite);
+        } else if (matchTeam.getTogetherState().contains("B")
+                || matchTeam.getTogetherState().contains("C")) {
+            img_os_bg.setImageResource(R.color.colorOs);
+            WidgetUtil.setTextRes(tv_os_when, R.string.punch_card);
+            WidgetUtil.setTextColor(tv_os_when, R.color.colorGray_5);
+        } else if (matchTeam.getTogetherState().contains("Q")) {
+            img_os_bg.setImageResource(R.color.colorGray_b);
+            WidgetUtil.setTextRes(tv_os_when, R.string.write_story);
+            WidgetUtil.setTextColor(tv_os_when, R.color.colorWhite);
+        } else {
+            img_os_bg.setImageResource(R.color.colorLittleBlue);
+            WidgetUtil.setTextColor(tv_os_when, R.color.colorWhite);
+        }
+
+
     }
 }

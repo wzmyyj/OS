@@ -6,6 +6,32 @@ package com.osmeet.os.app.bean;
 
 public class MatchTeam {
 
+    public static final String Wait_Accept_Meet_Time = "W-MT";
+    public static final String Confirm_Meet_Time = "B";
+
+    public static final String Begin_Checking = "C";
+    public static final String Invite_Checking = "C-1";
+    public static final String Invitee_Checking = "C-2";
+
+    public static final String CheckingComplete = "D";
+    public static final String Invite_Comment = "D-1";
+    public static final String Invitee_Comment = "D-2";
+
+    public static final String Invite_Not_Comment = "S-1";
+    public static final String Invitee_Not_Comment = "S-2";
+    public static final String Both_Comment = "S-3";
+    public static final String Both_No_Comment = "S-4";
+
+    public static final String Invite_Not_Checking = "O-1";
+    public static final String Invitee_Not_Checking = "O-2";
+    public static final String Both_Not_Checking = "0-3";
+    public static final String Exceed_Rule_Time_Not_Confirm_Meet_Time = "0-4";
+
+    public static final String Invite_Cancel_Meet = "Q-1";
+    public static final String Invitee_Cancel_Meet = "Q-2";
+    public static final String Unknow = "Q-3";
+
+
     public static final int MATCH_NOW = 0;
     public static final int MATCH_SUCCESS = 1;
     public static final int MATCH_FAIL = 2;
