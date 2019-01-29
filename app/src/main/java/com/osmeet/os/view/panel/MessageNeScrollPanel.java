@@ -18,6 +18,7 @@ import com.osmeet.os.base.panel.BaseNeScrollPanel;
 import com.osmeet.os.contract.MessageContract;
 import com.osmeet.os.view.adapter.MatchTeamAdapter;
 import com.osmeet.os.view.adapter.ivd.InviteGroupIVD;
+import com.osmeet.os.view.fragment.ConListFragment;
 import com.osmeet.os.view.widget.listener.AlphaNeScrollListener;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
@@ -26,7 +27,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imkit.fragment.IHistoryDataResultCallback;
 import io.rong.imkit.widget.adapter.ConversationListAdapter;
 import io.rong.imlib.model.Conversation;
@@ -61,7 +61,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
     private List<MatchTeam> mData;
     private IvdVhHelper<MatchInvite.Group> ivdVhHelper;
 
-    private ConversationListFragment conversationListFragment;
+    private ConListFragment conListFragment;
 
     @Override
     protected void initView() {
@@ -73,11 +73,9 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
         ivdVhHelper = new IvdVhHelper<MatchInvite.Group>(context, new InviteGroupIVD(context), ll_invite);
 
 
-        conversationListFragment = new ConversationListFragment();
-        FragmentUtil.add(fragment.getChildFragmentManager(), R.id.fl_fragment, conversationListFragment, "");
+        conListFragment = new ConListFragment();
+        FragmentUtil.add(fragment.getChildFragmentManager(), R.id.fl_fragment, conListFragment, "");
     }
-
-    Conversation.ConversationType[] mConversationsTypes;
 
     @Override
     protected void initData() {
@@ -90,17 +88,17 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
                 .appendQueryParameter(Conversation.ConversationType.APP_PUBLIC_SERVICE.getName(), "false")//订阅号
                 .appendQueryParameter(Conversation.ConversationType.SYSTEM.getName(), "true")//系统
                 .build();
-        conversationListFragment.setUri(uri);
-        conversationListFragment.setAdapter(new ConversationListAdapter(context));
+        conListFragment.setUri(uri);
+        conListFragment.setAdapter(new ConversationListAdapter(context));
 
-        mConversationsTypes = new Conversation.ConversationType[]{Conversation.ConversationType.PRIVATE,
+        Conversation.ConversationType[] mConversationsTypes = new Conversation.ConversationType[]{Conversation.ConversationType.PRIVATE,
                 Conversation.ConversationType.GROUP,
                 Conversation.ConversationType.PUBLIC_SERVICE,
                 Conversation.ConversationType.APP_PUBLIC_SERVICE,
                 Conversation.ConversationType.SYSTEM
         };
 
-        conversationListFragment.getConversationList(mConversationsTypes, new IHistoryDataResultCallback<List<Conversation>>() {
+        conListFragment.getConversationList(mConversationsTypes, new IHistoryDataResultCallback<List<Conversation>>() {
             @Override
             public void onResult(List<Conversation> conversations) {
 
