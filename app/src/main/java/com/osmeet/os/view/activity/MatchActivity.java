@@ -2,9 +2,11 @@ package com.osmeet.os.view.activity;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
 import android.widget.FrameLayout;
 
 import com.osmeet.os.R;
+import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.activity.BaseActivity;
 import com.osmeet.os.contract.MatchContract;
 import com.osmeet.os.presenter.MatchPresenter;
@@ -65,6 +67,11 @@ public class MatchActivity extends BaseActivity<MatchContract.IPresenter> implem
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
         matchMapPanel.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void showMatchTeam(@NonNull MatchTeam matchTeam) {
+
     }
 }
 

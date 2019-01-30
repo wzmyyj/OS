@@ -1,8 +1,10 @@
 package com.osmeet.os.app.tools;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.contract.ip.IContext;
 import com.osmeet.os.view.activity.AdActivity;
 import com.osmeet.os.view.activity.CameraActivity;
@@ -12,6 +14,7 @@ import com.osmeet.os.view.activity.FriendListActivity;
 import com.osmeet.os.view.activity.GoodsActivity;
 import com.osmeet.os.view.activity.GoodsBuyActivity;
 import com.osmeet.os.view.activity.GuideActivity;
+import com.osmeet.os.view.activity.ImageLookActivity;
 import com.osmeet.os.view.activity.InviteFriendsActivity;
 import com.osmeet.os.view.activity.InviteListActivity;
 import com.osmeet.os.view.activity.LoginActivity;
@@ -31,6 +34,10 @@ import com.osmeet.os.view.activity.UpdateInfoActivity;
 import com.osmeet.os.view.activity.UserInfo2Activity;
 import com.osmeet.os.view.activity.VisitCardActivity;
 import com.osmeet.os.view.activity.WalletActivity;
+import com.previewlibrary.GPreviewBuilder;
+import com.previewlibrary.enitity.ThumbViewInfo;
+
+import java.util.ArrayList;
 
 /**
  * Created by yyj on 2018/10/30. email: 2209011667@qq.com
@@ -309,15 +316,16 @@ public class I {
         }
     }
 
-    public static void goMatchBeginActivity(Context context) {
+    public static void goMatchBeginActivity(Context context, MatchTeam.SimpleMatchTeam simpleMatchTeam) {
         Intent intent = new Intent(context, MatchBeginActivity.class);
+        intent.putExtra("mt", simpleMatchTeam);
         context.startActivity(intent);
     }
 
     public interface MatchBegin extends IContext {
-        default void goMatchBegin() {
+        default void goMatchBegin(MatchTeam.SimpleMatchTeam simpleMatchTeam) {
             if (getContext() != null)
-                goMatchBeginActivity(getContext());
+                goMatchBeginActivity(getContext(), simpleMatchTeam);
         }
     }
 
@@ -405,6 +413,26 @@ public class I {
         default void goUserInfo2(String userId) {
             if (getContext() != null)
                 goUserInfo2Activity(getContext(), userId);
+        }
+    }
+
+    public static void goImageLookActivity(Context context, ArrayList<ThumbViewInfo> thumbViewInfoList) {
+        GPreviewBuilder.from((Activity) context)
+                //是否使用自定义预览界面，当然8.0之后因为配置问题，必须要使用
+                .to(ImageLookActivity.class)
+                .setData(thumbViewInfoList)
+                .setCurrentIndex(0)
+                .setSingleFling(true)
+                .setType(GPreviewBuilder.IndicatorType.Number)
+                // 小圆点
+                //  .setType(GPreviewBuilder.IndicatorType.Dot)
+                .start();//启动
+    }
+
+    public interface ImageLook extends IContext {
+        default void goImageLook(ArrayList<ThumbViewInfo> thumbViewInfoList) {
+            if (getContext() != null)
+                goImageLookActivity(getContext(), thumbViewInfoList);
         }
     }
 

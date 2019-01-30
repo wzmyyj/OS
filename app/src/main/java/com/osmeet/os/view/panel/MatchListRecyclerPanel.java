@@ -2,6 +2,9 @@ package com.osmeet.os.view.panel;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.view.View;
 
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
@@ -47,4 +50,12 @@ public class MatchListRecyclerPanel extends BaseRecyclerPanel<MatchTeam, MatchLi
         mPresenter.loadMatchTeamList(nextPageNum());
     }
 
+    @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        super.onItemClick(view, holder, position);
+        String matchId = mData.get(position).getId();
+        if (!TextUtils.isEmpty(matchId)) {
+            mPresenter.goMatch(matchId);
+        }
+    }
 }

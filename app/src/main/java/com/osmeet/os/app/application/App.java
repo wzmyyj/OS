@@ -8,12 +8,14 @@ import com.kongzue.dialog.v2.DialogSettings;
 import com.osmeet.os.app.bean.RcToken;
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
+import com.osmeet.os.app.other.GlideIZoomImageLoader;
 import com.osmeet.os.app.tools.GP;
 import com.osmeet.os.assembly.service.PushIntentService;
 import com.osmeet.os.assembly.service.PushService;
 import com.osmeet.os.base.application.BaseApplication;
 import com.osmeet.os.model.net.utils.ReOk;
 import com.osmeet.os.model.net.utils.Urls;
+import com.previewlibrary.ZoomMediaLoader;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import io.rong.imkit.RongIM;
@@ -51,6 +53,7 @@ public class App extends BaseApplication {
         GP.init("provider.GPFileProvider", "/OsMeet/images");
 
         ZXingLibrary.initDisplayOpinion(this);
+        ZoomMediaLoader.getInstance().init(new GlideIZoomImageLoader());
 
         RongIM.init(this.getApplicationContext());
         PushManager.getInstance().initialize(this.getApplicationContext(), PushService.class);

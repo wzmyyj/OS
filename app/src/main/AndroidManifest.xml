@@ -147,7 +147,8 @@
         <activity android:name=".view.activity.ScanActivity" />
         <activity android:name=".view.activity.VisitCardActivity" />
         <activity android:name=".view.activity.FriendListActivity" />
-        <activity android:name=".view.activity.UserInfo2Activity"></activity>
+        <activity android:name=".view.activity.UserInfo2Activity"/>
+        <activity android:name=".view.activity.ImageLookActivity" />
     </application>
 
 </manifest>

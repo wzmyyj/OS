@@ -2,6 +2,7 @@ package com.osmeet.os.view.panel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
@@ -18,7 +19,9 @@ import com.osmeet.os.contract.MineContract;
 import com.osmeet.os.view.adapter.ivd.PhotoStoryIVD;
 import com.osmeet.os.view.panel.bean.PhotoStory;
 import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
+import com.previewlibrary.enitity.ThumbViewInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
@@ -87,6 +90,7 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
         List<FileInfo> images = store.getImages();
         if (images != null && images.size() > 0) {
             G.img(context, images.get(0).getUrl(), img_image);
+            setTVIs(images);
         }
 
         // data
@@ -97,6 +101,7 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
 
         notifyDataSetChanged();
     }
+
 
 
 
@@ -122,7 +127,9 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
         img_image = mHeader.findViewById(R.id.img_image);
         img_image.getLayoutParams().height = MockUtil.getScreenWidth(context);
         img_image.requestLayout();
-
+        img_image.setOnClickListener(v -> {
+            mPresenter.goImageLook(mThumbViewInfoList);
+        });
 
         TextView tv_update = mHeader.findViewById(R.id.tv_update);
         TextView tv_wallet = mHeader.findViewById(R.id.tv_wallet);
@@ -133,10 +140,20 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
         tv_wallet.setOnClickListener(v -> {
 
         });
-
-
     }
 
+    private ArrayList<ThumbViewInfo> mThumbViewInfoList = new ArrayList<>();
+
+    private void setTVIs(List<FileInfo> resultList) {
+        mThumbViewInfoList.clear();
+        for (int i = 0; i < resultList.size(); i++) {
+            Rect bounds = new Rect();
+            //new ThumbViewInfo(图片地址);
+            ThumbViewInfo item = new ThumbViewInfo(resultList.get(i).getUrl());
+            item.setBounds(bounds);
+            mThumbViewInfoList.add(item);
+        }
+    }
     @SuppressLint("InflateParams")
     @Override
     protected void setFooter() {

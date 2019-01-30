@@ -17,7 +17,7 @@ public interface UserInfo2Contract {
         void showUserInfo(@NonNull User user);
     }
 
-    interface IPresenter extends IBasePresenter, I.Chat {
+    interface IPresenter extends IBasePresenter, I.Chat,I.ImageLook {
 
         String getUserId();
 

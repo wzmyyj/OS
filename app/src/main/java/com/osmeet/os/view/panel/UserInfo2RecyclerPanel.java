@@ -2,6 +2,7 @@ package com.osmeet.os.view.panel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.text.TextUtils;
@@ -21,7 +22,9 @@ import com.osmeet.os.view.adapter.ivd.PhotoStoryIVD;
 import com.osmeet.os.view.adapter.ivd.UserInfoIVD;
 import com.osmeet.os.view.panel.bean.PhotoStory;
 import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
+import com.previewlibrary.enitity.ThumbViewInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
@@ -71,7 +74,6 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserIn
         }
     }
 
-
     public void setUser(@NonNull User user) {
         // header
         ivdVhHelper.convert(user);
@@ -81,6 +83,7 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserIn
         List<FileInfo> images = user.getImages();
         if (images != null && images.size() > 0) {
             G.img(context, images.get(0).getUrl(), img_image);
+            setTVIs(images);
         } else {
             if (user.getAvatar() != null)
                 G.img(context, user.getAvatar().getUrl(), img_image);
@@ -122,6 +125,9 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserIn
         img_image = mHeader.findViewById(R.id.img_image);
         img_image.getLayoutParams().height = MockUtil.getScreenWidth(context);
         img_image.requestLayout();
+        img_image.setOnClickListener(v -> {
+            mPresenter.goImageLook(mThumbViewInfoList);
+        });
 
         mHeader.findViewById(R.id.img_b_1).setVisibility(View.GONE);
         tv_add_friends = mHeader.findViewById(R.id.tv_add_friends);
@@ -134,6 +140,20 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserIn
                 addFriends();
             }
         });
+    }
+
+
+    private ArrayList<ThumbViewInfo> mThumbViewInfoList = new ArrayList<>();
+
+    private void setTVIs(List<FileInfo> resultList) {
+        mThumbViewInfoList.clear();
+        for (int i = 0; i < resultList.size(); i++) {
+            Rect bounds = new Rect();
+            //new ThumbViewInfo(图片地址);
+            ThumbViewInfo item = new ThumbViewInfo(resultList.get(i).getUrl());
+            item.setBounds(bounds);
+            mThumbViewInfoList.add(item);
+        }
     }
 
     private void addFriends() {

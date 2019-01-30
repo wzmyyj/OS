@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLightBlue">
+    android:background="@drawable/bg_match_begin">
 
 
     <LinearLayout
@@ -22,8 +22,8 @@
                 android:layout_height="match_parent"
                 android:src="@color/colorLittleBlue"
                 app:border_color_r="@color/colorLine"
-                app:border_width_r="0.5dp"
-                app:radiusAll="10dp" />
+                app:border_width_r="1dp"
+                app:radiusAll="15dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                     android:textSize="24sp" />
 
                 <top.wzmyyj.wzm_sdk.widget.CircleImageView
-                    android:id="@+id/img_shop_logo"
+                    android:id="@+id/img_store_logo"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="15dp"
@@ -85,7 +85,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
             android:contentDescription="@string/icon"
-            android:src="@color/colorGray_e" />
+            android:src="@mipmap/ic_next_match" />
 
     </LinearLayout>
 

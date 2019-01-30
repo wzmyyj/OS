@@ -135,7 +135,7 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
                     return;
                 }
                 if (box.getData() != null) {
-                    goMatchBegin();
+                    goMatchBegin(new MatchTeam.SimpleMatchTeam(box.getData()));
                     finish();
                 }
             }

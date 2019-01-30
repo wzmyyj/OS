@@ -2,6 +2,7 @@ package com.osmeet.os.view.panel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +24,7 @@ import com.osmeet.os.view.adapter.GoodsAdapter;
 import com.osmeet.os.view.adapter.ivd.PhotoStoryIVD;
 import com.osmeet.os.view.panel.bean.PhotoStory;
 import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
+import com.previewlibrary.enitity.ThumbViewInfo;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
 import java.util.ArrayList;
@@ -97,6 +99,7 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
         List<FileInfo> images = store.getImages();
         if (images != null && images.size() > 0) {
             G.img(context, images.get(0).getUrl(), img_image);
+            setTVIs(images);
         }
 
 
@@ -147,6 +150,9 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
         img_image = mHeader.findViewById(R.id.img_image);
         img_image.getLayoutParams().height = MockUtil.getScreenWidth(context);
         img_image.requestLayout();
+        img_image.setOnClickListener(v -> {
+            mPresenter.goImageLook(mThumbViewInfoList);
+        });
 
         mHeader.setOnClickListener(v -> onWholeClick());
 
@@ -193,7 +199,18 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
 
 
     }
+    private ArrayList<ThumbViewInfo> mThumbViewInfoList = new ArrayList<>();
 
+    private void setTVIs(List<FileInfo> resultList) {
+        mThumbViewInfoList.clear();
+        for (int i = 0; i < resultList.size(); i++) {
+            Rect bounds = new Rect();
+            //new ThumbViewInfo(图片地址);
+            ThumbViewInfo item = new ThumbViewInfo(resultList.get(i).getUrl());
+            item.setBounds(bounds);
+            mThumbViewInfoList.add(item);
+        }
+    }
 
     @SuppressLint("InflateParams")
     @Override

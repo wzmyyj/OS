@@ -1,6 +1,9 @@
 package com.osmeet.os.view.fragment;
 
+import android.content.Context;
+
 import io.rong.imkit.fragment.ConversationListFragment;
+import io.rong.imkit.widget.adapter.ConversationListAdapter;
 
 
 /**
@@ -10,4 +13,9 @@ import io.rong.imkit.fragment.ConversationListFragment;
  */
 
 public class ConListFragment extends ConversationListFragment {
+
+    @Override
+    public ConversationListAdapter onResolveAdapter(Context context) {
+        return super.onResolveAdapter(context);
+    }
 }

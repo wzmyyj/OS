@@ -1,10 +1,10 @@
 package com.osmeet.os.view.activity;
 
-import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.MatchTeam;
+import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.activity.BaseActivity;
 import com.osmeet.os.contract.MatchBeginContract;
 import com.osmeet.os.presenter.MatchBeginPresenter;
@@ -28,20 +28,29 @@ public class MatchBeginActivity extends BaseActivity<MatchBeginContract.IPresent
     ImageView img_user_avatar_1;
     @BindView(R.id.img_user_avatar_2)
     ImageView img_user_avatar_2;
-    @BindView(R.id.img_shop_logo)
-    ImageView img_shop_logo;
+    @BindView(R.id.img_store_logo)
+    ImageView img_store_logo;
 
 
-    private String matchId;
+    private MatchTeam.SimpleMatchTeam simpleMatchTeam;
+
+    @Override
+    protected void initData() {
+        super.initData();
+        simpleMatchTeam = mPresenter.getSimpleMatchTeam();
+        G.img(context, simpleMatchTeam.getStore_logo(), img_store_logo);
+        G.img(context, simpleMatchTeam.getUser1_avatar(), img_user_avatar_1);
+        G.img(context, simpleMatchTeam.getUser2_avatar(), img_user_avatar_2);
+    }
 
     @OnClick(R.id.img_go_match)
     void go_match() {
-        mPresenter.goMatch(matchId);
+        if (simpleMatchTeam != null) {
+            mPresenter.goMatch(simpleMatchTeam.getId());
+            mPresenter.finish();
+        }
+
     }
 
-    @Override
-    public void showMatchTeam(@NonNull MatchTeam matchTeam) {
-
-    }
 }
 

@@ -17,7 +17,7 @@ public interface UserInfoContract {
         void showUserInfo(@NonNull User user);
     }
 
-    interface IPresenter extends IBasePresenter, I.MatchBegin {
+    interface IPresenter extends IBasePresenter, I.MatchBegin,I.ImageLook {
         void setUserId(@NonNull String userId);
 
         void setUnitId(@NonNull String unitId);

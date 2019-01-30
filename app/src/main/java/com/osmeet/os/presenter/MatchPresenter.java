@@ -14,4 +14,9 @@ public class MatchPresenter extends BasePresenter<MatchContract.IView> implement
     public MatchPresenter(Activity activity, MatchContract.IView iv) {
         super(activity, iv);
     }
+
+    @Override
+    public void loadMatchTeam() {
+
+    }
 }

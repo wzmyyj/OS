@@ -28,7 +28,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.rong.imkit.fragment.IHistoryDataResultCallback;
-import io.rong.imkit.widget.adapter.ConversationListAdapter;
 import io.rong.imlib.model.Conversation;
 import top.wzmyyj.wzm_sdk.utils.FragmentUtil;
 
@@ -89,7 +88,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
                 .appendQueryParameter(Conversation.ConversationType.SYSTEM.getName(), "true")//系统
                 .build();
         conListFragment.setUri(uri);
-        conListFragment.setAdapter(new ConversationListAdapter(context));
+
 
         Conversation.ConversationType[] mConversationsTypes = new Conversation.ConversationType[]{Conversation.ConversationType.PRIVATE,
                 Conversation.ConversationType.GROUP,

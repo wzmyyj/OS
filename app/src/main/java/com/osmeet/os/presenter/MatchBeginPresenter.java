@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 
+import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.MatchBeginContract;
 
@@ -15,16 +16,9 @@ public class MatchBeginPresenter extends BasePresenter<MatchBeginContract.IView>
         super(activity, iv);
     }
 
-    @Override
-    public String getMatchTeamId() {
-//        return getActivity().getIntent().getBundleExtra(n);
-        return null;
-    }
 
     @Override
-    public void getMatchTeam() {
-
+    public MatchTeam.SimpleMatchTeam getSimpleMatchTeam() {
+        return (MatchTeam.SimpleMatchTeam) getActivity().getIntent().getSerializableExtra("mt");
     }
-
-
 }
