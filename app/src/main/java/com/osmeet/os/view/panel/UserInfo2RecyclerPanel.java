@@ -74,7 +74,10 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserIn
         }
     }
 
+    private User user;
+
     public void setUser(@NonNull User user) {
+        this.user = user;
         // header
         ivdVhHelper.convert(user);
 
@@ -134,8 +137,8 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserIn
         tv_add_friends.setVisibility(View.VISIBLE);
         tv_add_friends.setOnClickListener(v -> {
             if (isFriend) {
-                String userId = mPresenter.getUserId();
-                mPresenter.goChat(userId);
+                if (user != null)
+                    mPresenter.goChat(user.getId(), user.getUsername());
             } else {
                 addFriends();
             }

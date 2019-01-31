@@ -8,7 +8,6 @@ import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.contract.ip.IContext;
 import com.osmeet.os.view.activity.AdActivity;
 import com.osmeet.os.view.activity.CameraActivity;
-import com.osmeet.os.view.activity.ChatActivity;
 import com.osmeet.os.view.activity.ChatInviteActivity;
 import com.osmeet.os.view.activity.FriendListActivity;
 import com.osmeet.os.view.activity.GoodsActivity;
@@ -38,6 +37,9 @@ import com.previewlibrary.GPreviewBuilder;
 import com.previewlibrary.enitity.ThumbViewInfo;
 
 import java.util.ArrayList;
+
+import io.rong.imkit.RongIM;
+import io.rong.imlib.model.Conversation;
 
 /**
  * Created by yyj on 2018/10/30. email: 2209011667@qq.com
@@ -335,16 +337,18 @@ public class I {
         }
     }
 
-    public static void goChatActivity(Context context, String userId) {
-        Intent intent = new Intent(context, ChatActivity.class);
-        intent.putExtra("userId", userId);
-        context.startActivity(intent);
+    public static void goChatActivity(Context context, String userId, String title) {
+//        Intent intent = new Intent(context, ChatActivity.class);
+//        intent.putExtra("userId", userId);
+//        context.startActivity(intent);
+        Conversation.ConversationType conversationType = Conversation.ConversationType.PRIVATE;
+        RongIM.getInstance().startConversation(context, conversationType, userId, title);
     }
 
     public interface Chat extends IContext {
-        default void goChat(String userId) {
+        default void goChat(String userId, String title) {
             if (getContext() != null)
-                goChatActivity(getContext(), userId);
+                goChatActivity(getContext(), userId, title);
         }
     }
 

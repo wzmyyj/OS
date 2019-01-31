@@ -37,17 +37,13 @@ public class L {
     private L() {
     }
 
-    /**
-     * @param TAG tag.
-     */
-    public static void setTAG(String TAG) {
-        L.TAG = TAG;
-    }
 
     /**
+     * @param TAG tag.
      * @param debug is debug.
      */
-    public static void setDebug(boolean debug) {
+    public static void init(String TAG, boolean debug) {
+        L.TAG = TAG;
         L.debug = debug;
     }
 
