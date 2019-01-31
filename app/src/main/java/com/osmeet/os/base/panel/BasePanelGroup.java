@@ -6,17 +6,17 @@ import android.view.View;
 import com.osmeet.os.base.contract.IBasePresenter;
 
 import butterknife.ButterKnife;
-import top.wzmyyj.wzm_sdk.panel.InitPanel;
+import top.wzmyyj.wzm_sdk.panel.PanelGroup;
 
 
 /**
  * Created by yyj on 2018/06/28. email: 2209011667@qq.com
  */
 
-public abstract class BasePanel<P extends IBasePresenter> extends InitPanel {
+public abstract class BasePanelGroup<P extends IBasePresenter> extends PanelGroup {
     protected P mPresenter;
 
-    public BasePanel(Context context, P p) {
+    public BasePanelGroup(Context context, P p) {
         super(context);
         this.mPresenter = p;
         checkPresenterIsNull();

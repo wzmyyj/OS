@@ -142,8 +142,8 @@ public class UserModel {
         SubscribeUtil.io2main(observable, observer);
     }
 
-    public void user_updateAddress(Observer<Box<String>> observer, String lng, String lat) {
-        Observable<Box<String>> observable = getService().user_updateAddress(lng, lat);
+    public void user_updateAddress(Observer<Box<String>> observer, double lng, double lat) {
+        Observable<Box<String>> observable = getService().user_updateAddress("" + lng, "" + lat);
         SubscribeUtil.io2main(observable, observer);
     }
 
@@ -178,7 +178,7 @@ public class UserModel {
             builder.addFormDataPart("files", "image.jpg", requestFile);
         }
         if (isPathsAllEmpty) {
-            String str=StringUtil.str(fileIds,",");
+            String str = StringUtil.str(fileIds, ",");
             Observable<Box<String>> observable = getService().user_updateDisplayImages(str);
             SubscribeUtil.io2main(observable, observer);
             return;
@@ -192,7 +192,7 @@ public class UserModel {
                             j++;
                         }
                     }
-                    String str=StringUtil.str(fileIds,",");
+                    String str = StringUtil.str(fileIds, ",");
                     return getService().user_updateDisplayImages(str).blockingLast();
                 });
         SubscribeUtil.io2main(observable, observer);

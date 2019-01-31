@@ -8,11 +8,14 @@ import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.bean.User;
+import com.osmeet.os.app.event.InviteListChangeEvent;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.UserInfoContract;
 import com.osmeet.os.model.net.MatchModel;
 import com.osmeet.os.model.net.UserModel;
 import com.osmeet.os.model.net.utils.box.Box;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by yyj on 2018/12/17. email: 2209011667@qq.com
@@ -107,19 +110,25 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
             public void onNext(Box<MatchInvite> box) {
                 if (box.getCode() != 0) {
                     toast(box.getMessage());
-                    mView.showFail(1, box.getMessage());
+                    mView.showInvite(false, 0);
                     return;
                 }
                 if (box.getData() != null) {
                     if (!box.getData().getMatchUnit().getUser().getId()
                             .equals(App.getInstance().getMyInfo().getId())) {// 发起人不是自己，说明别人邀请我过了。
                         inviteId = box.getData().getId();
-                        mView.showSuccess(2, box.getData());
+                        mView.showInvite(true, 2);
                     } else {
-                        mView.showSuccess(1, box.getData());
+                        mView.showInvite(true, 1);
                     }
 
                 }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+                mView.showInvite(false, 0);
             }
         }, storeId, unitId);
     }
@@ -131,10 +140,10 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
             public void onNext(Box<MatchTeam> box) {
                 if (box.getCode() != 0) {
                     toast(box.getMessage());
-                    mView.showFail(1, box.getMessage());
                     return;
                 }
                 if (box.getData() != null) {
+                    EventBus.getDefault().post(new InviteListChangeEvent(true));
                     goMatchBegin(new MatchTeam.SimpleMatchTeam(box.getData()));
                     finish();
                 }

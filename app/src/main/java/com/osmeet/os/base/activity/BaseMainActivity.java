@@ -63,38 +63,6 @@ public abstract class BaseMainActivity<P extends IBasePresenter> extends PagerFr
     }
 
     @Override
-    public void showStart(int what, Object... objects) {
-
-    }
-
-    @Override
-    public void showProgress(int what, int progress, Object... objects) {
-
-    }
-
-    @Override
-    public void showCancel(int what, int progress, Object... objects) {
-
-    }
-
-    @Override
-    public void showFail(int what, Object... objects) {
-        if (what == this.PROCESS_DEFAULT) {
-            showToast((String) objects[0]);
-        }
-    }
-
-    @Override
-    public void showSuccess(int what, Object... objects) {
-
-    }
-
-    @Override
-    public void showFinish(int what, Object... objects) {
-
-    }
-
-    @Override
     public void showFinishActivity(int how) {
         finish();
         if(how==IBaseView.FINISH_FADE_IN_OUT){

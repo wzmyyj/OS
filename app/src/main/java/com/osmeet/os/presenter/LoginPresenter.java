@@ -138,10 +138,11 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
             public void onNext(Box<User> box) {
                 if (box.getCode() != 0) {
                     toast(box.getMessage());
-                    mView.showFail(1, "Fail");
+                    mView.showLoadUserInfo(false);
                     return;
                 }
                 if (box.getData() != null) {
+                    mView.showLoadUserInfo(true);
                     User user = box.getData();
                     if (user.getExamineStatus() != -1
                             && user.getAvatar() != null
@@ -154,16 +155,15 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                         App.getInstance().setComplete(true);
                         goPopInfoAndFinish();
                     }
+                }else{
+                    mView.showLoadUserInfo(false);
                 }
-                mView.showSuccess(1, "Success");
-
-
             }
 
             @Override
             public void onError(Throwable e) {
                 super.onError(e);
-                mView.showFail(1, "Fail");
+                mView.showLoadUserInfo(false);
             }
         });
     }

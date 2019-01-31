@@ -127,24 +127,19 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
     }
 
     @Override
-    public void showFail(int what, Object... objects) {
-        super.showFail(what, objects);
-        if (what == 1) {
+    public void showInvite(boolean isSuccess, int what) {
+        if (isSuccess) {
+            if (what == 1) {
+                userInfoRecyclerPanel.showMatchSuccess(true);
+            } else if (what == 2) {
+                SelectDialog.show(context, context.getString(R.string.tip),
+                        context.getString(R.string.he_invite_before),
+                        context.getString(R.string.yes), (dialog, which) -> mPresenter.matchInvite_accept(),
+                        context.getString(R.string.no), (dialog, which) -> {
+                        });
+            }
+        } else {
             userInfoRecyclerPanel.showMatchSuccess(false);
-        }
-    }
-
-    @Override
-    public void showSuccess(int what, Object... objects) {
-        super.showSuccess(what, objects);
-        if (what == 1) {
-            userInfoRecyclerPanel.showMatchSuccess(true);
-        } else if (what == 2) {
-            SelectDialog.show(context, context.getString(R.string.tip),
-                    context.getString(R.string.he_invite_before),
-                    context.getString(R.string.yes), (dialog, which) -> mPresenter.matchInvite_accept(),
-                    context.getString(R.string.no), (dialog, which) -> {
-                    });
         }
     }
 }

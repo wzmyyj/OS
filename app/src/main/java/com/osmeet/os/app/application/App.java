@@ -3,6 +3,7 @@ package com.osmeet.os.app.application;
 
 import android.support.annotation.NonNull;
 
+import com.amap.api.location.DPoint;
 import com.igexin.sdk.PushManager;
 import com.kongzue.dialog.v2.DialogSettings;
 import com.osmeet.os.app.bean.RcToken;
@@ -146,5 +147,16 @@ public class App extends BaseApplication {
                 L.e("ErrorCode=" + errorCode);
             }
         });
+    }
+
+
+    private DPoint myDPoint;
+
+    public DPoint getMyDPoint() {
+        return myDPoint;
+    }
+
+    public void setMyDPoint(DPoint myDPoint) {
+        this.myDPoint = myDPoint;
     }
 }

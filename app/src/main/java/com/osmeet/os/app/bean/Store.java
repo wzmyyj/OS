@@ -36,6 +36,7 @@ public class Store {
     private long startTime;
     private int startTimeStamp;
     private int validState;
+    private int matchState;
 
     private List<String> avatarIds;
     private List<String> avatarUrls;
@@ -254,5 +255,13 @@ public class Store {
 
     public void setAvatarUrls(List<String> avatarUrls) {
         this.avatarUrls = avatarUrls;
+    }
+
+    public int getMatchState() {
+        return matchState;
+    }
+
+    public void setMatchState(int matchState) {
+        this.matchState = matchState;
     }
 }

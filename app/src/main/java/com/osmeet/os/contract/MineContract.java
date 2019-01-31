@@ -24,12 +24,13 @@ public interface MineContract extends LaunchContract {
     }
 
     interface IPresenter extends IBasePresenter, I.UpdateInfo, I.Setting,
-            I.MatchList, I.TradeList, I.Wallet, I.VisitCard ,I.ImageLook{
+            I.MatchList, I.TradeList, I.Wallet, I.VisitCard, I.ImageLook {
         void loadMyInfo();
 
         void freshMyInfo();
 
         void loadMyStoreList();
+
     }
 
 }

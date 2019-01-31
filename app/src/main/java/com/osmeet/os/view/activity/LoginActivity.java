@@ -121,6 +121,15 @@ public class LoginActivity extends BaseActivity<LoginContract.IPresenter> implem
         }
     }
 
+    @Override
+    public void showLoadUserInfo(boolean isSuccess) {
+        if (isSuccess) {
+            fl_2.setVisibility(View.GONE);
+        } else {
+            fl_2.setVisibility(View.VISIBLE);
+        }
+    }
+
     private View getViewByWhat(int what) {
         switch (what) {
             case LOGIN_PASSWORD:
@@ -154,25 +163,10 @@ public class LoginActivity extends BaseActivity<LoginContract.IPresenter> implem
 
     @BindView(R.id.fl_2)
     FrameLayout fl_2;
+
     @OnClick(R.id.bt_redo)
-    void redo(){
+    void redo() {
         mPresenter.loadUserInfo();
-    }
-
-    @Override
-    public void showFail(int what, Object... objects) {
-        super.showFail(what, objects);
-        if(what==1){
-            fl_2.setVisibility(View.VISIBLE);
-        }
-    }
-
-    @Override
-    public void showSuccess(int what, Object... objects) {
-        super.showSuccess(what, objects);
-        if(what==1){
-            fl_2.setVisibility(View.GONE);
-        }
     }
 
 }

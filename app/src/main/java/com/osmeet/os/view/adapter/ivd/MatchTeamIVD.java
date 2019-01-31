@@ -54,7 +54,7 @@ public class MatchTeamIVD extends BaseIVD<MatchTeam> {
         }
         if (MatchTeam.Wait_Accept_Meet_Time.equals(matchTeam.getTogetherState())) {
             img_os_bg.setImageResource(R.color.colorWMT);
-            WidgetUtil.setTextRes(tv_os_when, R.string.comfirm_time);
+            WidgetUtil.setTextRes(tv_os_when, R.string.confirm_time);
             WidgetUtil.setTextColor(tv_os_when, R.color.colorWhite);
         } else if (matchTeam.getTogetherState().contains("B")
                 || matchTeam.getTogetherState().contains("C")) {
@@ -63,10 +63,11 @@ public class MatchTeamIVD extends BaseIVD<MatchTeam> {
             WidgetUtil.setTextColor(tv_os_when, R.color.colorGray_5);
         } else if (matchTeam.getTogetherState().contains("Q")) {
             img_os_bg.setImageResource(R.color.colorGray_b);
-            WidgetUtil.setTextRes(tv_os_when, R.string.write_story);
+            WidgetUtil.setTextRes(tv_os_when, R.string.meet_was_finish);
             WidgetUtil.setTextColor(tv_os_when, R.color.colorWhite);
         } else {
             img_os_bg.setImageResource(R.color.colorLittleBlue);
+            WidgetUtil.setTextRes(tv_os_when, R.string.write_story);
             WidgetUtil.setTextColor(tv_os_when, R.color.colorWhite);
         }
 

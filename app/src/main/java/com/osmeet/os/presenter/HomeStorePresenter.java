@@ -51,7 +51,6 @@ public class HomeStorePresenter extends BasePresenter<HomeStoreContract.IView> i
             public void onNext(Box<ListContent<Store>> box) {
                 if (box.getCode() != 0) {
                     toast(box.getMessage());
-                    mView.showFail(1, "Fail");
                     return;
                 }
                 if (box.getData() != null) {

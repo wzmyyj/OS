@@ -20,6 +20,8 @@ public interface LoginContract {
         void showWhat(int w);
 
         void showBack();
+
+        void showLoadUserInfo(boolean isSuccess);
     }
 
     interface IPresenter extends IBasePresenter, I.Main, I.PopInfo {

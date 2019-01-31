@@ -9,10 +9,15 @@ import android.widget.LinearLayout;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchTeam;
+import com.osmeet.os.app.event.InviteListChangeEvent;
+import com.osmeet.os.app.event.TeamListChangeEvent;
 import com.osmeet.os.base.fragment.BaseFragment;
 import com.osmeet.os.contract.MessageContract;
 import com.osmeet.os.presenter.MessagePresenter;
 import com.osmeet.os.view.panel.MessageNeScrollPanel;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
@@ -97,5 +102,33 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
         } else {
             messageNeScrollPanel.setMatchInviteGroup(null);
         }
+    }
+
+    @Override
+    protected void initEvent() {
+        super.initEvent();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Subscribe
+    public void onEvent(InviteListChangeEvent event) {
+        if (event.isChange()) {
+            mPresenter.loadMatchInviteList();
+        }
+    }
+
+    @Subscribe
+    public void onEvent(TeamListChangeEvent event) {
+        if (event.isChange()) {
+            mPresenter.loadMatchTeamList();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

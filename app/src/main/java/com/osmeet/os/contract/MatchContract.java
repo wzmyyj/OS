@@ -21,6 +21,17 @@ public interface MatchContract {
     interface IPresenter extends IBasePresenter, I.AMap, I.Chat {
 
         void loadMatchTeam();
+
+        void refuseTime();
+
+        void acceptTime();
+
+        void changeTime(long time);
+
+        void finishMatch();
+
+        void quitMatch();
+
     }
 
 }

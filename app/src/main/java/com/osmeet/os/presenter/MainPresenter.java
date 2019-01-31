@@ -58,6 +58,20 @@ public class MainPresenter extends BasePresenter<MainContract.IView> implements 
         });
     }
 
+    @Override
+    public void sendLocation(double lng, double lat) {
+        userModel.user_updateAddress(new PObserver<Box<String>>() {
+            @Override
+            public void onNext(Box<String> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                log("" + box.getData());
+            }
+        }, lng, lat);
+    }
+
     private void goPopInfoAndFinish() {
         goPopInfo();
         toast(getContext().getString(R.string.user_info_not_complete_please_pop_info));

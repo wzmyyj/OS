@@ -51,6 +51,7 @@ public class MatchTeam {
     private int btimeStatus;
     private long bwantMeetTime;
     private int matchStatus;
+    private long meetTime;
 
     public void setId(String id) {
         this.id = id;
@@ -147,6 +148,28 @@ public class MatchTeam {
 
     public void setMatchStatus(int matchStatus) {
         this.matchStatus = matchStatus;
+    }
+
+    public long getMeetTime() {
+        return meetTime;
+    }
+
+    public void setMeetTime(long meetTime) {
+        this.meetTime = meetTime;
+    }
+
+    public void changeAB() {
+        int tmp = this.atimeStatus;
+        this.atimeStatus = this.btimeStatus;
+        this.btimeStatus = tmp;
+
+        long tl = this.awantMeetTime;
+        this.awantMeetTime = this.bwantMeetTime;
+        this.bwantMeetTime = tl;
+
+        MatchUnit unit = this.unita;
+        this.unita = this.unitb;
+        this.unitb = unit;
     }
 
 

@@ -1,11 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/app_name" />
-</LinearLayout>
+        android:layout_height="180dp"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <top.wzmyyj.wzm_sdk.widget.CircleImageView
+                android:id="@+id/img_store_logo"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@color/colorGray_e"
+                app:border_color="@color/colorLine"
+                app:border_width="0.1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_store_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorGray_4"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_store_distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorGray_7"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <FrameLayout
+                android:id="@+id/fl_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/bg_button_gray"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_what"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/meet_was_cancel"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_state_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp">
+
+                <top.wzmyyj.wzm_sdk.widget.RoundAngleImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@color/colorWMT"
+                    app:border_color_r="@color/colorLine"
+                    app:border_width_r="0.5dp"
+                    app:radiusAll="5dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/img_lock_1"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:contentDescription="@string/icon"
+                        android:src="@color/colorGray_e"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_meet_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/send_meet_time"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_state_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp">
+
+                <top.wzmyyj.wzm_sdk.widget.RoundAngleImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@color/colorOs"
+                    app:border_color_r="@color/colorLine"
+                    app:border_width_r="0.5dp"
+                    app:radiusAll="5dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/img_lock_2"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:contentDescription="@string/icon"
+                        android:src="@color/colorGray_e" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/punch_card"
+                        android:textColor="@color/colorGray_6"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_state_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp">
+
+                <top.wzmyyj.wzm_sdk.widget.RoundAngleImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@color/colorLittleBlue"
+                    app:border_color_r="@color/colorLine"
+                    app:border_width_r="0.5dp"
+                    app:radiusAll="5dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/img_lock_3"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:contentDescription="@string/icon"
+                        android:src="@color/colorGray_e" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/write_story"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </FrameLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

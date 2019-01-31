@@ -15,11 +15,13 @@ import com.osmeet.os.base.contract.IBaseView;
 public interface MainContract {
 
     interface IView extends IBaseView {
-        void showMyInfo(@NonNull  User user);
+        void showMyInfo(@NonNull User user);
     }
 
     interface IPresenter extends IBasePresenter, I.PopInfo {
         void loadMyInfo();
+
+        void sendLocation(double lng, double lat);
     }
 
 }

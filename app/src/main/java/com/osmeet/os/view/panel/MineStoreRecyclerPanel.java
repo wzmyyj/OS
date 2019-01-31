@@ -10,7 +10,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amap.api.location.CoordinateConverter;
+import com.amap.api.location.DPoint;
 import com.osmeet.os.R;
+import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.FileInfo;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.tools.G;
@@ -85,7 +88,12 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
         WidgetUtil.setTextNonNull(tv_store_name, store.getName());
         WidgetUtil.setTextNumber(tv_store_os_num, store.getMatchUnitCount());
         WidgetUtil.setTextNonNull(tv_store_introduce, store.getIntroduce());
-        WidgetUtil.setTextNonNull(tv_store_distance, "127km");
+
+        DPoint dPoint=new DPoint();
+        dPoint.setLatitude(store.getLat());
+        dPoint.setLongitude(store.getLng());
+        float distance = CoordinateConverter.calculateLineDistance(App.getInstance().getMyDPoint(), dPoint);
+        WidgetUtil.setTextNonNull(tv_store_distance, distance / 1000 + "km");
 
         List<FileInfo> images = store.getImages();
         if (images != null && images.size() > 0) {

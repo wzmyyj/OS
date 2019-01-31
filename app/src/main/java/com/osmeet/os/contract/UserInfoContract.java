@@ -15,9 +15,11 @@ import com.osmeet.os.base.contract.IBaseView;
 public interface UserInfoContract {
     interface IView extends IBaseView {
         void showUserInfo(@NonNull User user);
+
+        void showInvite(boolean isSuccess, int what);
     }
 
-    interface IPresenter extends IBasePresenter, I.MatchBegin,I.ImageLook {
+    interface IPresenter extends IBasePresenter, I.MatchBegin, I.ImageLook {
         void setUserId(@NonNull String userId);
 
         void setUnitId(@NonNull String unitId);

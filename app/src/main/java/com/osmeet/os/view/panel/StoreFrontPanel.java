@@ -65,7 +65,6 @@ public class StoreFrontPanel extends BasePanel<StoreContract.IPresenter> {
     }
 
     public void setUserList(@NonNull List<User> userList) {
-        if (userList.size() == 0) return;
         final List<User> mData = new ArrayList<>();
         mData.add(new User());
         mData.addAll(userList);

@@ -63,7 +63,10 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
                 }
                 if (box.getData() != null) {
                     mView.showStoreInfo(box.getData());
-                    goToStore(storeId);
+                    if (box.getData().getMatchState() == 0) {
+                        goToStore(storeId);
+                    }
+
                 }
 
             }

@@ -68,24 +68,20 @@ public class BasePresenter<V extends IBaseView> implements IBasePresenter {
     protected abstract class PObserver<B> implements Observer<B> {
         @Override
         public void onSubscribe(Disposable d) {
-            mView.showStart(mView.PROCESS_DEFAULT, "Start!");
         }
 
         @Override
         public void onError(Throwable e) {
             onFinish();
-            mView.showFail(mView.PROCESS_DEFAULT, "Error:" + e.getMessage());
-            log("Error:" + e.getMessage());
+            mView.showToast("Error:" + e.getMessage());
         }
 
         @Override
         public void onComplete() {
             onFinish();
-            mView.showSuccess(mView.PROCESS_DEFAULT, "Complete!");
         }
 
         protected void onFinish() {
-            mView.showFinish(mView.PROCESS_DEFAULT, "Finish!");
         }
 
 

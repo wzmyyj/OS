@@ -8,6 +8,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.amap.api.location.DPoint;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
@@ -16,6 +17,7 @@ import com.amap.api.maps.UiSettings;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.osmeet.os.R;
+import com.osmeet.os.app.application.App;
 import com.osmeet.os.base.panel.BasePanel;
 import com.osmeet.os.contract.MatchContract;
 import com.yanzhenjie.permission.AndPermission;
@@ -91,7 +93,7 @@ public class MatchMapPanel extends BasePanel<MatchContract.IPresenter> implement
         AMapLocationClientOption mLocationOption = new AMapLocationClientOption();
         mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
 //        mLocationOption.setNeedAddress(true);
-//        mLocationOption.setOnceLocation(false);
+        mLocationOption.setOnceLocation(true);
 //        mLocationOption.setMockEnable(false);
 //        mLocationOption.setInterval(2000);
         mLocationClient.setLocationOption(mLocationOption);
@@ -152,6 +154,13 @@ public class MatchMapPanel extends BasePanel<MatchContract.IPresenter> implement
 
                 //点击定位按钮 能够将地图的中心移动到定位点
                 mListener.onLocationChanged(aMapLocation);
+
+                double latitude = aMapLocation.getLatitude();//获取纬度
+                double longitude = aMapLocation.getLongitude();//获取经度
+                DPoint mPoint = new DPoint(latitude, longitude);
+                App.getInstance().setMyDPoint(mPoint);
+
+
                 if (isFirstLoc) {
                     //设置缩放级别
                     aMap.moveCamera(CameraUpdateFactory.zoomTo(15));
@@ -167,12 +176,12 @@ public class MatchMapPanel extends BasePanel<MatchContract.IPresenter> implement
                             .append(aMapLocation.getStreet())
                             .append(aMapLocation.getStreetNum());
                     isFirstLoc = false;
-                    mPresenter.toast(builder.toString());
+                    mPresenter.log(builder.toString());
                 }
 
 
             } else {
-                mPresenter.toast(context.getString(R.string.location_fail) + " code=" + code + " info=" + msg);
+                mPresenter.log(context.getString(R.string.location_fail) + " code=" + code + " info=" + msg);
             }
         }
     }
@@ -219,7 +228,7 @@ public class MatchMapPanel extends BasePanel<MatchContract.IPresenter> implement
     }
 
     //跳转高德地图
-    private void goToGaode(String lat, String lon, String address) {
+    private void goToAMap(String lat, String lon, String address) {
         if (ApkUtil.checkApkExist(context, "com.autonavi.minimap")) {
             StringBuilder builder;
             builder = new StringBuilder("androidamap://route?sourceApplication=").append("amap")

@@ -32,7 +32,6 @@ public class HomePresenter extends BasePresenter<HomeContract.IView> implements 
             public void onNext(Box<ListContent<Category>> box) {
                 if (box.getCode() != 0) {
                     toast(box.getMessage());
-                    mView.showFail(1, "Fail");
                     return;
                 }
 
