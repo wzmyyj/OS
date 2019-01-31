@@ -29,6 +29,8 @@ public interface StoreInfoContract {
 
         void loadGoodsList();
 
+        void report(@NonNull String content);
+
     }
 
 }

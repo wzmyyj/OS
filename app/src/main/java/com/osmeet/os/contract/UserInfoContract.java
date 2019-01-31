@@ -39,5 +39,9 @@ public interface UserInfoContract {
         void matchInvite();
 
         void matchInvite_accept();
+
+        void report(@NonNull String content);
+
+        void block();
     }
 }

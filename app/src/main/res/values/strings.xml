@@ -74,6 +74,7 @@
     <string name="_50">50</string>
     <string name="add_friends">加好友</string>
     <string name="wallet">钱包</string>
+    <string name="store_wallet">商店钱包</string>
     <string name="favor">收藏</string>
     <string name="place">地点</string>
     <string name="os_distance">相对距离</string>
@@ -205,4 +206,8 @@
     <string name="send_meet_time">发送相对时间</string>
     <string name="meet_was_cancel">相对已取消</string>
     <string name="meet_was_finish">相对已结束</string>
+    <string name="report_success">举报成功！</string>
+    <string name="block_success">拉黑成功！</string>
+    <string name="report_reason">填写举报原因</string>
+    <string name="block_this_user">拉黑该用户？</string>
 </resources>

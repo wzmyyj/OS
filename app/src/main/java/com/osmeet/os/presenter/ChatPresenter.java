@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.ChatContract;
@@ -13,5 +14,15 @@ public class ChatPresenter extends BasePresenter<ChatContract.IView> implements 
 
     public ChatPresenter(Activity activity, ChatContract.IView iv) {
         super(activity, iv);
+    }
+
+    @Override
+    public void report(@NonNull String content) {
+
+    }
+
+    @Override
+    public void block() {
+
     }
 }

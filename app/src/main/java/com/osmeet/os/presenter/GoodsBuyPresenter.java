@@ -14,6 +14,8 @@ import com.osmeet.os.model.task.AliPayModel;
 
 import java.util.Map;
 
+import top.wzmyyj.wzm_sdk.tools.Sure;
+
 /**
  * Created by yyj on 2019/01/03. email: 2209011667@qq.com
  */
@@ -24,16 +26,20 @@ public class GoodsBuyPresenter extends BasePresenter<GoodsBuyContract.IView> imp
     private GoodsModel goodsModel;
     private AliPayModel aliPayModel;
 
+    private Goods.SimpleGoods simpleGoods;
+
     public GoodsBuyPresenter(Activity activity, GoodsBuyContract.IView iv) {
         super(activity, iv);
         tradeModel = new TradeModel();
         goodsModel = new GoodsModel();
         aliPayModel = new AliPayModel();
+        simpleGoods = (Goods.SimpleGoods) getActivity().getIntent().getSerializableExtra("goods");
+        Sure.sure(simpleGoods != null, "simpleGoods is null");
     }
 
     @Override
     public Goods.SimpleGoods getSimpleGoods() {
-        return (Goods.SimpleGoods) getActivity().getIntent().getSerializableExtra("goods");
+        return simpleGoods;
     }
 
     private Trade trade;

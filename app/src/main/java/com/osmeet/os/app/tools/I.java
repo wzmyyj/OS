@@ -278,15 +278,21 @@ public class I {
         }
     }
 
-    public static void goWalletActivity(Context context) {
+    public static void goWalletActivity(Context context, String storeId) {
         Intent intent = new Intent(context, WalletActivity.class);
+        intent.putExtra("storeId", storeId);
         context.startActivity(intent);
     }
 
     public interface Wallet extends IContext {
         default void goWallet() {
             if (getContext() != null)
-                goWalletActivity(getContext());
+                goWalletActivity(getContext(), null);
+        }
+
+        default void goWallet(String storeId) {
+            if (getContext() != null)
+                goWalletActivity(getContext(), storeId);
         }
     }
 

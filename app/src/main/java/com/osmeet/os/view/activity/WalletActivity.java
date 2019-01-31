@@ -62,6 +62,9 @@ public class WalletActivity extends BaseActivity<WalletContract.IPresenter> impl
         mPresenter.finish();
     }
 
+    @BindView(R.id.tv_title)
+    TextView tv_title;
+
     @OnClick(R.id.bt_tx)
     void tx() {
         if (money < 0.001) {
@@ -114,6 +117,12 @@ public class WalletActivity extends BaseActivity<WalletContract.IPresenter> impl
     protected void initView() {
         super.initView();
         PanelUtil.in(getPanelList(), mTabLayout, mViewPager);
+
+        if (mPresenter.getMode() == 0) {
+            WidgetUtil.setTextRes(tv_title, R.string.wallet);
+        } else {
+            WidgetUtil.setTextRes(tv_title, R.string.store_wallet);
+        }
     }
 
     @Override

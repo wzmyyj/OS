@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kongzue.dialog.v2.BottomMenu;
+import com.kongzue.dialog.v2.InputDialog;
+import com.kongzue.dialog.v2.SelectDialog;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
@@ -77,10 +79,10 @@ public class UserInfo2Activity extends BaseActivity<UserInfo2Contract.IPresenter
             BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
                         switch (index) {
                             case 0:
-                                mPresenter.toast(text);
+                                reportDialog();
                                 break;
                             case 1:
-                                mPresenter.toast(text);
+                                blockDialog();
                                 break;
                         }
                     }, true, context.getString(R.string.cancel)
@@ -88,6 +90,25 @@ public class UserInfo2Activity extends BaseActivity<UserInfo2Contract.IPresenter
         });
     }
 
+    private void reportDialog() {
+        InputDialog.show(context, context.getString(R.string.report),
+                context.getString(R.string.report_reason),
+                context.getString(R.string.submit), (dialog, inputText) -> {
+                    mPresenter.report(inputText);
+                    dialog.dismiss();
+                }, context.getString(R.string.cancel), (dialog, which) -> {
+                    mPresenter.toast(context.getString(R.string.cancel));
+                });
+    }
+
+
+    private void blockDialog() {
+        SelectDialog.show(context, context.getString(R.string.warm),
+                context.getString(R.string.block_this_user),
+                context.getString(R.string.ok), (dialog, which) -> mPresenter.block(),
+                context.getString(R.string.cancel), (dialog, which) -> {
+                });
+    }
 
     @Override
     protected void initData() {

@@ -1,5 +1,7 @@
 package com.osmeet.os.contract;
 
+import android.support.annotation.NonNull;
+
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
 
@@ -14,8 +16,10 @@ public interface ChatContract {
 
     }
 
-    interface IPresenter extends IBasePresenter{
+    interface IPresenter extends IBasePresenter {
+        void report(@NonNull String content);
 
+        void block();
     }
 
 }

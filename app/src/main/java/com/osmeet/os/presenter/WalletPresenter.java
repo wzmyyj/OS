@@ -20,15 +20,29 @@ import com.osmeet.os.model.net.utils.box.ListContent;
 public class WalletPresenter extends BasePresenter<WalletContract.IView> implements WalletContract.IPresenter {
 
     private BalanceModel balanceModel;
+    private String storeId;
+    private int mode;
 
     public WalletPresenter(Activity activity, WalletContract.IView iv) {
         super(activity, iv);
         balanceModel = new BalanceModel();
+        storeId = activity.getIntent().getStringExtra("storeId");
+        if (storeId != null) {
+            mode = 1;
+        } else {
+            mode = 0;
+        }
+    }
+
+
+    @Override
+    public int getMode() {
+        return this.mode;
     }
 
     @Override
     public void loadBalance() {
-        balanceModel.balance(new PObserver<Box<Balance>>() {
+        PObserver<Box<Balance>> pObserver = new PObserver<Box<Balance>>() {
             @Override
             public void onNext(Box<Balance> box) {
                 if (box.getCode() != 0) {
@@ -39,12 +53,19 @@ public class WalletPresenter extends BasePresenter<WalletContract.IView> impleme
                     mView.showBalance(box.getData());
                 }
             }
-        });
+        };
+
+        if (mode == 0) {
+            balanceModel.balance(pObserver);
+        } else {
+            balanceModel.balance_store(pObserver, storeId);
+        }
+
     }
 
     @Override
     public void loadRecordList(int pageNum) {
-        balanceModel.balance_getRecord(new PObserver<Box<ListContent<Record>>>() {
+        PObserver<Box<ListContent<Record>>> pObserver = new PObserver<Box<ListContent<Record>>>() {
             @Override
             public void onNext(Box<ListContent<Record>> box) {
                 if (box.getCode() != 0) {
@@ -55,12 +76,18 @@ public class WalletPresenter extends BasePresenter<WalletContract.IView> impleme
                     mView.showRecordList(box.getData().getContent());
                 }
             }
-        }, pageNum, 100);
+        };
+        if (mode == 0) {
+            balanceModel.balance_getRecord(pObserver, pageNum, 100);
+        } else {
+            balanceModel.balance_store_getRecord(pObserver, storeId, pageNum, 100);
+        }
+
     }
 
     @Override
     public void loadTX(@NonNull String account, float amount) {
-        balanceModel.balance_tx(new PObserver<Box<String>>() {
+        PObserver<Box<String>> pObserver = new PObserver<Box<String>>() {
             @Override
             public void onNext(Box<String> box) {
                 if (box.getCode() != 0) {
@@ -71,6 +98,14 @@ public class WalletPresenter extends BasePresenter<WalletContract.IView> impleme
                 loadBalance();
                 loadRecordList(0);
             }
-        }, App.getInstance().getMyInfo().getId(), account, amount, 1);
+        };
+        if (mode == 0) {
+            balanceModel.balance_tx(pObserver, App.getInstance().getMyInfo().getId(), account, amount, 1);
+        } else {
+            balanceModel.balance_store_tx(pObserver, storeId, account, amount, 1);
+        }
+
     }
+
+
 }

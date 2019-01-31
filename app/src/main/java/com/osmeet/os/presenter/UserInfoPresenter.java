@@ -4,14 +4,18 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchTeam;
+import com.osmeet.os.app.bean.Report;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.event.InviteListChangeEvent;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.UserInfoContract;
+import com.osmeet.os.model.net.AttentionModel;
 import com.osmeet.os.model.net.MatchModel;
+import com.osmeet.os.model.net.ReportModel;
 import com.osmeet.os.model.net.UserModel;
 import com.osmeet.os.model.net.utils.box.Box;
 
@@ -149,6 +153,36 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
                 }
             }
         }, inviteId);
+    }
+
+
+    @Override
+    public void report(@NonNull String content) {
+        new ReportModel().report(new PObserver<Box<Report>>() {
+            @Override
+            public void onNext(Box<Report> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                toast(context.getString(R.string.report_success));
+            }
+        }, new Report(Report.REPORT_USER, unitId, content));
+    }
+
+
+    @Override
+    public void block() {
+        new AttentionModel().block_post(new PObserver<Box<String>>() {
+            @Override
+            public void onNext(Box<String> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                toast(context.getString(R.string.block_success));
+            }
+        }, userId);
     }
 
 

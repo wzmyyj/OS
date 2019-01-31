@@ -12,6 +12,8 @@ import com.osmeet.os.model.net.utils.box.Box;
 
 import org.greenrobot.eventbus.EventBus;
 
+import top.wzmyyj.wzm_sdk.tools.Sure;
+
 /**
  * Created by yyj on 2019/01/03. email: 2209011667@qq.com
  */
@@ -19,20 +21,17 @@ import org.greenrobot.eventbus.EventBus;
 public class MatchPresenter extends BasePresenter<MatchContract.IView> implements MatchContract.IPresenter {
 
     private MatchModel matchModel;
+    private  String matchId;
 
     public MatchPresenter(Activity activity, MatchContract.IView iv) {
         super(activity, iv);
         matchModel = new MatchModel();
+        matchId = activity.getIntent().getStringExtra("matchId");
+        Sure.sure(!TextUtils.isEmpty(matchId),"Match Id is a empty value!");
     }
 
     @Override
     public void loadMatchTeam() {
-        String matchId = getActivity().getIntent().getStringExtra("matchId");
-        if (TextUtils.isEmpty(matchId)) {
-            toast("Match Id is a empty value!");
-            return;
-        }
-
         matchModel.matchTeam_detail(new PObserver<Box<MatchTeam>>() {
             @Override
             public void onNext(Box<MatchTeam> box) {
@@ -49,12 +48,6 @@ public class MatchPresenter extends BasePresenter<MatchContract.IView> implement
 
     @Override
     public void refuseTime() {
-        String matchId = getActivity().getIntent().getStringExtra("matchId");
-        if (TextUtils.isEmpty(matchId)) {
-            toast("Match Id is a empty value!");
-            return;
-        }
-
         matchModel.matchTeam_refuseTime(new PObserver<Box<MatchTeam>>() {
             @Override
             public void onNext(Box<MatchTeam> box) {
@@ -71,12 +64,6 @@ public class MatchPresenter extends BasePresenter<MatchContract.IView> implement
 
     @Override
     public void acceptTime() {
-        String matchId = getActivity().getIntent().getStringExtra("matchId");
-        if (TextUtils.isEmpty(matchId)) {
-            toast("Match Id is a empty value!");
-            return;
-        }
-
         matchModel.matchTeam_acceptTime(new PObserver<Box<MatchTeam>>() {
             @Override
             public void onNext(Box<MatchTeam> box) {
@@ -93,12 +80,6 @@ public class MatchPresenter extends BasePresenter<MatchContract.IView> implement
 
     @Override
     public void changeTime(long time) {
-        String matchId = getActivity().getIntent().getStringExtra("matchId");
-        if (TextUtils.isEmpty(matchId)) {
-            toast("Match Id is a empty value!");
-            return;
-        }
-
         matchModel.matchTeam_changeTime(new PObserver<Box<MatchTeam>>() {
             @Override
             public void onNext(Box<MatchTeam> box) {
@@ -115,12 +96,6 @@ public class MatchPresenter extends BasePresenter<MatchContract.IView> implement
 
     @Override
     public void finishMatch() {
-        String matchId = getActivity().getIntent().getStringExtra("matchId");
-        if (TextUtils.isEmpty(matchId)) {
-            toast("Match Id is a empty value!");
-            return;
-        }
-
         matchModel.matchTeam_finish(new PObserver<Box<MatchTeam>>() {
             @Override
             public void onNext(Box<MatchTeam> box) {
@@ -138,12 +113,6 @@ public class MatchPresenter extends BasePresenter<MatchContract.IView> implement
 
     @Override
     public void quitMatch() {
-        String matchId = getActivity().getIntent().getStringExtra("matchId");
-        if (TextUtils.isEmpty(matchId)) {
-            toast("Match Id is a empty value!");
-            return;
-        }
-
         matchModel.matchTeam_quitTeam(new PObserver<Box<MatchTeam>>() {
             @Override
             public void onNext(Box<MatchTeam> box) {

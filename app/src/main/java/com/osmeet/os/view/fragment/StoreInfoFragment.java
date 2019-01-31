@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kongzue.dialog.v2.BottomMenu;
+import com.kongzue.dialog.v2.InputDialog;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.Store;
@@ -82,15 +83,25 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
             list.add(context.getString(R.string.report));
 //            list.add("拉黑");
             BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
-                        switch (index) {
-                            case 0:
-                                mPresenter.toast(text);
-                                break;
+                        if (index == 0) {
+                            reportDialog();
                         }
                     }, true,
                     context.getString(R.string.cancel)
             ).setTitle(context.getString(R.string.please_choose));
         });
+
+    }
+
+    private void   reportDialog() {
+        InputDialog.show(context, context.getString(R.string.report),
+               context.getString(R.string.report_reason),
+                context.getString(R.string.submit), (dialog, inputText) -> {
+                    mPresenter.report(inputText);
+                    dialog.dismiss();
+                }, context.getString(R.string.cancel), (dialog, which) -> {
+                    mPresenter.toast(context.getString(R.string.cancel));
+                });
     }
 
     @Override

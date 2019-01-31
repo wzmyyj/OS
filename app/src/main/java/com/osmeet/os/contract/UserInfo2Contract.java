@@ -17,13 +17,17 @@ public interface UserInfo2Contract {
         void showUserInfo(@NonNull User user);
     }
 
-    interface IPresenter extends IBasePresenter, I.Chat,I.ImageLook {
+    interface IPresenter extends IBasePresenter, I.Chat, I.ImageLook {
 
         String getUserId();
 
         void loadUserInfo();
 
         void addFriend(@NonNull String message);
+
+        void report(@NonNull String content);
+
+        void block();
 
 
     }

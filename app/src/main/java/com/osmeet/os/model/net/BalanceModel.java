@@ -43,4 +43,24 @@ public class BalanceModel {
         Observable<Box<String>> observable = getService().balance_tx(_requestData, _timestamp);
         SubscribeUtil.io2main(observable, observer);
     }
+
+
+    public void balance_store(Observer<Box<Balance>> observer, String storeId) {
+        Observable<Box<Balance>> observable = getService().balance_store(storeId);
+        SubscribeUtil.io2main(observable, observer);
+    }
+
+    public void balance_store_getRecord(Observer<Box<ListContent<Record>>> observer, String storeId, int pageNum, int pageSize) {
+        Observable<Box<ListContent<Record>>> observable = getService().balance_store_getRecord(storeId, pageNum, pageSize);
+        SubscribeUtil.io2main(observable, observer);
+    }
+
+    public void balance_store_tx(Observer<Box<String>> observer, String storeId, String account, double amount, int way) {
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String requestData = storeId + "," + account + "," + decimalFormat.format(amount) + "," + way;
+        String _requestData = RSA.encrypt(requestData);
+        long _timestamp = TimeUtil.getTime();
+        Observable<Box<String>> observable = getService().balance_tx(_requestData, _timestamp);
+        SubscribeUtil.io2main(observable, observer);
+    }
 }

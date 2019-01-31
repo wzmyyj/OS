@@ -1,28 +1,37 @@
 package com.osmeet.os.app.bean;
 
-import java.util.Date;
-
 /**
  * Created by yyj on 2018/12/04. email: 2209011667@qq.com
  */
 
 public class Report {
 
-    private Date createDate;
+    public static final int REPORT_USER = 1;
+    public static final int REPORT_STORE = 2;
+    private long createDate;
     private String id;
-    private Date modifyDate;
+    private long modifyDate;
     private String reportContent;
     private String reportOne;
     private String reportOneType;
-    private String reportType;
+    private int reportType;
     private String reporter;
     private int status;
 
-    public void setCreateDate(Date createDate) {
+    public Report() {
+    }
+
+    public Report(int reportType, String reporter, String reportContent) {
+        this.reportType = reportType;
+        this.reporter = reporter;
+        this.reportContent = reportContent;
+    }
+
+    public void setCreateDate(long createDate) {
         this.createDate = createDate;
     }
 
-    public Date getCreateDate() {
+    public long getCreateDate() {
         return createDate;
     }
 
@@ -34,11 +43,11 @@ public class Report {
         return id;
     }
 
-    public void setModifyDate(Date modifyDate) {
+    public void setModifyDate(long modifyDate) {
         this.modifyDate = modifyDate;
     }
 
-    public Date getModifyDate() {
+    public long getModifyDate() {
         return modifyDate;
     }
 
@@ -66,11 +75,11 @@ public class Report {
         return reportOneType;
     }
 
-    public void setReportType(String reportType) {
+    public void setReportType(int reportType) {
         this.reportType = reportType;
     }
 
-    public String getReportType() {
+    public int getReportType() {
         return reportType;
     }
 

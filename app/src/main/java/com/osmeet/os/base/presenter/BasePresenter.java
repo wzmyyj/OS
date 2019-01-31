@@ -6,8 +6,6 @@ import android.content.Context;
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
 
-import java.lang.ref.WeakReference;
-
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import top.wzmyyj.wzm_sdk.tools.L;
@@ -19,21 +17,23 @@ import top.wzmyyj.wzm_sdk.tools.L;
 
 public class BasePresenter<V extends IBaseView> implements IBasePresenter {
     protected V mView;
-    private WeakReference<Activity> weakActivity;
+    protected Activity activity;
+    protected Context context;
 
     public BasePresenter(Activity activity, V iv) {
-        this.weakActivity = new WeakReference<>(activity);
+        this.activity = activity;
+        this.context = activity;
         this.mView = iv;
     }
 
     @Override
     public Context getContext() {
-        return weakActivity.get();
+        return this.context;
     }
 
     @Override
     public Activity getActivity() {
-        return weakActivity.get();
+        return this.activity;
     }
 
     @Override
@@ -48,8 +48,8 @@ public class BasePresenter<V extends IBaseView> implements IBasePresenter {
 
     @Override
     public void destroy() {
-        this.weakActivity.clear();
-        this.weakActivity = null;
+        this.activity = null;
+        this.context = null;
         this.mView = null;
     }
 

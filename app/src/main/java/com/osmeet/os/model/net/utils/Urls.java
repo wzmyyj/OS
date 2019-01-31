@@ -130,6 +130,10 @@ public class Urls {
     public static final String balance = "/user/balance";
     public static final String balance_getRecord = "/user/balance/getRecord";
     public static final String balance_tx = "/trade/cf79cbb3efcaab10";
+    public static final String balance_store = "/store/balance";
+    public static final String balance_store_getRecord = "/store/balance/getRecord";
+    public static final String balance_store_tx = "/store/balance/withdraw";
+
 
     // 评论。
     public static final String comment = "/comment";

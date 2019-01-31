@@ -107,6 +107,7 @@ public class MatchActivity extends BaseActivity<MatchContract.IPresenter> implem
     public void showMatchTeam(@NonNull MatchTeam matchTeam) {
         mMatchTeam = matchTeam;
         matchFrontPanel.setMatchTeam(matchTeam);
+        matchMapPanel.setMatchTeam(matchTeam);
     }
 }
 

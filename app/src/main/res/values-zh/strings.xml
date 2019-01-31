@@ -200,4 +200,5 @@
     <string name="login_success">登录成功!</string>
     <string name="account_not_exist_please_register">账号不存在，先注册！</string>
     <string name="account_exist_please_login">账号已存在，请登录！</string>
+    <string name="store_wallet">商店钱包</string>
 </resources>

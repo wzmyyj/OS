@@ -24,11 +24,16 @@ public interface WalletContract {
     }
 
     interface IPresenter extends IBasePresenter {
+
+        int getMode();
+
         void loadBalance();
 
         void loadRecordList(int pageNum);
 
         void loadTX(@NonNull String account, float amount);
+
+
     }
 
 }

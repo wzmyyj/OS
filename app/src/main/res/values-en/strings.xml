@@ -200,4 +200,5 @@
     <string name="login_success">Login</string>
     <string name="account_not_exist_please_register">Account does not exit, please register first</string>
     <string name="account_exist_please_login">Account already existed, please login</string>
+    <string name="store_wallet">Store Wallet</string>
 </resources>

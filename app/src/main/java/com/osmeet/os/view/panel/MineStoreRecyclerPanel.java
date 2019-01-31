@@ -80,16 +80,18 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
 
     }
 
+    private Store store;
+
     public void setStore(@NonNull Store store) {
         // header
-
+        this.store = store;
         if (store.getLogoImage() != null)
             G.img(context, store.getLogoImage().getUrl(), img_store_avatar);
         WidgetUtil.setTextNonNull(tv_store_name, store.getName());
         WidgetUtil.setTextNumber(tv_store_os_num, store.getMatchUnitCount());
         WidgetUtil.setTextNonNull(tv_store_introduce, store.getIntroduce());
 
-        DPoint dPoint=new DPoint();
+        DPoint dPoint = new DPoint();
         dPoint.setLatitude(store.getLat());
         dPoint.setLongitude(store.getLng());
         float distance = CoordinateConverter.calculateLineDistance(App.getInstance().getMyDPoint(), dPoint);
@@ -111,15 +113,12 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
     }
 
 
-
-
     private ImageView img_store_avatar;
     private TextView tv_store_name;
     private TextView tv_store_distance;
     private TextView tv_store_os_num;
     private TextView tv_store_introduce;
     private ImageView img_image;
-
 
 
     @SuppressLint("InflateParams")
@@ -146,7 +145,8 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
 
         });
         tv_wallet.setOnClickListener(v -> {
-
+            if (store != null)
+                mPresenter.goWallet(store.getId());
         });
     }
 
@@ -162,6 +162,7 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
             mThumbViewInfoList.add(item);
         }
     }
+
     @SuppressLint("InflateParams")
     @Override
     protected void setFooter() {

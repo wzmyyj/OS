@@ -29,4 +29,19 @@ public interface BalanceService {
     Observable<Box<String>> balance_tx(
             @Query("_requestData") String _requestData,
             @Query("_timestamp") long _timestamp);
+
+    @GET(Urls.balance_store)
+    Observable<Box<Balance>> balance_store(
+            @Query("storeId") String storeId);
+
+    @GET(Urls.balance_store_getRecord)
+    Observable<Box<ListContent<Record>>> balance_store_getRecord(
+            @Query("storeId") String storeId,
+            @Query("pageNum") int pageNum,
+            @Query("pageSize") int pageSize);
+
+    @POST(Urls.balance_store_tx)
+    Observable<Box<String>> balance_store_tx(
+            @Query("_requestData") String _requestData,
+            @Query("_timestamp") long _timestamp);
 }
