@@ -1,5 +1,6 @@
 package com.osmeet.os.view.fragment;
 
+import android.Manifest;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
@@ -15,6 +16,7 @@ import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.fragment.BaseFragment;
 import com.osmeet.os.contract.HomeContract;
 import com.osmeet.os.presenter.HomePresenter;
+import com.yanzhenjie.permission.AndPermission;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import top.wzmyyj.wzm_sdk.adapter.InitFragmentPagerAdapter;
 import top.wzmyyj.wzm_sdk.fragment.InitFragment;
+import top.wzmyyj.wzm_sdk.tools.T;
 import top.wzmyyj.wzm_sdk.utils.DensityUtil;
 import top.wzmyyj.wzm_sdk.utils.TabLayoutUtil;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
@@ -50,7 +53,14 @@ public class HomeFragment extends BaseFragment<HomeContract.IPresenter> implemen
 
     @OnClick(R.id.img_scan)
     void scan() {
-        mPresenter.goScan();
+        AndPermission.with(activity)
+                .permission(
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.CAMERA)
+                .onGranted(permissions -> mPresenter.goScan())
+                .onDenied(permissions -> T.s("No Permission"))
+                .start();
+//        mPresenter.goScan();
     }
 
     @BindView(R.id.tab_top)

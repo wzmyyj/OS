@@ -87,7 +87,8 @@ public class ScanActivity extends BaseActivity<ScanContract.IPresenter> implemen
         analyzeCallback = new CodeUtils.AnalyzeCallback() {
             @Override
             public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
-                mPresenter.toast(context.getString(R.string.rec_2d_code) + result);
+                if (result != null)
+                    mPresenter.loadCode(result);
             }
 
             @Override

@@ -1,5 +1,7 @@
 package com.osmeet.os.contract;
 
+import android.support.annotation.NonNull;
+
 import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
@@ -15,8 +17,9 @@ public interface ScanContract {
 
     }
 
-    interface IPresenter extends IBasePresenter, I.UserInfo2,I.Store{
+    interface IPresenter extends IBasePresenter, I.UserInfo2,I.Store,I.Trade{
 
+        void loadCode(@NonNull String qrCode);
     }
 
 }

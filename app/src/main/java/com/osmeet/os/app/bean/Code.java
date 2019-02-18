@@ -12,20 +12,33 @@ public class Code {
     public static final int CODE_UN_KNOW = -0x1;
     public static final int CODE_OS_BUT_USELESS = 0;
     public static final int CODE_USER_ID = 0x1;
-    public static final int CODE_STORE_ID = 0x10;
-    public static final int CODE_GOODS_ID = 0x11;
+    public static final int CODE_TRADE_ID = 0x10;
+    public static final int CODE_STORE_ID = 0x11;
+    public static final int CODE_GOODS_ID = 0x100;
 
-    private int type;
+    private int code;
     private String info;
-    private String whole;
+
+    public Code() {
+    }
+
+    public Code(int type, String info) {
+        this.code = type;
+        this.info = info;
+    }
 
     public int getType() {
-        return type;
+        return code;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public int getCode() {
+        return code;
     }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
 
     public String getInfo() {
         return info;
@@ -35,11 +48,4 @@ public class Code {
         this.info = info;
     }
 
-    public String getWhole() {
-        return whole;
-    }
-
-    public void setWhole(String whole) {
-        this.whole = whole;
-    }
 }

@@ -11,6 +11,8 @@ import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.utils.FileUtil;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.VisitCardContract;
+import com.osmeet.os.model.net.VersionModel;
+import com.osmeet.os.model.net.utils.box.Box;
 
 /**
  * Created by yyj on 2019/01/03. email: 2209011667@qq.com
@@ -19,8 +21,11 @@ import com.osmeet.os.contract.VisitCardContract;
 public class VisitCardPresenter extends BasePresenter<VisitCardContract.IView> implements VisitCardContract.IPresenter {
 
 
+    private VersionModel versionModel;
+
     public VisitCardPresenter(Activity activity, VisitCardContract.IView iv) {
         super(activity, iv);
+        versionModel = new VersionModel();
     }
 
 
@@ -36,10 +41,21 @@ public class VisitCardPresenter extends BasePresenter<VisitCardContract.IView> i
     @Override
     public void loadCodeText() {
         User user = App.getInstance().getMyInfo();
-        if (user != null) {
-            String userId = user.getId();
-            mView.showCodeText(Code.CODE_BEGIN + "user/code?userId=" + userId);
-        }
+        if (user == null) return;
+        versionModel.version_code_concat(new PObserver<Box<String>>() {
+            @Override
+            public void onNext(Box<String> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                if (box.getData() != null) {
+                    mView.showCodeText(box.getData());
+                }
+            }
+        }, new Code(Code.CODE_USER_ID, user.getId()));
+
+
     }
 
     @Override

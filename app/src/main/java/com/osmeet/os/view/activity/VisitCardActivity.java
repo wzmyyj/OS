@@ -1,5 +1,6 @@
 package com.osmeet.os.view.activity;
 
+import android.Manifest;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -13,9 +14,11 @@ import com.osmeet.os.base.activity.BaseActivity;
 import com.osmeet.os.contract.VisitCardContract;
 import com.osmeet.os.presenter.VisitCardPresenter;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
+import com.yanzhenjie.permission.AndPermission;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import top.wzmyyj.wzm_sdk.tools.T;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 public class VisitCardActivity extends BaseActivity<VisitCardContract.IPresenter> implements VisitCardContract.IView {
@@ -52,7 +55,14 @@ public class VisitCardActivity extends BaseActivity<VisitCardContract.IPresenter
 
     @OnClick(R.id.ll_scan)
     void scan() {
-        mPresenter.goScan();
+        AndPermission.with(activity)
+                .permission(
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.CAMERA)
+                .onGranted(permissions -> mPresenter.goScan())
+                .onDenied(permissions -> T.s("No Permission"))
+                .start();
+//        mPresenter.goScan();
     }
 
     @BindView(R.id.img_avatar)
