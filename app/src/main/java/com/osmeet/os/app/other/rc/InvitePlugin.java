@@ -23,7 +23,7 @@ import io.rong.imkit.plugin.IPluginModule;
 public class InvitePlugin implements IPluginModule {
     @Override
     public Drawable obtainDrawable(Context context) {
-        return ContextCompat.getDrawable(context, io.rong.imkit.R.drawable.rc_ext_plugin_invite_selector);
+        return ContextCompat.getDrawable(context, R.drawable.rc_ext_plugin_invite_selector);
     }
 
     @Override

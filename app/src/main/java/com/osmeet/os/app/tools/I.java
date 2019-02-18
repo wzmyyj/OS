@@ -6,7 +6,10 @@ import android.content.Intent;
 
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.contract.ip.IContext;
+import com.osmeet.os.view.activity.AboutOsActivity;
+import com.osmeet.os.view.activity.AccountActivity;
 import com.osmeet.os.view.activity.AdActivity;
+import com.osmeet.os.view.activity.BlockListActivity;
 import com.osmeet.os.view.activity.CameraActivity;
 import com.osmeet.os.view.activity.ChatInviteActivity;
 import com.osmeet.os.view.activity.FriendListActivity;
@@ -23,6 +26,7 @@ import com.osmeet.os.view.activity.MatchBeginActivity;
 import com.osmeet.os.view.activity.MatchListActivity;
 import com.osmeet.os.view.activity.NewFriendsActivity;
 import com.osmeet.os.view.activity.PopInfoActivity;
+import com.osmeet.os.view.activity.ProtocolActivity;
 import com.osmeet.os.view.activity.ScanActivity;
 import com.osmeet.os.view.activity.SearchActivity;
 import com.osmeet.os.view.activity.SettingActivity;
@@ -446,5 +450,58 @@ public class I {
                 goImageLookActivity(getContext(), thumbViewInfoList);
         }
     }
+
+
+    public static void goAccountActivity(Context context) {
+        Intent intent = new Intent(context, AccountActivity.class);
+        context.startActivity(intent);
+    }
+
+    public interface Account extends IContext {
+        default void goAccount() {
+            if (getContext() != null)
+                goAccountActivity(getContext());
+        }
+    }
+
+    public static void goBlockListActivity(Context context) {
+        Intent intent = new Intent(context, BlockListActivity.class);
+        context.startActivity(intent);
+    }
+
+    public interface BlockList extends IContext {
+        default void goBlockList() {
+            if (getContext() != null)
+                goBlockListActivity(getContext());
+        }
+    }
+
+    public static void goAboutOsActivity(Context context) {
+        Intent intent = new Intent(context, AboutOsActivity.class);
+        context.startActivity(intent);
+    }
+
+    public interface AboutOs extends IContext {
+        default void goAboutOs() {
+            if (getContext() != null)
+                goAboutOsActivity(getContext());
+        }
+    }
+
+    public static void goProtocolActivity(Context context) {
+        Intent intent = new Intent(context, ProtocolActivity.class);
+        context.startActivity(intent);
+    }
+
+    public interface Protocol extends IContext {
+        default void goProtocol() {
+            if (getContext() != null)
+                goProtocolActivity(getContext());
+        }
+    }
+
+
+
+
 
 }

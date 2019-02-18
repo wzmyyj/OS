@@ -59,6 +59,7 @@ public class InviteMessageProvider extends IContainerItemProvider.MessageProvide
                 holder.img_logo);
     }
 
+    @Deprecated
     @Override
     public Spannable getContentSummary(InviteMessage inviteMessage) {
         return new SpannableString("OS invite message.");

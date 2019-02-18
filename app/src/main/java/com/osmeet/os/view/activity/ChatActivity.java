@@ -75,9 +75,9 @@ public class ChatActivity extends BaseActivity<ChatContract.IPresenter> implemen
                 context.getString(R.string.submit), (dialog, inputText) -> {
                     mPresenter.report(inputText);
                     dialog.dismiss();
-                }, context.getString(R.string.cancel), (dialog, which) -> {
-                    mPresenter.toast(context.getString(R.string.cancel));
-                });
+                }, context.getString(R.string.cancel), (dialog, which) ->
+                        mPresenter.toast(context.getString(R.string.cancel))
+        );
     }
 
 
@@ -93,7 +93,6 @@ public class ChatActivity extends BaseActivity<ChatContract.IPresenter> implemen
     TextView tv_title;
     private ConChatFragment conChatFragment;
 
-    private String userId;
 
     @Override
     protected void initView() {
@@ -103,7 +102,6 @@ public class ChatActivity extends BaseActivity<ChatContract.IPresenter> implemen
         FragmentUtil.add(getSupportFragmentManager(), R.id.fl_fragment, conChatFragment, "");
         Sure.sure(activity.getIntent().getData() != null, "Intent Data is null!");
         if (getIntent().getData() != null) {
-            userId = conChatFragment.getTargetId();
             WidgetUtil.setTextNonNull(tv_title, getIntent().getData().getQueryParameter("title"));
         }
 
@@ -120,6 +118,8 @@ public class ChatActivity extends BaseActivity<ChatContract.IPresenter> implemen
 
     @Subscribe
     public void onEvent(StoreChooseEvent event) {
+        String userId = conChatFragment.getTargetId();
+//        if (userId == null) mPresenter.toast("GG");
         if (event.getStore() != null && userId != null) {
             mPresenter.inviteFriends(event.getStore().getId(), userId);
         }
@@ -134,7 +134,7 @@ public class ChatActivity extends BaseActivity<ChatContract.IPresenter> implemen
 
     @Override
     public void showInviteFriendList(@NonNull List<MatchInvite2> matchInvite2List) {
-
+        mPresenter.toast(matchInvite2List.size() + "GGGGG");
     }
 }
 

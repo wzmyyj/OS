@@ -72,8 +72,6 @@
             android:process=":pushservice" />
         <service android:name=".assembly.service.PushIntentService" />
 
-
-
         <receiver
             android:name=".assembly.receiver.RcPushReceiver"
             android:exported="true">
@@ -129,8 +127,8 @@
         <activity android:name=".view.activity.MatchBeginActivity" />
         <activity
             android:name=".view.activity.ChatActivity"
-            android:screenOrientation="portrait"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -147,8 +145,12 @@
         <activity android:name=".view.activity.ScanActivity" />
         <activity android:name=".view.activity.VisitCardActivity" />
         <activity android:name=".view.activity.FriendListActivity" />
-        <activity android:name=".view.activity.UserInfo2Activity"/>
+        <activity android:name=".view.activity.UserInfo2Activity" />
         <activity android:name=".view.activity.ImageLookActivity" />
+        <activity android:name=".view.activity.AccountActivity" />
+        <activity android:name=".view.activity.ProtocolActivity" />
+        <activity android:name=".view.activity.AboutOsActivity" />
+        <activity android:name=".view.activity.BlockListActivity"></activity>
     </application>
 
 </manifest>

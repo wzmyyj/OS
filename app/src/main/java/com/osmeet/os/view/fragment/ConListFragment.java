@@ -18,4 +18,5 @@ public class ConListFragment extends ConversationListFragment {
     public ConversationListAdapter onResolveAdapter(Context context) {
         return super.onResolveAdapter(context);
     }
+
 }

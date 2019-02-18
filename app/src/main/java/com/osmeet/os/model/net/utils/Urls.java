@@ -170,4 +170,8 @@ public class Urls {
     public static final String matchInvite_friends_cancel = "/matchInvite/friends/cancel";
     public static final String matchInvite_friends_fromMe = "/matchInvite/friends/fromMe";
     public static final String matchInvite_friends_toMe = "/matchInvite/friends/toMe";
+
+    // 二维码
+    public static final String version_concat = "/version/concat";
+    public static final String version_resolve = "/version/resolve";
 }
