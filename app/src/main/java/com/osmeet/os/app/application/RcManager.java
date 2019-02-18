@@ -65,6 +65,16 @@ public class RcManager {
         setMyExtensionModule();
     }
 
+
+    public void refreshUserInfo(User user) {
+        String avatar_url = "";
+        if (user.getAvatar() != null) {
+            avatar_url = user.getAvatar().getUrl();
+        }
+        RongIM.getInstance().refreshUserInfoCache(
+                new UserInfo(user.getId(), user.getUsername(), Uri.parse(avatar_url)));
+    }
+
     public void setRcToken(RcToken mRcToken) {
         if (mRcToken == null) return;
         this.mRcToken = mRcToken;

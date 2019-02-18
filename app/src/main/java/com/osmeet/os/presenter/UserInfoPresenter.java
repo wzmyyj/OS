@@ -124,6 +124,7 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
                         mView.showInvite(true, 2);
                     } else {
                         mView.showInvite(true, 1);
+                        toast(getContext().getString(R.string.invite_success));
                     }
 
                 }

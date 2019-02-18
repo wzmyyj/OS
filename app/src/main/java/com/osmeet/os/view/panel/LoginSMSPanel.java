@@ -17,6 +17,7 @@ import com.osmeet.os.view.activity.LoginActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import top.wzmyyj.wzm_sdk.utils.InputSoftUtil;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 /**
@@ -116,8 +117,15 @@ public class LoginSMSPanel extends BasePanel<LoginContract.IPresenter> {
 
             @Override
             public void afterTextChanged(Editable s) {
-                int length = et_sms_code.getText().toString().length();
-                setButtonState(bt_login, length == 4);
+                String str = et_sms_code.getText().toString();
+                if (str.length() > 4) {
+                    et_sms_code.setText(str.substring(0, 4));
+                }
+                if (str.length() == 4) {
+                    et_sms_code.clearFocus();
+                    InputSoftUtil.close(activity);
+                }
+                setButtonState(bt_login, str.length() == 4);
             }
         });
     }
@@ -127,7 +135,7 @@ public class LoginSMSPanel extends BasePanel<LoginContract.IPresenter> {
             button.setBackgroundResource(R.drawable.bg_button_selector);
             WidgetUtil.setTextColor(button, R.color.colorWhite);
         } else {
-            button.setBackgroundResource(R.drawable.bg_button_down);
+            button.setBackgroundResource(R.drawable.bg_button_non);
             WidgetUtil.setTextColor(button, R.color.colorAhp_d);
         }
     }

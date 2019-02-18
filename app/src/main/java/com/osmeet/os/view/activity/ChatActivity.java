@@ -24,7 +24,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import top.wzmyyj.wzm_sdk.tools.Sure;
 import top.wzmyyj.wzm_sdk.utils.FragmentUtil;
 import top.wzmyyj.wzm_sdk.utils.StatusBarUtil;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
@@ -97,13 +96,10 @@ public class ChatActivity extends BaseActivity<ChatContract.IPresenter> implemen
     @Override
     protected void initView() {
         super.initView();
+        WidgetUtil.setTextNonNull(tv_title, mPresenter.getUserId());
 
         conChatFragment = new ConChatFragment();
         FragmentUtil.add(getSupportFragmentManager(), R.id.fl_fragment, conChatFragment, "");
-        Sure.sure(activity.getIntent().getData() != null, "Intent Data is null!");
-        if (getIntent().getData() != null) {
-            WidgetUtil.setTextNonNull(tv_title, getIntent().getData().getQueryParameter("title"));
-        }
 
     }
 
@@ -118,10 +114,8 @@ public class ChatActivity extends BaseActivity<ChatContract.IPresenter> implemen
 
     @Subscribe
     public void onEvent(StoreChooseEvent event) {
-        String userId = conChatFragment.getTargetId();
-//        if (userId == null) mPresenter.toast("GG");
-        if (event.getStore() != null && userId != null) {
-            mPresenter.inviteFriends(event.getStore().getId(), userId);
+        if (event.getStore() != null) {
+            mPresenter.inviteFriends(event.getStore().getId());
         }
     }
 

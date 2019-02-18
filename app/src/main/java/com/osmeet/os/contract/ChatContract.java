@@ -25,9 +25,13 @@ public interface ChatContract {
 
         void block();
 
-        void inviteFriends(@NonNull String storeId, @NonNull String userId);
+        void inviteFriends(@NonNull String storeId);
 
         void matchInvite_friends_accept(@NonNull String matchInviteId);
+
+        String getUserId();
+
+        String getTitle();
     }
 
 }

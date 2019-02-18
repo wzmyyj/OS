@@ -219,7 +219,7 @@ public class PopInfoActivity extends BaseActivity<PopInfoContract.IPresenter> im
             button.setBackgroundResource(R.drawable.bg_button_selector);
             WidgetUtil.setTextColor(button, R.color.colorWhite);
         } else {
-            button.setBackgroundResource(R.drawable.bg_button_down);
+            button.setBackgroundResource(R.drawable.bg_button_non);
             WidgetUtil.setTextColor(button, R.color.colorAhp_d);
         }
     }

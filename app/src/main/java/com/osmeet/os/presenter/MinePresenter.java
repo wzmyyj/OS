@@ -35,7 +35,7 @@ public class MinePresenter extends BasePresenter<MineContract.IView> implements 
             mView.showMyInfo(App.getInstance().getMyInfo());
             return;
         }
-       freshMyInfo();
+        freshMyInfo();
     }
 
     @Override
@@ -50,6 +50,7 @@ public class MinePresenter extends BasePresenter<MineContract.IView> implements 
                 if (box.getData() != null) {
                     User user = box.getData();
                     App.getInstance().setMyInfo(user);
+                    App.getInstance().refreshRcUser(user);
                     mView.showMyInfo(user);
                 }
             }

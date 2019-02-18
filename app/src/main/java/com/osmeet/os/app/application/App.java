@@ -40,7 +40,7 @@ public class App extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         app = this;
-        L.init("OSMeet",true);
+        L.init("OSMeet", true);
         ReOk.init(Urls.OS_BASE);
 
         userManager = UserManager.getInstance(this);
@@ -97,6 +97,10 @@ public class App extends BaseApplication {
         userManager.setMyInfo(user);
         if (user != null)
             PushManager.getInstance().bindAlias(this, user.getId());
+    }
+
+    public void refreshRcUser(User user) {
+        rcManager.refreshUserInfo(user);
     }
 
     public User getMyInfo() {

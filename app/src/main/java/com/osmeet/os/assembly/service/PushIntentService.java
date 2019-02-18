@@ -28,7 +28,7 @@ public class PushIntentService extends GTIntentService {
     public void onReceiveMessageData(Context context, GTTransmitMessage msg) {
         // 透传消息的处理，详看SDK demo
         L.d("MSG:" + msg.getMessageId());
-        T.s(msg.getMessageId());
+        T.s(context, msg.getMessageId());
     }
 
     @Override
