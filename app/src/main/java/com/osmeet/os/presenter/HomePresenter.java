@@ -9,9 +9,6 @@ import com.osmeet.os.model.net.CategoryModel;
 import com.osmeet.os.model.net.utils.box.Box;
 import com.osmeet.os.model.net.utils.box.ListContent;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
  */
@@ -37,12 +34,14 @@ public class HomePresenter extends BasePresenter<HomeContract.IView> implements 
 
                 if (box.getData() != null) {
 //                    toast("加载成功");
-                    List<Category> list = new ArrayList<>();
-                    list.addAll(box.getData().getContent());
-                    list.addAll(box.getData().getContent());
-                    list.addAll(box.getData().getContent());
-                    list.addAll(box.getData().getContent());
-                    mView.showCategoryList(list);
+//                    List<Category> list = new ArrayList<>();
+//                    list.addAll(box.getData().getContent());
+//                    list.addAll(box.getData().getContent());
+//                    list.addAll(box.getData().getContent());
+//                    list.addAll(box.getData().getContent());
+//                    mView.showCategoryList(list);
+                    mView.showCategoryList(box.getData().getContent());
+
                 }
 
 

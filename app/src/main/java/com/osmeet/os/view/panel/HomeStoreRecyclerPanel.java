@@ -1,13 +1,11 @@
 package com.osmeet.os.view.panel;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.HomeStoreContract;
@@ -60,10 +58,10 @@ public class HomeStoreRecyclerPanel extends BaseRecyclerPanel<Store, HomeStoreCo
         mPresenter.loadStoreList(nextPageNum());
     }
 
-    @SuppressLint("InflateParams")
-    @Override
-    protected void setFooter() {
-        super.setFooter();
-        mFooter = mInflater.inflate(R.layout.layout_footer, null);
-    }
+//    @SuppressLint("InflateParams")
+//    @Override
+//    protected void setFooter() {
+//        super.setFooter();
+//        mFooter = mInflater.inflate(R.layout.layout_footer, null);
+//    }
 }

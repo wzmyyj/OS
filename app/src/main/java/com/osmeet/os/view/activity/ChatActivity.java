@@ -134,7 +134,7 @@ public class ChatActivity extends BaseActivity<ChatContract.IPresenter> implemen
 
     @Override
     public void showInviteFriendList(@NonNull List<MatchInvite2> matchInvite2List) {
-        mPresenter.toast(matchInvite2List.size() + "GGGGG");
+        mPresenter.log("matchInvite2List.size=" + matchInvite2List.size());
     }
 }
 

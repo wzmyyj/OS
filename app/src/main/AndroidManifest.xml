@@ -146,11 +146,13 @@
         <activity android:name=".view.activity.VisitCardActivity" />
         <activity android:name=".view.activity.FriendListActivity" />
         <activity android:name=".view.activity.UserInfo2Activity" />
-        <activity android:name=".view.activity.ImageLookActivity" />
+        <activity
+            android:name=".view.activity.ImageLookActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".view.activity.AccountActivity" />
         <activity android:name=".view.activity.ProtocolActivity" />
         <activity android:name=".view.activity.AboutOsActivity" />
-        <activity android:name=".view.activity.BlockListActivity"></activity>
+        <activity android:name=".view.activity.BlockListActivity"/>
     </application>
 
 </manifest>

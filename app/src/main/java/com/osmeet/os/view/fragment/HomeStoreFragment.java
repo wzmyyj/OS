@@ -11,7 +11,6 @@ import com.osmeet.os.contract.HomeStoreContract;
 import com.osmeet.os.presenter.HomeStorePresenter;
 import com.osmeet.os.view.panel.HomeStoreRecyclerPanel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -69,14 +68,14 @@ public class HomeStoreFragment extends BaseFragment<HomeStoreContract.IPresenter
 
     @Override
     public void showStoreList(@NonNull List<Store> storeList, int pageNum) {
-        List<Store> list = new ArrayList<>();
-        list.addAll(storeList);
-        list.addAll(storeList);
-        list.addAll(storeList);
-        list.addAll(storeList);
-        list.addAll(storeList);
-        list.addAll(storeList);
-        list.addAll(storeList);
-        storeListRecyclerPanel.setDataList(list, pageNum);
+//        List<Store> list = new ArrayList<>();
+//        list.addAll(storeList);
+//        list.addAll(storeList);
+//        list.addAll(storeList);
+//        list.addAll(storeList);
+//        list.addAll(storeList);
+//        list.addAll(storeList);
+//        list.addAll(storeList);
+        storeListRecyclerPanel.setDataList(storeList, pageNum);
     }
 }
