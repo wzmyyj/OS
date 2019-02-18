@@ -140,7 +140,8 @@
     <string name="delete">删除</string>
     <string name="new_friends">新好友</string>
     <string name="my_friends">我的好友</string>
-    <string name="invite_friends_match">邀请好友相对</string>
+    <string name="invite_friends_match">邀请好友相对</string>\
+    <string name="invite_friends">邀请好友</string>
     <string name="send">发送</string>
     <string name="scan_and_be_friends">扫码成为相对好友</string>
     <string name="add_me_on_os">Add me on OS</string>
@@ -210,4 +211,7 @@
     <string name="block_success">拉黑成功！</string>
     <string name="report_reason">填写举报原因</string>
     <string name="block_this_user">拉黑该用户？</string>
+    <string name="send_os_invite">发送相对邀请</string>
+    <string name="invite_you_os">邀请您相对！</string>
+    <string name="accept_invite">接受邀请</string>
 </resources>

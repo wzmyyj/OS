@@ -170,7 +170,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
 
     @Override
     public void needSMSCode() {
-        userModel.user_sendCode0000(new PObserver<Box<String>>() {
+        userModel.user_sendCode(new PObserver<Box<String>>() {
 
             @Override
             public void onNext(Box<String> box) {

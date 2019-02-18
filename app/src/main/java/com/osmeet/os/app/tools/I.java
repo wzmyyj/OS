@@ -427,6 +427,7 @@ public class I {
     }
 
     public static void goImageLookActivity(Context context, ArrayList<ThumbViewInfo> thumbViewInfoList) {
+        if (thumbViewInfoList == null || thumbViewInfoList.size() == 0) return;
         GPreviewBuilder.from((Activity) context)
                 //是否使用自定义预览界面，当然8.0之后因为配置问题，必须要使用
                 .to(ImageLookActivity.class)

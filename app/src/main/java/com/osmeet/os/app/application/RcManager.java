@@ -5,9 +5,17 @@ import android.net.Uri;
 
 import com.osmeet.os.app.bean.RcToken;
 import com.osmeet.os.app.bean.User;
+import com.osmeet.os.app.other.rc.InviteMessage;
+import com.osmeet.os.app.other.rc.InviteMessageProvider;
+import com.osmeet.os.app.other.rc.MyExtensionModule;
 import com.osmeet.os.model.net.service.UserService;
 import com.osmeet.os.model.net.utils.ReOk;
 
+import java.util.List;
+
+import io.rong.imkit.DefaultExtensionModule;
+import io.rong.imkit.IExtensionModule;
+import io.rong.imkit.RongExtensionManager;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.UserInfo;
@@ -51,6 +59,10 @@ public class RcManager {
             }
             return new UserInfo(userId, name, Uri.parse(avatar_url));//根据 userId 去你的用户系统里查询对应的用户信息返回给融云 SDK。
         }, true);
+
+        RongIM.registerMessageType(InviteMessage.class);
+        RongIM.registerMessageTemplate(new InviteMessageProvider());
+        setMyExtensionModule();
     }
 
     public void setRcToken(RcToken mRcToken) {
@@ -62,6 +74,7 @@ public class RcManager {
 
     public void clearToken() {
         this.mRcToken = null;
+        RongIM.getInstance().logout();
         P.create(context).putString("RcToken", null)
                 .commit();
     }
@@ -79,7 +92,7 @@ public class RcManager {
     }
 
     public void connect() {
-        if (getRcToken()==null) return;
+        if (getRcToken() == null) return;
         RongIM.connect(getRcToken().getToken(), new RongIMClient.ConnectCallback() {
             @Override
             public void onTokenIncorrect() {
@@ -96,6 +109,24 @@ public class RcManager {
                 L.e("ErrorCode=" + errorCode);
             }
         });
+    }
+
+
+    public void setMyExtensionModule() {
+        List<IExtensionModule> moduleList = RongExtensionManager.getInstance().getExtensionModules();
+        IExtensionModule defaultModule = null;
+        if (moduleList != null) {
+            for (IExtensionModule module : moduleList) {
+                if (module instanceof DefaultExtensionModule) {
+                    defaultModule = module;
+                    break;
+                }
+            }
+            if (defaultModule != null) {
+                RongExtensionManager.getInstance().unregisterExtensionModule(defaultModule);
+                RongExtensionManager.getInstance().registerExtensionModule(new MyExtensionModule());
+            }
+        }
     }
 
 }

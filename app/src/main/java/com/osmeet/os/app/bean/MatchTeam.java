@@ -210,7 +210,7 @@ public class MatchTeam {
                 this.user2_id = user2.getId();
                 this.user2_name = user2.getUsername();
                 if (user2.getAvatar() != null) {
-                    this.user1_avatar = user2.getAvatar().getUrl();
+                    this.user2_avatar = user2.getAvatar().getUrl();
                 }
             }
         }
