@@ -38,9 +38,7 @@ public interface LoginContract {
 
         void needSMSCode();
 
-        void loadUserInfo();
-
-        void loadRcToken();
+        void afterLogin();
 
     }
 

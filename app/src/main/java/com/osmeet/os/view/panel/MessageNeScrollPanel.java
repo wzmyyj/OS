@@ -50,6 +50,7 @@ public class MessageNeScrollPanel extends BaseNeScrollPanel<MessageContract.IPre
     public void update() {
         mPresenter.loadMatchTeamList();
         mPresenter.loadMatchInviteList();
+        mPresenter.loadNewFriendNum();
     }
 
     @BindView(R.id.rv_list)

@@ -24,6 +24,7 @@ import com.osmeet.os.view.panel.bean.PhotoStory;
 import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
 import com.previewlibrary.enitity.ThumbViewInfo;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,8 +95,9 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
         DPoint dPoint = new DPoint();
         dPoint.setLatitude(store.getLat());
         dPoint.setLongitude(store.getLng());
-        float distance = CoordinateConverter.calculateLineDistance(App.getInstance().getMyDPoint(), dPoint);
-        WidgetUtil.setTextNonNull(tv_store_distance, distance / 1000 + "km");
+        float distance = CoordinateConverter.calculateLineDistance(App.getInstance().getMyDPoint(), dPoint) / 1000;
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        WidgetUtil.setTextNonNull(tv_store_distance, decimalFormat.format(distance) + "km");
 
         List<FileInfo> images = store.getImages();
         if (images != null && images.size() > 0) {
@@ -104,12 +106,12 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
         }
 
         // data
-        mData.clear();
-        for (int i = 0; i < 100; i++) {
-            mData.add(new PhotoStory());
-        }
-
-        notifyDataSetChanged();
+//        mData.clear();
+//        for (int i = 0; i < 100; i++) {
+//            mData.add(new PhotoStory());
+//        }
+//
+//        notifyDataSetChanged();
     }
 
 

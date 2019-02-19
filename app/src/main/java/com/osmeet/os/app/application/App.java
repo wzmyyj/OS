@@ -43,10 +43,13 @@ public class App extends BaseApplication {
         L.init("OSMeet", true);
         ReOk.init(Urls.OS_BASE);
 
-        userManager = UserManager.getInstance(this);
-        settingManager = SettingManager.getInstance(this);
-        rcManager = RcManager.getInstance(this);
-        rcManager.init();
+        userManager = UserManager.getInstance();
+        userManager.init(this);
+        settingManager = SettingManager.getInstance();
+        settingManager.init(this);
+        rcManager = RcManager.getInstance();
+        rcManager.init(this);
+
         setDialog();
         GP.init("provider.GPFileProvider", "/OsMeet/images");
 

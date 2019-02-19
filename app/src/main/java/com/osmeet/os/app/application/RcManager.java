@@ -1,6 +1,6 @@
 package com.osmeet.os.app.application;
 
-import android.app.Application;
+import android.content.Context;
 import android.net.Uri;
 
 import com.osmeet.os.app.bean.RcToken;
@@ -28,7 +28,7 @@ import top.wzmyyj.wzm_sdk.tools.P;
  * @author wzmyyj email: 2209011667@qq.com
  */
 
-public class RcManager {
+public final class RcManager {
     private RcManager() {
 
     }
@@ -37,18 +37,14 @@ public class RcManager {
         private static RcManager manager = new RcManager();
     }
 
-    public static RcManager getInstance(Application context) {
-        return Holder.manager.setContext(context);
+    public static RcManager getInstance() {
+        return Holder.manager;
     }
 
-    private Application context;
+    private P p;
 
-    private RcManager setContext(Application context) {
-        this.context = context;
-        return this;
-    }
-
-    public void init() {
+    public void init(Context context) {
+        p=P.create(context,"rc");
         RongIM.init(context);
         RongIM.setUserInfoProvider(userId -> {
             User user = ReOk.bind().create(UserService.class).user_info(userId).blockingLast().getData();
@@ -78,15 +74,13 @@ public class RcManager {
     public void setRcToken(RcToken mRcToken) {
         if (mRcToken == null) return;
         this.mRcToken = mRcToken;
-        P.create(context).putString("RcToken", mRcToken.getToken())
-                .commit();
+        p.putString("RcToken", mRcToken.getToken()).commit();
     }
 
     public void clearToken() {
         this.mRcToken = null;
         RongIM.getInstance().logout();
-        P.create(context).putString("RcToken", null)
-                .commit();
+        p.putString("RcToken", null).commit();
     }
 
     private RcToken mRcToken;
@@ -94,7 +88,7 @@ public class RcManager {
     public RcToken getRcToken() {
         if (mRcToken == null) {
             mRcToken = new RcToken();
-            String token = P.create(context).getString("RcToken", "");
+            String token = p.getString("RcToken", "");
             mRcToken.setToken(token);
         }
         return mRcToken;
@@ -122,7 +116,7 @@ public class RcManager {
     }
 
 
-    public void setMyExtensionModule() {
+    private void setMyExtensionModule() {
         List<IExtensionModule> moduleList = RongExtensionManager.getInstance().getExtensionModules();
         IExtensionModule defaultModule = null;
         if (moduleList != null) {

@@ -24,10 +24,10 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="1dp"
-            android:text="@string/_500_km"
             android:textColor="@color/colorGray_6"
             android:textSize="14sp" />
 
@@ -43,9 +43,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             app:bsb_bubble_color="@color/colorPrimary"
-            app:bsb_max="500"
+            app:bsb_max="100"
             app:bsb_min="0"
-            app:bsb_progress="250"
+            app:bsb_progress="50"
             app:bsb_second_track_color="@color/colorPrimary"
             app:bsb_second_track_size="1dp"
             app:bsb_thumb_color="@color/colorPrimary"
@@ -98,13 +98,13 @@
                     android:layout_marginEnd="50dp"
                     android:layout_marginRight="50dp"
                     android:contentDescription="@string/icon"
-                    android:src="@color/colorGray_b" />
+                    android:src="@mipmap/ic_setting_sex_l" />
 
                 <ImageView
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:contentDescription="@string/icon"
-                    android:src="@color/colorGray_b" />
+                    android:src="@mipmap/ic_setting_sex_r" />
 
             </LinearLayout>
 
@@ -139,13 +139,13 @@
                     android:layout_marginEnd="50dp"
                     android:layout_marginRight="50dp"
                     android:contentDescription="@string/icon"
-                    android:src="@color/colorGray_b" />
+                    android:src="@mipmap/ic_setting_sex_l" />
 
                 <ImageView
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:contentDescription="@string/icon"
-                    android:src="@color/colorGray_b" />
+                    android:src="@mipmap/ic_setting_sex_r" />
 
             </LinearLayout>
 
@@ -181,13 +181,13 @@
                     android:layout_marginEnd="50dp"
                     android:layout_marginRight="50dp"
                     android:contentDescription="@string/icon"
-                    android:src="@color/colorGray_b" />
+                    android:src="@mipmap/ic_setting_sex_l" />
 
                 <ImageView
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:contentDescription="@string/icon"
-                    android:src="@color/colorGray_b" />
+                    android:src="@mipmap/ic_setting_sex_r" />
 
             </LinearLayout>
 
@@ -221,6 +221,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_age_rang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="1dp"
@@ -239,9 +240,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            app:bsb_max="38"
+            app:bsb_max="55"
             app:bsb_min="18"
-            app:bsb_progress="30"
+            app:bsb_progress="38"
             app:bsb_second_track_color="@color/colorPrimary"
             app:bsb_second_track_size="1dp"
             app:bsb_thumb_color="@color/colorPrimary"

@@ -17,7 +17,7 @@ public class AlphaNeScrollListener implements NestedScrollView.OnScrollChangeLis
     private IAlpha ia;
 
     public AlphaNeScrollListener(Context context, IAlpha ia) {
-        this.maxDistance = DensityUtil.dp2px(context, 200);
+        this.maxDistance = DensityUtil.dp2px(context, 100);
         this.mDistance = 0;
         this.ia = ia;
     }

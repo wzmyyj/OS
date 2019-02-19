@@ -54,14 +54,24 @@
 
 
         <ImageView
-            android:id="@+id/img_scan"
+            android:id="@+id/img_friends"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="end|center_vertical"
             android:background="@drawable/click_bg"
             android:contentDescription="@string/icon"
             android:padding="2.5dp"
-            android:src="@mipmap/ic_scan" />
+            android:src="@mipmap/ic_friends" />
+
+        <ImageView
+            android:id="@+id/img_warn"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_text_warn"
+            android:contentDescription="@string/icon"
+            android:visibility="gone" />
 
     </FrameLayout>
 

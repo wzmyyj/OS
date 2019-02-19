@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchTeam;
+import com.osmeet.os.app.event.FriendListChangeEvent;
 import com.osmeet.os.app.event.InviteListChangeEvent;
 import com.osmeet.os.app.event.TeamListChangeEvent;
 import com.osmeet.os.base.fragment.BaseFragment;
@@ -62,6 +64,7 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
 
     private View mTopBar;
     private LinearLayout ll_tap_bar;
+    private ImageView img_warn;
 
     @SuppressLint("InflateParams")
     private void setTopBar() {
@@ -69,15 +72,15 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
         ll_tap_bar = mTopBar.findViewById(R.id.ll_top_abr);
         ll_tap_bar.setAlpha(0f);
         mTopBar.findViewById(R.id.img_search).setOnClickListener(v -> search());
-        mTopBar.findViewById(R.id.img_scan).setOnClickListener(v -> scan());
+        mTopBar.findViewById(R.id.img_friends).setOnClickListener(v -> friends());
+        img_warn = mTopBar.findViewById(R.id.img_warn);
     }
 
     private void search() {
         mPresenter.goSearch();
     }
 
-    private void scan() {
-//        mPresenter.goScan();
+    private void friends() {
         mPresenter.goFriendList();
     }
 
@@ -86,6 +89,7 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
         super.initData();
         mPresenter.loadMatchTeamList();
         mPresenter.loadMatchInviteList();
+        mPresenter.loadNewFriendNum();
 
     }
 
@@ -101,6 +105,15 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
             messageNeScrollPanel.setMatchInviteGroup(groupList.get(0));
         } else {
             messageNeScrollPanel.setMatchInviteGroup(null);
+        }
+    }
+
+    @Override
+    public void showNewFriendNum(int num) {
+        if (num > 0) {
+            img_warn.setVisibility(View.VISIBLE);
+        } else {
+            img_warn.setVisibility(View.GONE);
         }
     }
 
@@ -123,6 +136,13 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
     public void onEvent(TeamListChangeEvent event) {
         if (event.isChange()) {
             mPresenter.loadMatchTeamList();
+        }
+    }
+
+    @Subscribe
+    public void onEvent(FriendListChangeEvent event) {
+        if (event.isChange()) {
+            mPresenter.loadNewFriendNum();
         }
     }
 

@@ -17,7 +17,7 @@ public class AlphaReScrollListener extends RecyclerView.OnScrollListener {
     private IAlpha ia;
 
     public AlphaReScrollListener(Context context, IAlpha ia) {
-        this.maxDistance = DensityUtil.dp2px(context, 200);
+        this.maxDistance = DensityUtil.dp2px(context, 100);
         this.mDistance = 0;
         this.ia = ia;
     }

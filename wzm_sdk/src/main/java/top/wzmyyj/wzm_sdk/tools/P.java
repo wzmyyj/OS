@@ -10,7 +10,7 @@ import java.util.Set;
 
 /**
  * Created by yyj on 2018/08/20.
- *
+ * <defultP>
  * SharedPreferences封装类。
  * 不要吐槽命名，常用就用最简单的方式，写代码容易啊啊啊啊。
  *
@@ -29,12 +29,21 @@ public class P {
 
     /**
      * @param context .
-     * @param name .
+     * @param name    .
+     * @param mode    .
      */
     @SuppressLint("CommitPrefEdits")
-    public P(Context context, String name) {
-        sha = context.getSharedPreferences(name, Activity.MODE_PRIVATE);
+    public P(Context context, String name, int mode) {
+        sha = context.getSharedPreferences(name, mode);
         ed = sha.edit();
+    }
+
+    /**
+     * @param context .
+     * @param name    .
+     */
+    public P(Context context, String name) {
+        this(context, name, Activity.MODE_PRIVATE);
     }
 
     /**
@@ -46,7 +55,7 @@ public class P {
 
     /**
      * @param context .
-     * @param name .
+     * @param name    .
      * @return P
      */
     public static P create(Context context, String name) {
@@ -62,7 +71,7 @@ public class P {
     }
 
     /**
-     * @param key .
+     * @param key      .
      * @param defValue .
      * @return int
      */
@@ -71,7 +80,7 @@ public class P {
     }
 
     /**
-     * @param key .
+     * @param key      .
      * @param defValue .
      * @return long
      */
@@ -80,7 +89,7 @@ public class P {
     }
 
     /**
-     * @param key .
+     * @param key      .
      * @param defValue .
      * @return float
      */
@@ -89,7 +98,7 @@ public class P {
     }
 
     /**
-     * @param key .
+     * @param key      .
      * @param defValue .
      * @return string
      */
@@ -105,7 +114,7 @@ public class P {
     }
 
     /**
-     * @param key .
+     * @param key      .
      * @param defValue .
      * @return string set
      */
@@ -114,7 +123,7 @@ public class P {
     }
 
     /**
-     * @param key .
+     * @param key   .
      * @param value .
      * @return this
      */
@@ -124,7 +133,7 @@ public class P {
     }
 
     /**
-     * @param key .
+     * @param key   .
      * @param value .
      * @return this
      */
@@ -134,7 +143,7 @@ public class P {
     }
 
     /**
-     * @param key .
+     * @param key   .
      * @param value .
      * @return this
      */
@@ -144,7 +153,7 @@ public class P {
     }
 
     /**
-     * @param key .
+     * @param key   .
      * @param value .
      * @return this
      */
@@ -154,7 +163,7 @@ public class P {
     }
 
     /**
-     * @param key .
+     * @param key   .
      * @param value .
      * @return this
      */
@@ -164,7 +173,7 @@ public class P {
     }
 
     /**
-     * @param key .
+     * @param key   .
      * @param value .
      * @return this
      */

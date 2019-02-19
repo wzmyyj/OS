@@ -95,7 +95,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:contentDescription="@string/icon"
-            android:src="@color/colorGray_e" />
+            android:src="@mipmap/ic_save" />
 
         <TextView
             android:layout_width="wrap_content"

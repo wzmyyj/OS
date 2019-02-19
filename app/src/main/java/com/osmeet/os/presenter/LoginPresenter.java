@@ -124,15 +124,14 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                 if (box.getData() != null) {
                     App.getInstance().setToken(box.getData());
                     toast(getContext().getString(R.string.register_success_please_pop_info));
+                    loadRcToken();
                     goPopInfoAndFinish();
                 }
             }
         }, zoneCode, phone, smsCode, md5password);
     }
 
-
-    @Override
-    public void loadUserInfo() {
+    private void loadUserInfo() {
         userModel.user(new PObserver<Box<User>>() {
             @Override
             public void onNext(Box<User> box) {
@@ -155,7 +154,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                         App.getInstance().setComplete(true);
                         goPopInfoAndFinish();
                     }
-                }else{
+                } else {
                     mView.showLoadUserInfo(false);
                 }
             }
@@ -182,7 +181,12 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
     }
 
     @Override
-    public void loadRcToken() {
+    public void afterLogin() {
+        loadUserInfo();
+        loadRcToken();
+    }
+
+    private void loadRcToken() {
         userModel.user_getRyToken(new PObserver<Box<RcToken>>() {
             @Override
             public void onNext(Box<RcToken> box) {

@@ -1,6 +1,6 @@
 package com.osmeet.os.app.application;
 
-import android.app.Application;
+import android.content.Context;
 
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
@@ -12,7 +12,7 @@ import top.wzmyyj.wzm_sdk.tools.P;
  * 单例。
  */
 
-public class UserManager {
+public final class UserManager {
 
     private UserManager() {
 
@@ -22,21 +22,20 @@ public class UserManager {
         private static UserManager manager = new UserManager();
     }
 
-    public static UserManager getInstance(Application context) {
-        return Holder.manager.setContext(context);
+    public static UserManager getInstance() {
+        return Holder.manager;
     }
 
-    private Application context;
+    private P p;
 
-    private UserManager setContext(Application context) {
-        this.context = context;
-        return this;
+    public void init(Context context) {
+        p = P.create(context, "user");
     }
 
     public void setToken(Token token) {
         if (token == null) return;
         this.mToken = token;
-        P.create(context).putString("Token", token.getToken())
+        p.putString("Token", token.getToken())
                 .putString("RefreshToken", token.getRefreshToken())
                 .commit();
     }
@@ -45,7 +44,7 @@ public class UserManager {
         this.mToken = null;
         this.myInfo = null;
         this.isComplete = false;
-        P.create(context).putString("Token", null)
+        p.putString("Token", null)
                 .putString("RefreshToken", null)
                 .commit();
     }
@@ -54,8 +53,8 @@ public class UserManager {
 
     public Token getToken() {
         if (mToken == null) {
-            String token = P.create(context).getString("Token", "");
-            String refreshToken = P.create(context).getString("RefreshToken", "");
+            String token = p.getString("Token", "");
+            String refreshToken = p.getString("RefreshToken", "");
             mToken = new Token();
             mToken.setToken(token);
             mToken.setRefreshToken(refreshToken);

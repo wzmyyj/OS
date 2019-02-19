@@ -1,6 +1,6 @@
 package com.osmeet.os.app.application;
 
-import android.app.Application;
+import android.content.Context;
 
 import top.wzmyyj.wzm_sdk.tools.P;
 
@@ -9,7 +9,7 @@ import top.wzmyyj.wzm_sdk.tools.P;
  * 单例。
  */
 
-public class SettingManager {
+public final class SettingManager {
     private SettingManager() {
 
     }
@@ -18,63 +18,57 @@ public class SettingManager {
         private static SettingManager manager = new SettingManager();
     }
 
-    public static SettingManager getInstance(Application context) {
-        return Holder.manager.setContext(context);
+    public static SettingManager getInstance() {
+        return Holder.manager;
     }
 
-    private Application context;
+    private P p;
 
-    private SettingManager setContext(Application context) {
-        this.context = context;
-        return this;
+    public void init(Context context) {
+        p = P.create(context, "setting");
     }
 
     public void setOsSex(int i) {
-        P.create(context, "setting").putInt("os_sex", i)
-                .commit();
+        p.putInt("os_sex", i).commit();
     }
 
     public int getOsSex() {
-        return P.create(context, "setting").getInt("os_sex", 0);
+        return p.getInt("os_sex", 0);
     }
 
 
     public void setOsDistance(int d) {
-        P.create(context, "setting").putInt("os_distance", d)
-                .commit();
+        p.putInt("os_distance", d).commit();
     }
 
     public int getOsDistance() {
-        return P.create(context, "setting").getInt("os_distance", 250);
+        return p.getInt("os_distance", 50);
     }
 
     public void setOsMaxAge(int i) {
-        P.create(context, "setting").putInt("os_max_age", i)
-                .commit();
+       p.putInt("os_max_age", i).commit();
     }
 
     public int getOsMaxAge() {
-        return P.create(context, "setting").getInt("os_max_age", 38);
+        return p.getInt("os_max_age", 38);
     }
 
     public void setOsMinAge(int i) {
-        P.create(context, "setting").putInt("os_min_age", i)
-                .commit();
+        p.putInt("os_min_age", i).commit();
     }
 
     public int getOsMinAge() {
-        return P.create(context, "setting").getInt("os_min_age", 0);
+        return p.getInt("os_min_age", 18);
     }
 
 
     public void setIsOnce(boolean isOnce) {
-        P.create(context, "setting").putBoolean("os_is_once", isOnce)
-                .commit();
+        p.putBoolean("os_is_once", isOnce).commit();
     }
 
     public boolean isOnce() {
         return false;
-//        return P.create(context, "setting").getBoolean("os_is_once", true);
+//        return p.getBoolean("os_is_once", true);
     }
 
 

@@ -6,8 +6,8 @@ import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.MessageContract;
+import com.osmeet.os.model.net.FriendModel;
 import com.osmeet.os.model.net.MatchModel;
-import com.osmeet.os.model.net.UserModel;
 import com.osmeet.os.model.net.utils.box.Box;
 import com.osmeet.os.model.net.utils.box.ListContent;
 
@@ -18,12 +18,12 @@ import com.osmeet.os.model.net.utils.box.ListContent;
 public class MessagePresenter extends BasePresenter<MessageContract.IView> implements MessageContract.IPresenter {
 
     private MatchModel matchModel;
-    private UserModel userModel;
+    private FriendModel friendModel;
 
     public MessagePresenter(Activity activity, MessageContract.IView iv) {
         super(activity, iv);
         matchModel = new MatchModel();
-        userModel = new UserModel();
+        friendModel = new FriendModel();
     }
 
     @Override
@@ -59,7 +59,21 @@ public class MessagePresenter extends BasePresenter<MessageContract.IView> imple
         }, 0, 100);
     }
 
-
+    @Override
+    public void loadNewFriendNum() {
+        friendModel.friends_meNum(new PObserver<Box<Integer>>() {
+            @Override
+            public void onNext(Box<Integer> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                if (box.getData() != null) {
+                    mView.showNewFriendNum(box.getData());
+                }
+            }
+        });
+    }
 
 
 }

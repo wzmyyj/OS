@@ -11,6 +11,7 @@ import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.bean.Report;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.event.InviteListChangeEvent;
+import com.osmeet.os.app.event.TeamListChangeEvent;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.UserInfoContract;
 import com.osmeet.os.model.net.AttentionModel;
@@ -149,6 +150,7 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
                 }
                 if (box.getData() != null) {
                     EventBus.getDefault().post(new InviteListChangeEvent(true));
+                    EventBus.getDefault().post(new TeamListChangeEvent(true));
                     goMatchBegin(new MatchTeam.SimpleMatchTeam(box.getData()));
                     finish();
                 }

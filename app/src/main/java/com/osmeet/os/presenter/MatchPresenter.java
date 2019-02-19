@@ -72,6 +72,7 @@ public class MatchPresenter extends BasePresenter<MatchContract.IView> implement
                     return;
                 }
                 if (box.getData() != null) {
+                    EventBus.getDefault().post(new TeamListChangeEvent(true));
                     mView.showMatchTeam(box.getData());
                 }
             }

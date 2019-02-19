@@ -40,7 +40,7 @@
             android:id="@+id/img_tag"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:src="@color/colorGray_e"
+            android:src="@mipmap/ic_gou_blue"
             android:visibility="gone" />
     </LinearLayout>
 

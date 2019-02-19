@@ -97,12 +97,12 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserIn
             tv_add_friends.setText(R.string.add_be_friends);
         }
         // data
-        mData.clear();
-        for (int i = 0; i < 100; i++) {
-            mData.add(new PhotoStory());
-        }
-
-        notifyDataSetChanged();
+//        mData.clear();
+//        for (int i = 0; i < 100; i++) {
+//            mData.add(new PhotoStory());
+//        }
+//
+//        notifyDataSetChanged();
     }
 
 

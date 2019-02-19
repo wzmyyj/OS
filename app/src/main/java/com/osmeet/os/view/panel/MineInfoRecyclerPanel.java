@@ -97,12 +97,12 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCon
         }
 
 
-        mData.clear();
-        for (int i = 0; i < 100; i++) {
-            mData.add(new PhotoStory());
-        }
-
-        notifyDataSetChanged();
+//        mData.clear();
+//        for (int i = 0; i < 100; i++) {
+//            mData.add(new PhotoStory());
+//        }
+//
+//        notifyDataSetChanged();
     }
 
     private TextView tv_user_score;

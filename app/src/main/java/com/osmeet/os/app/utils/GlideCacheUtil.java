@@ -18,6 +18,21 @@ import java.math.BigDecimal;
 
 public class GlideCacheUtil {
 
+
+    /**
+     * 清除图片缓存,文件夹，路径。
+     *
+     * @param context .
+     */
+    public static void clearAll(final Context context) {
+        clearImageMemoryCache(context);
+        new Thread(() -> {
+            clearImageDiskCache(context);
+            clearFolderFile(context);
+        }).start();
+    }
+
+
     /**
      * 清除图片磁盘缓存
      *
@@ -42,12 +57,21 @@ public class GlideCacheUtil {
     }
 
     /**
-     * 清除文件夹。
+     * 清除文件夹。同时清除路径。
      *
      * @param context .
+     */
+    public static void clearFolderFile(Context context) {
+        clearFolderFile(context, true);
+    }
+
+    /**
+     * 清除文件夹。
+     *
+     * @param context        .
      * @param deleteThisPath .
      */
-    public static void clearFolderFile(Context context,boolean deleteThisPath) {
+    public static void clearFolderFile(Context context, boolean deleteThisPath) {
         String ImageExternalCatchDir = context.getExternalCacheDir() + ExternalPreferredCacheDiskCacheFactory.DEFAULT_DISK_CACHE_DIR;
         deleteFolderFile(ImageExternalCatchDir, deleteThisPath);
     }
@@ -90,7 +114,7 @@ public class GlideCacheUtil {
     /**
      * 删除指定目录下的文件，这里用于缓存的删除
      *
-     * @param filePath  filePath
+     * @param filePath       filePath
      * @param deleteThisPath deleteThisPath
      */
     private static void deleteFolderFile(String filePath, boolean deleteThisPath) {

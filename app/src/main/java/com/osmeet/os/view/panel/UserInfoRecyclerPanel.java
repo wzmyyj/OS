@@ -102,12 +102,12 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
                 G.img(context, user.getAvatar().getUrl(), img_image);
         }
         // data
-        mData.clear();
-        for (int i = 0; i < 100; i++) {
-            mData.add(new PhotoStory());
-        }
-
-        notifyDataSetChanged();
+//        mData.clear();
+//        for (int i = 0; i < 100; i++) {
+//            mData.add(new PhotoStory());
+//        }
+//
+//        notifyDataSetChanged();
     }
 
 

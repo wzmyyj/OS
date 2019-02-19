@@ -44,7 +44,7 @@ public class InviteFriendIVD extends BaseIVD<User> {
 
         if (select != null) {
             if (select.isSelect(user, position)) {
-                img_select.setImageResource(R.drawable.bg_button_add);
+                img_select.setImageResource(R.mipmap.ic_gou_blue);
             } else {
                 img_select.setImageResource(R.drawable.bg_button_gray);
             }

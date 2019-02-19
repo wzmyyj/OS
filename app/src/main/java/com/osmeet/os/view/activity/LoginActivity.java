@@ -166,7 +166,7 @@ public class LoginActivity extends BaseActivity<LoginContract.IPresenter> implem
 
     @OnClick(R.id.bt_redo)
     void redo() {
-        mPresenter.loadUserInfo();
+        mPresenter.afterLogin();
     }
 
 }

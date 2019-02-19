@@ -30,6 +30,7 @@ import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
 import com.previewlibrary.enitity.ThumbViewInfo;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,8 +104,9 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
         DPoint dPoint = new DPoint();
         dPoint.setLatitude(store.getLat());
         dPoint.setLongitude(store.getLng());
-        float distance = CoordinateConverter.calculateLineDistance(App.getInstance().getMyDPoint(), dPoint);
-        WidgetUtil.setTextNonNull(tv_store_distance, distance / 1000 + "km");
+        float distance = CoordinateConverter.calculateLineDistance(App.getInstance().getMyDPoint(), dPoint) / 1000;
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        WidgetUtil.setTextNonNull(tv_store_distance, decimalFormat.format(distance) + "km");
 
         List<FileInfo> images = store.getImages();
         if (images != null && images.size() > 0) {
@@ -114,11 +116,11 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
 
 
         // data
-        for (int i = 0; i < 100; i++) {
-            mData.add(new PhotoStory());
-        }
-
-        notifyDataSetChanged();
+//        for (int i = 0; i < 100; i++) {
+//            mData.add(new PhotoStory());
+//        }
+//
+//        notifyDataSetChanged();
     }
 
 
@@ -166,20 +168,16 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
 
         mHeader.setOnClickListener(v -> onWholeClick());
 
-        ImageView img_b_1 = mHeader.findViewById(R.id.img_b_1);
-        ImageView img_b_2 = mHeader.findViewById(R.id.img_b_2);
-        ImageView img_b_3 = mHeader.findViewById(R.id.img_b_3);
-        ImageView img_b_4 = mHeader.findViewById(R.id.img_b_4);
-        img_b_1.setOnClickListener(v -> {
+        mHeader.findViewById(R.id.img_m_1).setOnClickListener(v -> {
 
         });
-        img_b_2.setOnClickListener(v -> {
+        mHeader.findViewById(R.id.img_m_2).setOnClickListener(v -> {
 
         });
-        img_b_3.setOnClickListener(v -> {
+        mHeader.findViewById(R.id.img_m_3).setOnClickListener(v -> {
 
         });
-        img_b_4.setOnClickListener(v -> {
+        mHeader.findViewById(R.id.img_m_4).setOnClickListener(v -> {
 
         });
 

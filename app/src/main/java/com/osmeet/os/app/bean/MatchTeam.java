@@ -205,7 +205,7 @@ public class MatchTeam {
                 }
             }
 
-            User user2 = matchTeam.getUnita().getUser();
+            User user2 = matchTeam.getUnitb().getUser();
             if (user2 != null) {
                 this.user2_id = user2.getId();
                 this.user2_name = user2.getUsername();

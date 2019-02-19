@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingLeft="15dp"
-    android:paddingRight="15dp"
-    android:layout_height="wrap_content">
+    android:paddingRight="15dp">
+
     <LinearLayout
         android:id="@+id/ll_setting_1"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="?android:attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
@@ -28,20 +30,21 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:textColor="@color/colorGray_4"
-            android:textSize="15sp" />
+            android:textColor="@color/colorGray_7"
+            android:textSize="13sp" />
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:contentDescription="@string/icon"
-            android:src="@color/colorGray_e" />
+            android:src="@mipmap/ic_right" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_setting_2"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="?android:attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
@@ -60,14 +63,14 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:textColor="@color/colorGray_4"
-            android:textSize="15sp" />
+            android:textColor="@color/colorGray_7"
+            android:textSize="13sp" />
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:contentDescription="@string/icon"
-            android:src="@color/colorGray_e" />
+            android:src="@mipmap/ic_right" />
     </LinearLayout>
 
 
@@ -75,6 +78,7 @@
         android:id="@+id/ll_setting_3"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="?android:attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
@@ -93,20 +97,21 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:textColor="@color/colorGray_4"
-            android:textSize="15sp" />
+            android:textColor="@color/colorGray_7"
+            android:textSize="13sp" />
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:contentDescription="@string/icon"
-            android:src="@color/colorGray_e" />
+            android:src="@mipmap/ic_right" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_setting_4"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="?android:attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
@@ -123,13 +128,14 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:contentDescription="@string/icon"
-            android:src="@color/colorGray_e" />
+            android:src="@mipmap/ic_right" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_setting_5"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="?android:attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
@@ -146,13 +152,14 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:contentDescription="@string/icon"
-            android:src="@color/colorGray_e" />
+            android:src="@mipmap/ic_right" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_setting_6"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="?android:attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
@@ -169,6 +176,6 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:contentDescription="@string/icon"
-            android:src="@color/colorGray_e" />
+            android:src="@mipmap/ic_right" />
     </LinearLayout>
 </LinearLayout>

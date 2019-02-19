@@ -89,15 +89,13 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_store_introduce"
+                android:id="@+id/tv_store_open_time"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:lines="3"
-                android:text="@string/this_is_introduce"
-                android:textColor="@color/colorGray_6"
-                android:textSize="10sp"
-                tools:ignore="SmallSp" />
+                android:textColor="@color/colorGray_7"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -145,6 +143,21 @@
                 android:textSize="13sp" />
         </FrameLayout>
 
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <TextView
+                android:id="@+id/tv_store_introduce"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:gravity="center"
+                android:textColor="@color/colorGray_7"
+                android:textSize="14sp" />
+        </FrameLayout>
+
         <!--<FrameLayout-->
         <!--android:layout_width="0dp"-->
         <!--android:layout_height="match_parent"-->
@@ -187,10 +200,10 @@
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="110dp" />-->
 
-    <!--<View-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="0.1dp"-->
-    <!--android:background="@color/colorLine" />-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
 
 
     <LinearLayout
@@ -236,14 +249,14 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            android:text="@string/trends"
-            android:textColor="@color/colorGray_6"
-            android:textSize="16sp" />
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginStart="15dp"-->
+        <!--android:text="@string/trends"-->
+        <!--android:textColor="@color/colorGray_6"-->
+        <!--android:textSize="16sp" />-->
 
     </LinearLayout>
 

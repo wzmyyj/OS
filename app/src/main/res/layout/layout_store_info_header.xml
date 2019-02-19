@@ -89,15 +89,13 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_store_introduce"
+                android:id="@+id/tv_store_open_time"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:lines="3"
-                android:text="@string/this_is_introduce"
-                android:textColor="@color/colorGray_6"
-                android:textSize="10sp"
-                tools:ignore="SmallSp" />
+                android:lines="1"
+                android:textColor="@color/colorGray_7"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -116,7 +114,7 @@
             android:layout_weight="1">
 
             <ImageView
-                android:id="@+id/img_b_1"
+                android:id="@+id/img_m_1"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
@@ -128,10 +126,11 @@
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:visibility="gone">
 
             <ImageView
-                android:id="@+id/img_b_2"
+                android:id="@+id/img_m_2"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
@@ -146,7 +145,7 @@
             android:layout_weight="1">
 
             <ImageView
-                android:id="@+id/img_b_3"
+                android:id="@+id/img_m_3"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
@@ -158,10 +157,11 @@
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:visibility="gone">
 
             <ImageView
-                android:id="@+id/img_b_4"
+                android:id="@+id/img_m_4"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
@@ -172,14 +172,31 @@
 
     </LinearLayout>
 
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <TextView
+            android:id="@+id/tv_store_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:textColor="@color/colorGray_7"
+            android:textSize="14sp" />
+    </FrameLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:background="@color/colorLine" />
 
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_goods"
@@ -245,14 +262,14 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            android:text="@string/trends"
-            android:textColor="@color/colorGray_6"
-            android:textSize="16sp" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginStart="15dp"-->
+            <!--android:text="@string/trends"-->
+            <!--android:textColor="@color/colorGray_6"-->
+            <!--android:textSize="16sp" />-->
 
     </LinearLayout>
 

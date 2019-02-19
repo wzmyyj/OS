@@ -107,7 +107,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:contentDescription="@string/icon"
-                        android:src="@color/colorGray_e"
+                        android:src="@mipmap/ic_lock_white"
                         android:visibility="gone" />
 
                     <TextView
@@ -150,7 +150,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:contentDescription="@string/icon"
-                        android:src="@color/colorGray_e" />
+                        android:src="@mipmap/ic_lock_black" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -191,7 +191,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:contentDescription="@string/icon"
-                        android:src="@color/colorGray_e" />
+                        android:src="@mipmap/ic_lock_black" />
 
                     <TextView
                         android:layout_width="wrap_content"

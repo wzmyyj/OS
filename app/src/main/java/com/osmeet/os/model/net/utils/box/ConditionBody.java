@@ -25,9 +25,9 @@ public class ConditionBody {
         this.sex = sex;
     }
 
-    public static ConditionBody defaultCondition() {
-        return new ConditionBody(1000, 50, 10, 1);
-    }
+//    public static ConditionBody defaultCondition() {
+//        return new ConditionBody(1000, 50, 10, 1);
+//    }
 
     public void setDistance(int distance) {
         this.distance = distance;

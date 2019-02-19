@@ -22,6 +22,8 @@ public interface MessageContract {
 
         void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList);
 
+        void showNewFriendNum(int num);
+
     }
 
     interface IPresenter extends IBasePresenter, I.Match, I.InviteList, I.Search, I.Scan, I.FriendList {
@@ -30,6 +32,7 @@ public interface MessageContract {
 
         void loadMatchInviteList();
 
+        void loadNewFriendNum();
     }
 
 }

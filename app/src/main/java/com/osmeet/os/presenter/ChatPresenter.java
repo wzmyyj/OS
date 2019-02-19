@@ -8,6 +8,7 @@ import com.osmeet.os.app.bean.MatchInvite2;
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.bean.Report;
 import com.osmeet.os.app.event.InviteListChangeEvent;
+import com.osmeet.os.app.event.TeamListChangeEvent;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.ChatContract;
 import com.osmeet.os.model.net.AttentionModel;
@@ -69,6 +70,7 @@ public class ChatPresenter extends BasePresenter<ChatContract.IView> implements 
 
                 if (box.getData() != null) {
                     EventBus.getDefault().post(new InviteListChangeEvent(true));
+                    EventBus.getDefault().post(new TeamListChangeEvent(true));
                     goMatchBegin(new MatchTeam.SimpleMatchTeam(box.getData()));
                     finish();
                 }
@@ -79,12 +81,12 @@ public class ChatPresenter extends BasePresenter<ChatContract.IView> implements 
 
     @Override
     public String getUserId() {
-        return userId;
+        return this.userId;
     }
 
     @Override
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
 

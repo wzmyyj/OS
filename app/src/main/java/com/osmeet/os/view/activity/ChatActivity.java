@@ -96,7 +96,7 @@ public class ChatActivity extends BaseActivity<ChatContract.IPresenter> implemen
     @Override
     protected void initView() {
         super.initView();
-        WidgetUtil.setTextNonNull(tv_title, mPresenter.getUserId());
+        WidgetUtil.setTextNonNull(tv_title, mPresenter.getTitle());
 
         conChatFragment = new ConChatFragment();
         FragmentUtil.add(getSupportFragmentManager(), R.id.fl_fragment, conChatFragment, "");

@@ -70,6 +70,10 @@ public class LoginSMSPanel extends BasePanel<LoginContract.IPresenter> {
         handler.sendEmptyMessage(0);
     }
 
+
+    public void  get_code(){
+
+    }
     private int t = 60;
 
     @SuppressLint("HandlerLeak")
