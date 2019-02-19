@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.contract.ip.IContext;
+import com.osmeet.os.view.activity.SingleMapActivity;
 import com.osmeet.os.view.activity.AboutOsActivity;
 import com.osmeet.os.view.activity.AccountActivity;
 import com.osmeet.os.view.activity.AdActivity;
@@ -497,6 +498,22 @@ public class I {
         default void goProtocol() {
             if (getContext() != null)
                 goProtocolActivity(getContext());
+        }
+    }
+
+
+    public static void goSingleMapActivity(Context context,double lat,double lon,String title) {
+        Intent intent = new Intent(context, SingleMapActivity.class);
+        intent.putExtra("lat",lat);
+        intent.putExtra("lon",lon);
+        intent.putExtra("title",title);
+        context.startActivity(intent);
+    }
+
+    public interface SingleMap extends IContext {
+        default void goSingleMap(double lat,double lon,String title) {
+            if (getContext() != null)
+                goSingleMapActivity(getContext(),lat,lon,title);
         }
     }
 

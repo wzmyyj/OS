@@ -58,7 +58,7 @@ public class MatchActivity extends BaseActivity<MatchContract.IPresenter> implem
     void more() {
         if (mMatchTeam != null && mMatchTeam.getMatchStatus() == MatchTeam.MATCH_NOW) {
             List<String> list = new ArrayList<>();
-            list.add("取消同行");
+            list.add(context.getString(R.string.cancel_os));
             BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
                         switch (index) {
                             case 0:
@@ -73,7 +73,7 @@ public class MatchActivity extends BaseActivity<MatchContract.IPresenter> implem
 
     private void dialog() {
         SelectDialog.show(context, context.getString(R.string.warm),
-                "确定取消同行？",
+                context.getString(R.string.is_cancel_os),
                 context.getString(R.string.ok), (dialog, which) -> mPresenter.quitMatch(),
                 context.getString(R.string.cancel), (dialog, which) -> {
                 });

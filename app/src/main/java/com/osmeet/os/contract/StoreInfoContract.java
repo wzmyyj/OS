@@ -23,7 +23,7 @@ public interface StoreInfoContract {
         void showGoodsList(@NonNull List<Goods> goodsList);
     }
 
-    interface IPresenter extends IBasePresenter, I.Goods,I.ImageLook {
+    interface IPresenter extends IBasePresenter, I.Goods,I.ImageLook,I.Chat,I.SingleMap {
 
         void loadStoreInfo();
 

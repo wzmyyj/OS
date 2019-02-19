@@ -3,7 +3,6 @@ package com.osmeet.os.view.panel;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -20,29 +19,29 @@ import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
-import com.osmeet.os.app.bean.MatchTeam;
-import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.base.panel.BasePanel;
-import com.osmeet.os.contract.MatchContract;
+import com.osmeet.os.contract.SingleMapContract;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
 import butterknife.BindView;
 import top.wzmyyj.wzm_sdk.utils.ApkUtil;
 
+
 /**
- * Created by yyj on 2019/01/03. email: 2209011667@qq.com
+ * Created by yyj on 2019/02/19.
+ *
+ * @author wzmyyj email: 2209011667@qq.com
  */
 
-public class MatchMapPanel extends BasePanel<MatchContract.IPresenter> implements LocationSource, AMapLocationListener {
-
-    public MatchMapPanel(Context context, MatchContract.IPresenter iPresenter) {
+public class SingleMapPanel extends BasePanel<SingleMapContract.IPresenter> implements LocationSource, AMapLocationListener {
+    public SingleMapPanel(Context context, SingleMapContract.IPresenter iPresenter) {
         super(context, iPresenter);
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.layout_match_map;
+        return R.layout.layout_single_map;
     }
 
     @BindView(R.id.map)
@@ -58,6 +57,8 @@ public class MatchMapPanel extends BasePanel<MatchContract.IPresenter> implement
     private double longitude;
     //纬度
     private double latitude;
+    //地点
+    private String title;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -207,16 +208,23 @@ public class MatchMapPanel extends BasePanel<MatchContract.IPresenter> implement
     }
 
 
-//    //通过经纬度定位并标注
-//    private void doMarker(double latitude, double longitude, String title) {
-//        LatLng latLng = new LatLng(latitude, longitude);
-//        aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 19));
-//        MarkerOptions markerOptions = new MarkerOptions();
-//        markerOptions.position(latLng);
-//        markerOptions.title(title);
-//        markerOptions.visible(true);
-//        aMap.addMarker(markerOptions);
-//    }
+    private void doMarker() {
+        latitude = activity.getIntent().getDoubleExtra("lat", 0);
+        longitude = activity.getIntent().getDoubleExtra("lon", 0);
+        title = activity.getIntent().getStringExtra("title");
+        doMarker(latitude, longitude, title);
+    }
+
+    //通过经纬度定位并标注
+    private void doMarker(double latitude, double longitude, String title) {
+        LatLng latLng = new LatLng(latitude, longitude);
+        aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 19));
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.title(title);
+        markerOptions.visible(true);
+        aMap.addMarker(markerOptions);
+    }
 
     //定位自身
     private void doMap() {
@@ -226,9 +234,13 @@ public class MatchMapPanel extends BasePanel<MatchContract.IPresenter> implement
                         Permission.ACCESS_FINE_LOCATION,
                         Permission.READ_PHONE_STATE
                 )
-                .onGranted(permissions -> location())
+                .onGranted(permissions -> doMarker())
                 .onDenied(permissions -> mPresenter.toast(context.getString(R.string.no_permission)))
                 .start();
+    }
+
+    public void goToAMap() {
+        goToAMap(latitude, longitude, title);
     }
 
     //跳转高德地图
@@ -244,31 +256,6 @@ public class MatchMapPanel extends BasePanel<MatchContract.IPresenter> implement
             mPresenter.goAMap(builder.toString());
         } else {
             mPresenter.toast(context.getString(R.string.not_installed_amap));
-        }
-    }
-
-    @Override
-    protected void initData() {
-        super.initData();
-        isOnce = false;
-    }
-
-    private boolean isOnce;
-
-    public void setMatchTeam(@NonNull MatchTeam matchTeam) {
-        if (!isOnce) return;
-        isOnce = true;
-        Store store = matchTeam.getStore();
-        if (store != null) {
-            MarkerOptions markerOption = new MarkerOptions();
-            markerOption.position(new LatLng(store.getLat(), store.getLng()));
-            markerOption.draggable(false);//设置Marker可拖动
-            markerOption.title(store.getName());
-//            View v = activity.getLayoutInflater().inflate(R.layout.layout_map_marker, null);
-//            ImageView img = v.findViewById(R.id.img_store_logo);
-//            G.img(context, store.getLogoImage().getUrl(), img);
-//            markerOption.icon(BitmapDescriptorFactory.fromView(img));
-            aMap.addMarker(markerOption);
         }
     }
 

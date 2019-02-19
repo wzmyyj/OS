@@ -217,4 +217,8 @@
     <string name="block_list">黑名单</string>
     <string name="use_protocol">使用协议</string>
     <string name="clear_cache_ok">已清除缓存</string>
+    <string name="open_time">营业时间</string>
+    <string name="open_amap">打开高德</string>
+    <string name="is_cancel_os">确定取消同行？</string>
+    <string name="cancel_os">取消同行</string>
 </resources>

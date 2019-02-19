@@ -30,6 +30,7 @@ import java.util.List;
 
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
+import top.wzmyyj.wzm_sdk.utils.TimeUtil;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 
@@ -92,6 +93,14 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
         WidgetUtil.setTextNumber(tv_store_os_num, store.getMatchUnitCount());
         WidgetUtil.setTextNonNull(tv_store_introduce, store.getIntroduce());
 
+        WidgetUtil.setTextNonNull(tv_store_open_time,
+                context.getString(R.string.open_time)
+                        + ":" +
+                        TimeUtil.long2str(store.getStartTime(), TimeUtil.HH_MM)
+                        + "-" +
+                        TimeUtil.long2str(store.getEndTime(), TimeUtil.HH_MM)
+        );
+
         DPoint dPoint = new DPoint();
         dPoint.setLatitude(store.getLat());
         dPoint.setLongitude(store.getLng());
@@ -119,6 +128,7 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
     private TextView tv_store_name;
     private TextView tv_store_distance;
     private TextView tv_store_os_num;
+    private TextView tv_store_open_time;
     private TextView tv_store_introduce;
     private ImageView img_image;
 
@@ -132,6 +142,7 @@ public class MineStoreRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineCo
         tv_store_name = mHeader.findViewById(R.id.tv_store_name);
         tv_store_distance = mHeader.findViewById(R.id.tv_store_distance);
         tv_store_os_num = mHeader.findViewById(R.id.tv_store_os_num);
+        tv_store_open_time = mHeader.findViewById(R.id.tv_store_open_time);
         tv_store_introduce = mHeader.findViewById(R.id.tv_store_introduce);
         img_image = mHeader.findViewById(R.id.img_image);
         img_image.getLayoutParams().height = MockUtil.getScreenWidth(context);

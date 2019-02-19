@@ -115,11 +115,12 @@
 
             <ImageView
                 android:id="@+id/img_m_1"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:background="@drawable/click_bg"
                 android:contentDescription="@string/icon"
+                android:padding="5dp"
                 android:src="@mipmap/ic_shop_chat" />
         </FrameLayout>
 
@@ -131,11 +132,12 @@
 
             <ImageView
                 android:id="@+id/img_m_2"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:background="@drawable/click_bg"
                 android:contentDescription="@string/icon"
+                android:padding="5dp"
                 android:src="@mipmap/ic_shop_favor" />
         </FrameLayout>
 
@@ -146,11 +148,12 @@
 
             <ImageView
                 android:id="@+id/img_m_3"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:background="@drawable/click_bg"
                 android:contentDescription="@string/icon"
+                android:padding="5dp"
                 android:src="@mipmap/ic_shop_map" />
         </FrameLayout>
 
@@ -162,11 +165,12 @@
 
             <ImageView
                 android:id="@+id/img_m_4"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:background="@drawable/click_bg"
                 android:contentDescription="@string/icon"
+                android:padding="5dp"
                 android:src="@mipmap/ic_shop_camera" />
         </FrameLayout>
 
@@ -263,13 +267,13 @@
         android:orientation="horizontal">
 
         <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="15dp"-->
-            <!--android:layout_marginStart="15dp"-->
-            <!--android:text="@string/trends"-->
-            <!--android:textColor="@color/colorGray_6"-->
-            <!--android:textSize="16sp" />-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginStart="15dp"-->
+        <!--android:text="@string/trends"-->
+        <!--android:textColor="@color/colorGray_6"-->
+        <!--android:textSize="16sp" />-->
 
     </LinearLayout>
 
