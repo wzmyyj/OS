@@ -104,13 +104,9 @@ public class HomeFragment extends BaseFragment<HomeContract.IPresenter> implemen
         mPresenter.loadCategoryList();
     }
 
-    private boolean isOnce = false;
 
-    // 该方法只能执行一次。
     @Override
     public void showCategoryList(@NonNull List<Category> categoryList) {
-        if (isOnce) return;
-        isOnce = true;
         int size = categoryList.size();
         if (size == 0) return;
 
@@ -123,7 +119,6 @@ public class HomeFragment extends BaseFragment<HomeContract.IPresenter> implemen
         }
 
         mAdapter.notifyDataSetChanged();
-        mTabLayout.setupWithViewPager(mViewPager);
 
         setTabLayoutStyle(mTabLayout, categoryList);
     }
@@ -131,6 +126,8 @@ public class HomeFragment extends BaseFragment<HomeContract.IPresenter> implemen
     private void setTabLayoutStyle(TabLayout tabLayout, final List<Category> categoryList) {
         // 自定义TabLayout.Tab样式。
 
+        tabLayout.clearOnTabSelectedListeners();
+        tabLayout.setupWithViewPager(mViewPager);
         TabLayoutUtil.setStyle(tabLayout, new TabLayoutUtil.TabLayoutStyle() {
             List<View> viewList = new ArrayList<>();
             List<TextView> textViewList = new ArrayList<>();

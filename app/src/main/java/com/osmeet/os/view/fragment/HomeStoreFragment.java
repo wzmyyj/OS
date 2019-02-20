@@ -1,7 +1,6 @@
 package com.osmeet.os.view.fragment;
 
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import android.widget.FrameLayout;
 
 import com.osmeet.os.R;
@@ -23,18 +22,12 @@ public class HomeStoreFragment extends BaseFragment<HomeStoreContract.IPresenter
     @Override
     protected void initPresenter() {
         mPresenter = new HomeStorePresenter(activity, this);
-        if (!TextUtils.isEmpty(categoryId)) {
-            mPresenter.setCategoryId(categoryId);
-        }
     }
 
     private String categoryId;
 
     public void setCategoryId(@NonNull String categoryId) {// 必须。
         this.categoryId = categoryId;
-        if (mPresenter != null) {
-            mPresenter.setCategoryId(categoryId);
-        }
     }
 
     @Override
@@ -62,20 +55,12 @@ public class HomeStoreFragment extends BaseFragment<HomeStoreContract.IPresenter
     @Override
     protected void initData() {
         super.initData();
-        mPresenter.log(mPresenter.getCategoryId());
+        mPresenter.setCategoryId(categoryId);
         mPresenter.loadStoreList(0);
     }
 
     @Override
     public void showStoreList(@NonNull List<Store> storeList, int pageNum) {
-//        List<Store> list = new ArrayList<>();
-//        list.addAll(storeList);
-//        list.addAll(storeList);
-//        list.addAll(storeList);
-//        list.addAll(storeList);
-//        list.addAll(storeList);
-//        list.addAll(storeList);
-//        list.addAll(storeList);
         storeListRecyclerPanel.setDataList(storeList, pageNum);
     }
 }
