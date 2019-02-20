@@ -20,7 +20,7 @@ public interface SettingContract {
 
     }
 
-    interface IPresenter extends IBasePresenter, I.Login, I.BlockList, I.AboutOs, I.Protocol, I.Account {
+    interface IPresenter extends IBasePresenter, I.Login, I.BlockList, I.AboutOs, I.Protocol, I.Account,I.Launch {
         void logout();
 
         SettingManager getSetting();

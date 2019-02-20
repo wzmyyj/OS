@@ -1,6 +1,11 @@
 package com.osmeet.os.app.utils;
 
 
+import android.arch.lifecycle.LifecycleOwner;
+
+import com.uber.autodispose.AutoDispose;
+import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -16,9 +21,9 @@ public class SubscribeUtil {
     /**
      * IO线程 -> 主线程
      *
-     * @param observable
-     * @param observer
-     * @param <T>
+     * @param observable .
+     * @param observer   .
+     * @param <T>        .
      */
     public static <T> void io2main(Observable<T> observable, Observer<T> observer) {
         observable.subscribeOn(Schedulers.io())
@@ -28,16 +33,49 @@ public class SubscribeUtil {
     }
 
     /**
+     * IO线程 -> 主线程
+     *
+     * @param observable     .
+     * @param observer       .
+     * @param lifecycleOwner .
+     * @param <T>            .
+     */
+    public static <T> void io2main(Observable<T> observable, Observer<T> observer, LifecycleOwner lifecycleOwner) {
+        observable.subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .as(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(lifecycleOwner)))
+                .subscribe(observer);
+    }
+
+
+    /**
      * 新线程 -> 主线程
      *
-     * @param observable
-     * @param observer
-     * @param <T>
+     * @param observable .
+     * @param observer   .
+     * @param <T>        .
      */
     public static <T> void newThread2main(Observable<T> observable, Observer<T> observer) {
         observable.subscribeOn(Schedulers.newThread())
                 .unsubscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+    }
+
+    /**
+     * 新线程 -> 主线程
+     *
+     * @param observable     .
+     * @param observer       .
+     * @param lifecycleOwner .
+     * @param <T>            .
+     */
+    public static <T> void newThread2main(Observable<T> observable, Observer<T> observer, LifecycleOwner lifecycleOwner) {
+        observable.subscribeOn(Schedulers.newThread())
+                .unsubscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .as(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(lifecycleOwner)))
                 .subscribe(observer);
     }
 }

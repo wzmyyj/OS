@@ -35,6 +35,7 @@ public class App extends BaseApplication {
     private UserManager userManager;
     private SettingManager settingManager;
     private RcManager rcManager;
+    private LanguageManager languageManager;
 
     @Override
     public void onCreate() {
@@ -43,12 +44,15 @@ public class App extends BaseApplication {
         L.init("OSMeet", true);
         ReOk.init(Urls.OS_BASE);
 
+        languageManager=LanguageManager.getInstance();
+        languageManager.init(this);
         userManager = UserManager.getInstance();
         userManager.init(this);
         settingManager = SettingManager.getInstance();
         settingManager.init(this);
         rcManager = RcManager.getInstance();
         rcManager.init(this);
+
 
         setDialog();
         GP.init("provider.GPFileProvider", "/OsMeet/images");
@@ -144,5 +148,9 @@ public class App extends BaseApplication {
 
     public void setMyDPoint(DPoint myDPoint) {
         this.myDPoint = myDPoint;
+    }
+
+    public LanguageManager getLanguageManager() {
+        return languageManager;
     }
 }

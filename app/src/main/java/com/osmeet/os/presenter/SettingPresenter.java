@@ -11,6 +11,7 @@ import com.osmeet.os.app.utils.GlideCacheUtil;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.SettingContract;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,18 +50,30 @@ public class SettingPresenter extends BasePresenter<SettingContract.IView> imple
 
     @Override
     public void changeLanguage(int i) {
-
+        App.getInstance().getLanguageManager().setLanguage(i);
+        goLaunch();
+        finish(mView.FINISH_FADE_IN_OUT);
+        App.getInstance().finishAll();
+//        android.os.Process.killProcess(android.os.Process.myPid());
+//        System.exit(0);
     }
 
     @Override
     public String getLanguage() {
-        return null;
+        int i = App.getInstance().getLanguageManager().getLanguage();
+        if (i >= getLanguageList().size()) i = 0;
+        return getLanguageList().get(i);
     }
+
 
     @NonNull
     @Override
     public List<String> getLanguageList() {
-        return null;
+        List<String> strList = new ArrayList<>();
+        strList.add(getContext().getString(R.string.by_system));
+        strList.add("简体中文");
+        strList.add("English");
+        return strList;
     }
 
     @Override

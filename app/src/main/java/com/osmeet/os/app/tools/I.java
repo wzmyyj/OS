@@ -6,7 +6,6 @@ import android.content.Intent;
 
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.contract.ip.IContext;
-import com.osmeet.os.view.activity.SingleMapActivity;
 import com.osmeet.os.view.activity.AboutOsActivity;
 import com.osmeet.os.view.activity.AccountActivity;
 import com.osmeet.os.view.activity.AdActivity;
@@ -20,6 +19,7 @@ import com.osmeet.os.view.activity.GuideActivity;
 import com.osmeet.os.view.activity.ImageLookActivity;
 import com.osmeet.os.view.activity.InviteFriendsActivity;
 import com.osmeet.os.view.activity.InviteListActivity;
+import com.osmeet.os.view.activity.LaunchActivity;
 import com.osmeet.os.view.activity.LoginActivity;
 import com.osmeet.os.view.activity.MainActivity;
 import com.osmeet.os.view.activity.MatchActivity;
@@ -31,6 +31,7 @@ import com.osmeet.os.view.activity.ProtocolActivity;
 import com.osmeet.os.view.activity.ScanActivity;
 import com.osmeet.os.view.activity.SearchActivity;
 import com.osmeet.os.view.activity.SettingActivity;
+import com.osmeet.os.view.activity.SingleMapActivity;
 import com.osmeet.os.view.activity.StoreActivity;
 import com.osmeet.os.view.activity.TradeActivity;
 import com.osmeet.os.view.activity.TradeListActivity;
@@ -502,23 +503,33 @@ public class I {
     }
 
 
-    public static void goSingleMapActivity(Context context,double lat,double lon,String title) {
+    public static void goSingleMapActivity(Context context, double lat, double lon, String title) {
         Intent intent = new Intent(context, SingleMapActivity.class);
-        intent.putExtra("lat",lat);
-        intent.putExtra("lon",lon);
-        intent.putExtra("title",title);
+        intent.putExtra("lat", lat);
+        intent.putExtra("lon", lon);
+        intent.putExtra("title", title);
         context.startActivity(intent);
     }
 
     public interface SingleMap extends IContext {
-        default void goSingleMap(double lat,double lon,String title) {
+        default void goSingleMap(double lat, double lon, String title) {
             if (getContext() != null)
-                goSingleMapActivity(getContext(),lat,lon,title);
+                goSingleMapActivity(getContext(), lat, lon, title);
         }
     }
 
+    public static void goLaunchActivity(Context context) {
+        Intent intent = new Intent(context, LaunchActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
+    }
 
-
+    public interface Launch extends IContext {
+        default void goLaunch() {
+            if (getContext() != null)
+                goLaunchActivity(getContext());
+        }
+    }
 
 
 }

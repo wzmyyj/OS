@@ -27,6 +27,7 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
 
     @Override
     public void init() {
+        App.getInstance().getLanguageManager().initLanguage(context);
         App.getInstance().setMyInfo(null);
         connectRc();
     }

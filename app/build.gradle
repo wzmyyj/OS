@@ -60,6 +60,8 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+
     //    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'//配合Rxjava 使用
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 //    implementation 'com.github.Rukey7:TagLayout:1.0.6'
@@ -85,4 +87,7 @@ dependencies {
     implementation 'com.getui:sdk:2.13.0.0'
 
     implementation(name: 'alipaySdk-15.5.9-20181123210657-noUtdid', ext: 'aar')
+
+    implementation 'com.uber.autodispose:autodispose:0.6.1'
+    implementation 'com.uber.autodispose:autodispose-android-archcomponents:0.6.1'
 }

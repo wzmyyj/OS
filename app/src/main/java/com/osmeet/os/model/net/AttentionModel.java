@@ -1,5 +1,7 @@
 package com.osmeet.os.model.net;
 
+import android.arch.lifecycle.LifecycleOwner;
+
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.model.net.service.AttentionService;
 import com.osmeet.os.model.net.utils.ReOk;
@@ -18,6 +20,15 @@ public class AttentionModel {
 
     private AttentionService getService() {
         return ReOk.bind().create(AttentionService.class);
+    }
+
+    public AttentionModel() {
+    }
+
+    private LifecycleOwner lifecycleOwner;
+
+    public AttentionModel(LifecycleOwner lifecycleOwner) {
+        this.lifecycleOwner = lifecycleOwner;
     }
 
     public void block_get(Observer<Box<ListContent<User>>> observer, int pageNum, int pageSize) {

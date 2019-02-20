@@ -93,7 +93,7 @@ public class ScanActivity extends BaseActivity<ScanContract.IPresenter> implemen
 
             @Override
             public void onAnalyzeFailed() {
-                mPresenter.toast(context.getString(R.string.can_not_rec_2d_code));
+                mPresenter.toast(context.getResources().getString(R.string.can_not_rec_2d_code));
             }
         };
         captureFragment.setAnalyzeCallback(analyzeCallback);
