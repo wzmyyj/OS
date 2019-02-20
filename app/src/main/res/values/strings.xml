@@ -221,4 +221,6 @@
     <string name="open_amap">打开高德</string>
     <string name="is_cancel_os">确定取消同行？</string>
     <string name="cancel_os">取消同行</string>
+    <string name="another_batch">换一批</string>
+    <string name="remove_block">移除黑名单</string>
 </resources>

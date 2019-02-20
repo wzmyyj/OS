@@ -19,9 +19,9 @@ import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
  * @author wzmyyj email: 2209011667@qq.com
  */
 
-public class FriendIVD extends BaseIVD<User> {
+public class SingleUserIVD extends BaseIVD<User> {
 
-    public FriendIVD(Context context) {
+    public SingleUserIVD(Context context) {
         super(context);
     }
 

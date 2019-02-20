@@ -27,6 +27,18 @@
                 android:src="@color/colorGray_b"
                 app:border_color="@color/colorWhite"
                 app:border_width="1dp" />
+
+            <TextView
+                android:id="@+id/tv_store_fresh"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_circle_aph"
+                android:gravity="center"
+                android:src="@color/colorGray_b"
+                android:text="@string/another_batch"
+                android:textColor="@color/colorWhite"
+                android:textSize="13sp" />
         </FrameLayout>
 
         <android.support.design.widget.TabLayout
@@ -45,12 +57,12 @@
             app:tabPaddingStart="-1dp"
             app:tabPaddingTop="-1dp"
             app:tabSelectedTextColor="@color/colorWhite"
-            app:tabTextColor="@color/colorGray_b"/>
+            app:tabTextColor="@color/colorGray_b" />
 
         <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/rv_bottom"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
+        <!--android:id="@+id/rv_bottom"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
         <!--</android.support.v7.widget.RecyclerView>-->
 

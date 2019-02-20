@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Store;
@@ -63,6 +64,9 @@ public class StoreFrontPanel extends BasePanel<StoreContract.IPresenter> {
         }
     }
 
+    @BindView(R.id.tv_store_fresh)
+    TextView tv_store_fresh;
+
 
     @SuppressLint("SetTextI18n")
     public void setStore(@NonNull Store store) {
@@ -73,6 +77,8 @@ public class StoreFrontPanel extends BasePanel<StoreContract.IPresenter> {
         final List<User> mData = new ArrayList<>();
         mData.add(new User());
         mData.addAll(userList);
+        tab_bottom.clearOnTabSelectedListeners();
+        tab_bottom.setupWithViewPager(((StoreActivity) activity).getViewPager());
         TabLayoutUtil.setStyle(tab_bottom, new TabLayoutUtil.TabLayoutStyle() {
             List<ImageView> imageAvatars = new ArrayList<>();
             List<ImageView> imageBorders = new ArrayList<>();
@@ -124,18 +130,11 @@ public class StoreFrontPanel extends BasePanel<StoreContract.IPresenter> {
     }
 
     private void selected(int p) {
-        if (p > 2) {
-
+        if (p == 0) {
+            tv_store_fresh.setVisibility(View.VISIBLE);
         } else {
-
+            tv_store_fresh.setVisibility(View.INVISIBLE);
         }
-    }
-
-
-    @Override
-    protected void initView() {
-        super.initView();
-        tab_bottom.setupWithViewPager(((StoreActivity) activity).getViewPager());
     }
 
 
