@@ -107,7 +107,7 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
 
     @Override
     public void showMatchUnitList(@NonNull List<MatchUnit> matchUnitList) {
-
+//        mPresenter.toast("GGGGGGGG");
         mFragmentList.clear();
         mFragmentList.add(storeInfoFragment);
 

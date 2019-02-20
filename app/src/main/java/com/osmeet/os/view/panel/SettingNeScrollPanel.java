@@ -195,7 +195,7 @@ public class SettingNeScrollPanel extends BaseNeScrollPanel<SettingContract.IPre
     @OnClick(R.id.tv_sex_3)
     void set_3() {
         choiceSex(3);
-        mPresenter.getSetting().setOsSex(3);
+        mPresenter.getSetting().setOsSex(0);
     }
 
     private void choiceSex(int i) {

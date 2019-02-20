@@ -42,7 +42,7 @@ public final class SettingManager {
     }
 
     public int getOsDistance() {
-        return p.getInt("os_distance", 50);
+        return p.getInt("os_distance", 100);
     }
 
     public void setOsMaxAge(int i) {
@@ -50,7 +50,7 @@ public final class SettingManager {
     }
 
     public int getOsMaxAge() {
-        return p.getInt("os_max_age", 38);
+        return p.getInt("os_max_age", 55);
     }
 
     public void setOsMinAge(int i) {

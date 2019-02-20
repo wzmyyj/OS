@@ -55,7 +55,12 @@ public class StoreFrontPanel extends BasePanel<StoreContract.IPresenter> {
 
     @OnClick(R.id.img_store_avatar)
     void store() {
-        ((StoreActivity) activity).setCurrentItem(0);
+        StoreActivity storeActivity = getActivity();
+        if (storeActivity.getViewPager().getCurrentItem() == 0) {
+            mPresenter.loadMatchUnitList();
+        } else {
+            storeActivity.setCurrentItem(0);
+        }
     }
 
 
