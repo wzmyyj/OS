@@ -158,9 +158,9 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
 
     public void showMatchSuccess(boolean is) {
         if (is) {
-            G.img(context, R.mipmap.ic_star_red, img_b_1);
+            G.img(context, R.mipmap.ic_invite, img_b_1);
         } else {
-            G.img(context, R.mipmap.ic_star, img_b_1);
+            G.img(context, R.mipmap.ic_invited, img_b_1);
         }
     }
 

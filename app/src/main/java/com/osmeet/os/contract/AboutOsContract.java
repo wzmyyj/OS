@@ -14,8 +14,9 @@ public interface AboutOsContract {
 
     }
 
-    interface IPresenter extends IBasePresenter{
+    interface IPresenter extends IBasePresenter {
 
+        String getVersion();
 
     }
 

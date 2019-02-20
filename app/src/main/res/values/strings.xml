@@ -224,4 +224,20 @@
     <string name="another_batch">换一批</string>
     <string name="remove_block">移除黑名单</string>
     <string name="by_system">跟随系统</string>
+    <string name="account">账号</string>
+    <string name="update_password">修改密码</string>
+    <string name="bind_wechat">绑定微信</string>
+    <string name="no_bind">未绑定</string>
+    <string name="update_password_success">修改密码成功</string>
+    <string name="input_new_password">请输入新密码，长度6~12位</string>
+    <string name="confirm_new_password">请重新确认新密码</string>
+    <string name="password_length_wrong">密码长度不符合</string>
+    <string name="confirm_wrong">确认错误，请从新确认密码</string>
+    <string name="about_us">关于我们</string>
+    <string name="qq_group">官方QQ群：907873954</string>
+    <string name="copy_right">copy right@2018–2019</string>
+    <string name="os_company">杭州一川网络科技有限公司</string>
+    <string name="os_now">正在相对</string>
+    <string name="os_history">相对历史</string>
+    <string name="invite">邀请</string>
 </resources>

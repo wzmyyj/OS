@@ -5,6 +5,8 @@ import android.app.Activity;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.AboutOsContract;
 
+import top.wzmyyj.wzm_sdk.utils.PackageUtil;
+
 /**
  * Created by yyj on 2019/02/18.
  *
@@ -15,5 +17,10 @@ public class AboutOsPresenter extends BasePresenter<AboutOsContract.IView> imple
 
     public AboutOsPresenter(Activity activity, AboutOsContract.IView iv) {
         super(activity, iv);
+    }
+
+    @Override
+    public String getVersion() {
+        return PackageUtil.getVersionName(getContext());
     }
 }

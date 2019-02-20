@@ -153,7 +153,8 @@
         <activity android:name=".view.activity.ProtocolActivity" />
         <activity android:name=".view.activity.AboutOsActivity" />
         <activity android:name=".view.activity.BlockListActivity" />
-        <activity android:name=".view.activity.SingleMapActivity"></activity>
+        <activity android:name=".view.activity.SingleMapActivity" />
+        <activity android:name=".view.activity.PasswordActivity"></activity>
     </application>
 
 </manifest>

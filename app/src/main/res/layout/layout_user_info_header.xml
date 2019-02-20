@@ -60,10 +60,12 @@
 
         </LinearLayout>
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
 
             <ImageView
                 android:id="@+id/img_b_1"
@@ -71,8 +73,18 @@
                 android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/icon"
-                android:src="@mipmap/ic_star" />
-        </FrameLayout>
+                android:src="@mipmap/ic_invite" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="3dp"
+                android:layout_marginStart="3dp"
+                android:text="@string/invite"
+                android:textColor="@color/colorGray_8"
+                android:textSize="13sp" />
+        </LinearLayout>
 
     </LinearLayout>
 

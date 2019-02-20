@@ -1,6 +1,7 @@
 package com.osmeet.os.contract;
 
-import com.osmeet.os.app.tools.I;
+import android.support.annotation.NonNull;
+
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
 
@@ -8,16 +9,16 @@ import com.osmeet.os.base.contract.IBaseView;
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
  */
 
-public interface AccountContract {
+public interface PasswordContract {
 
     interface IView extends IBaseView {
 
 
     }
 
-    interface IPresenter extends IBasePresenter, I.Password{
+    interface IPresenter extends IBasePresenter {
 
-        String getAccount();
+        void changePassword(@NonNull String password);
     }
 
 }

@@ -280,6 +280,14 @@ public class User {
         }
     }
 
+
+    public String getPhone2() {
+        if(phone!=null&&phone.length()==11){
+            return phone.substring(0,3)+"****"+phone.substring(7,11);
+        }
+            return phone;
+    }
+
     public String getBirthdayFormat(String format) {
         if (birthday == null) return null;
         long birth = TimeUtil.str2long(getBirthday(), "yyyyMMdd");

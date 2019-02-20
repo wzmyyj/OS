@@ -26,6 +26,7 @@ import com.osmeet.os.view.activity.MatchActivity;
 import com.osmeet.os.view.activity.MatchBeginActivity;
 import com.osmeet.os.view.activity.MatchListActivity;
 import com.osmeet.os.view.activity.NewFriendsActivity;
+import com.osmeet.os.view.activity.PasswordActivity;
 import com.osmeet.os.view.activity.PopInfoActivity;
 import com.osmeet.os.view.activity.ProtocolActivity;
 import com.osmeet.os.view.activity.ScanActivity;
@@ -528,6 +529,18 @@ public class I {
         default void goLaunch() {
             if (getContext() != null)
                 goLaunchActivity(getContext());
+        }
+    }
+
+    public static void goPasswordActivity(Context context) {
+        Intent intent = new Intent(context, PasswordActivity.class);
+        context.startActivity(intent);
+    }
+
+    public interface Password extends IContext {
+        default void goPassword() {
+            if (getContext() != null)
+                goPasswordActivity(getContext());
         }
     }
 

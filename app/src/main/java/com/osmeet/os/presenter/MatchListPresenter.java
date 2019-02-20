@@ -35,6 +35,6 @@ public class MatchListPresenter extends BasePresenter<MatchListContract.IView> i
                     mView.showMatchTeamList(box.getData().getContent(), pageNum);
                 }
             }
-        }, pageNum, 100);
+        }, pageNum, 12);
     }
 }

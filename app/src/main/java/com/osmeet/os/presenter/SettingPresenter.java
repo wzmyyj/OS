@@ -80,8 +80,8 @@ public class SettingPresenter extends BasePresenter<SettingContract.IView> imple
     public String getAccount() {
         User user = App.getInstance().getMyInfo();
         if (user != null && user.getPhone() != null) {
-            return user.getPhone();
+            return user.getPhone2();
         }
-        return "12345";
+        return "*****";
     }
 }

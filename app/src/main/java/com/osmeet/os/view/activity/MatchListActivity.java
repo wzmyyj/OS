@@ -37,9 +37,12 @@ public class MatchListActivity extends BaseActivity<MatchListContract.IPresenter
     protected void initPanels() {
         super.initPanels();
         addPanels(
-                matchListRecyclerPanel_0 = new MatchListRecyclerPanel(context, mPresenter).setTitle("全部"),
-                matchListRecyclerPanel_1 = new MatchListRecyclerPanel(context, mPresenter).setTitle("正在相对"),
-                matchListRecyclerPanel_2 = new MatchListRecyclerPanel(context, mPresenter).setTitle("相对历史")
+                matchListRecyclerPanel_0 = new MatchListRecyclerPanel(context, mPresenter)
+                        .setTitle(context.getString(R.string.all)),
+                matchListRecyclerPanel_1 = new MatchListRecyclerPanel(context, mPresenter)
+                        .setTitle(context.getString(R.string.os_now)),
+                matchListRecyclerPanel_2 = new MatchListRecyclerPanel(context, mPresenter)
+                        .setTitle(context.getString(R.string.os_history))
         );
 
     }

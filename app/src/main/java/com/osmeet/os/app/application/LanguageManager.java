@@ -51,6 +51,7 @@ public final class LanguageManager {
         initLanguage(context, getLanguage());
     }
 
+    @SuppressWarnings("deprecation")
     private void initLanguage(Context context, int i) {
         Resources resources = context.getResources();//获得res资源对象
         Configuration config = resources.getConfiguration();//获得设置对象
