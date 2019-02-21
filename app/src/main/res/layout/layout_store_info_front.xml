@@ -36,7 +36,7 @@
                 android:background="@drawable/bg_circle_aph"
                 android:gravity="center"
                 android:src="@color/colorGray_b"
-                android:text="@string/another_batch"
+                android:text="@string/refresh"
                 android:textColor="@color/colorWhite"
                 android:textSize="13sp" />
         </FrameLayout>

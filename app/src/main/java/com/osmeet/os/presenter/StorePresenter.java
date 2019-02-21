@@ -95,7 +95,7 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
             toast("Store Id is a empty value!");
             return;
         }
-
+        if (getMode() != 0) return;
         matchModel.matchUnit_getMatchsInStore(new PObserver<Box<List<MatchUnit>>>() {
             @Override
             public void onNext(Box<List<MatchUnit>> box) {
@@ -122,6 +122,7 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
             toast("Store Id is a empty value!");
             return;
         }
+        if (getMode() != 1) return;
         matchModel.matchInvite_geBeInvitedByStore(new PObserver<Box<ListContent<MatchInvite>>>() {
             @Override
             public void onNext(Box<ListContent<MatchInvite>> box) {

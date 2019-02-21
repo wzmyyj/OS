@@ -58,7 +58,12 @@ public class StoreFrontPanel extends BasePanel<StoreContract.IPresenter> {
     void store() {
         StoreActivity storeActivity = getActivity();
         storeActivity.setCurrentItem(0);
-        mPresenter.loadMatchUnitList();
+        if (mPresenter.getMode() == 0) {
+            mPresenter.loadMatchUnitList();
+        } else {
+            mPresenter.loadMatchInviteList(0);
+        }
+
 
     }
 
