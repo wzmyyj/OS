@@ -1,8 +1,8 @@
 package com.osmeet.os.view.activity;
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.osmeet.os.R;
@@ -13,16 +13,15 @@ import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.activity.BaseActivity;
 import com.osmeet.os.contract.StoreContract;
 import com.osmeet.os.presenter.StorePresenter;
+import com.osmeet.os.view.adapter.DFragmentPagerAdapter;
 import com.osmeet.os.view.fragment.StoreInfoFragment;
 import com.osmeet.os.view.fragment.UserInfoFragment;
 import com.osmeet.os.view.panel.StoreFrontPanel;
-import com.youth.banner.Transformer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import top.wzmyyj.wzm_sdk.adapter.InitFragmentPagerAdapter;
 import top.wzmyyj.wzm_sdk.fragment.InitFragment;
 
 /**
@@ -56,7 +55,7 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
     ViewPager mViewPager;
 
     private List<InitFragment> mFragmentList = new ArrayList<>();
-    private InitFragmentPagerAdapter mAdapter;
+    private DFragmentPagerAdapter mAdapter;
 
     @SuppressWarnings("unchecked")
     public <F extends InitFragment> F getFragment(int i) {
@@ -70,21 +69,30 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
         fl_panel.addView(getPanelView(0));
         storeInfoFragment = new StoreInfoFragment();
         mFragmentList.add(storeInfoFragment);
-        mAdapter = new InitFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList) {
+        mAdapter = new DFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList) {
             @Override
-            public void destroyItem(ViewGroup container, int position, Object object) {
-                //super.destroyItem(container, position, object);
+            public void setFragmentList(List<InitFragment> fragmentList) {
+                if (this.mFragmentList != null && this.mFragmentList.size() > 1) {
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    for (int i = 1; i < this.mFragmentList.size(); i++) {
+                        transaction.remove(this.mFragmentList.get(i));
+                    }
+                    transaction.commit();
+                    fragmentManager.executePendingTransactions();
+                }
+                this.mFragmentList = fragmentList;
+                notifyDataSetChanged();
             }
         };
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(mAdapter);
-        try {
-            mViewPager.setPageTransformer(false, Transformer.Accordion.newInstance());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            mViewPager.setPageTransformer(false, Transformer.Default.newInstance());
+//        } catch (InstantiationException e) {
+//            e.printStackTrace();
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
@@ -101,8 +109,8 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
 
     @Override
     public void showStoreInfo(@NonNull Store store) {
-        storeInfoFragment.setStore(store);
-        storeFrontPanel.setStore(store);
+//        storeInfoFragment.setStore(store);
+//        storeFrontPanel.setStore(store);
     }
 
     @Override
@@ -122,7 +130,7 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
             User user = matchUnit.getUser();
             userList.add(user);
         }
-        mAdapter.notifyDataSetChanged();
+        mAdapter.setFragmentList(mFragmentList);
 
         storeFrontPanel.setUserList(userList);
     }

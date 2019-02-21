@@ -92,19 +92,27 @@ public abstract class PanelFragment extends InitFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mPanelManager.onActivityCreated(savedInstanceState);
+        if(mPanelManager!=null){
+            mPanelManager.onActivityCreated(savedInstanceState);
+        }
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        mPanelManager.onStart();
+        if(mPanelManager!=null){
+            mPanelManager.onStart();
+        }
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mPanelManager.onResume();
+        if(mPanelManager!=null){
+            mPanelManager.onResume();
+        }
+
     }
 
 
@@ -130,7 +138,11 @@ public abstract class PanelFragment extends InitFragment {
     public void onDestroy() {
         super.onDestroy();
         mPanelManager.onDestroy();
-        mPanelManager = null;
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mPanelManager = null;
+    }
 }

@@ -3,6 +3,8 @@
  */
 package com.osmeet.os.app.bean;
 
+import android.text.TextUtils;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -293,6 +295,15 @@ public class User {
         long birth = TimeUtil.str2long(getBirthday(), "yyyyMMdd");
         return TimeUtil.long2str(birth, format);
     }
+
+    public boolean isComplete() {
+        return this.getExamineStatus() != -1
+                && this.getAvatar() != null
+                && this.getSex() > 0
+                && !TextUtils.isEmpty(this.getUsername())
+                && !TextUtils.isEmpty(this.getUsername());
+    }
+
 
     // 测试例子。
     public static User newTestUser() {

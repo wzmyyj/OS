@@ -1,7 +1,6 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
-import android.text.TextUtils;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
@@ -143,15 +142,10 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                 if (box.getData() != null) {
                     mView.showLoadUserInfo(true);
                     User user = box.getData();
-                    if (user.getExamineStatus() != -1
-                            && user.getAvatar() != null
-                            && user.getSex() > 0
-                            && !TextUtils.isEmpty(user.getUsername())
-                            && !TextUtils.isEmpty(user.getUsername())) {
-                        App.getInstance().setComplete(true);
+                    if (user.isComplete()) {
+                        App.getInstance().setMyInfo(user);
                         goMainAndFinish();
                     } else {
-                        App.getInstance().setComplete(true);
                         goPopInfoAndFinish();
                     }
                 } else {

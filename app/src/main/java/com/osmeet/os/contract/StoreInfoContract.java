@@ -21,15 +21,21 @@ public interface StoreInfoContract {
         void showStoreInfo(@NonNull Store store);
 
         void showGoodsList(@NonNull List<Goods> goodsList);
+
+        void showMatchStore(boolean isInStore);
     }
 
-    interface IPresenter extends IBasePresenter, I.Goods,I.ImageLook,I.Chat,I.SingleMap {
+    interface IPresenter extends IBasePresenter, I.Goods, I.ImageLook, I.Chat, I.SingleMap {
 
         void loadStoreInfo();
 
         void loadGoodsList();
 
         void report(@NonNull String content);
+
+        void intoMatchStore();
+
+        void outMatchStore();
 
     }
 

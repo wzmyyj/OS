@@ -57,11 +57,9 @@ public class StoreFrontPanel extends BasePanel<StoreContract.IPresenter> {
     @OnClick(R.id.img_store_avatar)
     void store() {
         StoreActivity storeActivity = getActivity();
-        if (storeActivity.getViewPager().getCurrentItem() == 0) {
-            mPresenter.loadMatchUnitList();
-        } else {
-            storeActivity.setCurrentItem(0);
-        }
+        storeActivity.setCurrentItem(0);
+        mPresenter.loadMatchUnitList();
+
     }
 
     @BindView(R.id.tv_store_fresh)
@@ -130,11 +128,11 @@ public class StoreFrontPanel extends BasePanel<StoreContract.IPresenter> {
     }
 
     private void selected(int p) {
-        if (p == 0) {
-            tv_store_fresh.setVisibility(View.VISIBLE);
-        } else {
-            tv_store_fresh.setVisibility(View.INVISIBLE);
-        }
+//        if (p == 0) {
+//            tv_store_fresh.setVisibility(View.VISIBLE);
+//        } else {
+//            tv_store_fresh.setVisibility(View.INVISIBLE);
+//        }
     }
 
 

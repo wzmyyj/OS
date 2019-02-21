@@ -16,6 +16,7 @@ import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.fragment.BaseFragment;
 import com.osmeet.os.contract.HomeContract;
 import com.osmeet.os.presenter.HomePresenter;
+import com.osmeet.os.view.adapter.DFragmentPagerAdapter;
 import com.yanzhenjie.permission.AndPermission;
 
 import java.util.ArrayList;
@@ -23,7 +24,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import top.wzmyyj.wzm_sdk.adapter.InitFragmentPagerAdapter;
 import top.wzmyyj.wzm_sdk.fragment.InitFragment;
 import top.wzmyyj.wzm_sdk.tools.T;
 import top.wzmyyj.wzm_sdk.utils.DensityUtil;
@@ -71,12 +71,12 @@ public class HomeFragment extends BaseFragment<HomeContract.IPresenter> implemen
     AppBarLayout mAppBarLayout;
 
     private List<InitFragment> mFragmentList = new ArrayList<>();
-    private InitFragmentPagerAdapter mAdapter;
+    private DFragmentPagerAdapter mAdapter;
 
     @Override
     protected void initView() {
         super.initView();
-        mAdapter = new InitFragmentPagerAdapter(getChildFragmentManager(), mFragmentList);
+        mAdapter = new DFragmentPagerAdapter(getChildFragmentManager(), mFragmentList);
         mViewPager.setAdapter(mAdapter);
     }
 
@@ -143,8 +143,12 @@ public class HomeFragment extends BaseFragment<HomeContract.IPresenter> implemen
                 TextView textView = customView.findViewById(R.id.tv_tab_item_text);
                 textView.setText(categoryList.get(p).getName());
                 ImageView imageView = customView.findViewById(R.id.img_tab_item_bg);
-                String url = categoryList.get(p).getLogo().getUrl();
-                G.img(getActivity(), url, imageView);
+                if (categoryList.get(p).getLogo() != null) {
+                    String url = categoryList.get(p).getLogo().getUrl();
+                    G.img(getActivity(), url, imageView);
+                } else {
+                    imageView.setImageResource(R.color.colorBlue);
+                }
                 viewList.add(view);
                 textViewList.add(textView);
                 imageViewList.add(imageView);

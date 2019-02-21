@@ -30,6 +30,7 @@ public class HomeStoreFragment extends BaseFragment<HomeStoreContract.IPresenter
         this.categoryId = categoryId;
     }
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_panel;

@@ -111,12 +111,33 @@ public class PopInfoPresenter extends BasePresenter<PopInfoContract.IView> imple
     private void checkFinishAll() {
         if (isFinishConsummateInfo && isFinishUpdateAvatar) {
             toast(getContext().getString(R.string.pop_info_success));
-            App.getInstance().finish(LoginActivity.class);
-            App.getInstance().setMyInfo(null);
-            App.getInstance().setComplete(true);
-            goMain();
-            finish();
+            loadMyInfo();
         }
     }
+
+
+    private void loadMyInfo() {
+        new UserModel().user(new PObserver<Box<User>>() {
+            @Override
+            public void onNext(Box<User> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                if (box.getData() != null) {
+                    User user = box.getData();
+                    App.getInstance().setMyInfo(user);
+                    finishAndGoMain();
+                }
+            }
+        });
+    }
+
+    private void finishAndGoMain(){
+        App.getInstance().finish(LoginActivity.class);
+        goMain();
+        finish();
+    }
+
 
 }

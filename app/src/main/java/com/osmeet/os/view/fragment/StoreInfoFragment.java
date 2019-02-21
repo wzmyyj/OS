@@ -55,6 +55,11 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
     FrameLayout fl_panel;
 
     @Override
+    protected boolean isRefreshRootView() {
+        return true;
+    }
+
+    @Override
     protected void initView() {
         super.initView();
         setTopBar();
@@ -93,9 +98,9 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
 
     }
 
-    private void   reportDialog() {
+    private void reportDialog() {
         InputDialog.show(context, context.getString(R.string.report),
-               context.getString(R.string.report_reason),
+                context.getString(R.string.report_reason),
                 context.getString(R.string.submit), (dialog, inputText) -> {
                     mPresenter.report(inputText);
                     dialog.dismiss();
@@ -108,16 +113,10 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
     protected void initData() {
         super.initData();
         mPresenter.loadGoodsList();
+        mPresenter.loadStoreInfo();
+        mPresenter.intoMatchStore();
     }
 
-    public void setStore(@NonNull Store store) {// 给别人调用。（第一次加载）
-        storeInfoRecyclerPanel.setStore(store);
-
-        // bar
-        WidgetUtil.setTextNonNull(tv_name_top, store.getName());
-        if (store.getLogoImage() != null)
-            G.img(context, store.getLogoImage().getUrl(), img_avatar_top);
-    }
 
     @Override
     public void showStoreInfo(@NonNull Store store) {// 给自己的mPresenter调用。（刷新）
@@ -137,5 +136,10 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
     @Override
     public void showGoodsList(@NonNull List<Goods> goodsList) {
         storeInfoRecyclerPanel.setGoodsList(goodsList);
+    }
+
+    @Override
+    public void showMatchStore(boolean isInStore) {
+        storeInfoRecyclerPanel.inMatchStore(isInStore);
     }
 }

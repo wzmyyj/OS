@@ -65,7 +65,7 @@ public abstract class BaseMainActivity<P extends IBasePresenter> extends PagerFr
     @Override
     public void showFinishActivity(int how) {
         finish();
-        if(how==IBaseView.FINISH_FADE_IN_OUT){
+        if (how == IBaseView.FINISH_FADE_IN_OUT) {
             this.overridePendingTransition(android.R.anim.fade_in,
                     android.R.anim.fade_out);
         }

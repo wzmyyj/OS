@@ -64,10 +64,6 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
                 }
                 if (box.getData() != null) {
                     mView.showStoreInfo(box.getData());
-                    if (box.getData().getMatchState() == 0) {
-                        goToStore(storeId);
-                    }
-
                 }
 
             }
@@ -76,21 +72,21 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
 
     }
 
-    private void goToStore(String storeId) {
-        // 进入商店。
-        matchModel.matchUnit_goToMatchInStore(new PObserver<Box<MatchUnit>>() {
-            @Override
-            public void onNext(Box<MatchUnit> box) {
-                if (box.getCode() != 0) {
-                    toast(box.getMessage());
-                    return;
-                }
-                if (box.getData() != null) {
-                    log("into store success！");
-                }
-            }
-        }, storeId);
-    }
+//    private void intoMatchStore(String storeId) {
+//        // 进入商店。
+//        matchModel.matchUnit_goToMatchInStore(new PObserver<Box<MatchUnit>>() {
+//            @Override
+//            public void onNext(Box<MatchUnit> box) {
+//                if (box.getCode() != 0) {
+//                    toast(box.getMessage());
+//                    return;
+//                }
+//                if (box.getData() != null) {
+//                    log("into store success！");
+//                }
+//            }
+//        }, storeId);
+//    }
 
     @Override
     public void loadMatchUnitList() {

@@ -30,7 +30,7 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.IView>
 
     @Override
     public void loadMyInfo() {
-        if (App.getInstance().getMyInfo() != null && App.getInstance().isComplete()) {
+        if (App.getInstance().getMyInfo() != null) {
             mView.showMyInfo(App.getInstance().getMyInfo());
             return;
         }

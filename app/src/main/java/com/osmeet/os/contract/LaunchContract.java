@@ -15,7 +15,7 @@ public interface LaunchContract {
 
     }
 
-    interface IPresenter extends IBasePresenter, I.Ad, I.Guide, I.Login {
+    interface IPresenter extends IBasePresenter, I.Ad, I.Guide, I.Login,I.PopInfo,I.Main {
         void checkPermission();
 
         void init();

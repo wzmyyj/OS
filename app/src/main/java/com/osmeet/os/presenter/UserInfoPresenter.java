@@ -19,6 +19,9 @@ import com.osmeet.os.model.net.MatchModel;
 import com.osmeet.os.model.net.ReportModel;
 import com.osmeet.os.model.net.UserModel;
 import com.osmeet.os.model.net.utils.box.Box;
+import com.osmeet.os.view.activity.StoreActivity;
+import com.osmeet.os.view.fragment.StoreInfoFragment;
+import com.osmeet.os.view.panel.StoreInfoRecyclerPanel;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -105,11 +108,25 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
 
     @Override
     public void matchInvite() {
+        try {
+            StoreActivity storeActivity = (StoreActivity) getActivity();
+            StoreInfoFragment storeInfoFragment = storeActivity.getFragment(0);
+            StoreInfoRecyclerPanel panel = storeInfoFragment.getPanel(0);
+            if (!panel.isInStore()) {
+                toast(getContext().getString(R.string.to_store_then_invite));
+                return;
+            }
+        } catch (Exception e) {
+            log(e.getMessage());
+        }
+
         String storeId = getStoreId();
         if (getMode() != 0) {
             matchInvite_accept();
             return;
         }
+
+
         matchModel.matchInvite(new PObserver<Box<MatchInvite>>() {
             @Override
             public void onNext(Box<MatchInvite> box) {

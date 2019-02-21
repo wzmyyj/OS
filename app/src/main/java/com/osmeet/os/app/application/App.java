@@ -114,13 +114,6 @@ public class App extends BaseApplication {
         return userManager.getMyInfo();
     }
 
-    public void setComplete(boolean isComplete) {
-        userManager.setComplete(isComplete);
-    }
-
-    public boolean isComplete() {
-        return userManager.isComplete();
-    }
 
     public String getVersion() {
         return "Android_" + PackageUtil.getVersionName(this);

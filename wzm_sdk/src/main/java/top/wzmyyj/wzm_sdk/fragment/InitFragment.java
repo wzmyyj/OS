@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 /**
  * Created by wzm on 2018/04/23.
- *
+ * <p>
  * Init Fragment.
  *
  * @author wzmyyj email: 2209011667@qq.com
@@ -53,13 +53,16 @@ public abstract class InitFragment extends Fragment {
         this.fragment = this;
     }
 
+    protected boolean isRefreshRootView() {
+        return true;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mInflater = inflater;
         if (mVRoot == null) {
-            setRootView(container);
             initSome(savedInstanceState);
             initView();
             initData();
@@ -72,15 +75,15 @@ public abstract class InitFragment extends Fragment {
     /**
      * set root view
      */
-    protected abstract void setRootView(ViewGroup container);
+    protected abstract void setRootView();
 
     /**
      * do something init.
      *
-     * @param savedInstanceState
+     * @param savedInstanceState .
      */
     protected void initSome(Bundle savedInstanceState) {
-
+        setRootView();
     }
 
     /**

@@ -21,6 +21,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends PanelActivi
 
     protected P mPresenter;
 
+
     @Override
     protected void initSome(Bundle savedInstanceState) {
         BaseApplication.getInstance().addActivity(this);

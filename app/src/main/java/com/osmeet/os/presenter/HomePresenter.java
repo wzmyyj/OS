@@ -33,15 +33,7 @@ public class HomePresenter extends BasePresenter<HomeContract.IView> implements 
                 }
 
                 if (box.getData() != null) {
-//                    toast("加载成功");
-//                    List<Category> list = new ArrayList<>();
-//                    list.addAll(box.getData().getContent());
-//                    list.addAll(box.getData().getContent());
-//                    list.addAll(box.getData().getContent());
-//                    list.addAll(box.getData().getContent());
-//                    mView.showCategoryList(list);
                     mView.showCategoryList(box.getData().getContent());
-
                 }
 
 

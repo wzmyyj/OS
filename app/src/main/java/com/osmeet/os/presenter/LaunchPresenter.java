@@ -5,6 +5,7 @@ import android.os.Handler;
 
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.RcToken;
+import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.LaunchContract;
 import com.osmeet.os.model.net.UserModel;
@@ -29,13 +30,14 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
     public void init() {
         App.getInstance().getLanguageManager().initLanguage(context);
         App.getInstance().setMyInfo(null);
-        connectRc();
+        if (!App.getInstance().getToken().isEmpty()) {
+            loadMyInfo();
+            connectRc();
+        }
     }
 
+
     private void connectRc() {
-        if (App.getInstance().getToken().isEmpty()) {
-            return;
-        }
         if (!App.getInstance().getRcToken().isEmpty()) {
             App.getInstance().connectRc();
             return;
@@ -55,6 +57,22 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
         });
     }
 
+    private void loadMyInfo() {
+        new UserModel().user(new PObserver<Box<User>>() {
+            @Override
+            public void onNext(Box<User> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                if (box.getData() != null) {
+                    User user = box.getData();
+                    App.getInstance().setMyInfo(user);
+                }
+            }
+        });
+    }
+
     private long delayMillis() {
         return 1000;
     }
@@ -64,8 +82,15 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
             goGuide();// 前往引导页。
         } else if (App.getInstance().getSetting().isAd()) {
             goAd();// 前往广告。
-        } else {
+        } else if (App.getInstance().getToken().isEmpty()) {
             goLogin();// 前往登录。
+        } else if (App.getInstance().getMyInfo() == null) {
+            App.getInstance().clearToken();
+            goLogin();
+        } else if (!App.getInstance().getMyInfo().isComplete()) {
+            goPopInfo();
+        } else {
+            goMain();
         }
         finish(mView.FINISH_FADE_IN_OUT);
     }

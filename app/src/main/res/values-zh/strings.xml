@@ -201,4 +201,7 @@
     <string name="account_not_exist_please_register">账号不存在，先注册！</string>
     <string name="account_exist_please_login">账号已存在，请登录！</string>
     <string name="store_wallet">商店钱包</string>
+    <string name="os_now">正在相对</string>
+    <string name="confirm_time">确定时间</string>
+    <string name="punch_card">打卡</string>
 </resources>

@@ -43,7 +43,6 @@ public final class UserManager {
     public void clearToken() {
         this.mToken = null;
         this.myInfo = null;
-        this.isComplete = false;
         p.putString("Token", null)
                 .putString("RefreshToken", null)
                 .commit();
@@ -65,7 +64,6 @@ public final class UserManager {
 
     private User myInfo;
 
-    private boolean isComplete;
 
     public User getMyInfo() {
         return myInfo;
@@ -75,13 +73,7 @@ public final class UserManager {
         this.myInfo = myInfo;
     }
 
-    public boolean isComplete() {
-        return isComplete;
-    }
 
-    public void setComplete(boolean complete) {
-        isComplete = complete;
-    }
 
 
 }

@@ -6,11 +6,13 @@ import android.text.TextUtils;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Goods;
+import com.osmeet.os.app.bean.MatchUnit;
 import com.osmeet.os.app.bean.Report;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.StoreInfoContract;
 import com.osmeet.os.model.net.GoodsModel;
+import com.osmeet.os.model.net.MatchModel;
 import com.osmeet.os.model.net.ReportModel;
 import com.osmeet.os.model.net.StoreModel;
 import com.osmeet.os.model.net.utils.box.Box;
@@ -26,12 +28,14 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
 
     private StoreModel storeModel;
     private GoodsModel goodsModel;
+    private MatchModel matchModel;
     private String storeId;
 
     public StoreInfoPresenter(Activity activity, StoreInfoContract.IView iv) {
         super(activity, iv);
         storeModel = new StoreModel();
         goodsModel = new GoodsModel();
+        matchModel = new MatchModel();
         storeId = activity.getIntent().getStringExtra("storeId");
         Sure.sure(!TextUtils.isEmpty(storeId), "Store Id is a empty value!");
     }
@@ -47,6 +51,9 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
                 }
                 if (box.getData() != null) {
                     mView.showStoreInfo(box.getData());
+                    if (box.getData().getMatchState() == 0) {
+                        intoMatchStore();
+                    }
                 }
 
             }
@@ -81,5 +88,44 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
                 toast(context.getString(R.string.report_success));
             }
         }, new Report(Report.REPORT_STORE, storeId, content));
+    }
+
+    private String unitId;
+
+    @Override
+    public void intoMatchStore() {
+        matchModel.matchUnit_goToMatchInStore(new PObserver<Box<MatchUnit>>() {
+            @Override
+            public void onNext(Box<MatchUnit> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                if (box.getData() != null) {
+                    if (!TextUtils.isEmpty(box.getData().getId())) {
+                        mView.showMatchStore(true);
+                        unitId = box.getData().getId();
+                    }
+                }
+            }
+        }, storeId);
+    }
+
+    @Override
+    public void outMatchStore() {
+        if (TextUtils.isEmpty(unitId)) {
+            toast("unitId is a empty value!");
+            return;
+        }
+        matchModel.matchUnit_quitMatchInStore(new PObserver<Box<MatchUnit>>() {
+            @Override
+            public void onNext(Box<MatchUnit> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                mView.showMatchStore(false);
+            }
+        }, unitId);
     }
 }

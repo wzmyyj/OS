@@ -10,7 +10,7 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
  * Created by yyj on 2018/04/22.
- *
+ * <p>
  * Init Activity.
  *
  * @author wzmyyj email: 2209011667@qq.com
@@ -42,7 +42,7 @@ public abstract class InitActivity extends SwipeBackActivity {
         //设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
         mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
         mSwipeBackLayout.setEdgeSize(edgeSize());
-        setRootView();
+
         initSome(savedInstanceState);
         initView();
         initData();
@@ -69,10 +69,6 @@ public abstract class InitActivity extends SwipeBackActivity {
         return DEFAULT_EDGE_SIZE;
     }
 
-    /**
-     * set root view
-     */
-    protected abstract void setRootView();
 
     /**
      * do something init.
@@ -80,7 +76,13 @@ public abstract class InitActivity extends SwipeBackActivity {
      * @param savedInstanceState bundle
      */
     protected void initSome(Bundle savedInstanceState) {
+        setRootView();
     }
+
+    /**
+     * set root view
+     */
+    protected abstract void setRootView();
 
     /**
      * do something about view.

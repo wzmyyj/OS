@@ -80,11 +80,11 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
         }
     }
 
-    @Override
-    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-        super.onItemClick(view, holder, position);
-        onWholeClick();
-    }
+//    @Override
+//    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+//        super.onItemClick(view, holder, position);
+//        onWholeClick();
+//    }
 
 
     public void setUser(@NonNull User user) {
@@ -137,7 +137,7 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
         });
 
 
-        mHeader.setOnClickListener(v -> onWholeClick());
+//        mHeader.setOnClickListener(v -> onWholeClick());
 
         img_b_1 = mHeader.findViewById(R.id.img_b_1);
         img_b_1.setOnClickListener(v -> mPresenter.matchInvite());
@@ -158,9 +158,9 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
 
     public void showMatchSuccess(boolean is) {
         if (is) {
-            G.img(context, R.mipmap.ic_invite, img_b_1);
-        } else {
             G.img(context, R.mipmap.ic_invited, img_b_1);
+        } else {
+            G.img(context, R.mipmap.ic_invite, img_b_1);
         }
     }
 
@@ -169,16 +169,16 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, UserInf
     protected void setFooter() {
         super.setFooter();
         mFooter = mInflater.inflate(R.layout.layout_footer, null);
-        mFooter.setOnClickListener(v -> onWholeClick());
+//        mFooter.setOnClickListener(v -> onWholeClick());
     }
 
 
     // 控制外部的控件。
-    private void onWholeClick() {
-        StoreFrontPanel storeInfoFrontPanel = ((PanelActivity) activity).getPanel(0);
-        if (storeInfoFrontPanel != null)
-            storeInfoFrontPanel.whenClick();
-    }
+//    private void onWholeClick() {
+//        StoreFrontPanel storeInfoFrontPanel = ((PanelActivity) activity).getPanel(0);
+//        if (storeInfoFrontPanel != null)
+//            storeInfoFrontPanel.whenClick();
+//    }
 
     // 控制外部的控件。
     private void onScrolled1(int dy) {

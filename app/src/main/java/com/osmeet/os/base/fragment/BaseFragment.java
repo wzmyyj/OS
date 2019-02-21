@@ -1,7 +1,6 @@
 package com.osmeet.os.base.fragment;
 
-import android.content.Context;
-import android.view.ViewGroup;
+import android.os.Bundle;
 
 import com.osmeet.os.base.contract.IBasePresenter;
 import com.osmeet.os.base.contract.IBaseView;
@@ -18,11 +17,13 @@ import top.wzmyyj.wzm_sdk.tools.T;
 public abstract class BaseFragment<P extends IBasePresenter> extends PanelFragment implements IBaseView {
     protected P mPresenter;
 
+
+
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    protected void initSome(Bundle savedInstanceState) {
         initPresenter();
         checkPresenterIsNull();
+        super.initSome(savedInstanceState);
     }
 
     protected abstract void initPresenter();
@@ -40,7 +41,7 @@ public abstract class BaseFragment<P extends IBasePresenter> extends PanelFragme
     protected abstract int getLayoutId();
 
     @Override
-    protected void setRootView(ViewGroup container) {
+    protected void setRootView() {
         mVRoot = mInflater.inflate(getLayoutId(), null);
         ButterKnife.bind(this, mVRoot);
     }
@@ -62,8 +63,8 @@ public abstract class BaseFragment<P extends IBasePresenter> extends PanelFragme
 
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDetach() {
+        super.onDetach();
         mPresenter.destroy();
         mPresenter = null;
     }

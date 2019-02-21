@@ -87,11 +87,11 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
         }
     }
 
-    @Override
-    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-        super.onItemClick(view, holder, position);
-        onWholeClick();
-    }
+//    @Override
+//    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+//        super.onItemClick(view, holder, position);
+//        onWholeClick();
+//    }
 
     private Store store;
 
@@ -127,6 +127,15 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
         }
 
 
+//        mPresenter.toast("ooo"+store.getMatchState());
+        if (store.getMatchState() < 2) {
+            img_eye.setVisibility(View.VISIBLE);
+            tv_os_now.setVisibility(View.GONE);
+        } else {
+            img_eye.setVisibility(View.GONE);
+            tv_os_now.setVisibility(View.VISIBLE);
+        }
+
         // data
 //        for (int i = 0; i < 100; i++) {
 //            mData.add(new PhotoStory());
@@ -160,6 +169,14 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
     private List<Goods> mGoodsList;
     private MultiItemTypeAdapter mAdapter;
     private TextView tv_no_goods;
+    private TextView tv_os_now;
+    private ImageView img_eye;
+
+    private boolean isInStore;
+
+    public boolean isInStore() {
+        return isInStore;
+    }
 
 
     @SuppressLint("InflateParams")
@@ -173,15 +190,24 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
         tv_store_os_num = mHeader.findViewById(R.id.tv_store_os_num);
         tv_store_open_time = mHeader.findViewById(R.id.tv_store_open_time);
         tv_store_introduce = mHeader.findViewById(R.id.tv_store_introduce);
+        tv_os_now = mHeader.findViewById(R.id.tv_os_now);
+        tv_os_now.setOnClickListener(v -> {
 
+        });
+        img_eye = mHeader.findViewById(R.id.img_eye);
+        img_eye.setOnClickListener(v -> {
+            if (isInStore) {
+                mPresenter.outMatchStore();
+            } else {
+                mPresenter.intoMatchStore();
+            }
+        });
         img_image = mHeader.findViewById(R.id.img_image);
         img_image.getLayoutParams().height = MockUtil.getScreenWidth(context);
         img_image.requestLayout();
-        img_image.setOnClickListener(v -> {
-            mPresenter.goImageLook(mThumbViewInfoList);
-        });
+        img_image.setOnClickListener(v -> mPresenter.goImageLook(mThumbViewInfoList));
 
-        mHeader.setOnClickListener(v -> onWholeClick());
+//        mHeader.setOnClickListener(v -> onWholeClick());
 
         mHeader.findViewById(R.id.img_m_1).setOnClickListener(v -> {
             if (store == null || store.getBoss() == null) return;
@@ -243,15 +269,15 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
     protected void setFooter() {
         super.setFooter();
         mFooter = mInflater.inflate(R.layout.layout_footer, null);
-        mFooter.setOnClickListener(v -> onWholeClick());
+//        mFooter.setOnClickListener(v -> onWholeClick());
     }
 
     // 控制外部的控件。
-    private void onWholeClick() {
-        StoreFrontPanel storeInfoFrontPanel = ((PanelActivity) activity).getPanel(0);
-        if (storeInfoFrontPanel != null)
-            storeInfoFrontPanel.whenClick();
-    }
+//    private void onWholeClick() {
+//        StoreFrontPanel storeInfoFrontPanel = ((PanelActivity) activity).getPanel(0);
+//        if (storeInfoFrontPanel != null)
+//            storeInfoFrontPanel.whenClick();
+//    }
 
     // 控制外部的控件。
     private void onScrolled1(int dy) {
@@ -262,6 +288,16 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, StoreI
             } else if (dy < -10) {
                 storeInfoFrontPanel.whenDown();
             }
+    }
+
+    public void inMatchStore(boolean isInStore) {
+        this.isInStore = isInStore;
+//        mPresenter.toast("JJJ" + isInStore);
+        if (isInStore) {
+            img_eye.setImageResource(R.mipmap.ic_eye_open);
+        } else {
+            img_eye.setImageResource(R.mipmap.ic_eye_close);
+        }
     }
 
 }

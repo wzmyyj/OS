@@ -1,9 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
-import android.text.TextUtils;
 
-import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.presenter.BasePresenter;
@@ -26,7 +24,7 @@ public class MainPresenter extends BasePresenter<MainContract.IView> implements 
 
     @Override
     public void loadMyInfo() {
-        if (App.getInstance().getMyInfo() != null && App.getInstance().isComplete()) {
+        if (App.getInstance().getMyInfo() != null) {
             mView.showMyInfo(App.getInstance().getMyInfo());
             return;
         }
@@ -37,22 +35,10 @@ public class MainPresenter extends BasePresenter<MainContract.IView> implements 
                     toast(box.getMessage());
                     return;
                 }
+
+
                 if (box.getData() != null) {
-                    User user = box.getData();
-                    if (user.getExamineStatus() != -1
-                            && user.getAvatar() != null
-                            && user.getSex() > 0
-                            && !TextUtils.isEmpty(user.getUsername())
-                            && !TextUtils.isEmpty(user.getUsername())) {
-                        log("user info complete");
-                        App.getInstance().setComplete(true);
-                        App.getInstance().setMyInfo(user);
-                        mView.showMyInfo(user);
-                    } else {
-                        log("user info not complete");
-                        App.getInstance().setComplete(false);
-                        goPopInfoAndFinish();
-                    }
+                    mView.showMyInfo(box.getData());
                 }
             }
         });
@@ -70,14 +56,6 @@ public class MainPresenter extends BasePresenter<MainContract.IView> implements 
                 log("" + box.getData());
             }
         }, lng, lat);
-    }
-
-    private void goPopInfoAndFinish() {
-        goPopInfo();
-        toast(getContext().getString(R.string.user_info_not_complete_please_pop_info));
-        finish();
-        getActivity().overridePendingTransition(android.R.anim.fade_in,
-                android.R.anim.fade_out);
     }
 
 }
