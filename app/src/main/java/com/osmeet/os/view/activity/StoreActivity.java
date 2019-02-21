@@ -1,7 +1,6 @@
 package com.osmeet.os.view.activity;
 
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.widget.FrameLayout;
 
@@ -69,21 +68,7 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
         fl_panel.addView(getPanelView(0));
         storeInfoFragment = new StoreInfoFragment();
         mFragmentList.add(storeInfoFragment);
-        mAdapter = new DFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList) {
-            @Override
-            public void setFragmentList(List<InitFragment> fragmentList) {
-                if (this.mFragmentList != null && this.mFragmentList.size() > 1) {
-                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    for (int i = 1; i < this.mFragmentList.size(); i++) {
-                        transaction.remove(this.mFragmentList.get(i));
-                    }
-                    transaction.commit();
-                    fragmentManager.executePendingTransactions();
-                }
-                this.mFragmentList = fragmentList;
-                notifyDataSetChanged();
-            }
-        };
+        mAdapter = new DFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(mAdapter);
 //        try {
@@ -113,23 +98,33 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
 //        storeFrontPanel.setStore(store);
     }
 
+    private List<UserInfoFragment> userInfoFragmentList = new ArrayList<>();
+
     @Override
     public void showMatchUnitList(@NonNull List<MatchUnit> matchUnitList) {
 //        mPresenter.toast("GGGGGGGG");
+
         mFragmentList.clear();
         mFragmentList.add(storeInfoFragment);
-
         List<User> userList = new ArrayList<>();
-        for (MatchUnit matchUnit : matchUnitList) {
-            UserInfoFragment userInfoFragment = new UserInfoFragment();
+        for (int i = 0; i < matchUnitList.size(); i++) {
+            MatchUnit matchUnit = matchUnitList.get(i);
             String userId = matchUnit.getUser().getId();
             String unitId = matchUnit.getId();
-            userInfoFragment.setInit(userId, unitId, "");
-            mFragmentList.add(userInfoFragment);
+            if (i < userInfoFragmentList.size()) {
+                UserInfoFragment userInfoFragment = userInfoFragmentList.get(i);
+                userInfoFragment.changeData(userId, unitId, "");
+            } else {
+                UserInfoFragment userInfoFragment = UserInfoFragment.newInstance(userId, unitId, "");
+                userInfoFragmentList.add(userInfoFragment);
+            }
 
             User user = matchUnit.getUser();
             userList.add(user);
         }
+//        mPresenter.toast("HHH" + matchUnitList.size());
+
+        mFragmentList.addAll(userInfoFragmentList.subList(0, matchUnitList.size()));
         mAdapter.setFragmentList(mFragmentList);
 
         storeFrontPanel.setUserList(userList);
@@ -142,13 +137,18 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
 
         List<User> userList = new ArrayList<>();
 
-        for (MatchInvite matchInvite : matchInviteList) {
-            UserInfoFragment userInfoFragment = new UserInfoFragment();
+        for (int i=0;i<matchInviteList.size();i++) {
+            MatchInvite matchInvite=matchInviteList.get(i);
             String userId = matchInvite.getMatchUnit().getUser().getId();
             String unitId = matchInvite.getMatchUnit().getId();
             String inviteId = matchInvite.getId();
-            userInfoFragment.setInit(userId, unitId, inviteId);
-            mFragmentList.add(userInfoFragment);
+            if (i < userInfoFragmentList.size()) {
+                UserInfoFragment userInfoFragment = userInfoFragmentList.get(i);
+                userInfoFragment.changeData(userId, unitId, "");
+            } else {
+                UserInfoFragment userInfoFragment = UserInfoFragment.newInstance(userId, unitId, inviteId);
+                userInfoFragmentList.add(userInfoFragment);
+            }
 
             User user = matchInvite.getMatchUnit().getUser();
             userList.add(user);

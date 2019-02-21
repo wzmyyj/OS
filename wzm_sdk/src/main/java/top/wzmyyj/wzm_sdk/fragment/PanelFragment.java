@@ -23,7 +23,8 @@ import top.wzmyyj.wzm_sdk.panel.PanelManager;
 
 public abstract class PanelFragment extends InitFragment {
 
-    private PanelManager mPanelManager = new PanelManager();
+    private PanelManager mPanelManager;
+
 
     /**
      * @param panels .
@@ -83,6 +84,7 @@ public abstract class PanelFragment extends InitFragment {
     @Override
     protected void initSome(Bundle savedInstanceState) {
         super.initSome(savedInstanceState);
+        mPanelManager = new PanelManager();
         mPanelManager.canAddOnce();
         initPanels();
         mPanelManager.alreadyAddOnce();
@@ -119,25 +121,37 @@ public abstract class PanelFragment extends InitFragment {
     @Override
     public void onPause() {
         super.onPause();
-        mPanelManager.onPause();
+        if(mPanelManager!=null){
+            mPanelManager.onPause();
+        }
+
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        mPanelManager.onStop();
+        if(mPanelManager!=null){
+            mPanelManager.onStop();
+        }
+
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mPanelManager.onDestroyView();
+        if(mPanelManager!=null){
+            mPanelManager.onDestroyView();
+        }
+
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mPanelManager.onDestroy();
+        if(mPanelManager!=null){
+            mPanelManager.onDestroy();
+        }
+
     }
 
     @Override

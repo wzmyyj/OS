@@ -119,8 +119,14 @@ public class StoreFrontPanel extends BasePanel<StoreContract.IPresenter> {
                 if (p == 0) {
                     mPresenter.inviteFriends();
                 } else {
-                    UserInfoFragment userInfoFragment = storeActivity.getFragment(p);
-                    userInfoFragment.getPresenter().matchInvite();
+                    try {
+                        UserInfoFragment userInfoFragment = storeActivity.getFragment(p);
+//                        mPresenter.toast(userInfoFragment.toString());
+                        userInfoFragment.getPresenter().matchInvite();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
             }
         });

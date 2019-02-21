@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.view.ViewGroup;
 
 import java.util.List;
@@ -32,14 +31,14 @@ public class InitFragmentPagerAdapter extends FragmentPagerAdapter {
      * @param fragmentList fragment list
      */
     public void setFragmentList(List<InitFragment> fragmentList) {
-        if (this.mFragmentList != null && this.mFragmentList.size() > 0) {
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            for (Fragment f : this.mFragmentList) {
-                transaction.remove(f);
-            }
-            transaction.commit();
-            fragmentManager.executePendingTransactions();
-        }
+//        if (this.mFragmentList != null && this.mFragmentList.size() > 0) {
+//            FragmentTransaction transaction = fragmentManager.beginTransaction();
+//            for (Fragment f : this.mFragmentList) {
+//                transaction.remove(f);
+//            }
+//            transaction.commit();
+//            fragmentManager.executePendingTransactions();
+//        }
         this.mFragmentList = fragmentList;
         notifyDataSetChanged();
     }

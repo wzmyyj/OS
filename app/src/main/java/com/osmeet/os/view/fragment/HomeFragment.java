@@ -112,8 +112,7 @@ public class HomeFragment extends BaseFragment<HomeContract.IPresenter> implemen
 
         mFragmentList.clear();
         for (int i = 0; i < size; i++) {
-            HomeStoreFragment homeStoreFragment = new HomeStoreFragment();
-            homeStoreFragment.setCategoryId(categoryList.get(i).getId());
+            HomeStoreFragment homeStoreFragment = HomeStoreFragment.newInstance(categoryList.get(i).getId());
             homeStoreFragment.setTitle(categoryList.get(i).getName());
             mFragmentList.add(homeStoreFragment);
         }

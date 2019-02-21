@@ -1,5 +1,6 @@
 package com.osmeet.os.view.fragment;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.widget.FrameLayout;
 
@@ -24,12 +25,14 @@ public class HomeStoreFragment extends BaseFragment<HomeStoreContract.IPresenter
         mPresenter = new HomeStorePresenter(activity, this);
     }
 
-    private String categoryId;
 
-    public void setCategoryId(@NonNull String categoryId) {// 必须。
-        this.categoryId = categoryId;
+    public static HomeStoreFragment newInstance(@NonNull String categoryId) {
+        HomeStoreFragment homeStoreFragment = new HomeStoreFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("categoryId", categoryId);
+        homeStoreFragment.setArguments(bundle);
+        return homeStoreFragment;
     }
-
 
     @Override
     protected int getLayoutId() {
@@ -56,8 +59,13 @@ public class HomeStoreFragment extends BaseFragment<HomeStoreContract.IPresenter
     @Override
     protected void initData() {
         super.initData();
-        mPresenter.setCategoryId(categoryId);
-        mPresenter.loadStoreList(0);
+        if (getArguments() != null) {
+            String categoryId = getArguments().getString("categoryId");
+            if (categoryId == null) return;
+            mPresenter.setCategoryId(categoryId);
+            mPresenter.loadStoreList(0);
+        }
+
     }
 
     @Override
