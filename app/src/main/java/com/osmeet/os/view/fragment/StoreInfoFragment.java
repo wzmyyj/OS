@@ -114,7 +114,6 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
         super.initData();
         mPresenter.loadGoodsList();
         mPresenter.loadStoreInfo();
-        mPresenter.intoMatchStore();
     }
 
 

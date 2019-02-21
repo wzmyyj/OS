@@ -51,6 +51,7 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
                 }
                 if (box.getData() != null) {
                     mView.showStoreInfo(box.getData());
+                    mView.showMatchStore(box.getData().getMatchState() == 1);
                     if (box.getData().getMatchState() == 0) {
                         intoMatchStore();
                     }

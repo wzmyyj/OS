@@ -137,8 +137,8 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
 
         List<User> userList = new ArrayList<>();
 
-        for (int i=0;i<matchInviteList.size();i++) {
-            MatchInvite matchInvite=matchInviteList.get(i);
+        for (int i = 0; i < matchInviteList.size(); i++) {
+            MatchInvite matchInvite = matchInviteList.get(i);
             String userId = matchInvite.getMatchUnit().getUser().getId();
             String unitId = matchInvite.getMatchUnit().getId();
             String inviteId = matchInvite.getId();
@@ -153,7 +153,9 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
             User user = matchInvite.getMatchUnit().getUser();
             userList.add(user);
         }
-        mAdapter.notifyDataSetChanged();
+
+        mFragmentList.addAll(userInfoFragmentList.subList(0, matchInviteList.size()));
+        mAdapter.setFragmentList(mFragmentList);
 
         storeFrontPanel.setUserList(userList);
     }

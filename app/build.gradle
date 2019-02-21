@@ -15,14 +15,14 @@ android {
 
         manifestPlaceholders = [
                 // test
-//                GETUI_APP_ID    : "QDHthkn2ao6ZYpIDvdeStA",
-//                GETUI_APP_KEY   : "yb6urXd5048maViJ6NZfE",
-//                GETUI_APP_SECRET: "7VlbB1jFT3ApUdLC6HONX9"
+                GETUI_APP_ID    : "QDHthkn2ao6ZYpIDvdeStA",
+                GETUI_APP_KEY   : "yb6urXd5048maViJ6NZfE",
+                GETUI_APP_SECRET: "7VlbB1jFT3ApUdLC6HONX9"
 
                 // main
-                GETUI_APP_ID    : "qEj6bDbFvR8cLEUlekfC13",
-                GETUI_APP_KEY   : "k0uEqeRNgf5AtYsHoN24h1",
-                GETUI_APP_SECRET: "caD12oHgKvABV39p1dCsTA"
+//                GETUI_APP_ID    : "qEj6bDbFvR8cLEUlekfC13",
+//                GETUI_APP_KEY   : "k0uEqeRNgf5AtYsHoN24h1",
+//                GETUI_APP_SECRET: "caD12oHgKvABV39p1dCsTA"
         ]
         ndk {
             //选择要添加的对应cpu类型的.so库。
