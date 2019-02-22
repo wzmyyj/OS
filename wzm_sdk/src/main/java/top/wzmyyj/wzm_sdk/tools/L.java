@@ -137,7 +137,7 @@ public class L {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return "Invalid Json, Please Check: " + str;
+        return "Invalid Json: " + str;
     }
 
 }
