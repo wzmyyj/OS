@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.R;
 import com.osmeet.os.base.presenter.BasePresenter;
@@ -21,7 +22,7 @@ public class PasswordPresenter extends BasePresenter<PasswordContract.IView> imp
 
     public PasswordPresenter(Activity activity, PasswordContract.IView iv) {
         super(activity, iv);
-        userModel = new UserModel();
+        userModel = new UserModel().bind((AppCompatActivity) activity);
     }
 
     @Override

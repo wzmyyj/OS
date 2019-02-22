@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.Store;
@@ -25,8 +26,8 @@ public class MinePresenter extends BasePresenter<MineContract.IView> implements 
 
     public MinePresenter(Activity activity, MineContract.IView iv) {
         super(activity, iv);
-        userModel = new UserModel();
-        storeModel = new StoreModel();
+        userModel = new UserModel().bind((AppCompatActivity) activity);
+        storeModel = new StoreModel().bind((AppCompatActivity) activity);
     }
 
     @Override

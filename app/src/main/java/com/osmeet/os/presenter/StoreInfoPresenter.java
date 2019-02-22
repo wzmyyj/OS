@@ -2,9 +2,11 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.osmeet.os.R;
+import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.MatchUnit;
 import com.osmeet.os.app.bean.Report;
 import com.osmeet.os.app.bean.Store;
@@ -15,6 +17,7 @@ import com.osmeet.os.model.net.MatchModel;
 import com.osmeet.os.model.net.ReportModel;
 import com.osmeet.os.model.net.StoreModel;
 import com.osmeet.os.model.net.utils.box.Box;
+import com.osmeet.os.model.net.utils.box.ListContent;
 
 import top.wzmyyj.wzm_sdk.tools.Sure;
 
@@ -31,9 +34,9 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
 
     public StoreInfoPresenter(Activity activity, StoreInfoContract.IView iv) {
         super(activity, iv);
-        storeModel = new StoreModel();
-        goodsModel = new GoodsModel();
-        matchModel = new MatchModel();
+        storeModel = new StoreModel().bind((AppCompatActivity) activity);
+        goodsModel = new GoodsModel().bind((AppCompatActivity) activity);
+        matchModel = new MatchModel().bind((AppCompatActivity) activity);
         storeId = activity.getIntent().getStringExtra("storeId");
         Sure.sure(!TextUtils.isEmpty(storeId), "Store Id is a empty value!");
     }
@@ -61,18 +64,18 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
 
     @Override
     public void loadGoodsList() {
-//        goodsModel.goods_byStoreId(new PObserver<Box<ListContent<Goods>>>() {
-//            @Override
-//            public void onNext(Box<ListContent<Goods>> box) {
-//                if (box.getCode() != 0) {
-//                    toast(box.getMessage());
-//                    return;
-//                }
-//                if (box.getData() != null) {
-//                    mView.showGoodsList(box.getData().getContent());
-//                }
-//            }
-//        }, storeId, 0, 100);
+        goodsModel.goods_byStoreId(new PObserver<Box<ListContent<Goods>>>() {
+            @Override
+            public void onNext(Box<ListContent<Goods>> box) {
+                if (box.getCode() != 0) {
+                    toast(box.getMessage());
+                    return;
+                }
+                if (box.getData() != null) {
+                    mView.showGoodsList(box.getData().getContent());
+                }
+            }
+        }, storeId, 0, 100);
     }
 
     @Override

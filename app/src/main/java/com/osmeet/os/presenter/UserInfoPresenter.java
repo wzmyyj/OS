@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.osmeet.os.R;
@@ -36,8 +37,8 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
 
     public UserInfoPresenter(Activity activity, UserInfoContract.IView iv) {
         super(activity, iv);
-        userModel = new UserModel();
-        matchModel = new MatchModel();
+        userModel = new UserModel().bind((AppCompatActivity) activity);
+        matchModel = new MatchModel().bind((AppCompatActivity) activity);
     }
 
     private String userId;

@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.osmeet.os.R;
@@ -29,8 +30,8 @@ public class UserInfo2Presenter extends BasePresenter<UserInfo2Contract.IView> i
 
     public UserInfo2Presenter(Activity activity, UserInfo2Contract.IView iv) {
         super(activity, iv);
-        userModel = new UserModel();
-        friendsModel = new FriendModel();
+        userModel = new UserModel().bind((AppCompatActivity) activity);
+        friendsModel = new FriendModel().bind((AppCompatActivity) activity);
         userId = getActivity().getIntent().getStringExtra("userId");
         Sure.sure(!TextUtils.isEmpty(userId), "User Id is a empty value!");
     }

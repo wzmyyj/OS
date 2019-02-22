@@ -3,6 +3,7 @@ package com.osmeet.os.presenter;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
@@ -25,7 +26,7 @@ public class VisitCardPresenter extends BasePresenter<VisitCardContract.IView> i
 
     public VisitCardPresenter(Activity activity, VisitCardContract.IView iv) {
         super(activity, iv);
-        versionModel = new VersionModel();
+        versionModel = new VersionModel().bind((AppCompatActivity) activity);
     }
 
 

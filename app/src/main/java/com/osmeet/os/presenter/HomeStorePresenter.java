@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.osmeet.os.app.bean.Store;
@@ -25,7 +26,7 @@ public class HomeStorePresenter extends BasePresenter<HomeStoreContract.IView> i
 
     public HomeStorePresenter(Activity activity, HomeStoreContract.IView iv) {
         super(activity, iv);
-        storeModel = new StoreModel();
+        storeModel = new StoreModel().bind((AppCompatActivity) activity);
     }
 
     private String categoryId;

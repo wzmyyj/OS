@@ -126,6 +126,9 @@ public class MatchActivity extends BaseActivity<MatchContract.IPresenter> implem
 
     @Subscribe
     public void onEvent(TeamChangeEvent event) {
+
+        mPresenter.log("GGVVV");
+
         if (mPresenter.getMatchId().equals(event.getTeamId())) {
             mPresenter.loadMatchTeam();
         }

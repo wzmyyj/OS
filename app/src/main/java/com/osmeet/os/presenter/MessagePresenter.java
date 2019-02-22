@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchTeam;
@@ -22,8 +23,8 @@ public class MessagePresenter extends BasePresenter<MessageContract.IView> imple
 
     public MessagePresenter(Activity activity, MessageContract.IView iv) {
         super(activity, iv);
-        matchModel = new MatchModel();
-        friendModel = new FriendModel();
+        matchModel = new MatchModel().bind((AppCompatActivity) activity);
+        friendModel = new FriendModel().bind((AppCompatActivity) activity);
     }
 
     @Override

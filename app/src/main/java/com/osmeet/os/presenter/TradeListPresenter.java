@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.Trade;
@@ -21,7 +22,7 @@ public class TradeListPresenter extends BasePresenter<TradeListContract.IView> i
 
     public TradeListPresenter(Activity activity, TradeListContract.IView iv) {
         super(activity, iv);
-        tradeModel = new TradeModel();
+        tradeModel = new TradeModel().bind((AppCompatActivity) activity);
     }
 
     @Override

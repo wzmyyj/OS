@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.presenter.BasePresenter;
@@ -22,7 +23,7 @@ public class BlockListPresenter extends BasePresenter<BlockListContract.IView> i
 
     public BlockListPresenter(Activity activity, BlockListContract.IView iv) {
         super(activity, iv);
-        attentionModel = new AttentionModel();
+        attentionModel = new AttentionModel().bind((AppCompatActivity) activity);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.bean.User;
@@ -24,8 +25,8 @@ public class SearchPresenter extends BasePresenter<SearchContract.IView> impleme
 
     public SearchPresenter(Activity activity, SearchContract.IView iv) {
         super(activity, iv);
-        userModel = new UserModel();
-        storeModel = new StoreModel();
+        userModel = new UserModel().bind((AppCompatActivity) activity);
+        storeModel = new StoreModel().bind((AppCompatActivity) activity);
     }
 
     @Override

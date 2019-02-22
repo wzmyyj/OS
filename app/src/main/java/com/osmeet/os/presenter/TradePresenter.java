@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.osmeet.os.app.application.App;
@@ -24,8 +25,8 @@ public class TradePresenter extends BasePresenter<TradeContract.IView> implement
 
     public TradePresenter(Activity activity, TradeContract.IView iv) {
         super(activity, iv);
-        tradeModel = new TradeModel();
-        aliPayModel=new AliPayModel();
+        tradeModel = new TradeModel().bind((AppCompatActivity) activity);
+        aliPayModel=new AliPayModel().bind((AppCompatActivity) activity);
     }
 
     private Trade trade;

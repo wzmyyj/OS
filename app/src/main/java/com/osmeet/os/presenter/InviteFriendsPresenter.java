@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.osmeet.os.app.bean.MatchInvite2;
@@ -26,8 +27,8 @@ public class InviteFriendsPresenter extends BasePresenter<InviteFriendsContract.
 
     public InviteFriendsPresenter(Activity activity, InviteFriendsContract.IView iv) {
         super(activity, iv);
-        friendModel = new FriendModel();
-        matchModel = new MatchModel();
+        friendModel = new FriendModel().bind((AppCompatActivity) activity);
+        matchModel = new MatchModel().bind((AppCompatActivity) activity);
     }
 
     @Override

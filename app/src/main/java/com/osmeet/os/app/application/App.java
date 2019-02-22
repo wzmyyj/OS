@@ -44,7 +44,7 @@ public class App extends BaseApplication {
         L.init("OSMeet", true);
         ReOk.init(Urls.OS_BASE);
 
-        languageManager=LanguageManager.getInstance();
+        languageManager = LanguageManager.getInstance();
         languageManager.init(this);
         userManager = UserManager.getInstance();
         userManager.init(this);
@@ -146,4 +146,7 @@ public class App extends BaseApplication {
     public LanguageManager getLanguageManager() {
         return languageManager;
     }
+
+
+
 }

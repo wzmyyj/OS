@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.osmeet.os.app.application.App;
@@ -28,8 +29,8 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
 
     public StorePresenter(Activity activity, StoreContract.IView iv) {
         super(activity, iv);
-        storeModel = new StoreModel();
-        matchModel = new MatchModel();
+        storeModel = new StoreModel().bind((AppCompatActivity) activity);
+        matchModel = new MatchModel().bind((AppCompatActivity) activity);
     }
 
 

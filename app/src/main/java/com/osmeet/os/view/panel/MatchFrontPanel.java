@@ -20,6 +20,7 @@ import com.osmeet.os.app.tools.SDT;
 import com.osmeet.os.base.panel.BasePanel;
 import com.osmeet.os.contract.MatchContract;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -89,8 +90,9 @@ public class MatchFrontPanel extends BasePanel<MatchContract.IPresenter> {
             DPoint dPoint = new DPoint();
             dPoint.setLatitude(store.getLat());
             dPoint.setLongitude(store.getLng());
-            float distance = CoordinateConverter.calculateLineDistance(App.getInstance().getMyDPoint(), dPoint);
-            WidgetUtil.setTextNonNull(tv_store_distance, distance / 1000 + "km");
+            float distance = CoordinateConverter.calculateLineDistance(App.getInstance().getMyDPoint(), dPoint) / 1000;
+            DecimalFormat decimalFormat = new DecimalFormat("0.00");
+            WidgetUtil.setTextNonNull(tv_store_distance, decimalFormat.format(distance) + "km");
         }
 
         letAIsMe(matchTeam);

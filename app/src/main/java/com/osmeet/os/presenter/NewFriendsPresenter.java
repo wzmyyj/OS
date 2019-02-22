@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.app.bean.Friend;
 import com.osmeet.os.app.event.FriendListChangeEvent;
@@ -23,7 +24,7 @@ public class NewFriendsPresenter extends BasePresenter<NewFriendListContract.IVi
 
     public NewFriendsPresenter(Activity activity, NewFriendListContract.IView iv) {
         super(activity, iv);
-        friendModel = new FriendModel();
+        friendModel = new FriendModel().bind((AppCompatActivity) activity);
     }
 
     @Override

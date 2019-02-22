@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.app.bean.MatchUnit;
 import com.osmeet.os.app.bean.Store;
@@ -23,7 +24,7 @@ public class ChatInvitePresenter extends BasePresenter<ChatInviteContract.IView>
 
     public ChatInvitePresenter(Activity activity, ChatInviteContract.IView iv) {
         super(activity, iv);
-        matchModel = new MatchModel();
+        matchModel = new MatchModel().bind((AppCompatActivity) activity);
     }
 
     @Override

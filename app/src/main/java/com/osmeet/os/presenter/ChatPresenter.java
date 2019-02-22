@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.MatchInvite2;
@@ -29,8 +30,11 @@ import top.wzmyyj.wzm_sdk.tools.Sure;
 
 public class ChatPresenter extends BasePresenter<ChatContract.IView> implements ChatContract.IPresenter {
 
+    private MatchModel matchModel;
+
     public ChatPresenter(Activity activity, ChatContract.IView iv) {
         super(activity, iv);
+        matchModel = new MatchModel().bind((AppCompatActivity) activity);
         Sure.sure(activity.getIntent().getData() != null, "Intent Data is null!");
         if (getActivity().getIntent().getData() != null) {
             this.title = getActivity().getIntent().getData().getQueryParameter("title");
@@ -44,7 +48,7 @@ public class ChatPresenter extends BasePresenter<ChatContract.IView> implements 
     public void inviteFriends(@NonNull String storeId) {
         List<String> userIdList = new ArrayList<>();
         userIdList.add(userId);
-        new MatchModel().matchInvite_friends(new PObserver<Box<List<MatchInvite2>>>() {
+        matchModel.matchInvite_friends(new PObserver<Box<List<MatchInvite2>>>() {
             @Override
             public void onNext(Box<List<MatchInvite2>> box) {
                 if (box.getCode() != 0) {
@@ -60,7 +64,7 @@ public class ChatPresenter extends BasePresenter<ChatContract.IView> implements 
 
     @Override
     public void matchInvite_friends_accept(@NonNull String matchInviteId) {
-        new MatchModel().matchInvite_friends_accept(new PObserver<Box<MatchTeam>>() {
+        matchModel.matchInvite_friends_accept(new PObserver<Box<MatchTeam>>() {
             @Override
             public void onNext(Box<MatchTeam> box) {
                 if (box.getCode() != 0) {

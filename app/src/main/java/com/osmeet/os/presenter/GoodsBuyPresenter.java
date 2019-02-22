@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.Trade;
@@ -30,9 +31,9 @@ public class GoodsBuyPresenter extends BasePresenter<GoodsBuyContract.IView> imp
 
     public GoodsBuyPresenter(Activity activity, GoodsBuyContract.IView iv) {
         super(activity, iv);
-        tradeModel = new TradeModel();
-        goodsModel = new GoodsModel();
-        aliPayModel = new AliPayModel();
+        tradeModel = new TradeModel().bind((AppCompatActivity) activity);
+        goodsModel = new GoodsModel().bind((AppCompatActivity) activity);
+        aliPayModel = new AliPayModel().bind((AppCompatActivity) activity);
         simpleGoods = (Goods.SimpleGoods) getActivity().getIntent().getSerializableExtra("goods");
         Sure.sure(simpleGoods != null, "simpleGoods is null");
     }

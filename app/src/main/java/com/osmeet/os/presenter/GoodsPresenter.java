@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.osmeet.os.app.bean.Goods;
@@ -22,7 +23,7 @@ public class GoodsPresenter extends BasePresenter<GoodsContract.IView> implement
 
     public GoodsPresenter(Activity activity, GoodsContract.IView iv) {
         super(activity, iv);
-        goodsModel = new GoodsModel();
+        goodsModel = new GoodsModel().bind((AppCompatActivity) activity);
         goodsId = getActivity().getIntent().getStringExtra("goodsId");
         Sure.sure(!TextUtils.isEmpty(goodsId), "Goods Id is a empty value!");
     }

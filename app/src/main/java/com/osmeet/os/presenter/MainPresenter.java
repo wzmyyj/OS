@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.User;
@@ -19,7 +20,7 @@ public class MainPresenter extends BasePresenter<MainContract.IView> implements 
 
     public MainPresenter(Activity activity, MainContract.IView iv) {
         super(activity, iv);
-        userModel = new UserModel();
+        userModel = new UserModel().bind((AppCompatActivity) activity);
     }
 
     @Override

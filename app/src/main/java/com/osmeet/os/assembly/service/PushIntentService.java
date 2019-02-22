@@ -1,6 +1,8 @@
 package com.osmeet.os.assembly.service;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 
 import com.google.gson.Gson;
 import com.igexin.sdk.GTIntentService;
@@ -48,31 +50,48 @@ public class PushIntentService extends GTIntentService {
 
             Gson gson = new Gson();
             GeTui geTui = gson.fromJson(msgContent, GeTui.class);
-            String type = geTui.getType();
-            if (GeTui.acceptInvite.equals(type)) {
-                EventBus.getDefault().post(new InviteListChangeEvent(true));
-                EventBus.getDefault().post(new TeamListChangeEvent(true));
-            } else if (GeTui.cancelInvite.equals(type)) {
-                EventBus.getDefault().post(new InviteListChangeEvent(true));
-            } else if (GeTui.beforeMeet.equals(type)) {
-                EventBus.getDefault().post(new TeamChangeEvent(geTui.getTeamId()));
-            } else if (GeTui.meetConfirm.equals(type)) {
-                EventBus.getDefault().post(new TeamChangeEvent(geTui.getTeamId()));
-            } else if (GeTui.meetFinish.equals(type)) {
-                EventBus.getDefault().post(new TeamChangeEvent(geTui.getTeamId()));
-                EventBus.getDefault().post(new TeamListChangeEvent(true));
-            } else if (GeTui.timeConfirm.equals(type)) {
-                EventBus.getDefault().post(new TeamChangeEvent(geTui.getTeamId()));
-            } else if (GeTui.parentFinish.equals(type)) {
-                EventBus.getDefault().post(new TeamChangeEvent(geTui.getTeamId()));
-            } else if (GeTui.unknowInvite.equals(type)) {
-                L.d("unknowInvite");
-            }
+
+            Message m = Message.obtain();
+            m.obj = geTui;
+            eventHandler.sendMessage(m);
+
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 //        T.s(context, msg.getMessageId());
     }
+
+
+    EventHandler eventHandler = new EventHandler();
+
+    private static class EventHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            GeTui geTui = (GeTui) msg.obj;
+            String type = geTui.getType();
+            String teamId = geTui.getTeamId();
+            if (GeTui.acceptInvite.equals(type)) {
+                EventBus.getDefault().post(new InviteListChangeEvent(true));
+                EventBus.getDefault().post(new TeamListChangeEvent(true));
+            } else if (GeTui.newInvite.equals(type)) {
+                EventBus.getDefault().post(new InviteListChangeEvent(true));
+            } else if (GeTui.cancelInvite.equals(type)) {
+                EventBus.getDefault().post(new InviteListChangeEvent(true));
+            } else if (GeTui.beforeMeet.equals(type)
+                    || GeTui.meetConfirm.equals(type)
+                    || GeTui.meetFinish.equals(type)
+                    || GeTui.timeConfirm.equals(type)
+                    || GeTui.parentFinish.equals(type)) {
+                EventBus.getDefault().post(new TeamChangeEvent(teamId));
+                EventBus.getDefault().post(new TeamListChangeEvent(true));
+            } else if (GeTui.unknowInvite.equals(type)) {
+                L.d("unknowInvite");
+            }
+        }
+    }
+
 
     @Override
     public void onReceiveClientId(Context context, String clientid) {

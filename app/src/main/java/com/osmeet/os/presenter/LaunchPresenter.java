@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.RcToken;
@@ -17,8 +18,10 @@ import com.osmeet.os.model.net.utils.box.Box;
 
 public class LaunchPresenter extends BasePresenter<LaunchContract.IView> implements LaunchContract.IPresenter {
 
+    private UserModel userModel;
     public LaunchPresenter(Activity activity, LaunchContract.IView iv) {
         super(activity, iv);
+        userModel=new UserModel().bind((AppCompatActivity) activity);
     }
 
     @Override
@@ -42,7 +45,7 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
             App.getInstance().connectRc();
             return;
         }
-        new UserModel().user_getRyToken(new PObserver<Box<RcToken>>() {
+       userModel.user_getRyToken(new PObserver<Box<RcToken>>() {
             @Override
             public void onNext(Box<RcToken> box) {
                 if (box.getCode() != 0) {
@@ -58,7 +61,7 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
     }
 
     private void loadMyInfo() {
-        new UserModel().user(new PObserver<Box<User>>() {
+       userModel.user(new PObserver<Box<User>>() {
             @Override
             public void onNext(Box<User> box) {
                 if (box.getCode() != 0) {

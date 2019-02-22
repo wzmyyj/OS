@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.app.bean.Code;
 import com.osmeet.os.base.presenter.BasePresenter;
@@ -19,7 +20,7 @@ public class ScanPresenter extends BasePresenter<ScanContract.IView> implements 
 
     public ScanPresenter(Activity activity, ScanContract.IView iv) {
         super(activity, iv);
-        versionModel = new VersionModel();
+        versionModel = new VersionModel().bind((AppCompatActivity) activity);
 
     }
 

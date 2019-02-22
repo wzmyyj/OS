@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.osmeet.os.app.bean.MatchTeam;
@@ -26,7 +27,7 @@ public class MatchPresenter extends BasePresenter<MatchContract.IView> implement
 
     public MatchPresenter(Activity activity, MatchContract.IView iv) {
         super(activity, iv);
-        matchModel = new MatchModel();
+        matchModel = new MatchModel().bind((AppCompatActivity) activity);
         matchId = activity.getIntent().getStringExtra("matchId");
         Sure.sure(!TextUtils.isEmpty(matchId),"Match Id is a empty value!");
     }

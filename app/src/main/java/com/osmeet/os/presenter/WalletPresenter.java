@@ -2,6 +2,7 @@ package com.osmeet.os.presenter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
@@ -25,7 +26,7 @@ public class WalletPresenter extends BasePresenter<WalletContract.IView> impleme
 
     public WalletPresenter(Activity activity, WalletContract.IView iv) {
         super(activity, iv);
-        balanceModel = new BalanceModel();
+        balanceModel = new BalanceModel().bind((AppCompatActivity) activity);
         storeId = activity.getIntent().getStringExtra("storeId");
         if (storeId != null) {
             mode = 1;

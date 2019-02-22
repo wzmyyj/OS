@@ -24,6 +24,7 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.List;
 
 import butterknife.BindView;
+import top.wzmyyj.wzm_sdk.tools.T;
 
 /**
  * Created by yyj on 2018/12/19. email: 2209011667@qq.com
@@ -128,6 +129,7 @@ public class MessageFragment extends BaseFragment<MessageContract.IPresenter> im
     @Subscribe
     public void onEvent(InviteListChangeEvent event) {
         if (event.isChange()) {
+            T.s("HHHHH");
             mPresenter.loadMatchInviteList();
         }
     }

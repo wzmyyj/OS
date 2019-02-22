@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.base.presenter.BasePresenter;
@@ -19,7 +20,7 @@ public class MatchListPresenter extends BasePresenter<MatchListContract.IView> i
 
     public MatchListPresenter(Activity activity, MatchListContract.IView iv) {
         super(activity, iv);
-        matchModel = new MatchModel();
+        matchModel = new MatchModel().bind((AppCompatActivity) activity);
     }
 
     @Override

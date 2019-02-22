@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
@@ -23,7 +24,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
 
     public LoginPresenter(Activity activity, LoginContract.IView iv) {
         super(activity, iv);
-        userModel = new UserModel();
+        userModel = new UserModel().bind((AppCompatActivity) activity);
     }
 
     @Override
