@@ -10,11 +10,15 @@ import com.kongzue.dialog.v2.BottomMenu;
 import com.kongzue.dialog.v2.SelectDialog;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.MatchTeam;
+import com.osmeet.os.app.event.TeamChangeEvent;
 import com.osmeet.os.base.activity.BaseActivity;
 import com.osmeet.os.contract.MatchContract;
 import com.osmeet.os.presenter.MatchPresenter;
 import com.osmeet.os.view.panel.MatchFrontPanel;
 import com.osmeet.os.view.panel.MatchMapPanel;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,6 +112,30 @@ public class MatchActivity extends BaseActivity<MatchContract.IPresenter> implem
         mMatchTeam = matchTeam;
         matchFrontPanel.setMatchTeam(matchTeam);
         matchMapPanel.setMatchTeam(matchTeam);
+    }
+
+
+    @Override
+    protected void initEvent() {
+        super.initEvent();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+
+    @Subscribe
+    public void onEvent(TeamChangeEvent event) {
+        if (mPresenter.getMatchId().equals(event.getTeamId())) {
+            mPresenter.loadMatchTeam();
+        }
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }
 

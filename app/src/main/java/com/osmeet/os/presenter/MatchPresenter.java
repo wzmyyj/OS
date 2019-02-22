@@ -1,6 +1,7 @@
 package com.osmeet.os.presenter;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.osmeet.os.app.bean.MatchTeam;
@@ -127,5 +128,11 @@ public class MatchPresenter extends BasePresenter<MatchContract.IView> implement
                 }
             }
         }, matchId);
+    }
+
+    @NonNull
+    @Override
+    public String getMatchId() {
+        return this.matchId;
     }
 }

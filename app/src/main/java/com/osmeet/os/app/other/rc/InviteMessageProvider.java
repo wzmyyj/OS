@@ -62,7 +62,7 @@ public class InviteMessageProvider extends IContainerItemProvider.MessageProvide
     @Deprecated
     @Override
     public Spannable getContentSummary(InviteMessage inviteMessage) {
-        return new SpannableString("OS invite message.");
+        return new SpannableString("[OS Invite]");
     }
 
     @Override

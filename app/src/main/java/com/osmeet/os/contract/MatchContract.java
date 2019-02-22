@@ -32,6 +32,9 @@ public interface MatchContract {
 
         void quitMatch();
 
+        @NonNull
+        String getMatchId();
+
     }
 
 }

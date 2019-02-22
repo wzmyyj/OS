@@ -68,16 +68,19 @@ public class BasePresenter<V extends IBaseView> implements IBasePresenter {
     protected abstract class PObserver<B> implements Observer<B> {
         @Override
         public void onSubscribe(Disposable d) {
+            L.d("onSubscribe");
         }
 
         @Override
         public void onError(Throwable e) {
             onFinish();
+            L.e("onError" + e.getMessage());
             mView.showToast("Error:" + e.getMessage());
         }
 
         @Override
         public void onComplete() {
+            L.d("onComplete");
             onFinish();
         }
 
