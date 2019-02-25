@@ -14,8 +14,8 @@ import java.util.List;
 
 public class ApkUtil {
     /**
-     * @param context
-     * @param packageName
+     * @param context .
+     * @param packageName .
      * @return apk is exist
      */
     @SuppressWarnings("deprecation")

@@ -25,7 +25,6 @@ public abstract class InitPanel extends Panel {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRootView();
         initSome(savedInstanceState);
         initView();
         initData();
@@ -44,6 +43,7 @@ public abstract class InitPanel extends Panel {
      * @param savedInstanceState .
      */
     protected void initSome(Bundle savedInstanceState) {
+        setRootView();
     }
 
     /**

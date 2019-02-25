@@ -41,23 +41,30 @@
                 android:textSize="13sp" />
         </FrameLayout>
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_bottom"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:tabBackground="@color/colorClarity"
-            app:tabGravity="fill"
-            app:tabIndicatorHeight="0dp"
-            app:tabMaxWidth="100dp"
-            app:tabMinWidth="20dp"
-            app:tabMode="scrollable"
-            app:tabPadding="-1dp"
-            app:tabPaddingBottom="-1dp"
-            app:tabPaddingEnd="-1dp"
-            app:tabPaddingStart="-1dp"
-            app:tabPaddingTop="-1dp"
-            app:tabSelectedTextColor="@color/colorWhite"
-            app:tabTextColor="@color/colorGray_b" />
+            android:layout_height="match_parent">
+
+            <com.osmeet.os.view.widget.FlexibleTabLayout
+                android:id="@+id/tab_selete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                app:tabBackground="@color/colorClarity"
+                app:tabGravity="fill"
+                app:tabIndicatorHeight="0dp"
+                app:tabMaxWidth="100dp"
+                app:tabMinWidth="20dp"
+                app:tabMode="scrollable"
+                app:tabPadding="-1dp"
+                app:tabPaddingBottom="-1dp"
+                app:tabPaddingEnd="-1dp"
+                app:tabPaddingStart="-1dp"
+                app:tabPaddingTop="-1dp"
+                app:tabSelectedTextColor="@color/colorWhite"
+                app:tabTextColor="@color/colorGray_b" />
+
+        </FrameLayout>
 
         <!--<android.support.v7.widget.RecyclerView-->
         <!--android:id="@+id/rv_bottom"-->

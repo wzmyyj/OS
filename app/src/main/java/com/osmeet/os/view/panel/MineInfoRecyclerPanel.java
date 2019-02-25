@@ -17,9 +17,9 @@ import com.osmeet.os.app.other.IvdVhHelper;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.MineContract;
-import com.osmeet.os.view.adapter.ivd.PhotoStoryIVD;
+import com.osmeet.os.view.adapter.ivd.StoryIVD;
 import com.osmeet.os.view.adapter.ivd.UserInfoIVD;
-import com.osmeet.os.view.panel.bean.PhotoStory;
+import com.osmeet.os.view.panel.bean.Story;
 import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
 import com.previewlibrary.enitity.ThumbViewInfo;
 
@@ -35,15 +35,15 @@ import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
  * Created by yyj on 2018/12/11. email: 2209011667@qq.com
  */
 
-public class MineInfoRecyclerPanel extends BaseRecyclerPanel<PhotoStory, MineContract.IPresenter> {
+public class MineInfoRecyclerPanel extends BaseRecyclerPanel<Story, MineContract.IPresenter> {
     public MineInfoRecyclerPanel(Context context, MineContract.IPresenter iPresenter) {
         super(context, iPresenter);
     }
 
 
     @Override
-    protected void setIVD(List<IVD<PhotoStory>> ivd) {
-        ivd.add(new PhotoStoryIVD(context));
+    protected void setIVD(List<IVD<Story>> ivd) {
+        ivd.add(new StoryIVD(context));
     }
 
     @Override

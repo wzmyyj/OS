@@ -43,23 +43,22 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
         return R.layout.fragment_panel;
     }
 
-    public static UserInfoFragment newInstance(String userId, String unitId, String inviteId) {
+    public static UserInfoFragment newInstance(String userId) {
         UserInfoFragment userInfoFragment = new UserInfoFragment();
         Bundle bundle = new Bundle();
         bundle.putString("userId", userId);
-        bundle.putString("unitId", unitId);
-        bundle.putString("inviteId", inviteId);
         userInfoFragment.setArguments(bundle);
         return userInfoFragment;
     }
 
-    public void changeData(String userId, String unitId, String inviteId) {
+    public void changeData(String userId) {
         Bundle bundle = new Bundle();
         bundle.putString("userId", userId);
-        bundle.putString("unitId", unitId);
-        bundle.putString("inviteId", inviteId);
         this.setArguments(bundle);
-        initData();
+        if (mVRoot != null && mPresenter != null) {
+            initData();
+        }
+
     }
 
 
@@ -141,23 +140,19 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
     @Override
     protected void initData() {
         super.initData();
+        setArg();
+        mPresenter.loadUserInfo();
+
+    }
+
+    private void setArg() {
         if (getArguments() != null) {
             String userId = getArguments().getString("userId");
             if (userId == null) return;
             mPresenter.setUserId(userId);
-            mPresenter.loadUserInfo();
-
-            String unitId = getArguments().getString("unitId");
-            if (unitId == null) return;
-            mPresenter.setUnitId(unitId);
-
-            String inviteId = getArguments().getString("inviteId");
-            if (inviteId == null) return;
-            mPresenter.setInviteId(inviteId);
-
         }
-
     }
+
 
     @Override
     public void showUserInfo(@NonNull User user) {
