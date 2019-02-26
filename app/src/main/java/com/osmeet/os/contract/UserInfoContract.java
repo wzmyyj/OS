@@ -1,11 +1,12 @@
 package com.osmeet.os.contract;
 
-import android.support.annotation.NonNull;
-
-import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
+import com.osmeet.os.contract.ic.IStoryList;
+import com.osmeet.os.contract.ic.IUserInfo;
+import com.osmeet.os.contract.ip.IBlock;
+import com.osmeet.os.contract.ip.IReport;
+import com.osmeet.os.contract.ip.IUserId;
 
 /**
  * Created by yyj on 2018/12/17. email: 2209011667@qq.com
@@ -13,35 +14,19 @@ import com.osmeet.os.base.contract.IBaseView;
  */
 
 public interface UserInfoContract {
-    interface IView extends IBaseView {
-        void showUserInfo(@NonNull User user);
+    interface IView extends BaseContract.IView,
+            IUserInfo.V,
+            IStoryList.V {
 
-        void showInvite(boolean isSuccess, int what);
     }
 
-    interface IPresenter extends IBasePresenter, I.MatchBegin, I.ImageLook {
-        void setUserId(@NonNull String userId);
+    interface IPresenter extends BaseContract.IPresenter,
+            IUserInfo.P,
+            IStoryList.P,
+            IReport,
+            IBlock,
+            IUserId,
+            I.ImageLook {
 
-        void setUnitId(@NonNull String unitId);
-
-        void setInviteId(@NonNull String inviteId);
-
-        String getUserId();
-
-        String getUnitId();
-
-        String getInviteId();
-
-        int getMode();
-
-        void loadUserInfo();
-
-        void matchInvite();
-
-        void matchInvite_accept();
-
-        void report(@NonNull String content);
-
-        void block();
     }
 }

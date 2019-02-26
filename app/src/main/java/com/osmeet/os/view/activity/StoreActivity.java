@@ -1,13 +1,18 @@
 package com.osmeet.os.view.activity;
 
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.kongzue.dialog.v2.BottomMenu;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchUnit;
@@ -71,6 +76,56 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
         return (F) mFragmentList.get(i);
     }
 
+
+    private View mTopBar;
+    private TextView tv_name_top;
+    private ImageView img_avatar_top;
+    private LinearLayout ll_tap_bar;
+
+    @SuppressLint("InflateParams")
+    private void setTopBar() {
+        mTopBar = mInflater.inflate(R.layout.layout_info_top_bar, null);
+        tv_name_top = mTopBar.findViewById(R.id.tv_name_top);
+        img_avatar_top = mTopBar.findViewById(R.id.img_avatar_top);
+        ll_tap_bar = mTopBar.findViewById(R.id.ll_top_abr);
+        ll_tap_bar.setAlpha(0f);
+        ImageView img_back = mTopBar.findViewById(R.id.img_back);
+        img_back.setOnClickListener(v -> mPresenter.finish());
+        ImageView img_menu = mTopBar.findViewById(R.id.img_menu);
+        img_menu.setOnClickListener(v -> {
+            List<String> list = new ArrayList<>();
+            list.add(context.getString(R.string.report));
+//            list.add("拉黑");
+            BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
+                        if (index == 0) {
+                            reportDialog();
+                        }
+                    }, true,
+                    context.getString(R.string.cancel)
+            ).setTitle(context.getString(R.string.please_choose));
+        });
+
+    }
+    private void reportDialog() {
+//        InputDialog.show(context, context.getString(R.string.report),
+//                context.getString(R.string.report_reason),
+//                context.getString(R.string.submit), (dialog, inputText) -> {
+//                    mPresenter.report(inputText);
+//                    dialog.dismiss();
+//                }, context.getString(R.string.cancel), (dialog, which) -> {
+//                    mPresenter.toast(context.getString(R.string.cancel));
+//                });
+    }
+
+
+    private void blockDialog() {
+//        SelectDialog.show(context, context.getString(R.string.warm),
+//                context.getString(R.string.block_this_user),
+//                context.getString(R.string.ok), (dialog, which) -> mPresenter.block(),
+//                context.getString(R.string.cancel), (dialog, which) -> {
+//                });
+    }
+
     @Override
     protected void initView() {
         super.initView();
@@ -87,11 +142,7 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
     protected void initData() {
         super.initData();
         mPresenter.loadStoreInfo();
-        if (mPresenter.getMode() == 0) {
-            mPresenter.loadMatchUnitList();
-        } else {
-            mPresenter.loadMatchInviteList(0);
-        }
+        mPresenter.loadMatchUnitList();
     }
 
     @Override
@@ -103,9 +154,8 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
 
     @Override
     public void showMatchUnitList(@NonNull List<MatchUnit> matchUnitList) {
-//        mPresenter.toast("GGGGGGGG");
 
-        mFragmentList.clear();//341025280653002752
+        mFragmentList.clear();
         mFragmentList.add(storeInfoFragment);
         List<User> userList = new ArrayList<>();
         for (int i = 0; i < matchUnitList.size(); i++) {
@@ -133,33 +183,7 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
         setUserList(userList);
     }
 
-    @Override
-    public void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList) {
-//        mFragmentList.clear();
-//        mFragmentList.add(storeInfoFragment);
-//
-//        List<User> userList = new ArrayList<>();
-//
-//        for (int i = 0; i < matchInviteList.size(); i++) {
-//            MatchInvite matchInvite = matchInviteList.get(i);
-//            String userId = matchInvite.getMatchUnit().getUser().getId();
-//            if (i < userInfoFragmentList.size()) {
-//                UserInfoFragment userInfoFragment = userInfoFragmentList.get(i);
-//                userInfoFragment.changeData(userId);
-//            } else {
-//                UserInfoFragment userInfoFragment = UserInfoFragment.newInstance(userId);
-//                userInfoFragmentList.add(userInfoFragment);
-//            }
-//
-//            User user = matchInvite.getMatchUnit().getUser();
-//            userList.add(user);
-//        }
-//
-//        mFragmentList.addAll(userInfoFragmentList.subList(0, matchInviteList.size()));
-//        mAdapter.setFragmentList(mFragmentList);
-//
-//        setUserList(userList);
-    }
+
 
     public void setCurrentItem(int i) {
         mViewPager.setCurrentItem(i, false);

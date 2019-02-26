@@ -21,6 +21,7 @@ import com.osmeet.os.contract.UserInfoContract;
 import com.osmeet.os.presenter.UserInfoPresenter;
 import com.osmeet.os.view.activity.StoreActivity;
 import com.osmeet.os.view.panel.UserInfoRecyclerPanel;
+import com.osmeet.os.app.bean.Story;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -163,20 +164,9 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
             G.img(context, user.getAvatar().getUrl(), img_avatar_top);
     }
 
+
     @Override
-    public void showInvite(boolean isSuccess, int what) {
-        if (isSuccess) {
-            if (what == 1) {
-                userInfoRecyclerPanel.showMatchSuccess(true);
-            } else if (what == 2) {
-                SelectDialog.show(context, context.getString(R.string.tip),
-                        context.getString(R.string.he_invite_before),
-                        context.getString(R.string.yes), (dialog, which) -> mPresenter.matchInvite_accept(),
-                        context.getString(R.string.no), (dialog, which) -> {
-                        });
-            }
-        } else {
-            userInfoRecyclerPanel.showMatchSuccess(false);
-        }
+    public void showStoryList(@NonNull List<Story> storyList) {
+
     }
 }

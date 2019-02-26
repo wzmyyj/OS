@@ -5,8 +5,7 @@ import android.support.annotation.NonNull;
 import com.osmeet.os.app.bean.MatchInvite;
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ import java.util.List;
 
 public interface MessageContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
         void showMatchTeamList(@NonNull List<MatchTeam> matchTeamList);
 
         void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList);
@@ -26,7 +25,7 @@ public interface MessageContract {
 
     }
 
-    interface IPresenter extends IBasePresenter, I.Match, I.InviteList, I.Search, I.Scan, I.FriendList {
+    interface IPresenter extends BaseContract.IPresenter, I.Match, I.InviteList, I.Search, I.Scan, I.FriendList {
 
         void loadMatchTeamList();
 

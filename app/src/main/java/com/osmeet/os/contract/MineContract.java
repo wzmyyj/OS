@@ -5,8 +5,7 @@ import android.support.annotation.NonNull;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import java.util.List;
 
@@ -17,13 +16,13 @@ import java.util.List;
 
 public interface MineContract extends LaunchContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
         void showMyInfo(@NonNull User user);
 
         void showMyStoreList(@NonNull List<Store> storeList);
     }
 
-    interface IPresenter extends IBasePresenter, I.UpdateInfo, I.Setting,
+    interface IPresenter extends BaseContract.IPresenter, I.UpdateInfo, I.Setting,
             I.MatchList, I.TradeList, I.Wallet, I.VisitCard, I.ImageLook {
         void loadMyInfo();
 

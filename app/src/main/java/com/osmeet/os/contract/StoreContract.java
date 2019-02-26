@@ -1,15 +1,10 @@
 package com.osmeet.os.contract;
 
-import android.support.annotation.NonNull;
-
-import com.osmeet.os.app.bean.MatchInvite;
-import com.osmeet.os.app.bean.MatchUnit;
-import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
-
-import java.util.List;
+import com.osmeet.os.base.contract.BaseContract;
+import com.osmeet.os.contract.ic.IMatchUnitList;
+import com.osmeet.os.contract.ic.IStoreInfo;
+import com.osmeet.os.contract.ip.IStoreId;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -18,25 +13,19 @@ import java.util.List;
 
 public interface StoreContract {
 
-    interface IView extends IBaseView {
-        void showStoreInfo(@NonNull Store store);
+    interface IView extends BaseContract.IView,
+            IStoreInfo.V,
+            IMatchUnitList.V {
 
-        void showMatchUnitList(@NonNull List<MatchUnit> matchUnitList);
-
-        void showMatchInviteList(@NonNull List<MatchInvite> matchInviteList);
     }
 
-    interface IPresenter extends IBasePresenter, I.InviteFriends {
+    interface IPresenter extends BaseContract.IPresenter,
+            IStoreInfo.P,
+            IMatchUnitList.P,
+            IStoreId,
+            I.MatchBegin,
+            I.InviteFriends {
 
-        int getMode();
-
-        void inviteFriends();
-
-        void loadStoreInfo();
-
-        void loadMatchUnitList();
-
-        void loadMatchInviteList(int pageNum);
     }
 
 }

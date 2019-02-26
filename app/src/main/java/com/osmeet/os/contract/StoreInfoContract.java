@@ -1,14 +1,10 @@
 package com.osmeet.os.contract;
 
-import android.support.annotation.NonNull;
-
-import com.osmeet.os.app.bean.Goods;
-import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
-
-import java.util.List;
+import com.osmeet.os.base.contract.BaseContract;
+import com.osmeet.os.contract.ic.IStoreInfo;
+import com.osmeet.os.contract.ic.IStoryList;
+import com.osmeet.os.contract.ip.IReport;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -17,26 +13,18 @@ import java.util.List;
 
 public interface StoreInfoContract {
 
-    interface IView extends IBaseView {
-        void showStoreInfo(@NonNull Store store);
-
-        void showGoodsList(@NonNull List<Goods> goodsList);
-
-        void showMatchStore(boolean isInStore);
+    interface IView extends BaseContract.IView,
+            IStoryList.V,
+            IStoreInfo.V {
     }
 
-    interface IPresenter extends IBasePresenter, I.Goods, I.ImageLook, I.Chat, I.SingleMap {
-
-        void loadStoreInfo();
-
-        void loadGoodsList();
-
-        void report(@NonNull String content);
-
-        void intoMatchStore();
-
-        void outMatchStore();
-
+    interface IPresenter extends BaseContract.IPresenter,
+            IStoryList.P,
+            IStoreInfo.P,
+            IReport,
+            I.ImageLook,
+            I.Chat,
+            I.SingleMap {
     }
 
 }

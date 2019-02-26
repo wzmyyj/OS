@@ -39,7 +39,7 @@ public class InviteListRecyclerPanel extends BaseRecyclerPanel<MatchInvite.Group
         super.onItemClick(view, holder, position);
         String id = mData.get(position).getStore().getId();
         if (!TextUtils.isEmpty(id)) {
-            mPresenter.goStore(id,1);
+            mPresenter.goStore(id);
             mPresenter.finish();
         } else {
             mPresenter.toast("Store Id is a empty value!");

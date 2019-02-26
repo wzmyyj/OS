@@ -12,20 +12,18 @@ import android.widget.TextView;
 import com.kongzue.dialog.v2.BottomMenu;
 import com.kongzue.dialog.v2.InputDialog;
 import com.osmeet.os.R;
-import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.fragment.BaseFragment;
 import com.osmeet.os.contract.StoreInfoContract;
 import com.osmeet.os.presenter.StoreInfoPresenter;
-import com.osmeet.os.view.panel.StoreFrontPanel;
 import com.osmeet.os.view.panel.StoreInfoRecyclerPanel;
+import com.osmeet.os.app.bean.Story;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import top.wzmyyj.wzm_sdk.activity.PanelActivity;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 /**
@@ -112,7 +110,6 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
     @Override
     protected void initData() {
         super.initData();
-        mPresenter.loadGoodsList();
         mPresenter.loadStoreInfo();
     }
 
@@ -126,19 +123,14 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
             G.img(context, store.getLogoImage().getUrl(), img_avatar_top);
 
         // fort
-        StoreFrontPanel storeInfoFrontPanel = ((PanelActivity) activity).getPanel(0);
-        if (storeInfoFrontPanel != null) {
-            storeInfoFrontPanel.setStore(store);
-        }
+
     }
 
-    @Override
-    public void showGoodsList(@NonNull List<Goods> goodsList) {
-        storeInfoRecyclerPanel.setGoodsList(goodsList);
-    }
+
+
 
     @Override
-    public void showMatchStore(boolean isInStore) {
-        storeInfoRecyclerPanel.inMatchStore(isInStore);
+    public void showStoryList(@NonNull List<Story> storyList) {
+
     }
 }

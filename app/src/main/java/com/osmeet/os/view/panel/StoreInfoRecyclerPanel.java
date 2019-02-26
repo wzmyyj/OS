@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,8 +24,8 @@ import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.StoreInfoContract;
 import com.osmeet.os.view.adapter.GoodsAdapter;
 import com.osmeet.os.view.adapter.ivd.StoryIVD;
-import com.osmeet.os.view.panel.bean.Story;
-import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
+import com.osmeet.os.app.bean.Story;
+import com.osmeet.os.app.widget.listener.AlphaReScrollListener;
 import com.previewlibrary.enitity.ThumbViewInfo;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
@@ -34,7 +33,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import top.wzmyyj.wzm_sdk.activity.PanelActivity;
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
 import top.wzmyyj.wzm_sdk.utils.TimeUtil;
@@ -58,7 +56,6 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Story, StoreInfoCo
     @Override
     public void update() {
         mPresenter.loadStoreInfo();
-        mPresenter.loadGoodsList();
     }
 
     @Override
@@ -195,13 +192,7 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Story, StoreInfoCo
 
         });
         img_eye = mHeader.findViewById(R.id.img_eye);
-        img_eye.setOnClickListener(v -> {
-            if (isInStore) {
-                mPresenter.outMatchStore();
-            } else {
-                mPresenter.intoMatchStore();
-            }
-        });
+
         img_image = mHeader.findViewById(R.id.img_image);
         img_image.getLayoutParams().height = MockUtil.getScreenWidth(context);
         img_image.requestLayout();
@@ -236,10 +227,6 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Story, StoreInfoCo
         mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                String goodsId = mGoodsList.get(position).getId();
-                if (!TextUtils.isEmpty(goodsId)) {
-                    mPresenter.goGoods(goodsId);
-                }
             }
 
             @Override
@@ -281,13 +268,7 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Story, StoreInfoCo
 
     // 控制外部的控件。
     private void onScrolled1(int dy) {
-        StoreFrontPanel storeInfoFrontPanel = ((PanelActivity) activity).getPanel(0);
-        if (storeInfoFrontPanel != null)
-            if (dy > 10) {
-                storeInfoFrontPanel.whenUp();
-            } else if (dy < -10) {
-                storeInfoFrontPanel.whenDown();
-            }
+
     }
 
     public void inMatchStore(boolean isInStore) {

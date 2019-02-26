@@ -3,7 +3,7 @@ package com.osmeet.os.base.panel;
 import android.content.Context;
 import android.view.View;
 
-import com.osmeet.os.base.contract.IBasePresenter;
+import com.osmeet.os.base.contract.BaseContract;
 
 import butterknife.ButterKnife;
 import top.wzmyyj.wzm_sdk.panel.PanelGroup;
@@ -13,7 +13,7 @@ import top.wzmyyj.wzm_sdk.panel.PanelGroup;
  * Created by yyj on 2018/06/28. email: 2209011667@qq.com
  */
 
-public abstract class BasePanelGroup<P extends IBasePresenter> extends PanelGroup {
+public abstract class BasePanelGroup<P extends BaseContract.IPresenter> extends PanelGroup {
     protected P mPresenter;
 
     public BasePanelGroup(Context context, P p) {

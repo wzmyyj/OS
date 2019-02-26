@@ -1,8 +1,7 @@
 package com.osmeet.os.base.xx;
 
 
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 /**
  * Created by yyj on 2018/09/10. email: 2209011667@qq.com
@@ -12,11 +11,11 @@ import com.osmeet.os.base.contract.IBaseView;
 
 public interface XXContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
 
     }
 
-    interface IPresenter extends IBasePresenter {
+    interface IPresenter extends BaseContract.IPresenter {
 
     }
 

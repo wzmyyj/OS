@@ -4,8 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.Category;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import java.util.List;
 
@@ -15,12 +14,12 @@ import java.util.List;
 
 public interface HomeContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
 
         void showCategoryList(@NonNull List<Category> categoryList);
     }
 
-    interface IPresenter extends IBasePresenter, I.Search ,I.Scan{
+    interface IPresenter extends BaseContract.IPresenter, I.Search ,I.Scan{
 
         void loadCategoryList();
     }

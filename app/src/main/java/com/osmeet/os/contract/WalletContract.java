@@ -4,8 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.Balance;
 import com.osmeet.os.app.bean.Record;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import java.util.List;
 
@@ -16,14 +15,14 @@ import java.util.List;
 
 public interface WalletContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
         void showBalance(@NonNull Balance balance);
 
         void showRecordList(@NonNull List<Record> recordList);
 
     }
 
-    interface IPresenter extends IBasePresenter {
+    interface IPresenter extends BaseContract.IPresenter {
 
         int getMode();
 

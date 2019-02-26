@@ -33,12 +33,10 @@ import org.greenrobot.eventbus.EventBus;
 public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> implements UserInfoContract.IPresenter {
 
     private UserModel userModel;
-    private MatchModel matchModel;
 
     public UserInfoPresenter(Activity activity, UserInfoContract.IView iv) {
         super(activity, iv);
         userModel = new UserModel().bind((AppCompatActivity) activity);
-        matchModel = new MatchModel().bind((AppCompatActivity) activity);
     }
 
     private String userId;
@@ -51,30 +49,6 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
     @Override
     public String getUserId() {
         return this.userId;
-    }
-
-    private String unitId;
-
-    @Override
-    public void setUnitId(@NonNull String unitId) {
-        this.unitId = unitId;
-    }
-
-    @Override
-    public String getUnitId() {
-        return this.unitId;
-    }
-
-    private String inviteId;
-
-    @Override
-    public void setInviteId(@NonNull String inviteId) {
-        this.inviteId = inviteId;
-    }
-
-    @Override
-    public String getInviteId() {
-        return inviteId;
     }
 
     @Override
@@ -98,85 +72,6 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
 
     }
 
-    private String getStoreId() {
-        return getActivity().getIntent().getStringExtra("storeId");
-    }
-
-    @Override
-    public int getMode() {
-        return getActivity().getIntent().getIntExtra("mode", 0);
-    }
-
-    @Override
-    public void matchInvite() {
-        try {
-            StoreActivity storeActivity = (StoreActivity) getActivity();
-            StoreInfoFragment storeInfoFragment = storeActivity.getFragment(0);
-            StoreInfoRecyclerPanel panel = storeInfoFragment.getPanel(0);
-            if (!panel.isInStore()) {
-                toast(getContext().getString(R.string.to_store_then_invite));
-                return;
-            }
-        } catch (Exception e) {
-            log(e.getMessage());
-        }
-
-        String storeId = getStoreId();
-        if (getMode() != 0) {
-            matchInvite_accept();
-            return;
-        }
-
-
-        matchModel.matchInvite(new PObserver<Box<MatchInvite>>() {
-            @Override
-            public void onNext(Box<MatchInvite> box) {
-                if (box.getCode() != 0) {
-                    toast(box.getMessage());
-                    mView.showInvite(false, 0);
-                    return;
-                }
-                if (box.getData() != null) {
-                    if (!box.getData().getMatchUnit().getUser().getId()
-                            .equals(App.getInstance().getMyInfo().getId())) {// 发起人不是自己，说明别人邀请我过了。
-                        inviteId = box.getData().getId();
-                        mView.showInvite(true, 2);
-                    } else {
-                        mView.showInvite(true, 1);
-                        toast(getContext().getString(R.string.invite_success));
-                    }
-
-                }
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                super.onError(e);
-                mView.showInvite(false, 0);
-            }
-        }, storeId, unitId);
-    }
-
-    @Override
-    public void matchInvite_accept() {
-        matchModel.matchInvite_accept(new PObserver<Box<MatchTeam>>() {
-            @Override
-            public void onNext(Box<MatchTeam> box) {
-                if (box.getCode() != 0) {
-                    toast(box.getMessage());
-                    return;
-                }
-                if (box.getData() != null) {
-                    EventBus.getDefault().post(new InviteListChangeEvent(true));
-                    EventBus.getDefault().post(new TeamListChangeEvent(true));
-                    goMatchBegin(new MatchTeam.SimpleMatchTeam(box.getData()));
-                    finish();
-                }
-            }
-        }, inviteId);
-    }
-
-
     @Override
     public void report(@NonNull String content) {
         new ReportModel().report(new PObserver<Box<Report>>() {
@@ -188,7 +83,7 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
                 }
                 toast(context.getString(R.string.report_success));
             }
-        }, new Report(Report.REPORT_USER, unitId, content));
+        }, new Report(Report.REPORT_USER, userId, content));
     }
 
 
@@ -207,4 +102,8 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
     }
 
 
+    @Override
+    public void loadStoryList() {
+
+    }
 }

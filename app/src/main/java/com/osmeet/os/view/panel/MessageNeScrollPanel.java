@@ -19,7 +19,7 @@ import com.osmeet.os.contract.MessageContract;
 import com.osmeet.os.view.adapter.MatchTeamAdapter;
 import com.osmeet.os.view.adapter.ivd.InviteGroupIVD;
 import com.osmeet.os.view.fragment.ConListFragment;
-import com.osmeet.os.view.widget.listener.AlphaNeScrollListener;
+import com.osmeet.os.app.widget.listener.AlphaNeScrollListener;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
 import java.util.ArrayList;

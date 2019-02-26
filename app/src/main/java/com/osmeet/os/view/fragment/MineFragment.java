@@ -22,7 +22,7 @@ import com.osmeet.os.presenter.MinePresenter;
 import com.osmeet.os.view.activity.MainActivity;
 import com.osmeet.os.view.panel.MineInfoRecyclerPanel;
 import com.osmeet.os.view.panel.MineStoreRecyclerPanel;
-import com.osmeet.os.view.widget.MenuHorizontalScrollView;
+import com.osmeet.os.app.widget.MenuHorizontalScrollView;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;

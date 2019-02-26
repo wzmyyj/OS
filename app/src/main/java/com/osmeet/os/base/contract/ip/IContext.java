@@ -1,6 +1,7 @@
 package com.osmeet.os.base.contract.ip;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 
 /**
@@ -10,13 +11,11 @@ import android.content.Context;
  */
 
 public interface IContext {
-    /**
-     * @return content.
-     */
+
     Context getContext();
 
-    /**
-     * @return activity.
-     */
     Activity getActivity();
+
+    Fragment getFragment();
+
 }

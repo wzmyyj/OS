@@ -3,8 +3,7 @@ package com.osmeet.os.contract;
 import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.Trade;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import java.util.Map;
 
@@ -15,7 +14,7 @@ import java.util.Map;
 
 public interface TradeContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
 
         void showTrade(@NonNull Trade trade);
 
@@ -23,7 +22,7 @@ public interface TradeContract {
 
     }
 
-    interface IPresenter extends IBasePresenter {
+    interface IPresenter extends BaseContract.IPresenter {
 
         void loadTrade();
 

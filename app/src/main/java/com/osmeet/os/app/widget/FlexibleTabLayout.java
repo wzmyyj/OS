@@ -1,4 +1,4 @@
-package com.osmeet.os.view.widget;
+package com.osmeet.os.app.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

@@ -4,8 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.Trade;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import java.util.List;
 
@@ -16,11 +15,11 @@ import java.util.List;
 
 public interface TradeListContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
         void showTradeList(@NonNull List<Trade> tradeList, @NonNull String state);
     }
 
-    interface IPresenter extends IBasePresenter, I.Trade {
+    interface IPresenter extends BaseContract.IPresenter, I.Trade {
 
         void loadTradeList(@NonNull String state,int pageNum);
     }

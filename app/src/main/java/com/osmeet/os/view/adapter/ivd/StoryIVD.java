@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import com.osmeet.os.R;
 import com.osmeet.os.base.adapter.BaseIVD;
-import com.osmeet.os.view.panel.bean.Story;
+import com.osmeet.os.app.bean.Story;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import top.wzmyyj.wzm_sdk.utils.DensityUtil;

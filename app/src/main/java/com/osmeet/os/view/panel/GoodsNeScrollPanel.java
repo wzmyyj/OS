@@ -11,13 +11,15 @@ import com.osmeet.os.R;
 import com.osmeet.os.app.bean.FileInfo;
 import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.Store;
+import com.osmeet.os.app.other.GlideBannerImageLoader;
 import com.osmeet.os.app.tools.G;
-import com.osmeet.os.base.panel.BaseBannerPanel;
+import com.osmeet.os.app.widget.listener.AlphaNeScrollListener;
+import com.osmeet.os.app.widget.panel.BannerPanel;
 import com.osmeet.os.base.panel.BaseNeScrollPanel;
 import com.osmeet.os.contract.GoodsContract;
-import com.osmeet.os.view.widget.listener.AlphaNeScrollListener;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
+import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -46,12 +48,12 @@ public class GoodsNeScrollPanel extends BaseNeScrollPanel<GoodsContract.IPresent
     }
 
 
-    private BaseBannerPanel imageBannerPanel;
+    private BannerPanel imageBannerPanel;
 
     @Override
     protected void initPanels() {
         super.initPanels();
-        addPanels(imageBannerPanel = new BaseBannerPanel<GoodsContract.IPresenter>(context, mPresenter) {
+        addPanels(imageBannerPanel = new BannerPanel(context) {
 
             @Override
             protected void setBanner(Banner banner) {
@@ -62,11 +64,17 @@ public class GoodsNeScrollPanel extends BaseNeScrollPanel<GoodsContract.IPresent
                 banner.setIndicatorGravity(BannerConfig.CENTER);
             }
 
+            @SuppressWarnings("unchecked")
             @Override
             public void setBannerData(@NonNull final List<?> list) {
-                @SuppressWarnings("unchecked")
                 List<String> urlList = new ArrayList<>((Collection<? extends String>) list);
                 mBanner.update(urlList);
+            }
+
+            @NonNull
+            @Override
+            protected ImageLoader getImageLoader() {
+                return new GlideBannerImageLoader();
             }
         });
     }
@@ -117,7 +125,7 @@ public class GoodsNeScrollPanel extends BaseNeScrollPanel<GoodsContract.IPresent
             if (store.getLogoImage() != null)
                 G.img(context, store.getLogoImage().getUrl(), img_store_logo);
         }
-
-
     }
+
+
 }

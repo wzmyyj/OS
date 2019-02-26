@@ -133,22 +133,17 @@ public class I {
         }
     }
 
-    public static void goStoreActivity(Context context, String storeId, int mode) {
+    public static void goStoreActivity(Context context, String storeId) {
         Intent intent = new Intent(context, StoreActivity.class);
         intent.putExtra("storeId", storeId);
-        intent.putExtra("mode", mode);
         context.startActivity(intent);
     }
 
     public interface Store extends IContext {
-        default void goStore(String storeId, int mode) {
-            if (getContext() != null)
-                goStoreActivity(getContext(), storeId, mode);
-        }
 
         default void goStore(String storeId) {
             if (getContext() != null)
-                goStoreActivity(getContext(), storeId, 0);
+                goStoreActivity(getContext(), storeId);
         }
     }
 

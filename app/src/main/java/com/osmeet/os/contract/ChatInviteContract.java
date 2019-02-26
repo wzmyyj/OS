@@ -3,8 +3,7 @@ package com.osmeet.os.contract;
 import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.Store;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import java.util.List;
 
@@ -15,11 +14,11 @@ import java.util.List;
 
 public interface ChatInviteContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
         void showStoreList(@NonNull List<Store> storeList, int pageNum);
     }
 
-    interface IPresenter extends IBasePresenter {
+    interface IPresenter extends BaseContract.IPresenter {
 
         void loadStoreList(int pageNum);
 

@@ -11,7 +11,7 @@ import android.content.pm.ActivityInfo;
  * @author wzmyyj email: 2209011667@qq.com
  */
 
-public class OrientationUtil {
+public class ActivityUtil {
 
     /***
      * 竖屏。

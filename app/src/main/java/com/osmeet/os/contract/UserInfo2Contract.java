@@ -2,10 +2,12 @@ package com.osmeet.os.contract;
 
 import android.support.annotation.NonNull;
 
-import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
+import com.osmeet.os.contract.ic.IUserInfo;
+import com.osmeet.os.contract.ip.IBlock;
+import com.osmeet.os.contract.ip.IReport;
+import com.osmeet.os.contract.ip.IUserId;
 
 /**
  * Created by yyj on 2018/12/17. email: 2209011667@qq.com
@@ -13,22 +15,20 @@ import com.osmeet.os.base.contract.IBaseView;
  */
 
 public interface UserInfo2Contract {
-    interface IView extends IBaseView {
-        void showUserInfo(@NonNull User user);
+    interface IView extends BaseContract.IView,
+            IUserInfo.V {
+
     }
 
-    interface IPresenter extends IBasePresenter, I.Chat, I.ImageLook {
-
-        String getUserId();
-
-        void loadUserInfo();
+    interface IPresenter extends BaseContract.IPresenter,
+            IUserInfo.P,
+            IUserId,
+            IReport,
+            IBlock,
+            I.Chat,
+            I.ImageLook {
 
         void addFriend(@NonNull String message);
-
-        void report(@NonNull String content);
-
-        void block();
-
 
     }
 }

@@ -25,15 +25,12 @@
     <!-- iBeancon功能所需权限 -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <!-- 个推3.0电子围栏功能所需权限 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!-- 自定义权限 自定义权限解释：部分手机型号不能正常运行个推SDK，需添加自定义权限进行配置。-->
     <uses-permission android:name="getui.permission.GetuiService.${applicationId}" />
     <permission
         android:name="getui.permission.GetuiService.${applicationId}"
-        android:protectionLevel="normal"></permission>
+        android:protectionLevel="normal" />
 
     <application
         android:name=".app.application.App"
@@ -42,6 +39,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup"
         tools:replace="android:icon">
         <provider
             android:name=".assembly.provider.GPFileProvider"

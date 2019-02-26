@@ -4,8 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.application.SettingManager;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import java.util.List;
 
@@ -16,11 +15,11 @@ import java.util.List;
 
 public interface SettingContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
 
     }
 
-    interface IPresenter extends IBasePresenter, I.Login, I.BlockList, I.AboutOs, I.Protocol, I.Account,I.Launch {
+    interface IPresenter extends BaseContract.IPresenter, I.Login, I.BlockList, I.AboutOs, I.Protocol, I.Account,I.Launch {
         void logout();
 
         SettingManager getSetting();

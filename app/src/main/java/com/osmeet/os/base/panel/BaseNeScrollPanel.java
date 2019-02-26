@@ -2,7 +2,7 @@ package com.osmeet.os.base.panel;
 
 import android.content.Context;
 
-import com.osmeet.os.base.contract.IBasePresenter;
+import com.osmeet.os.base.contract.BaseContract;
 
 import butterknife.ButterKnife;
 import top.wzmyyj.wzm_sdk.panel.NeScrollPanel;
@@ -12,7 +12,7 @@ import top.wzmyyj.wzm_sdk.panel.NeScrollPanel;
  * Created by yyj on 2018/08/16. email: 2209011667@qq.com
  */
 
-public abstract class BaseNeScrollPanel<P extends IBasePresenter> extends NeScrollPanel {
+public abstract class BaseNeScrollPanel<P extends BaseContract.IPresenter> extends NeScrollPanel {
     protected P mPresenter;
 
     public BaseNeScrollPanel(Context context, P p) {

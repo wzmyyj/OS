@@ -3,12 +3,11 @@ package com.osmeet.os.base.activity;
 import android.os.Bundle;
 
 import com.osmeet.os.base.application.BaseApplication;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import top.wzmyyj.wzm_sdk.activity.PagerFragmentActivity;
 import top.wzmyyj.wzm_sdk.tools.T;
-import top.wzmyyj.wzm_sdk.utils.OrientationUtil;
+import top.wzmyyj.wzm_sdk.utils.ActivityUtil;
 import top.wzmyyj.wzm_sdk.utils.StatusBarUtil;
 
 /**
@@ -16,7 +15,7 @@ import top.wzmyyj.wzm_sdk.utils.StatusBarUtil;
  * 有Tab的Activity。
  */
 
-public abstract class BaseMainActivity<P extends IBasePresenter> extends PagerFragmentActivity implements IBaseView {
+public abstract class BaseMainActivity<P extends BaseContract.IPresenter> extends PagerFragmentActivity implements BaseContract.IView {
     protected P mPresenter;
 
     @Override
@@ -44,7 +43,7 @@ public abstract class BaseMainActivity<P extends IBasePresenter> extends PagerFr
     @Override
     protected void onResume() {
         // 强制设为竖屏。
-        OrientationUtil.portrait(this);
+        ActivityUtil.portrait(this);
         super.onResume();
 
     }
@@ -52,7 +51,7 @@ public abstract class BaseMainActivity<P extends IBasePresenter> extends PagerFr
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPresenter.destroy();
+        mPresenter.detach();
         mPresenter = null;
         BaseApplication.getInstance().removeActivity(this);
     }
@@ -65,7 +64,7 @@ public abstract class BaseMainActivity<P extends IBasePresenter> extends PagerFr
     @Override
     public void showFinishActivity(int how) {
         finish();
-        if (how == IBaseView.FINISH_FADE_IN_OUT) {
+        if (how == this.FINISH_FADE_IN_OUT) {
             this.overridePendingTransition(android.R.anim.fade_in,
                     android.R.anim.fade_out);
         }

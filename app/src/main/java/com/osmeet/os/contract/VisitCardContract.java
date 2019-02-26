@@ -5,8 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -15,14 +14,14 @@ import com.osmeet.os.base.contract.IBaseView;
 
 public interface VisitCardContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
         void showMyInfo(@NonNull User user);
 
         void showCodeText(@NonNull String text);
 
     }
 
-    interface IPresenter extends IBasePresenter, I.Scan {
+    interface IPresenter extends BaseContract.IPresenter, I.Scan {
         void loadMyInfo();
 
         void loadCodeText();

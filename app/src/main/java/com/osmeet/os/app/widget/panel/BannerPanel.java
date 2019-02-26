@@ -1,4 +1,4 @@
-package top.wzmyyj.wzm_sdk.panel;
+package com.osmeet.os.app.widget.panel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import top.wzmyyj.wzm_sdk.R;
+import top.wzmyyj.wzm_sdk.panel.InitPanel;
 
 /**
  * Created by yyj on 2018/07/03.
@@ -22,7 +23,7 @@ import top.wzmyyj.wzm_sdk.R;
  * @author wzmyyj email: 2209011667@qq.com
  */
 
-public abstract class BannerPanel extends PanelGroup {
+public abstract class BannerPanel extends InitPanel {
 
     protected Banner mBanner;
 

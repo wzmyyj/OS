@@ -3,13 +3,12 @@ package com.osmeet.os.base.activity;
 import android.os.Bundle;
 
 import com.osmeet.os.base.application.BaseApplication;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import butterknife.ButterKnife;
 import top.wzmyyj.wzm_sdk.activity.PanelActivity;
 import top.wzmyyj.wzm_sdk.tools.T;
-import top.wzmyyj.wzm_sdk.utils.OrientationUtil;
+import top.wzmyyj.wzm_sdk.utils.ActivityUtil;
 import top.wzmyyj.wzm_sdk.utils.StatusBarUtil;
 
 
@@ -17,7 +16,7 @@ import top.wzmyyj.wzm_sdk.utils.StatusBarUtil;
  * Created by yyj on 2018/06/28. email: 2209011667@qq.com
  */
 
-public abstract class BaseActivity<P extends IBasePresenter> extends PanelActivity implements IBaseView {
+public abstract class BaseActivity<P extends BaseContract.IPresenter> extends PanelActivity implements BaseContract.IView {
 
     protected P mPresenter;
 
@@ -70,7 +69,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends PanelActivi
     @Override
     protected void onResume() {
         // 强制设为竖屏。
-        OrientationUtil.portrait(this);
+        ActivityUtil.portrait(this);
         super.onResume();
 
     }
@@ -78,7 +77,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends PanelActivi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPresenter.destroy();
+        mPresenter.detach();
         mPresenter = null;
         BaseApplication.getInstance().removeActivity(this);
     }
@@ -92,7 +91,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends PanelActivi
     @Override
     public void showFinishActivity(int how) {
         finish();
-        if(how==IBaseView.FINISH_FADE_IN_OUT){
+        if(how==this.FINISH_FADE_IN_OUT){
             this.overridePendingTransition(android.R.anim.fade_in,
                     android.R.anim.fade_out);
         }

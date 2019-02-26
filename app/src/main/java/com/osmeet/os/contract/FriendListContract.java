@@ -4,8 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
 
 public interface FriendListContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
 
         void showFriendList(@NonNull List<User> userList, int pageNum);
 
@@ -25,7 +24,7 @@ public interface FriendListContract {
         void showDeleteFriend(@NonNull String userId,boolean isSuccess);
     }
 
-    interface IPresenter extends IBasePresenter, I.NewFriends, I.UserInfo2 {
+    interface IPresenter extends BaseContract.IPresenter, I.NewFriends, I.UserInfo2 {
 
         void loadFriendList(int pageNum);
 

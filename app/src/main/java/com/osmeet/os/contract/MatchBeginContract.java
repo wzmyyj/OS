@@ -2,8 +2,7 @@ package com.osmeet.os.contract;
 
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -12,11 +11,11 @@ import com.osmeet.os.base.contract.IBaseView;
 
 public interface MatchBeginContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView{
 
     }
 
-    interface IPresenter extends IBasePresenter, I.Match {
+    interface IPresenter extends BaseContract.IPresenter, I.Match {
 
         MatchTeam.SimpleMatchTeam getSimpleMatchTeam();
 

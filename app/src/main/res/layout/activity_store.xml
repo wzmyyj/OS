@@ -14,7 +14,7 @@
 
         <include layout="@layout/layout_store_top_bar" />
 
-        <com.osmeet.os.view.widget.FlexibleTabLayout
+        <com.osmeet.os.app.widget.FlexibleTabLayout
             android:id="@+id/tab_select"
             android:layout_width="match_parent"
             android:layout_height="75dp"

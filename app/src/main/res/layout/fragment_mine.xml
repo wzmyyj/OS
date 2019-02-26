@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.osmeet.os.view.widget.MenuHorizontalScrollView
+    <com.osmeet.os.app.widget.MenuHorizontalScrollView
         android:id="@+id/menuHorizontalScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +22,7 @@
             <include layout="@layout/layout_mine_menu" />
         </LinearLayout>
 
-    </com.osmeet.os.view.widget.MenuHorizontalScrollView>
+    </com.osmeet.os.app.widget.MenuHorizontalScrollView>
 
 
 </LinearLayout>

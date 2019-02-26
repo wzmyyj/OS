@@ -3,8 +3,7 @@ package com.osmeet.os.contract;
 import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.Goods;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import java.util.Map;
 
@@ -15,11 +14,11 @@ import java.util.Map;
 
 public interface GoodsBuyContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
         void showResult(@NonNull Map<String, String> result);
     }
 
-    interface IPresenter extends IBasePresenter {
+    interface IPresenter extends BaseContract.IPresenter {
 
         Goods.SimpleGoods getSimpleGoods();
 

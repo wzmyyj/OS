@@ -4,8 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -14,11 +13,11 @@ import com.osmeet.os.base.contract.IBaseView;
 
 public interface MatchContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
         void showMatchTeam(@NonNull MatchTeam matchTeam);
     }
 
-    interface IPresenter extends IBasePresenter, I.AMap, I.Chat {
+    interface IPresenter extends BaseContract.IPresenter, I.AMap, I.Chat {
 
         void loadMatchTeam();
 

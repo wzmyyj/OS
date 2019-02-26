@@ -1,13 +1,9 @@
 package com.osmeet.os.contract;
 
-import android.support.annotation.NonNull;
-
-import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
-
-import java.util.List;
+import com.osmeet.os.base.contract.BaseContract;
+import com.osmeet.os.contract.ic.IBlockList;
+import com.osmeet.os.contract.ic.IDeleteBlock;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -15,18 +11,17 @@ import java.util.List;
 
 public interface BlockListContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView,
+            IBlockList.V,
+            IDeleteBlock.V {
 
-        void showBlockList(@NonNull List<User> userList, int pageNum);
-
-        void showDeleteBlock(@NonNull String userId, boolean isSuccess);
     }
 
-    interface IPresenter extends IBasePresenter, I.UserInfo2 {
+    interface IPresenter extends BaseContract.IPresenter,
+            IBlockList.P,
+            IDeleteBlock.P,
+            I.UserInfo2 {
 
-        void loadBlockList(int pageNum);
-
-        void deleteBlock(@NonNull String userId);
     }
 
 }

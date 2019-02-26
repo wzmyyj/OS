@@ -28,15 +28,11 @@ import top.wzmyyj.wzm_sdk.tools.Sure;
 public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> implements StoreInfoContract.IPresenter {
 
     private StoreModel storeModel;
-    private GoodsModel goodsModel;
-    private MatchModel matchModel;
     private String storeId;
 
     public StoreInfoPresenter(Activity activity, StoreInfoContract.IView iv) {
         super(activity, iv);
         storeModel = new StoreModel().bind((AppCompatActivity) activity);
-        goodsModel = new GoodsModel().bind((AppCompatActivity) activity);
-        matchModel = new MatchModel().bind((AppCompatActivity) activity);
         storeId = activity.getIntent().getStringExtra("storeId");
         Sure.sure(!TextUtils.isEmpty(storeId), "Store Id is a empty value!");
     }
@@ -52,30 +48,10 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
                 }
                 if (box.getData() != null) {
                     mView.showStoreInfo(box.getData());
-                    mView.showMatchStore(box.getData().getMatchState() == 1);
-                    if (box.getData().getMatchState() == 0) {
-                        intoMatchStore();
-                    }
                 }
 
             }
         }, storeId);
-    }
-
-    @Override
-    public void loadGoodsList() {
-        goodsModel.goods_byStoreId(new PObserver<Box<ListContent<Goods>>>() {
-            @Override
-            public void onNext(Box<ListContent<Goods>> box) {
-                if (box.getCode() != 0) {
-                    toast(box.getMessage());
-                    return;
-                }
-                if (box.getData() != null) {
-                    mView.showGoodsList(box.getData().getContent());
-                }
-            }
-        }, storeId, 0, 100);
     }
 
     @Override
@@ -92,42 +68,8 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
         }, new Report(Report.REPORT_STORE, storeId, content));
     }
 
-    private String unitId;
-
     @Override
-    public void intoMatchStore() {
-        matchModel.matchUnit_goToMatchInStore(new PObserver<Box<MatchUnit>>() {
-            @Override
-            public void onNext(Box<MatchUnit> box) {
-                if (box.getCode() != 0) {
-                    toast(box.getMessage());
-                    return;
-                }
-                if (box.getData() != null) {
-                    if (!TextUtils.isEmpty(box.getData().getId())) {
-                        mView.showMatchStore(true);
-                        unitId = box.getData().getId();
-                    }
-                }
-            }
-        }, storeId);
-    }
+    public void loadStoryList() {
 
-    @Override
-    public void outMatchStore() {
-        if (TextUtils.isEmpty(unitId)) {
-            toast("unitId is a empty value!");
-            return;
-        }
-        matchModel.matchUnit_quitMatchInStore(new PObserver<Box<MatchUnit>>() {
-            @Override
-            public void onNext(Box<MatchUnit> box) {
-                if (box.getCode() != 0) {
-                    toast(box.getMessage());
-                    return;
-                }
-                mView.showMatchStore(false);
-            }
-        }, unitId);
     }
 }

@@ -21,6 +21,7 @@ public class BaseModel {
     public BaseModel() {
     }
 
+    @SuppressWarnings("unchecked")
     public  <T extends BaseModel> T bind(LifecycleOwner lifecycleOwner) {
         this.lifecycleOwner = lifecycleOwner;
         return (T) this;

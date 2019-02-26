@@ -2,8 +2,7 @@ package com.osmeet.os.base.fragment;
 
 import android.os.Bundle;
 
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import butterknife.ButterKnife;
 import top.wzmyyj.wzm_sdk.fragment.PanelFragment;
@@ -14,9 +13,8 @@ import top.wzmyyj.wzm_sdk.tools.T;
  * Created by yyj on 2018/06/28. email: 2209011667@qq.com
  */
 
-public abstract class BaseFragment<P extends IBasePresenter> extends PanelFragment implements IBaseView {
+public abstract class BaseFragment<P extends BaseContract.IPresenter> extends PanelFragment implements BaseContract.IView {
     protected P mPresenter;
-
 
 
     @Override
@@ -65,7 +63,7 @@ public abstract class BaseFragment<P extends IBasePresenter> extends PanelFragme
     @Override
     public void onDetach() {
         super.onDetach();
-        mPresenter.destroy();
+        mPresenter.detach();
         mPresenter = null;
     }
 
@@ -79,7 +77,7 @@ public abstract class BaseFragment<P extends IBasePresenter> extends PanelFragme
     public void showFinishActivity(int how) {
         if (getActivity() == null) return;
         getActivity().finish();
-        if (how == IBaseView.FINISH_FADE_IN_OUT) {
+        if (how == this.FINISH_FADE_IN_OUT) {
             getActivity().overridePendingTransition(android.R.anim.fade_in,
                     android.R.anim.fade_out);
         }

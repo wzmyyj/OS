@@ -4,8 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.MatchInvite2;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import java.util.List;
 
@@ -16,11 +15,14 @@ import java.util.List;
 
 public interface ChatContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
         void showInviteFriendList(@NonNull List<MatchInvite2> matchInvite2List);
     }
 
-    interface IPresenter extends IBasePresenter, I.ChatInvite, I.MatchBegin {
+    interface IPresenter extends BaseContract.IPresenter,
+            I.ChatInvite,
+            I.MatchBegin {
+
         void report(@NonNull String content);
 
         void block();

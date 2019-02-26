@@ -4,8 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.tools.I;
-import com.osmeet.os.base.contract.IBasePresenter;
-import com.osmeet.os.base.contract.IBaseView;
+import com.osmeet.os.base.contract.BaseContract;
 
 import java.util.List;
 
@@ -16,11 +15,11 @@ import java.util.List;
 
 public interface MatchListContract {
 
-    interface IView extends IBaseView {
+    interface IView extends BaseContract.IView {
         void showMatchTeamList(@NonNull List<MatchTeam> matchTeamList, int pageNum);
     }
 
-    interface IPresenter extends IBasePresenter , I.Match{
+    interface IPresenter extends BaseContract.IPresenter , I.Match{
         void loadMatchTeamList(final int pageNum);
     }
 

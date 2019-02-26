@@ -19,14 +19,13 @@ import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.UserInfoContract;
 import com.osmeet.os.view.adapter.ivd.StoryIVD;
 import com.osmeet.os.view.adapter.ivd.UserInfoIVD;
-import com.osmeet.os.view.panel.bean.Story;
-import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
+import com.osmeet.os.app.bean.Story;
+import com.osmeet.os.app.widget.listener.AlphaReScrollListener;
 import com.previewlibrary.enitity.ThumbViewInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import top.wzmyyj.wzm_sdk.activity.PanelActivity;
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
@@ -140,7 +139,7 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<Story, UserInfoCont
 //        mHeader.setOnClickListener(v -> onWholeClick());
 
         img_b_1 = mHeader.findViewById(R.id.img_b_1);
-        img_b_1.setOnClickListener(v -> mPresenter.matchInvite());
+//        img_b_1.setOnClickListener(v -> mPresenter.matchInvite());/
     }
 
     private ArrayList<ThumbViewInfo> mThumbViewInfoList = new ArrayList<>();
@@ -182,13 +181,7 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<Story, UserInfoCont
 
     // 控制外部的控件。
     private void onScrolled1(int dy) {
-        StoreFrontPanel storeInfoFrontPanel = ((PanelActivity) activity).getPanel(0);
-        if (storeInfoFrontPanel != null)
-            if (dy > 10) {
-                storeInfoFrontPanel.whenUp();
-            } else if (dy < -10) {
-                storeInfoFrontPanel.whenDown();
-            }
+
     }
 
 

@@ -1,7 +1,4 @@
-package com.osmeet.os.view.panel.bean;
-
-import com.osmeet.os.app.bean.FileInfo;
-import com.osmeet.os.app.bean.User;
+package com.osmeet.os.app.bean;
 
 /**
  * Created by yyj on 2018/12/11. email: 2209011667@qq.com
