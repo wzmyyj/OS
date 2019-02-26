@@ -28,8 +28,12 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
     }
 
     @Override
-    public void checkToken() {
+    public void check() {
         if (!App.getInstance().getToken().isEmpty()) {
+            if (App.getInstance().getMyInfo() == null) {
+                mView.showLoadUserInfo(false);
+                return;
+            }
             goMainAndFinish();
         }
     }
@@ -141,7 +145,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.IView> implement
                     return;
                 }
                 if (box.getData() != null) {
-                    mView.showLoadUserInfo(true);
+//                    mView.showLoadUserInfo(true);
                     User user = box.getData();
                     if (user.isComplete()) {
                         App.getInstance().setMyInfo(user);

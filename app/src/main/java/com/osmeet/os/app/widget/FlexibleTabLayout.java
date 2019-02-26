@@ -55,12 +55,16 @@ public class FlexibleTabLayout extends TabLayout {
                 Log.e(TAG, "xMove:" + xMove + " isMoveLeft:" + isMoveLeft + "isMoveRight:" + isMoveRight);
                 if (isMoveLeft && xMove <= 0 || isMoveRight && xMove >= 0) {//移动位置
                     this.layout(normal.left - xMove, normal.top, normal.right - xMove, normal.bottom);
+                    if (listener != null) {
+                        listener.onOverMove(xMove, getWidth() / SCALE);
+                    }
                     return true;
                 }
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_POINTER_UP://多点触摸
             case MotionEvent.ACTION_POINTER_INDEX_SHIFT:
+            case MotionEvent.ACTION_CANCEL:
                 if (isMoveLeft && xMove <= 0 || isMoveRight && xMove >= 0) {
                     animation(xMove);//还原位置
                 }
@@ -96,6 +100,7 @@ public class FlexibleTabLayout extends TabLayout {
             } else if (moveX < -getWidth() / SCALE) {
                 listener.onRefresh();
             }
+            listener.onOverMove(0, getWidth() / SCALE);
         }
         this.layout(normal.left, normal.top, normal.right, normal.bottom);
 
@@ -115,6 +120,8 @@ public class FlexibleTabLayout extends TabLayout {
         void onRefresh();
 
         void onLoadMore();
+
+        void onOverMove(int move, int critical);
     }
 
 }

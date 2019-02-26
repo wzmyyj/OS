@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="15dp">
@@ -14,25 +15,56 @@
 
         <include layout="@layout/layout_store_top_bar" />
 
-        <com.osmeet.os.app.widget.FlexibleTabLayout
-            android:id="@+id/tab_select"
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_marginBottom="5dp"
-            android:overScrollMode="never"
-            app:tabBackground="@color/colorClarity"
-            app:tabGravity="fill"
-            app:tabIndicatorHeight="0dp"
-            app:tabMaxWidth="100dp"
-            app:tabMinWidth="20dp"
-            app:tabMode="scrollable"
-            app:tabPadding="-1dp"
-            app:tabPaddingBottom="-1dp"
-            app:tabPaddingEnd="-1dp"
-            app:tabPaddingStart="-1dp"
-            app:tabPaddingTop="-1dp"
-            app:tabSelectedTextColor="@color/colorWhite"
-            app:tabTextColor="@color/colorGray_b" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_tab_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:alpha="0"
+                android:padding="5dp"
+                android:text="@string/refresh"
+                android:textColor="@color/colorGray_b"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/tv_tab_loadMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:alpha="0"
+                android:padding="5dp"
+                android:text="@string/load_more"
+                android:textColor="@color/colorGray_b"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+
+            <com.osmeet.os.app.widget.FlexibleTabLayout
+                android:id="@+id/tab_select"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginBottom="5dp"
+                android:overScrollMode="never"
+                app:tabBackground="@color/colorClarity"
+                app:tabGravity="fill"
+                app:tabIndicatorHeight="0dp"
+                app:tabMaxWidth="100dp"
+                app:tabMinWidth="20dp"
+                app:tabMode="scrollable"
+                app:tabPadding="-1dp"
+                app:tabPaddingBottom="-1dp"
+                app:tabPaddingEnd="-1dp"
+                app:tabPaddingStart="-1dp"
+                app:tabPaddingTop="-1dp"
+                app:tabSelectedTextColor="@color/colorWhite"
+                app:tabTextColor="@color/colorGray_b" />
+        </FrameLayout>
+
 
         <View
             android:layout_width="match_parent"

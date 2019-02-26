@@ -1,6 +1,5 @@
 package com.osmeet.os.view.activity;
 
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -35,12 +34,6 @@ public class LoginActivity extends BaseActivity<LoginContract.IPresenter> implem
         return R.layout.activity_login;
     }
 
-    @Override
-    protected void initSome(Bundle savedInstanceState) {
-        super.initSome(savedInstanceState);
-        mPresenter.checkToken();
-    }
-
     @BindView(R.id.fl_l)
     FrameLayout mFrameLayout;
 
@@ -72,6 +65,12 @@ public class LoginActivity extends BaseActivity<LoginContract.IPresenter> implem
         AnimationUtil.narrow2enlarge(img_ball_2);
         AnimationUtil.enlargeFromEnd(img_bg_end);
 
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+        mPresenter.check();
     }
 
     LoginPhonePanel phoneNumberPanel;// 输入电话号码。

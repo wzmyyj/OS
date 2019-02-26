@@ -242,4 +242,5 @@
     <string name="invite">邀请</string>
     <string name="so_now">正在相对</string>
     <string name="to_store_then_invite">进入地点才能邀请！</string>
+    <string name="load_more">加载更多</string>
 </resources>

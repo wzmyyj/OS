@@ -235,7 +235,6 @@
     <string name="update_password">Change password</string>
     <string name="account">Account</string>
     <string name="remove_block">Remove from blacklist</string>
-    <string name="refresh">Change</string>
     <string name="by_system">System language</string>
     <string name="os_company">Hangzhou Offline Social Network Co.,Ltd</string>
     <string name="no_os">You not in match,goto match!</string>
@@ -243,4 +242,6 @@
     <string name="to_store_then_invite">In place then invite!</string>
     <string name="copy_right">copy right@2018–2019</string>
     <string name="qq_group">QQ Group：907873954</string>
+    <string name="load_more">LoadMore</string>
+    <string name="refresh">Refresh</string>
 </resources>

@@ -25,7 +25,7 @@ public interface LoginContract {
 
     interface IPresenter extends BaseContract.IPresenter, I.Main, I.PopInfo {
 
-        void checkToken();
+        void check();
 
         void checkExists(String zoneCode, String phone);
 

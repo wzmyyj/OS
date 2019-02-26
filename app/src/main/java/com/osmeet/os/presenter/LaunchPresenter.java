@@ -77,7 +77,7 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
     }
 
     private long delayMillis() {
-        return 1000;
+        return 1500;
     }
 
     private void goTo() {
@@ -88,7 +88,6 @@ public class LaunchPresenter extends BasePresenter<LaunchContract.IView> impleme
         } else if (App.getInstance().getToken().isEmpty()) {
             goLogin();// 前往登录。
         } else if (App.getInstance().getMyInfo() == null) {
-            App.getInstance().clearToken();
             goLogin();
         } else if (!App.getInstance().getMyInfo().isComplete()) {
             goPopInfo();
