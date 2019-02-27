@@ -1,8 +1,7 @@
 package com.osmeet.os.presenter;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import com.osmeet.os.R;
@@ -25,9 +24,9 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
     private StoreModel storeModel;
     private String storeId;
 
-    public StoreInfoPresenter(Activity activity, StoreInfoContract.IView iv) {
-        super(activity, iv);
-        storeModel = new StoreModel().bind((AppCompatActivity) activity);
+    public StoreInfoPresenter(Fragment fragment, StoreInfoContract.IView iv) {
+        super(fragment, iv);
+        storeModel = new StoreModel().bind(fragment);
         storeId = activity.getIntent().getStringExtra("storeId");
         Sure.sure(!TextUtils.isEmpty(storeId), "Store Id is a empty value!");
     }

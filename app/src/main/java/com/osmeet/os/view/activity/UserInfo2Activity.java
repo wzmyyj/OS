@@ -77,7 +77,9 @@ public class UserInfo2Activity extends BaseActivity<UserInfo2Contract.IPresenter
             List<String> list = new ArrayList<>();
             list.add(context.getString(R.string.report));
             list.add(context.getString(R.string.block));
-            BottomMenu.show((AppCompatActivity) context, list, (text, index) -> {
+            BottomMenu.show((AppCompatActivity) context,
+                    list,
+                    (text, index) -> {
                         switch (index) {
                             case 0:
                                 reportDialog();
@@ -86,29 +88,40 @@ public class UserInfo2Activity extends BaseActivity<UserInfo2Contract.IPresenter
                                 blockDialog();
                                 break;
                         }
-                    }, true, context.getString(R.string.cancel)
+                    },
+                    true,
+                    context.getString(R.string.cancel)
             ).setTitle(context.getString(R.string.please_choose));
         });
     }
 
     private void reportDialog() {
-        InputDialog.show(context, context.getString(R.string.report),
+        InputDialog.show(context,
+                context.getString(R.string.report),
                 context.getString(R.string.report_reason),
-                context.getString(R.string.submit), (dialog, inputText) -> {
+                context.getString(R.string.submit),
+                (dialog, inputText) -> {
                     mPresenter.report(inputText);
                     dialog.dismiss();
-                }, context.getString(R.string.cancel), (dialog, which) -> {
-                    mPresenter.toast(context.getString(R.string.cancel));
-                });
+                },
+                context.getString(R.string.cancel),
+                (dialog, which) -> {
+                }
+
+        );
     }
 
 
     private void blockDialog() {
-        SelectDialog.show(context, context.getString(R.string.warm),
+        SelectDialog.show(context,
+                context.getString(R.string.warm),
                 context.getString(R.string.block_this_user),
-                context.getString(R.string.ok), (dialog, which) -> mPresenter.block(),
-                context.getString(R.string.cancel), (dialog, which) -> {
-                });
+                context.getString(R.string.ok),
+                (dialog, which) -> mPresenter.block(),
+                context.getString(R.string.cancel),
+                (dialog, which) -> {
+                }
+        );
     }
 
     @Override
@@ -128,7 +141,7 @@ public class UserInfo2Activity extends BaseActivity<UserInfo2Contract.IPresenter
 
     @Override
     public void showStoryList(@NonNull List<Story> storyList, int pageNum) {
-        userInfo2RecyclerPanel.setDataList(storyList,pageNum);
+        userInfo2RecyclerPanel.setDataList(storyList, pageNum);
     }
 }
 

@@ -33,7 +33,7 @@ import top.wzmyyj.wzm_sdk.tools.T;
 public class MessageFragment extends BaseFragment<MessageContract.IPresenter> implements MessageContract.IView {
     @Override
     protected void initPresenter() {
-        mPresenter = new MessagePresenter(activity, this);
+        mPresenter = new MessagePresenter(fragment, this);
     }
 
     @Override

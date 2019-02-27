@@ -1,8 +1,7 @@
 package com.osmeet.os.presenter;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import com.osmeet.os.app.bean.Store;
@@ -24,9 +23,9 @@ public class HomeStorePresenter extends BasePresenter<HomeStoreContract.IView> i
 
     private StoreModel storeModel;
 
-    public HomeStorePresenter(Activity activity, HomeStoreContract.IView iv) {
-        super(activity, iv);
-        storeModel = new StoreModel().bind((AppCompatActivity) activity);
+    public HomeStorePresenter(Fragment fragment, HomeStoreContract.IView iv) {
+        super(fragment, iv);
+        storeModel = new StoreModel().bind(fragment);
     }
 
     private String categoryId;

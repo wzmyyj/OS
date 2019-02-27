@@ -22,7 +22,7 @@ import butterknife.BindView;
 public class HomeStoreFragment extends BaseFragment<HomeStoreContract.IPresenter> implements HomeStoreContract.IView {
     @Override
     protected void initPresenter() {
-        mPresenter = new HomeStorePresenter(activity, this);
+        mPresenter = new HomeStorePresenter(fragment, this);
     }
 
 

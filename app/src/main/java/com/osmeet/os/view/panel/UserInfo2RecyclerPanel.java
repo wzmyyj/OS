@@ -94,7 +94,7 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<Story, UserInfo2Co
         } else {
             tv_add_friend.setText(R.string.add_be_friends);
         }
-        title=user.getUsername();
+        title = user.getUsername();
     }
 
 
@@ -128,14 +128,18 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<Story, UserInfo2Co
 
 
     private void addFriend() {
-        InputDialog.show(context, context.getString(R.string.add_be_friends), context.getString(R.string.greet_to_new_friend),
-                context.getString(R.string.submit), (dialog, inputText) -> {
+        InputDialog.show(context,
+                context.getString(R.string.add_be_friends),
+                context.getString(R.string.greet_to_new_friend),
+                context.getString(R.string.submit),
+                (dialog, inputText) -> {
                     if (TextUtils.isEmpty(inputText)) return;
                     mPresenter.addFriend(inputText);
                     dialog.dismiss();
-                }, context.getString(R.string.cancel), (dialog, which) -> {
-                    mPresenter.toast(context.getString(R.string.cancel));
-                });
+                },
+                context.getString(R.string.cancel),
+                (dialog, which) -> mPresenter.toast(context.getString(R.string.cancel))
+        );
     }
 
 

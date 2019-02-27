@@ -67,7 +67,7 @@ public class MainActivity extends BaseMainActivity<MainContract.IPresenter> impl
 
     @Override
     protected int firstWhich() {
-        return 1;// 一开始显示中间那页。
+        return 1;// 一开始显示中间哪页。
     }
 
     @Override

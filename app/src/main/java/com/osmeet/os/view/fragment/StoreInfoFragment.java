@@ -22,7 +22,7 @@ import butterknife.BindView;
 public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter> implements StoreInfoContract.IView {
     @Override
     protected void initPresenter() {
-        mPresenter = new StoreInfoPresenter(activity, this);
+        mPresenter = new StoreInfoPresenter(fragment, this);
     }
 
     @Override

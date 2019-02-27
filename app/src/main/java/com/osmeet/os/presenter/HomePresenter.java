@@ -1,7 +1,6 @@
 package com.osmeet.os.presenter;
 
-import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 
 import com.osmeet.os.app.bean.Category;
 import com.osmeet.os.base.presenter.BasePresenter;
@@ -18,9 +17,9 @@ public class HomePresenter extends BasePresenter<HomeContract.IView> implements 
 
     private CategoryModel categoryModel;
 
-    public HomePresenter(Activity activity, HomeContract.IView iv) {
-        super(activity, iv);
-        categoryModel = new CategoryModel().bind((AppCompatActivity) activity);
+    public HomePresenter(Fragment fragment, HomeContract.IView iv) {
+        super(fragment, iv);
+        categoryModel = new CategoryModel().bind(fragment);
     }
 
     @Override

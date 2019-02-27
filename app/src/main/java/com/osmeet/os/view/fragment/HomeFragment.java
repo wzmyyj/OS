@@ -37,7 +37,7 @@ import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 public class HomeFragment extends BaseFragment<HomeContract.IPresenter> implements HomeContract.IView {
     @Override
     protected void initPresenter() {
-        mPresenter = new HomePresenter(activity, this);
+        mPresenter = new HomePresenter(fragment, this);
     }
 
     @Override
