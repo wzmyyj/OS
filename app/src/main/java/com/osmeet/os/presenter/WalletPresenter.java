@@ -42,7 +42,7 @@ public class WalletPresenter extends BasePresenter<WalletContract.IView> impleme
     }
 
     @Override
-    public void loadBalance() {
+    public void loadBalanceInfo() {
         PObserver<Box<Balance>> pObserver = new PObserver<Box<Balance>>() {
             @Override
             public void onNext(Box<Balance> box) {
@@ -51,7 +51,7 @@ public class WalletPresenter extends BasePresenter<WalletContract.IView> impleme
                     return;
                 }
                 if (box.getData() != null) {
-                    mView.showBalance(box.getData());
+                    mView.showBalanceInfo(box.getData());
                 }
             }
         };
@@ -96,7 +96,7 @@ public class WalletPresenter extends BasePresenter<WalletContract.IView> impleme
                     return;
                 }
                 toast(getContext().getString(R.string.tx_success));
-                loadBalance();
+                loadBalanceInfo();
                 loadRecordList(0);
             }
         };

@@ -1,13 +1,9 @@
 package com.osmeet.os.contract;
 
-import android.support.annotation.NonNull;
-
-import com.osmeet.os.app.bean.Store;
-import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.BaseContract;
-
-import java.util.List;
+import com.osmeet.os.contract.ic.IMyInfo;
+import com.osmeet.os.contract.ic.IMyStoreList;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -16,20 +12,22 @@ import java.util.List;
 
 public interface MineContract extends LaunchContract {
 
-    interface IView extends BaseContract.IView {
-        void showMyInfo(@NonNull User user);
+    interface IView extends BaseContract.IView,
+            IMyInfo.V,
+            IMyStoreList.V {
 
-        void showMyStoreList(@NonNull List<Store> storeList);
     }
 
-    interface IPresenter extends BaseContract.IPresenter, I.UpdateInfo, I.Setting,
-            I.MatchList, I.TradeList, I.Wallet, I.VisitCard, I.ImageLook {
-        void loadMyInfo();
-
-        void freshMyInfo();
-
-        void loadMyStoreList();
-
+    interface IPresenter extends BaseContract.IPresenter,
+            IMyInfo.P,
+            IMyStoreList.P,
+            I.UpdateInfo,
+            I.Setting,
+            I.MatchList,
+            I.TradeList,
+            I.Wallet,
+            I.VisitCard,
+            I.ImageLook {
     }
 
 }

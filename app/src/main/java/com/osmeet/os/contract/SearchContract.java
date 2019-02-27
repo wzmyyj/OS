@@ -1,13 +1,8 @@
 package com.osmeet.os.contract;
 
-import android.support.annotation.NonNull;
-
-import com.osmeet.os.app.bean.Store;
-import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.BaseContract;
-
-import java.util.List;
+import com.osmeet.os.contract.ic.ISearch;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -16,17 +11,15 @@ import java.util.List;
 
 public interface SearchContract {
 
-    interface IView extends BaseContract.IView {
+    interface IView extends BaseContract.IView,
+            ISearch.V {
 
-        void showSearchUserResult(@NonNull List<User> userList, @NonNull String word, int pageNum);
-
-        void showSearchStoreResult(@NonNull List<Store> storeList, @NonNull String word, int pageNum);
     }
 
-    interface IPresenter extends BaseContract.IPresenter, I.Store, I.UserInfo2 {
-        void searchUser(@NonNull String word, int pageNum);
-
-        void searchStore(@NonNull String word, int pageNum);
+    interface IPresenter extends BaseContract.IPresenter,
+            ISearch.P,
+            I.Store,
+            I.UserInfo2 {
     }
 
 }

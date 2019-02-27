@@ -1,11 +1,7 @@
 package com.osmeet.os.contract;
 
-import android.support.annotation.NonNull;
-
-import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.base.contract.BaseContract;
-
-import java.util.List;
+import com.osmeet.os.contract.ic.IStoreList;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -14,13 +10,13 @@ import java.util.List;
 
 public interface ChatInviteContract {
 
-    interface IView extends BaseContract.IView {
-        void showStoreList(@NonNull List<Store> storeList, int pageNum);
+    interface IView extends BaseContract.IView,
+            IStoreList.V {
+
     }
 
-    interface IPresenter extends BaseContract.IPresenter {
-
-        void loadStoreList(int pageNum);
+    interface IPresenter extends BaseContract.IPresenter,
+            IStoreList.P {
 
     }
 

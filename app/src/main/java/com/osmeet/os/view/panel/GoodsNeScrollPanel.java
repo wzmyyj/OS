@@ -44,7 +44,7 @@ public class GoodsNeScrollPanel extends BaseNeScrollPanel<GoodsContract.IPresent
 
     @Override
     protected void update() {
-        mPresenter.loadGoods();
+        mPresenter.loadGoodsInfo();
     }
 
 

@@ -30,7 +30,7 @@ public class WalletRecyclerPanel extends BaseRecyclerPanel<Record, WalletContrac
 
     @Override
     protected void update() {
-        mPresenter.loadBalance();
+        mPresenter.loadBalanceInfo();
         mPresenter.loadRecordList(0);
     }
 

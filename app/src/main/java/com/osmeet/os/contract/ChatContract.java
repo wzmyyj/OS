@@ -5,6 +5,9 @@ import android.support.annotation.NonNull;
 import com.osmeet.os.app.bean.MatchInvite2;
 import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.BaseContract;
+import com.osmeet.os.contract.ip.IBlock;
+import com.osmeet.os.contract.ip.IReport;
+import com.osmeet.os.contract.ip.IUserId;
 
 import java.util.List;
 
@@ -20,18 +23,16 @@ public interface ChatContract {
     }
 
     interface IPresenter extends BaseContract.IPresenter,
+            IReport,
+            IBlock,
+            IUserId,
             I.ChatInvite,
             I.MatchBegin {
 
-        void report(@NonNull String content);
-
-        void block();
 
         void inviteFriends(@NonNull String storeId);
 
         void matchInvite_friends_accept(@NonNull String matchInviteId);
-
-        String getUserId();
 
         String getTitle();
     }

@@ -128,14 +128,14 @@ public class WalletActivity extends BaseActivity<WalletContract.IPresenter> impl
     @Override
     protected void initData() {
         super.initData();
-        mPresenter.loadBalance();
+        mPresenter.loadBalanceInfo();
         mPresenter.loadRecordList(0);
     }
 
     private float money;
 
     @Override
-    public void showBalance(@NonNull Balance balance) {
+    public void showBalanceInfo(@NonNull Balance balance) {
         money = balance.getAvailableBalance();
         WidgetUtil.setTextPrice(tv_wallet_money, "", money);
         WidgetUtil.setTextPrice(tv_wallet_money_2, context.getString(R.string.yuan), money);

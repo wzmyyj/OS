@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.BaseContract;
+import com.osmeet.os.contract.ic.IGoodsInfo;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -13,15 +14,15 @@ import com.osmeet.os.base.contract.BaseContract;
 
 public interface GoodsContract {
 
-    interface IView extends BaseContract.IView {
+    interface IView extends BaseContract.IView,
+            IGoodsInfo.V {
 
-        void showGoods(@NonNull Goods goods);
+        void showGoodsInfo(@NonNull Goods goods);
     }
 
-    interface IPresenter extends BaseContract.IPresenter, I.GoodsBuy {
-
-        void loadGoods();
-
+    interface IPresenter extends BaseContract.IPresenter,
+            IGoodsInfo.P,
+            I.GoodsBuy {
     }
 
 }

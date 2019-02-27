@@ -1,12 +1,8 @@
 package com.osmeet.os.contract;
 
-import android.support.annotation.NonNull;
-
-import com.osmeet.os.app.bean.Category;
 import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.BaseContract;
-
-import java.util.List;
+import com.osmeet.os.contract.ic.ICategoryList;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -14,14 +10,14 @@ import java.util.List;
 
 public interface HomeContract {
 
-    interface IView extends BaseContract.IView {
-
-        void showCategoryList(@NonNull List<Category> categoryList);
+    interface IView extends BaseContract.IView,
+            ICategoryList.V {
     }
 
-    interface IPresenter extends BaseContract.IPresenter, I.Search ,I.Scan{
-
-        void loadCategoryList();
+    interface IPresenter extends BaseContract.IPresenter,
+            ICategoryList.P,
+            I.Search,
+            I.Scan {
     }
 
 }

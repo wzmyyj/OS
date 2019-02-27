@@ -2,8 +2,8 @@ package com.osmeet.os.contract;
 
 import android.support.annotation.NonNull;
 
-import com.osmeet.os.app.bean.Trade;
 import com.osmeet.os.base.contract.BaseContract;
+import com.osmeet.os.contract.ic.ITradeInfo;
 
 import java.util.Map;
 
@@ -14,17 +14,15 @@ import java.util.Map;
 
 public interface TradeContract {
 
-    interface IView extends BaseContract.IView {
-
-        void showTrade(@NonNull Trade trade);
+    interface IView extends BaseContract.IView,
+            ITradeInfo.V {
 
         void showResult(@NonNull Map<String, String> result);
 
     }
 
-    interface IPresenter extends BaseContract.IPresenter {
-
-        void loadTrade();
+    interface IPresenter extends BaseContract.IPresenter,
+            ITradeInfo.P {
 
         void loadPay();
 

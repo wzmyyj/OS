@@ -32,7 +32,7 @@ public class TradePresenter extends BasePresenter<TradeContract.IView> implement
     private Trade trade;
 
     @Override
-    public void loadTrade() {
+    public void loadTradeInfo() {
         String tradeId = getActivity().getIntent().getStringExtra("tradeId");
         if (TextUtils.isEmpty(tradeId)) {
             toast("Trade Id is a empty value!");
@@ -48,7 +48,7 @@ public class TradePresenter extends BasePresenter<TradeContract.IView> implement
                 }
                 if (box.getData() != null) {
                     trade = box.getData();
-                    mView.showTrade(box.getData());
+                    mView.showTradeInfo(box.getData());
                 }
             }
         }, App.getInstance().getMyInfo().getId(), tradeId);

@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.contract.BaseContract;
+import com.osmeet.os.contract.ic.IMyInfo;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -12,13 +13,12 @@ import com.osmeet.os.base.contract.BaseContract;
 
 public interface UpdateInfoContract {
 
-    interface IView extends BaseContract.IView {
-        void showMyInfo(@NonNull User user);
+    interface IView extends BaseContract.IView,
+            IMyInfo.V{
     }
 
-    interface IPresenter extends BaseContract.IPresenter {
-
-        void loadMyInfo();
+    interface IPresenter extends BaseContract.IPresenter,
+            IMyInfo.P {
 
         void updateMyInfo(@NonNull User user);
 

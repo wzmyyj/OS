@@ -71,11 +71,11 @@ public class TradeActivity extends BaseActivity<TradeContract.IPresenter> implem
     @Override
     protected void initData() {
         super.initData();
-        mPresenter.loadTrade();
+        mPresenter.loadTradeInfo();
     }
 
     @Override
-    public void showTrade(@NonNull Trade trade) {
+    public void showTradeInfo(@NonNull Trade trade) {
         tradeNeScrollPanel.setTrade(trade);
     }
 

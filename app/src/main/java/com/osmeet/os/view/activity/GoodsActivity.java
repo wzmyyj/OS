@@ -82,13 +82,13 @@ public class GoodsActivity extends BaseActivity<GoodsContract.IPresenter> implem
     @Override
     protected void initData() {
         super.initData();
-        mPresenter.loadGoods();
+        mPresenter.loadGoodsInfo();
     }
 
     private Goods.SimpleGoods simpleGoods;
 
     @Override
-    public void showGoods(@NonNull Goods goods) {
+    public void showGoodsInfo(@NonNull Goods goods) {
         goodsNeScrollPanel.setGoods(goods);
         WidgetUtil.setTextNonNull(tv_name, goods.getName());
         WidgetUtil.setTextPrice(tv_goods_price, "￥", goods.getDiscountPrice());

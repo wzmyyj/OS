@@ -1,12 +1,8 @@
 package com.osmeet.os.contract;
 
-import android.support.annotation.NonNull;
-
-import com.osmeet.os.app.bean.Trade;
 import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.BaseContract;
-
-import java.util.List;
+import com.osmeet.os.contract.ic.ITradeList;
 
 /**
  * Created by yyj on 2019/01/03. email: 2209011667@qq.com
@@ -15,13 +11,13 @@ import java.util.List;
 
 public interface TradeListContract {
 
-    interface IView extends BaseContract.IView {
-        void showTradeList(@NonNull List<Trade> tradeList, @NonNull String state);
+    interface IView extends BaseContract.IView,
+            ITradeList.V {
     }
 
-    interface IPresenter extends BaseContract.IPresenter, I.Trade {
-
-        void loadTradeList(@NonNull String state,int pageNum);
+    interface IPresenter extends BaseContract.IPresenter,
+            ITradeList.P,
+            I.Trade {
     }
 
 }

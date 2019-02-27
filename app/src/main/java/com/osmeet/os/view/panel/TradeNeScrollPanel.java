@@ -54,7 +54,7 @@ public class TradeNeScrollPanel extends BaseNeScrollPanel<TradeContract.IPresent
 
     @Override
     protected void update() {
-        mPresenter.loadTrade();
+        mPresenter.loadTradeInfo();
     }
 
     public void setTrade(@NonNull Trade trade) {

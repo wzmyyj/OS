@@ -30,7 +30,7 @@ public class GoodsPresenter extends BasePresenter<GoodsContract.IView> implement
 
 
     @Override
-    public void loadGoods() {
+    public void loadGoodsInfo() {
         goodsModel.goods_get(new PObserver<Box<Goods>>() {
             @Override
             public void onNext(Box<Goods> box) {
@@ -39,7 +39,7 @@ public class GoodsPresenter extends BasePresenter<GoodsContract.IView> implement
                     return;
                 }
                 if (box.getData() != null) {
-                    mView.showGoods(box.getData());
+                    mView.showGoodsInfo(box.getData());
                 }
 
             }
