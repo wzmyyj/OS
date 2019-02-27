@@ -1,8 +1,8 @@
 package com.osmeet.os.base.contract.ip;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
+import android.support.v4.app.Fragment;
 
 /**
  * Created by yyj on 2018/11/20.

@@ -1,8 +1,8 @@
 package com.osmeet.os.base.contract;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 
 import com.osmeet.os.base.contract.ic.IFinish;
 import com.osmeet.os.base.contract.ip.IContext;

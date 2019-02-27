@@ -1,11 +1,13 @@
 package com.osmeet.os.base.presenter;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 
 import com.osmeet.os.base.contract.BaseContract;
+
+import java.util.Objects;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -57,7 +59,7 @@ public class BasePresenter<V extends BaseContract.IView> implements BaseContract
     @Override
     public void attach(@NonNull Fragment fragment) {
         this.fragment = fragment;
-        attach(fragment.getActivity());
+        attach(Objects.requireNonNull(fragment.getActivity()));
     }
 
 

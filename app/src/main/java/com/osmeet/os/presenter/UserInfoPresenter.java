@@ -1,30 +1,18 @@
 package com.osmeet.os.presenter;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import com.osmeet.os.R;
-import com.osmeet.os.app.application.App;
-import com.osmeet.os.app.bean.MatchInvite;
-import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.bean.Report;
 import com.osmeet.os.app.bean.User;
-import com.osmeet.os.app.event.InviteListChangeEvent;
-import com.osmeet.os.app.event.TeamListChangeEvent;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.UserInfoContract;
 import com.osmeet.os.model.net.AttentionModel;
-import com.osmeet.os.model.net.MatchModel;
 import com.osmeet.os.model.net.ReportModel;
 import com.osmeet.os.model.net.UserModel;
 import com.osmeet.os.model.net.utils.box.Box;
-import com.osmeet.os.view.activity.StoreActivity;
-import com.osmeet.os.view.fragment.StoreInfoFragment;
-import com.osmeet.os.view.panel.StoreInfoRecyclerPanel;
-
-import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by yyj on 2018/12/17. email: 2209011667@qq.com
@@ -34,9 +22,9 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
 
     private UserModel userModel;
 
-    public UserInfoPresenter(Activity activity, UserInfoContract.IView iv) {
-        super(activity, iv);
-        userModel = new UserModel().bind((AppCompatActivity) activity);
+    public UserInfoPresenter(Fragment fragment, UserInfoContract.IView iv) {
+        super(fragment, iv);
+        userModel = new UserModel().bind(fragment);
     }
 
     private String userId;
@@ -103,7 +91,7 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.IView> imp
 
 
     @Override
-    public void loadStoryList() {
+    public void loadStoryList(int pageNum) {
 
     }
 }

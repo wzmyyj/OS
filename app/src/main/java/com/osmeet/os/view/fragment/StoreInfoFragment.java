@@ -68,7 +68,7 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
 
 
     @Override
-    public void showStoryList(@NonNull List<Story> storyList) {
+    public void showStoryList(@NonNull List<Story> storyList,int pageNum) {
 
     }
 }

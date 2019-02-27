@@ -6,18 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.osmeet.os.R;
-import com.osmeet.os.app.bean.Goods;
-import com.osmeet.os.app.bean.MatchUnit;
 import com.osmeet.os.app.bean.Report;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.StoreInfoContract;
-import com.osmeet.os.model.net.GoodsModel;
-import com.osmeet.os.model.net.MatchModel;
 import com.osmeet.os.model.net.ReportModel;
 import com.osmeet.os.model.net.StoreModel;
 import com.osmeet.os.model.net.utils.box.Box;
-import com.osmeet.os.model.net.utils.box.ListContent;
 
 import top.wzmyyj.wzm_sdk.tools.Sure;
 
@@ -69,7 +64,7 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
     }
 
     @Override
-    public void loadStoryList() {
+    public void loadStoryList(int pageNum) {
 
     }
 }

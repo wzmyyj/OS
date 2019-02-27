@@ -14,10 +14,10 @@ import java.util.List;
 
 public interface IStoryList {
     interface V {
-        void showStoryList(@NonNull List<Story> storyList);
+        void showStoryList(@NonNull List<Story> storyList,int pageNum);
     }
 
     interface P {
-        void loadStoryList();
+        void loadStoryList(int pageNum);
     }
 }

@@ -21,7 +21,7 @@ import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.MineContract;
 import com.osmeet.os.view.adapter.ivd.StoryIVD;
 import com.osmeet.os.app.bean.Story;
-import com.osmeet.os.app.widget.listener.AlphaReScrollListener;
+import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
 import com.previewlibrary.enitity.ThumbViewInfo;
 
 import java.text.DecimalFormat;

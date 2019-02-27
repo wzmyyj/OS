@@ -20,7 +20,7 @@ import com.osmeet.os.app.bean.MatchUnit;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
-import com.osmeet.os.app.widget.FlexibleTabLayout;
+import com.osmeet.os.view.widget.FlexibleTabLayout;
 import com.osmeet.os.base.activity.BaseActivity;
 import com.osmeet.os.contract.StoreContract;
 import com.osmeet.os.presenter.StorePresenter;

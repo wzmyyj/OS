@@ -2,28 +2,23 @@ package com.osmeet.os.view.panel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Rect;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.osmeet.os.R;
-import com.osmeet.os.app.bean.FileInfo;
+import com.osmeet.os.app.bean.Story;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.other.IvdVhHelper;
-import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.UserInfoContract;
+import com.osmeet.os.view.activity.StoreActivity;
 import com.osmeet.os.view.adapter.ivd.StoryIVD;
 import com.osmeet.os.view.adapter.ivd.UserInfoIVD;
-import com.osmeet.os.app.bean.Story;
-import com.osmeet.os.app.widget.listener.AlphaReScrollListener;
-import com.previewlibrary.enitity.ThumbViewInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
@@ -49,21 +44,28 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<Story, UserInfoCont
     @Override
     public void update() {
         mPresenter.loadUserInfo();
+        mPresenter.loadStoryList(0);
     }
 
+    @Override
+    protected void loadMore() {
+        super.loadMore();
+        mPresenter.loadStoryList(nextPageNum());
+    }
 
     @Override
     protected void initView() {
         super.initView();
         // 消除mRecyclerView刷新的动画。
         ((SimpleItemAnimator) mRecyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(context, 2));
     }
 
 
     @Override
     protected void initListener() {
         super.initListener();
-        mRecyclerView.addOnScrollListener(new AlphaReScrollListener(context, this::barAlpha) {
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
@@ -72,17 +74,11 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<Story, UserInfoCont
         });
     }
 
-    private void barAlpha(float alpha) {
-        View bar = getBindView("v");
-        if (bar != null) {
-            bar.setAlpha(alpha);
-        }
-    }
 
 //    @Override
 //    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
 //        super.onItemClick(view, holder, position);
-//        onWholeClick();
+//
 //    }
 
 
@@ -92,14 +88,14 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<Story, UserInfoCont
 
         WidgetUtil.setTextNumber(tv_user_score, user.getCreditScore());
 
-        List<FileInfo> images = user.getImages();
-        if (images != null && images.size() > 0) {
-            G.img(context, images.get(0).getUrl(), img_image);
-            setTVIs(images);
-        } else {
-            if (user.getAvatar() != null)
-                G.img(context, user.getAvatar().getUrl(), img_image);
-        }
+//        List<FileInfo> images = user.getImages();
+//        if (images != null && images.size() > 0) {
+//            G.img(context, images.get(0).getUrl(), img_image);
+//            setTVIs(images);
+//        } else {
+//            if (user.getAvatar() != null)
+//                G.img(context, user.getAvatar().getUrl(), img_image);
+//        }
         // data
 //        mData.clear();
 //        for (int i = 0; i < 100; i++) {
@@ -132,7 +128,7 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<Story, UserInfoCont
         img_image.getLayoutParams().height = MockUtil.getScreenWidth(context);
         img_image.requestLayout();
         img_image.setOnClickListener(v -> {
-            mPresenter.goImageLook(mThumbViewInfoList);
+
         });
 
 
@@ -142,46 +138,23 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<Story, UserInfoCont
 //        img_b_1.setOnClickListener(v -> mPresenter.matchInvite());/
     }
 
-    private ArrayList<ThumbViewInfo> mThumbViewInfoList = new ArrayList<>();
-
-    private void setTVIs(List<FileInfo> resultList) {
-        mThumbViewInfoList.clear();
-        for (int i = 0; i < resultList.size(); i++) {
-            Rect bounds = new Rect();
-            //new ThumbViewInfo(图片地址);
-            ThumbViewInfo item = new ThumbViewInfo(resultList.get(i).getUrl());
-            item.setBounds(bounds);
-            mThumbViewInfoList.add(item);
-        }
-    }
-
-    public void showMatchSuccess(boolean is) {
-        if (is) {
-            G.img(context, R.mipmap.ic_invited, img_b_1);
-        } else {
-            G.img(context, R.mipmap.ic_invite, img_b_1);
-        }
-    }
-
     @SuppressLint("InflateParams")
     @Override
     protected void setFooter() {
         super.setFooter();
         mFooter = mInflater.inflate(R.layout.layout_footer, null);
-//        mFooter.setOnClickListener(v -> onWholeClick());
     }
 
 
     // 控制外部的控件。
-//    private void onWholeClick() {
-//        StoreFrontPanel storeInfoFrontPanel = ((PanelActivity) activity).getPanel(0);
-//        if (storeInfoFrontPanel != null)
-//            storeInfoFrontPanel.whenClick();
-//    }
-
-    // 控制外部的控件。
     private void onScrolled1(int dy) {
-
+        StoreActivity storeActivity = getActivity();
+        if (storeActivity != null)
+            if (dy > 10) {
+                storeActivity.whenUp();
+            } else if (dy < -10) {
+                storeActivity.whenDown();
+            }
     }
 
 

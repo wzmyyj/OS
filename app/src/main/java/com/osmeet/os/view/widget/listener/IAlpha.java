@@ -1,4 +1,4 @@
-package com.osmeet.os.app.widget.listener;
+package com.osmeet.os.view.widget.listener;
 
 /**
  * Created by yyj on 2019/01/22.

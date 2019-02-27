@@ -23,7 +23,7 @@ import butterknife.BindView;
 public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> implements UserInfoContract.IView {
     @Override
     protected void initPresenter() {
-        mPresenter = new UserInfoPresenter(activity, this);
+        mPresenter = new UserInfoPresenter(this, this);
     }
 
     @Override
@@ -73,6 +73,7 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
         super.initData();
         setArg();
         mPresenter.loadUserInfo();
+        mPresenter.loadStoryList(0);
 
     }
 
@@ -92,7 +93,7 @@ public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> 
 
 
     @Override
-    public void showStoryList(@NonNull List<Story> storyList) {
-
+    public void showStoryList(@NonNull List<Story> storyList, int pageNum) {
+        userInfoRecyclerPanel.setDataList(storyList, pageNum);
     }
 }

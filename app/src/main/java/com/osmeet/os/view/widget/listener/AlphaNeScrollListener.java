@@ -1,4 +1,4 @@
-package com.osmeet.os.app.widget.listener;
+package com.osmeet.os.view.widget.listener;
 
 import android.content.Context;
 import android.support.v4.widget.NestedScrollView;

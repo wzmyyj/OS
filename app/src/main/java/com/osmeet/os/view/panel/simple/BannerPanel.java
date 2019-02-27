@@ -1,4 +1,4 @@
-package com.osmeet.os.app.widget.panel;
+package com.osmeet.os.view.panel.simple;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
