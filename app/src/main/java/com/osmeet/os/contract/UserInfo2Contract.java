@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.BaseContract;
+import com.osmeet.os.contract.ic.IStoryList;
 import com.osmeet.os.contract.ic.IUserInfo;
 import com.osmeet.os.contract.ip.IBlock;
 import com.osmeet.os.contract.ip.IReport;
@@ -16,12 +17,14 @@ import com.osmeet.os.contract.ip.IUserId;
 
 public interface UserInfo2Contract {
     interface IView extends BaseContract.IView,
-            IUserInfo.V {
+            IUserInfo.V,
+            IStoryList.V {
 
     }
 
     interface IPresenter extends BaseContract.IPresenter,
             IUserInfo.P,
+            IStoryList.P,
             IUserId,
             IReport,
             IBlock,

@@ -13,6 +13,7 @@ import com.kongzue.dialog.v2.BottomMenu;
 import com.kongzue.dialog.v2.InputDialog;
 import com.kongzue.dialog.v2.SelectDialog;
 import com.osmeet.os.R;
+import com.osmeet.os.app.bean.Story;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.activity.BaseActivity;
@@ -123,6 +124,11 @@ public class UserInfo2Activity extends BaseActivity<UserInfo2Contract.IPresenter
         WidgetUtil.setTextNonNull(tv_name_top, user.getUsername());
         if (user.getAvatar() != null)
             G.img(context, user.getAvatar().getUrl(), img_avatar_top);
+    }
+
+    @Override
+    public void showStoryList(@NonNull List<Story> storyList, int pageNum) {
+        userInfo2RecyclerPanel.setDataList(storyList,pageNum);
     }
 }
 

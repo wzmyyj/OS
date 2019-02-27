@@ -109,12 +109,12 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<Story, UserInfoCont
     // 控制外部的控件。
     private void onScrolled1(int dy) {
         StoreActivity storeActivity = getActivity();
-        if (storeActivity != null)
-            if (dy > 10) {
-                storeActivity.whenUp();
-            } else if (dy < -10) {
-                storeActivity.whenDown();
-            }
+        if (storeActivity == null) return;
+        if (dy > 10) {
+            storeActivity.whenUp();
+        } else if (dy < -10) {
+            storeActivity.whenDown();
+        }
     }
 
 

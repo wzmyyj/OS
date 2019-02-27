@@ -7,6 +7,7 @@ import android.text.TextUtils;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Report;
+import com.osmeet.os.app.bean.Story;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.UserInfo2Contract;
@@ -101,5 +102,10 @@ public class UserInfo2Presenter extends BasePresenter<UserInfo2Contract.IView> i
             }
         }, userId);
 
+    }
+
+    @Override
+    public void loadStoryList(int pageNum) {
+        mView.showStoryList(Story.testList(20),pageNum);
     }
 }

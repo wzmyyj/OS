@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -8,146 +9,64 @@
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
-    <include layout="@layout/layout_user_info" />
-
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="110dp"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_add_friends"
-                    android:layout_width="80dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/bg_text_update"
-                    android:gravity="center"
-                    android:text="@string/add_be_friends"
-                    android:textColor="@color/colorLightBlue"
-                    android:textSize="13sp"
-                    android:visibility="gone" />
-            </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/tv_user_score"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/bg_text_score"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:text="@string/_99"
-                android:textColor="@color/colorWhite"
-                android:textSize="13sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:paddingLeft="20dp">
-
-            <ImageView
-                android:id="@+id/img_b_1"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/icon"
-                android:src="@mipmap/ic_invite" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="3dp"
-                android:layout_marginStart="3dp"
-                android:text="@string/invite"
-                android:textColor="@color/colorGray_8"
-                android:textSize="13sp" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="85dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <FrameLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent">
+
+            <top.wzmyyj.wzm_sdk.widget.CircleImageView
+                android:id="@+id/img_user_avatar"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:src="@color/colorGray_e"
+                app:border_color="@color/colorGray_6"
+                app:border_width="0.5dp" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!--<ImageView-->
+            <!--android:id="@+id/img_user_code"-->
+            <!--android:layout_width="35dp"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:contentDescription="@string/icon"-->
+            <!--android:padding="3dp"-->
+            <!--android:src="@color/colorGray_e" />-->
+
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            android:text="@string/album"
+            android:id="@+id/tv_add_friend"
+            android:layout_width="80dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_text_update"
+            android:gravity="center"
+            android:text="@string/add_friends"
             android:textColor="@color/colorGray_6"
-            android:textSize="16sp" />
+            android:textSize="13sp" />
 
     </LinearLayout>
 
-
-    <View
+    <FrameLayout
+        android:id="@+id/fl_panel"
         android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/colorLine" />
+        android:layout_height="wrap_content">
+
+    </FrameLayout>
 
 
-    <ImageView
-        android:id="@+id/img_image"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/colorGray_e"
-        android:contentDescription="@string/bg">
-
-    </ImageView>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/colorLine" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            android:text="@string/trends"
-            android:textColor="@color/colorGray_6"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/colorLine" />
 </LinearLayout>
-
 

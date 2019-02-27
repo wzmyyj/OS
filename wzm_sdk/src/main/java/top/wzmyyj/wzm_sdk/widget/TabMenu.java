@@ -44,11 +44,21 @@ public class TabMenu extends LinearLayout {
     private final List<Tab> tabList;
 
     private class Tab {
-        private int icon;
         private String text;
+        private int icon;
+        private OnClickListener onClickListener;
 
-        Tab(String text, int icon) {
+        Tab(String text, int icon, OnClickListener onClickListener) {
+            this.text = text;
             this.icon = icon;
+            this.onClickListener = onClickListener;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
             this.text = text;
         }
 
@@ -60,13 +70,15 @@ public class TabMenu extends LinearLayout {
             this.icon = icon;
         }
 
-        public String getText() {
-            return text;
+        public OnClickListener getOnClickListener() {
+            return onClickListener;
         }
 
-        public void setText(String text) {
-            this.text = text;
+        public void setOnClickListener(OnClickListener onClickListener) {
+            this.onClickListener = onClickListener;
         }
+
+
     }
 
     public List<Tab> getTabs() {
@@ -75,25 +87,31 @@ public class TabMenu extends LinearLayout {
 
     public void clearTabs() {
         this.tabList.clear();
-        setItem();
+        updateItem();
     }
 
     public void addTab(String text, int icon) {
         if (tabList.size() == ITEM_COUNT_MAX) return;
-        this.tabList.add(new Tab(text, icon));
-        setItem();
+        this.tabList.add(new Tab(text, icon, null));
+        updateItem();
     }
 
-    private OnMenuItemClickListener mMenuItemClickListener;
-
-    public void setOnMenuItemClickListener(
-            OnMenuItemClickListener mMenuItemClickListener) {
-        this.mMenuItemClickListener = mMenuItemClickListener;
+    public void addTab(String text, int icon, OnClickListener onClickListener) {
+        if (tabList.size() == ITEM_COUNT_MAX) return;
+        this.tabList.add(new Tab(text, icon, onClickListener));
+        updateItem();
     }
 
-    public interface OnMenuItemClickListener {
-        void onClick(View view, int pos);
-    }
+//    private OnMenuItemClickListener mMenuItemClickListener;
+//
+//    public void setOnMenuItemClickListener(
+//            OnMenuItemClickListener mMenuItemClickListener) {
+//        this.mMenuItemClickListener = mMenuItemClickListener;
+//    }
+//
+//    public interface OnMenuItemClickListener {
+//        void onClick(View view, int p);
+//    }
 
     public void setMenuItemStyle(MenuItemStyle menuItemStyle) {
         if (menuItemStyle == null) return;
@@ -134,7 +152,7 @@ public class TabMenu extends LinearLayout {
                     .applyDimension(TypedValue.COMPLEX_UNIT_SP, 10,
                             getResources().getDisplayMetrics()));
             item_bg = a.getResourceId(R.styleable.TabMenu_item_bg, 0);
-            text_color = a.getColor(R.styleable.TabMenu_text_color, 0x777777);
+            text_color = a.getColor(R.styleable.TabMenu_android_textColor, 0x777777);
             a.recycle();
             init();
             once = true;
@@ -171,15 +189,15 @@ public class TabMenu extends LinearLayout {
             tv.setLayoutParams(param3);
             tv.setGravity(Gravity.CENTER);
 
-            final int w = i;
-            layout.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mMenuItemClickListener != null) {
-                        mMenuItemClickListener.onClick(layout, w);
-                    }
-                }
-            });
+//            final int w = i;
+//            layout.setOnClickListener(new OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if (mMenuItemClickListener != null) {
+//                        mMenuItemClickListener.onClick(layout, w);
+//                    }
+//                }
+//            });
 
             layouts.add(layout);
             images.add(img);
@@ -188,13 +206,15 @@ public class TabMenu extends LinearLayout {
     }
 
 
-    private void setItem() {
+    public void updateItem() {
         for (int i = 0; i < ITEM_COUNT_MAX; i++) {
             if (i < tabList.size()) {
+                layouts.get(i).setOnClickListener(tabList.get(i).onClickListener);
                 layouts.get(i).setVisibility(View.VISIBLE);
                 images.get(i).setImageResource(tabList.get(i).icon);
                 texts.get(i).setText(tabList.get(i).text);
             } else {
+                layouts.get(i).setOnClickListener(null);
                 layouts.get(i).setVisibility(View.GONE);
             }
         }
@@ -218,9 +238,9 @@ public class TabMenu extends LinearLayout {
     public void setItemIconSize(int icon_size) {
         this.icon_size = icon_size;
         for (int i = 0; i < ITEM_COUNT_MAX; i++) {
-            ViewGroup.LayoutParams param =  images.get(i).getLayoutParams();
-            param.height=icon_size;
-            param.width=icon_size;
+            ViewGroup.LayoutParams param = images.get(i).getLayoutParams();
+            param.height = icon_size;
+            param.width = icon_size;
             images.get(i).requestLayout();
         }
 

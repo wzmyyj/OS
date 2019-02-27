@@ -12,9 +12,9 @@
     </declare-styleable>
 
     <declare-styleable name="TabMenu">
-        <attr name="icon_size" format="dimension" />
         <attr name="android:textSize" />
-        <attr name="text_color" format="color" />
+        <attr name="android:textColor" />
+        <attr name="icon_size" format="dimension" />
         <attr name="item_bg" format="reference|color" />
     </declare-styleable>
 
