@@ -23,7 +23,7 @@ import butterknife.BindView;
 public class UserInfoFragment extends BaseFragment<UserInfoContract.IPresenter> implements UserInfoContract.IView {
     @Override
     protected void initPresenter() {
-        mPresenter = new UserInfoPresenter(this, this);
+        mPresenter = new UserInfoPresenter(fragment, this);
     }
 
     @Override

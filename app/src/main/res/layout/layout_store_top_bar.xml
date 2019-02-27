@@ -28,8 +28,6 @@
                 android:id="@+id/img_avatar_top"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginStart="30dp"
                 android:src="@color/colorGray_e"
                 app:border_color="@color/colorLine"
                 app:border_width="0.5dp" />

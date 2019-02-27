@@ -1,19 +1,15 @@
 package com.osmeet.os.presenter;
 
-import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
+
+import android.support.v4.app.Fragment;
 
 import com.osmeet.os.app.application.App;
-import com.osmeet.os.app.bean.Store;
+import com.osmeet.os.app.bean.Story;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.MineContract;
-import com.osmeet.os.model.net.StoreModel;
 import com.osmeet.os.model.net.UserModel;
 import com.osmeet.os.model.net.utils.box.Box;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -22,12 +18,10 @@ import java.util.List;
 public class MinePresenter extends BasePresenter<MineContract.IView> implements MineContract.IPresenter {
 
     private UserModel userModel;
-    private StoreModel storeModel;
 
-    public MinePresenter(Activity activity, MineContract.IView iv) {
-        super(activity, iv);
-        userModel = new UserModel().bind((AppCompatActivity) activity);
-        storeModel = new StoreModel().bind((AppCompatActivity) activity);
+    public MinePresenter(Fragment fragment, MineContract.IView iv) {
+        super(fragment, iv);
+        userModel = new UserModel().bind(fragment);
     }
 
     @Override
@@ -59,20 +53,7 @@ public class MinePresenter extends BasePresenter<MineContract.IView> implements 
     }
 
     @Override
-    public void loadMyStoreList() {
-        storeModel.store_getStore(new PObserver<Box<List<Store>>>() {
-            @Override
-            public void onNext(Box<List<Store>> box) {
-                if (box.getCode() != 0) {
-                    toast(box.getMessage());
-                    return;
-                }
-                List<Store> storeList = new ArrayList<>();
-                if (box.getData() != null) {
-                    storeList.addAll(box.getData());
-                }
-                mView.showMyStoreList(storeList);
-            }
-        });
+    public void loadStoryList(int pageNum) {
+        mView.showStoryList(Story.testList(20),pageNum);
     }
 }

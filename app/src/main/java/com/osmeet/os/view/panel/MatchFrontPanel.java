@@ -8,8 +8,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.amap.api.location.CoordinateConverter;
-import com.amap.api.location.DPoint;
 import com.kongzue.dialog.v2.BottomMenu;
 import com.osmeet.os.R;
 import com.osmeet.os.app.application.App;
@@ -17,10 +15,10 @@ import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.app.tools.SDT;
+import com.osmeet.os.app.utils.DistanceUtil;
 import com.osmeet.os.base.panel.BasePanel;
 import com.osmeet.os.contract.MatchContract;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -87,12 +85,7 @@ public class MatchFrontPanel extends BasePanel<MatchContract.IPresenter> {
                 G.img(context, store.getLogoImage().getUrl(), img_store_logo);
             }
             WidgetUtil.setTextNonNull(tv_store_name, store.getName());
-            DPoint dPoint = new DPoint();
-            dPoint.setLatitude(store.getLat());
-            dPoint.setLongitude(store.getLng());
-            float distance = CoordinateConverter.calculateLineDistance(App.getInstance().getMyDPoint(), dPoint) / 1000;
-            DecimalFormat decimalFormat = new DecimalFormat("0.00");
-            WidgetUtil.setTextNonNull(tv_store_distance, decimalFormat.format(distance) + "km");
+            WidgetUtil.setTextNonNull(tv_store_distance, DistanceUtil.distance(store.getLat(), store.getLng()));
         }
 
         letAIsMe(matchTeam);

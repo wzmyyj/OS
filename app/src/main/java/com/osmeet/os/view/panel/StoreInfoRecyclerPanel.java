@@ -12,24 +12,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.amap.api.location.CoordinateConverter;
-import com.amap.api.location.DPoint;
 import com.osmeet.os.R;
-import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.FileInfo;
 import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.bean.Store;
+import com.osmeet.os.app.bean.Story;
 import com.osmeet.os.app.tools.G;
+import com.osmeet.os.app.utils.DistanceUtil;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.StoreInfoContract;
 import com.osmeet.os.view.adapter.GoodsAdapter;
 import com.osmeet.os.view.adapter.ivd.StoryIVD;
-import com.osmeet.os.app.bean.Story;
 import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
 import com.previewlibrary.enitity.ThumbViewInfo;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,12 +107,7 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Story, StoreInfoCo
                         TimeUtil.long2str(store.getEndTime(), TimeUtil.HH_MM)
         );
 
-        DPoint dPoint = new DPoint();
-        dPoint.setLatitude(store.getLat());
-        dPoint.setLongitude(store.getLng());
-        float distance = CoordinateConverter.calculateLineDistance(App.getInstance().getMyDPoint(), dPoint) / 1000;
-        DecimalFormat decimalFormat = new DecimalFormat("0.00");
-        WidgetUtil.setTextNonNull(tv_store_distance, decimalFormat.format(distance) + "km");
+        WidgetUtil.setTextNonNull(tv_store_distance, DistanceUtil.distance(store.getLat(),store.getLng()));
 
         List<FileInfo> images = store.getImages();
         if (images != null && images.size() > 0) {

@@ -1,7 +1,6 @@
 package com.osmeet.os.base.panel;
 
 import android.content.Context;
-import android.view.View;
 
 import com.osmeet.os.base.contract.BaseContract;
 
@@ -29,11 +28,6 @@ public abstract class BasePanel<P extends BaseContract.IPresenter> extends InitP
     }
 
     protected abstract int getLayoutId();
-
-
-    protected void setView(View view) {
-        this.view = view;
-    }
 
 
     @Override
