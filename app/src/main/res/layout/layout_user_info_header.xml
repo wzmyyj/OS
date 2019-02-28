@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="90dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="15dp"
@@ -23,8 +23,8 @@
 
             <top.wzmyyj.wzm_sdk.widget.CircleImageView
                 android:id="@+id/img_user_avatar"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:src="@color/colorGray_e"
                 app:border_color="@color/colorGray_6"

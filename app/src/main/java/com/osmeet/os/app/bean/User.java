@@ -17,6 +17,9 @@ import top.wzmyyj.wzm_sdk.utils.TimeUtil;
 
 public class User {
 
+    public static final  int SEX_UNKOWN=0;
+    public static final  int SEX_MALE=1;
+    public static final  int SEX_FEMALE=2;
     private FileInfo avatar;
     private String birthday;
     private String boundStore;
@@ -303,6 +306,7 @@ public class User {
                 && !TextUtils.isEmpty(this.getUsername())
                 && !TextUtils.isEmpty(this.getUsername());
     }
+
 
 
     // 测试例子。

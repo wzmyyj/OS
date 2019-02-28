@@ -6,29 +6,29 @@
     android:layout_height="wrap_content"
     android:layout_gravity="top">
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/ll_who"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:layout_marginTop="15dp"-->
-        <!--android:background="@drawable/click_bg"-->
-        <!--android:gravity="center_vertical"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:paddingLeft="15dp"-->
-        <!--android:paddingRight="15dp"-->
-        <!--tools:ignore="UseCompoundDrawables">-->
+    <LinearLayout
+        android:id="@+id/ll_who"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/click_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        tools:ignore="UseCompoundDrawables">
 
 
-        <!--<TextView-->
-            <!--android:id="@+id/tv_who"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="10dp"-->
-            <!--android:layout_marginStart="10dp"-->
-            <!--android:text="@string/mine"-->
-            <!--android:textColor="@color/colorGray_4"-->
-            <!--android:textSize="17sp" />-->
+        <TextView
+            android:id="@+id/tv_who"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/mine"
+            android:textColor="@color/colorGray_4"
+            android:textSize="17sp" />
 
         <!--<ImageView-->
             <!--android:layout_width="15dp"-->
@@ -39,13 +39,13 @@
             <!--android:padding="1dp"-->
             <!--android:src="@mipmap/ic_more_down" />-->
 
-    <!--</LinearLayout>-->
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_top_abr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alpha="0.5"
+        android:alpha="0"
         android:background="@color/colorWhite"
         android:orientation="vertical">
 

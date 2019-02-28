@@ -56,7 +56,7 @@
     <string name="_99">99</string>
     <string name="_20">20</string>
     <string name="update_info">编辑资料</string>
-    <string name="sentence_example">纵然伤心，也不要愁眉不展，因为你不知是谁会爱上你的笑容。 [Never frown, even when you are sad, because you never know who is falling in love with your smile.]</string>
+    <string name="sentence_example">纵然伤心，也不要愁眉不展，因为你不知是谁会爱上你的笑容。</string>
     <string name="_2018_01_01">2018–01–01</string>
     <string name="person">个人</string>
     <string name="setting">设置</string>
@@ -243,4 +243,6 @@
     <string name="so_now">正在相对</string>
     <string name="to_store_then_invite">进入地点才能邀请！</string>
     <string name="load_more">加载更多</string>
+    <string name="no_signature">这个用户很懒，什么都没留下~</string>
+    <string name="unknow">未知</string>
 </resources>

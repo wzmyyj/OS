@@ -3,6 +3,7 @@ package com.osmeet.os.view.panel;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.view.View;
@@ -48,7 +49,7 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<Story, MineContract
     @Override
     protected void loadMore() {
         super.loadMore();
-        mPresenter.loadStoryList(nextPageNum());
+//        mPresenter.loadStoryList(nextPageNum());
     }
 
 
@@ -71,6 +72,14 @@ public class MineInfoRecyclerPanel extends BaseRecyclerPanel<Story, MineContract
     protected void initListener() {
         super.initListener();
         mRecyclerView.addOnScrollListener(new AlphaReScrollListener(context, this::barAlpha));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position == 0 || position == mData.size() + 1 ? 2 : 1;
+            }
+        });
+        mRecyclerView.setLayoutManager(gridLayoutManager);
     }
 
     private void barAlpha(float alpha) {

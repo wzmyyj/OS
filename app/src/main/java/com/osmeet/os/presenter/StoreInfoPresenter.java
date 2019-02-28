@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Report;
 import com.osmeet.os.app.bean.Store;
+import com.osmeet.os.app.bean.Story;
 import com.osmeet.os.base.presenter.BasePresenter;
 import com.osmeet.os.contract.StoreInfoContract;
 import com.osmeet.os.model.net.ReportModel;
@@ -64,6 +65,6 @@ public class StoreInfoPresenter extends BasePresenter<StoreInfoContract.IView> i
 
     @Override
     public void loadStoryList(int pageNum) {
-
+        mView.showStoryList(Story.testList(20),pageNum);
     }
 }

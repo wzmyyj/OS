@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
 
 import com.osmeet.os.R;
@@ -12,7 +11,6 @@ import com.osmeet.os.app.bean.Story;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.UserInfoContract;
-import com.osmeet.os.view.activity.StoreActivity;
 import com.osmeet.os.view.adapter.ivd.StoryIVD;
 import com.osmeet.os.view.panel.simple.UserInfoPanel;
 
@@ -45,7 +43,7 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<Story, UserInfoCont
     @Override
     protected void loadMore() {
         super.loadMore();
-        mPresenter.loadStoryList(nextPageNum());
+//        mPresenter.loadStoryList(nextPageNum());
     }
 
     private UserInfoPanel userInfoPanel;
@@ -61,20 +59,20 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<Story, UserInfoCont
         super.initView();
         // 消除mRecyclerView刷新的动画。
         ((SimpleItemAnimator) mRecyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(context, 2));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position == 0 || position == mData.size() + 1 ? 2 : 1;
+            }
+        });
+        mRecyclerView.setLayoutManager(gridLayoutManager);
     }
 
 
     @Override
     protected void initListener() {
         super.initListener();
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                onScrolled1(dy);
-            }
-        });
     }
 
 
@@ -103,18 +101,6 @@ public class UserInfoRecyclerPanel extends BaseRecyclerPanel<Story, UserInfoCont
     protected void setFooter() {
         super.setFooter();
         mFooter = mInflater.inflate(R.layout.layout_footer, null);
-    }
-
-
-    // 控制外部的控件。
-    private void onScrolled1(int dy) {
-        StoreActivity storeActivity = getActivity();
-        if (storeActivity == null) return;
-        if (dy > 10) {
-            storeActivity.whenUp();
-        } else if (dy < -10) {
-            storeActivity.whenDown();
-        }
     }
 
 

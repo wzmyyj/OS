@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.kongzue.dialog.v2.BottomMenu;
 import com.osmeet.os.R;
+import com.osmeet.os.app.bean.User;
 import com.osmeet.os.base.panel.BaseNeScrollPanel;
 import com.osmeet.os.contract.SettingContract;
 import com.xw.repo.BubbleSeekBar;
@@ -182,19 +183,19 @@ public class SettingNeScrollPanel extends BaseNeScrollPanel<SettingContract.IPre
 
     @OnClick(R.id.tv_sex_1)
     void set_1() {
-        choiceSex(1);
+        choiceSex(User.SEX_MALE);
         mPresenter.getSetting().setOsSex(1);
     }
 
     @OnClick(R.id.tv_sex_2)
     void set_2() {
-        choiceSex(2);
+        choiceSex(User.SEX_FEMALE);
         mPresenter.getSetting().setOsSex(2);
     }
 
     @OnClick(R.id.tv_sex_3)
     void set_3() {
-        choiceSex(3);
+        choiceSex(User.SEX_UNKOWN);
         mPresenter.getSetting().setOsSex(0);
     }
 
@@ -202,9 +203,9 @@ public class SettingNeScrollPanel extends BaseNeScrollPanel<SettingContract.IPre
         ll_sex_1.setVisibility(View.GONE);
         ll_sex_2.setVisibility(View.GONE);
         ll_sex_3.setVisibility(View.GONE);
-        if (i == 1) {
+        if (i == User.SEX_MALE) {
             ll_sex_1.setVisibility(View.VISIBLE);
-        } else if (i == 2) {
+        } else if (i == User.SEX_FEMALE) {
             ll_sex_2.setVisibility(View.VISIBLE);
         } else {
             ll_sex_3.setVisibility(View.VISIBLE);

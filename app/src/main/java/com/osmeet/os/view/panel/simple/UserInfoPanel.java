@@ -66,11 +66,27 @@ public class UserInfoPanel extends InitPanel {
 
     public void setUser(@NonNull User user) {
         WidgetUtil.setTextNonNull(tv_user_name, user.getUsername());
-        WidgetUtil.setTextNonNull(tv_user_signature, user.getSignature());
         WidgetUtil.setTextNumber(tv_user_score, user.getCreditScore());
         WidgetUtil.setTextNonNull(tv_user_distance, DistanceUtil.distance(user.getLat(), user.getLng()));
+
+        if (!TextUtils.isEmpty(user.getSignature())) {
+            WidgetUtil.setTextNonNull(tv_user_signature, user.getSignature());
+        } else {
+            WidgetUtil.setTextRes(tv_user_signature, R.string.no_signature);
+        }
+
+        String sex;
+        if (user.getSex() == User.SEX_MALE) {
+            sex = context.getString(R.string.male);
+        } else if (user.getSex() == User.SEX_FEMALE) {
+            sex = context.getString(R.string.female);
+        } else {
+            sex = context.getString(R.string.female);
+        }
+
         tl_tag.cleanTags();
         tl_tag.addTag("" + user.getAge());
+        tl_tag.addTag("" + sex);
         if (!TextUtils.isEmpty(user.getJob())) {
             tl_tag.addTag(user.getJob());
         }

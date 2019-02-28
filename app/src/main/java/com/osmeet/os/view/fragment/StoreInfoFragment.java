@@ -56,19 +56,18 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
     protected void initData() {
         super.initData();
         mPresenter.loadStoreInfo();
+        mPresenter.loadStoryList(0);
     }
 
 
     @Override
-    public void showStoreInfo(@NonNull Store store) {// 给自己的mPresenter调用。（刷新）
+    public void showStoreInfo(@NonNull Store store) {
         storeInfoRecyclerPanel.setStore(store);
     }
 
 
-
-
     @Override
-    public void showStoryList(@NonNull List<Story> storyList,int pageNum) {
-
+    public void showStoryList(@NonNull List<Story> storyList, int pageNum) {
+        storeInfoRecyclerPanel.setDataList(storyList, pageNum);
     }
 }

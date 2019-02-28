@@ -48,26 +48,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:lines="1"
+            android:singleLine="true"
             android:textColor="@color/colorGray_6"
             android:textSize="13sp" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
 
-        <top.wzmyyj.wzm_sdk.widget.TabMenu
-            android:id="@+id/tm_menu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/colorGray_6"
-            android:textSize="10sp"
-            app:icon_size="25dp"
-            tools:ignore="SmallSp" />
-    </LinearLayout>
+    <top.wzmyyj.wzm_sdk.widget.TabMenu
+        android:id="@+id/tm_menu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="@color/colorGray_6"
+        android:textSize="10sp"
+        app:icon_size="25dp"
+        tools:ignore="SmallSp" />
 
 </LinearLayout>
 

@@ -1,6 +1,5 @@
 package com.osmeet.os.view.activity;
 
-import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
@@ -20,20 +19,19 @@ import com.osmeet.os.app.bean.MatchUnit;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
-import com.osmeet.os.view.widget.FlexibleTabLayout;
 import com.osmeet.os.base.activity.BaseActivity;
 import com.osmeet.os.contract.StoreContract;
 import com.osmeet.os.presenter.StorePresenter;
 import com.osmeet.os.view.adapter.DFragmentPagerAdapter;
 import com.osmeet.os.view.fragment.StoreInfoFragment;
 import com.osmeet.os.view.fragment.UserInfoFragment;
+import com.osmeet.os.view.widget.FlexibleTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import top.wzmyyj.wzm_sdk.fragment.InitFragment;
-import top.wzmyyj.wzm_sdk.utils.DensityUtil;
 import top.wzmyyj.wzm_sdk.utils.TabLayoutUtil;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
@@ -70,11 +68,11 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
     FrameLayout fl_bottom;// 底部。
 
 
-    @SuppressWarnings("unchecked")
-    public <F extends InitFragment> F getFragment(int i) {
-        if (i < 0 || i > mFragmentList.size() - 1) return null;
-        return (F) mFragmentList.get(i);
-    }
+//    @SuppressWarnings("unchecked")
+//    public <F extends InitFragment> F getFragment(int i) {
+//        if (i < 0 || i > mFragmentList.size() - 1) return null;
+//        return (F) mFragmentList.get(i);
+//    }
 
 
     private TextView tv_name_top;
@@ -140,6 +138,9 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
                 });
     }
 
+//    @BindView(R.id.abl_top)
+//    Tab
+
     @Override
     protected void initView() {
         super.initView();
@@ -151,6 +152,7 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
         mViewPager.setAdapter(mAdapter);
 
     }
+
 
     @Override
     protected void initData() {
@@ -222,6 +224,8 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
                 G.img(context, store.getLogoImage().getUrl(), img_store_avatar);
             }
         }
+
+        storeInfoFragment.showStoreInfo(store);
 
 
     }
@@ -323,52 +327,7 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
         }
     }
 
-    private boolean isHide1 = false;
 
-    @NonNull
-    private View getBottomView() {
-        return fl_bottom;
-    }
-
-    public void whenUp() {
-        if (isHide1) return;
-        setAnimator(0, DensityUtil.dp2px(context, -getBottomView().getHeight()));// 隐藏。
-        isHide1 = true;
-    }
-
-    public void whenDown() {
-        if (!isHide1) return;
-        setAnimator(DensityUtil.dp2px(context, -getBottomView().getHeight()), 0);// 出现。
-        isHide1 = false;
-    }
-
-    public void whenClick() {
-        if (isHide1) {
-            setAnimator(DensityUtil.dp2px(context, -getBottomView().getHeight()), 0);// 出现。
-        } else {
-            setAnimator(0, DensityUtil.dp2px(context, -getBottomView().getHeight()));// 隐藏。
-        }
-        isHide1 = !isHide1;
-    }
-
-
-    private ValueAnimator anim;
-
-    private void setAnimator(int a, int z) {
-        if (anim != null) {
-            anim.cancel();
-        }
-        final FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) getBottomView().getLayoutParams();
-        int h = params.bottomMargin;
-        long duration = (long) (300f * (z - h) / (z - a));
-        anim = ValueAnimator.ofInt(h, z);
-        anim.setDuration(duration);
-        anim.addUpdateListener(animation -> {
-            params.bottomMargin = (int) (Integer) animation.getAnimatedValue();
-            getBottomView().requestLayout();
-        });
-        anim.start();
-    }
 
 
 }

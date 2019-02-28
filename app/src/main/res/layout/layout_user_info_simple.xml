@@ -25,12 +25,12 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/tv_user_distance"
+            android:id="@+id/tv_user_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:text="@string/_50_km"
+            android:text="@string/_50"
             android:textColor="@color/colorGray_5"
             android:textSize="12sp" />
 
@@ -38,16 +38,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="30dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <com.dl7.tag.TagLayout
             android:id="@+id/tl_tag"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            app:tag_layout_bg_color="@color/colorClarity"
             app:tag_layout_border_width="0dp"
             app:tag_layout_random_color="true"
             app:tag_layout_shape="arc"
@@ -56,20 +57,20 @@
             app:tag_view_text_size="8sp" />
 
         <TextView
-            android:id="@+id/tv_user_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:id="@+id/tv_user_distance"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:gravity="center"
             android:text="@string/_50"
-            android:textColor="@color/colorGray_5"
-            android:textSize="14sp" />
+            android:textColor="@color/colorGray_4"
+            android:textSize="12sp"
+            android:visibility="gone" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 

@@ -5,7 +5,7 @@
     <!--<gradient-->
     <!--android:centerColor="#10ACFF"-->
     <!--android:startColor="@color/colorPrice" />-->
-    <!--<stroke-->
-        <!--android:width="0.5dp"-->
-        <!--android:color="@color/colorLightBlue" />-->
+    <stroke
+        android:width="0.5dp"
+        android:color="@color/colorOs2" />
 </shape>

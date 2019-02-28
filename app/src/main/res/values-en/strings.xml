@@ -57,7 +57,7 @@
     <string name="_99">99</string>
     <string name="_20">20</string>
     <string name="update_info">Edit profile</string>
-    <string name="sentence_example">纵然伤心，也不要愁眉不展，因为你不知是谁会爱上你的笑容。 [Never frown, even when you are sad, because you never know who is falling in love with your smile.]</string>
+    <string name="sentence_example">Never frown, even when you are sad, because you never know who is falling in love with your smile.</string>
     <string name="_2018_01_01">2018–01–01</string>
     <string name="person">person</string>
     <string name="setting">Settings</string>
@@ -85,10 +85,10 @@
     <string name="male">Male</string>
     <string name="unlimited">No limit</string>
     <string name="female">Female</string>
-    <string name="account_manager">Mange account</string>
-    <string name="change_language">Language setting</string>
+    <string name="account_manager">Mange Account</string>
+    <string name="change_language">Language Setting</string>
     <string name="privacy_setting">Privacy</string>
-    <string name="clear_cache">Clear cache</string>
+    <string name="clear_cache">Clear Cache</string>
     <string name="call_os">Contact OS</string>
     <string name="share_os">Share OS</string>
     <string name="logout_2">Log out</string>

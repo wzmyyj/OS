@@ -3,7 +3,7 @@ package com.osmeet.os.view.panel;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.widget.TextView;
 
@@ -13,6 +13,7 @@ import com.osmeet.os.app.bean.Story;
 import com.osmeet.os.app.utils.DistanceUtil;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.StoreInfoContract;
+import com.osmeet.os.contract.ic.IStoreInfo;
 import com.osmeet.os.view.activity.StoreActivity;
 import com.osmeet.os.view.adapter.ivd.StoryIVD;
 
@@ -41,12 +42,20 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Story, StoreInfoCo
     public void update() {
         mPresenter.loadStoreInfo();
         mPresenter.loadStoryList(0);
+
+        StoreActivity storeActivity = getActivity();
+        if (storeActivity != null) {
+            IStoreInfo.P mPresenter2 = storeActivity.getPresenter();
+            if (mPresenter2 != null)
+                mPresenter2.loadStoreInfo();
+        }
+
     }
 
     @Override
     protected void loadMore() {
         super.loadMore();
-        mPresenter.loadStoryList(nextPageNum());
+//        mPresenter.loadStoryList(nextPageNum());
     }
 
     @Override
@@ -54,18 +63,19 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Story, StoreInfoCo
         super.initView();
         // 消除mRecyclerView刷新的动画。
         ((SimpleItemAnimator) mRecyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position == 0 || position == mData.size() + 1 ? 2 : 1;
+            }
+        });
+        mRecyclerView.setLayoutManager(gridLayoutManager);
     }
 
     @Override
     protected void initListener() {
         super.initListener();
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                onScrolled1(dy);
-            }
-        });
     }
 
 //    @Override
@@ -79,13 +89,9 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Story, StoreInfoCo
         this.store = store;
 
         WidgetUtil.setTextNonNull(tv_store_name, store.getName());
-        WidgetUtil.setTextNonNull(tv_store_place, store.getAddressStr());
+        WidgetUtil.setTextNonNull(tv_store_place, store.getIntroduce());
         WidgetUtil.setTextNonNull(tv_store_distance, DistanceUtil.distance(store.getLat(), store.getLng()));
 
-        StoreActivity storeActivity = getActivity();
-        if (storeActivity != null) {
-            storeActivity.showStoreInfo(store);
-        }
     }
 
 
@@ -126,18 +132,6 @@ public class StoreInfoRecyclerPanel extends BaseRecyclerPanel<Story, StoreInfoCo
     protected void setFooter() {
         super.setFooter();
         mFooter = mInflater.inflate(R.layout.layout_footer, null);
-    }
-
-
-    // 控制外部的控件。
-    private void onScrolled1(int dy) {
-        StoreActivity storeActivity = getActivity();
-        if (storeActivity == null) return;
-        if (dy > 10) {
-            storeActivity.whenUp();
-        } else if (dy < -10) {
-            storeActivity.whenDown();
-        }
     }
 
 

@@ -7,21 +7,21 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
 
         <ImageView
             android:id="@+id/img_photo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:contentDescription="@string/bg"
-            android:minHeight="200dp"
             android:src="@color/colorGray_b" />
 
         <top.wzmyyj.wzm_sdk.widget.CircleImageView
             android:id="@+id/img_avatar"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_margin="15dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
             android:contentDescription="@string/avatar"
             android:src="@color/colorGray_e0"
             app:border_color="@color/colorWhite"
@@ -31,57 +31,45 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
             android:text="@string/app_name"
             android:textColor="@color/colorWhite"
-            android:textSize="14sp" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="15dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="10dp"
             android:text="@string/_2018_01_01"
             android:textColor="@color/colorWhite"
             android:textSize="12sp" />
     </FrameLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/colorLine" />
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0.1dp"-->
+    <!--android:background="@color/colorLine" />-->
 
     <LinearLayout
         android:id="@+id/ll_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
-        android:minHeight="50dp"
         android:orientation="horizontal"
-        android:padding="15dp">
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/tv_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:lines="3"
             android:text="@string/sentence_example"
             android:textColor="@color/colorGray_7"
-            android:textSize="13sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorGray_e"
-        android:minHeight="50dp"
-        android:orientation="horizontal"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp">
-
+            android:textSize="12sp" />
 
     </LinearLayout>
 
