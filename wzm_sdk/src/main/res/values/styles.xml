@@ -9,6 +9,10 @@
     </style>
 
     <style name="MyTabLayoutTextAppearance2" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="MyTabLayoutTextAppearance3" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textSize">12sp</item>
     </style>
 

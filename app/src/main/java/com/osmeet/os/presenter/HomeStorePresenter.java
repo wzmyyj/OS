@@ -56,7 +56,13 @@ public class HomeStorePresenter extends BasePresenter<HomeStoreContract.IView> i
                 if (box.getData() != null) {
 //                    toast("加载成功");
                     setAvatarUrls(box.getData().getContent());
-                    mView.showStoreList(box.getData().getContent(), pageNum);
+                    List<Store> storeList = new ArrayList<>();
+                    storeList.addAll(box.getData().getContent());
+                    storeList.addAll(box.getData().getContent());// test
+                    storeList.addAll(box.getData().getContent());
+                    storeList.addAll(box.getData().getContent());
+                    storeList.addAll(box.getData().getContent());
+                    mView.showStoreList(storeList, pageNum);
                 }
 
             }

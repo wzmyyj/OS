@@ -6,14 +6,11 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kongzue.dialog.v2.SelectDialog;
 import com.osmeet.os.R;
-import com.osmeet.os.app.bean.FileInfo;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
 import com.osmeet.os.app.tools.GP;
@@ -54,18 +51,18 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
 
     @BindView(R.id.img_avatar)
     ImageView img_avatar;
-    @BindView(R.id.img_u_1)
-    ImageView img_u_1;
-    @BindView(R.id.img_u_2)
-    ImageView img_u_2;
-    @BindView(R.id.img_u_3)
-    ImageView img_u_3;
-    @BindView(R.id.img_u_4)
-    ImageView img_u_4;
-    @BindView(R.id.img_u_5)
-    ImageView img_u_5;
-    @BindView(R.id.img_u_6)
-    ImageView img_u_6;
+//    @BindView(R.id.img_u_1)
+//    ImageView img_u_1;
+//    @BindView(R.id.img_u_2)
+//    ImageView img_u_2;
+//    @BindView(R.id.img_u_3)
+//    ImageView img_u_3;
+//    @BindView(R.id.img_u_4)
+//    ImageView img_u_4;
+//    @BindView(R.id.img_u_5)
+//    ImageView img_u_5;
+//    @BindView(R.id.img_u_6)
+//    ImageView img_u_6;
 
     @BindView(R.id.tv_user_score)
     TextView tv_user_score;
@@ -139,12 +136,12 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
         et_signature.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         et_signature.setHorizontallyScrolling(false);
         et_signature.setSingleLine(false);
-        imageViewList.add(img_u_1);
-        imageViewList.add(img_u_2);
-        imageViewList.add(img_u_3);
-        imageViewList.add(img_u_4);
-        imageViewList.add(img_u_5);
-        imageViewList.add(img_u_6);
+//        imageViewList.add(img_u_1);
+//        imageViewList.add(img_u_2);
+//        imageViewList.add(img_u_3);
+//        imageViewList.add(img_u_4);
+//        imageViewList.add(img_u_5);
+//        imageViewList.add(img_u_6);
     }
 
     @Override
@@ -173,25 +170,25 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
             }
         });
 
-        for (int i = 0; i < imageViewList.size(); i++) {
-            final int p = i;
-            imageViewList.get(i).setOnClickListener(v -> GP.create(new GP.CallBack() {
-                @Override
-                public void onSuccess(List<String> photoList) {
-                    mIMGs[p].path = photoList.get(0);
-                    setImages();
-                }
-            }).openWithPermission(activity));
-            final int j = i;
-            imageViewList.get(i).setOnLongClickListener(v -> {
-                if (isNoImage(j)) return false;
-                SelectDialog.show(context, context.getString(R.string.warm), context.getString(R.string.delete_this_photo),
-                        context.getString(R.string.ok), (dialog, which) -> deleteImage(j),
-                        context.getString(R.string.cancel), (dialog, which) -> {
-                        });
-                return true;
-            });
-        }
+//        for (int i = 0; i < imageViewList.size(); i++) {
+//            final int p = i;
+//            imageViewList.get(i).setOnClickListener(v -> GP.create(new GP.CallBack() {
+//                @Override
+//                public void onSuccess(List<String> photoList) {
+//                    mIMGs[p].path = photoList.get(0);
+//                    setImages();
+//                }
+//            }).openWithPermission(activity));
+//            final int j = i;
+//            imageViewList.get(i).setOnLongClickListener(v -> {
+//                if (isNoImage(j)) return false;
+//                SelectDialog.show(context, context.getString(R.string.warm), context.getString(R.string.delete_this_photo),
+//                        context.getString(R.string.ok), (dialog, which) -> deleteImage(j),
+//                        context.getString(R.string.cancel), (dialog, which) -> {
+//                        });
+//                return true;
+//            });
+//        }
 
 
     }
@@ -242,32 +239,32 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
             mPresenter.updateMyAvatar(avatarPath);
         }
 
-        String[] imageIds = new String[6];
-        String[] filePaths = new String[6];
-        for (int i = 0; i < 6; i++) {
-            if (mIMGs[i].info != null)
-                imageIds[i] = mIMGs[i].info.getId();
-            filePaths[i] = mIMGs[i].path;
-        }
-
-        boolean isChange = false;
-        for (int i = 0; i < 6; i++) {
-            if (filePaths[i] != null) {
-                isChange = true;
-                break;
-            }
-            if (oldImageIds[i] != null && !oldImageIds[i].equals(imageIds[i])) {
-                isChange = true;
-                break;
-            }
-            if (imageIds[i] != null && !imageIds[i].equals(oldImageIds[i])) {
-                isChange = true;
-                break;
-            }
-        }
-        if (isChange) {
-            mPresenter.updateMyImages(imageIds, filePaths);
-        }
+//        String[] imageIds = new String[6];
+//        String[] filePaths = new String[6];
+//        for (int i = 0; i < 6; i++) {
+//            if (mIMGs[i].info != null)
+//                imageIds[i] = mIMGs[i].info.getId();
+//            filePaths[i] = mIMGs[i].path;
+//        }
+//
+//        boolean isChange = false;
+//        for (int i = 0; i < 6; i++) {
+//            if (filePaths[i] != null) {
+//                isChange = true;
+//                break;
+//            }
+//            if (oldImageIds[i] != null && !oldImageIds[i].equals(imageIds[i])) {
+//                isChange = true;
+//                break;
+//            }
+//            if (imageIds[i] != null && !imageIds[i].equals(oldImageIds[i])) {
+//                isChange = true;
+//                break;
+//            }
+//        }
+//        if (isChange) {
+//            mPresenter.updateMyImages(imageIds, filePaths);
+//        }
     }
 
 
@@ -287,70 +284,70 @@ public class UpdateInfoNeScrollPanel extends BaseNeScrollPanel<UpdateInfoContrac
         WidgetUtil.setTextNonNull(et_job, user.getJob());
 
 
-        List<FileInfo> images = user.getImages();
-        if (images != null) {
-            for (int i = 0; i < 6 && i < images.size(); i++) {
-                FileInfo info = images.get(i);
-                mIMGs[i].info = info;
-                oldImageIds[i] = info.getId();
-            }
-        }
-
-        setImages();
+//        List<FileInfo> images = user.getImages();
+//        if (images != null) {
+//            for (int i = 0; i < 6 && i < images.size(); i++) {
+//                FileInfo info = images.get(i);
+//                mIMGs[i].info = info;
+//                oldImageIds[i] = info.getId();
+//            }
+//        }
+//
+//        setImages();
     }
 
-    private String[] oldImageIds = new String[6];
-
-
-    private IMG[] mIMGs = new IMG[]{
-            new IMG(),
-            new IMG(),
-            new IMG(),
-            new IMG(),
-            new IMG(),
-            new IMG()
-    };
-
-    private void deleteImage(int j) {
-        if (j < 0 || j > 5) return;
-        mIMGs[j].info = null;
-        mIMGs[j].path = null;
-        System.arraycopy(mIMGs, j + 1, mIMGs, j, 5 - j);
-        // 等价于
-        // for (int i = j; i < 5; i++) {
-        //   mIMGs[i] = mIMGs[i + 1];
-        //}
-        mIMGs[5].info = null;
-        mIMGs[5].path = null;
-        setImages();
-    }
-
-    private boolean isNoImage(int j) {
-        return mIMGs[j].info == null && mIMGs[j].path == null;
-    }
-
-
-    private void setImages() {
-        for (int i = 0; i < 6; i++) {
-            IMG img = mIMGs[i];
-            if (img.path != null) {
-                G.img(context, img.path, imageViewList.get(i));
-                imageViewList.get(i).setVisibility(View.VISIBLE);
-            } else if (img.info != null) {
-                G.img(context, img.info.getUrl(), imageViewList.get(i));
-                imageViewList.get(i).setVisibility(View.VISIBLE);
-            } else if (i == 0 || (mIMGs[i - 1].info != null || mIMGs[i - 1].path != null)) {
-                G.img(context, R.mipmap.ic_image_add, imageViewList.get(i));
-                imageViewList.get(i).setVisibility(View.VISIBLE);
-            } else {
-                imageViewList.get(i).setVisibility(View.GONE);
-            }
-        }
-    }
-
-    class IMG {
-        FileInfo info;
-        String path;
-    }
+//    private String[] oldImageIds = new String[6];
+//
+//
+//    private IMG[] mIMGs = new IMG[]{
+//            new IMG(),
+//            new IMG(),
+//            new IMG(),
+//            new IMG(),
+//            new IMG(),
+//            new IMG()
+//    };
+//
+//    private void deleteImage(int j) {
+//        if (j < 0 || j > 5) return;
+//        mIMGs[j].info = null;
+//        mIMGs[j].path = null;
+//        System.arraycopy(mIMGs, j + 1, mIMGs, j, 5 - j);
+//        // 等价于
+//        // for (int i = j; i < 5; i++) {
+//        //   mIMGs[i] = mIMGs[i + 1];
+//        //}
+//        mIMGs[5].info = null;
+//        mIMGs[5].path = null;
+//        setImages();
+//    }
+//
+//    private boolean isNoImage(int j) {
+//        return mIMGs[j].info == null && mIMGs[j].path == null;
+//    }
+//
+//
+//    private void setImages() {
+//        for (int i = 0; i < 6; i++) {
+//            IMG img = mIMGs[i];
+//            if (img.path != null) {
+//                G.img(context, img.path, imageViewList.get(i));
+//                imageViewList.get(i).setVisibility(View.VISIBLE);
+//            } else if (img.info != null) {
+//                G.img(context, img.info.getUrl(), imageViewList.get(i));
+//                imageViewList.get(i).setVisibility(View.VISIBLE);
+//            } else if (i == 0 || (mIMGs[i - 1].info != null || mIMGs[i - 1].path != null)) {
+//                G.img(context, R.mipmap.ic_image_add, imageViewList.get(i));
+//                imageViewList.get(i).setVisibility(View.VISIBLE);
+//            } else {
+//                imageViewList.get(i).setVisibility(View.GONE);
+//            }
+//        }
+//    }
+//
+//    class IMG {
+//        FileInfo info;
+//        String path;
+//    }
 
 }

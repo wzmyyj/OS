@@ -9,7 +9,7 @@ import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.app.event.StoreChooseEvent;
 import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.ChatInviteContract;
-import com.osmeet.os.view.adapter.ivd.HomeStoreIVD;
+import com.osmeet.os.view.adapter.ivd.Store2IVD;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -31,7 +31,7 @@ public class InviteStoreListPanel extends BaseRecyclerPanel<Store, ChatInviteCon
 
     @Override
     protected void setIVD(List<IVD<Store>> ivd) {
-        ivd.add(new HomeStoreIVD(context));
+        ivd.add(new Store2IVD(context));
     }
 
     @Override

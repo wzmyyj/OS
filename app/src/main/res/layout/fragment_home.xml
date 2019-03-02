@@ -2,8 +2,37 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="15dp">
+    android:layout_height="match_parent">
+
+
+    <FrameLayout
+        android:id="@+id/fl_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGray_b"
+        android:paddingTop="140dp">
+
+        <TextView
+            android:id="@+id/tv_xx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:text="@string/os" />
+    </FrameLayout>
+
+
+    <View
+        android:id="@+id/v_bu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="@color/colorGray_h"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/abl_top"
@@ -12,55 +41,48 @@
         android:background="@color/colorClarity"
         app:elevation="0dp">
 
-        <include layout="@layout/layout_home_top_bar" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            app:layout_scrollFlags="scroll|enterAlways" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="60dp" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_top"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_height="40dp"
+            android:background="@color/colorGray_h"
             app:tabBackground="@color/colorClarity"
-            app:tabGravity="fill"
-            app:tabIndicatorHeight="0dp"
+            app:tabGravity="center"
+            app:tabIndicatorColor="@color/colorRed"
+            app:tabIndicatorHeight="0.5dp"
             app:tabMaxWidth="100dp"
             app:tabMinWidth="20dp"
             app:tabMode="scrollable"
-            app:tabPadding="-1dp"
-            app:tabPaddingBottom="-1dp"
-            app:tabPaddingEnd="-1dp"
-            app:tabPaddingStart="-1dp"
-            app:tabPaddingTop="-1dp"
-            app:tabSelectedTextColor="@color/colorWhite"
-            app:tabTextColor="@color/colorGray_b">
+            app:tabSelectedTextColor="@color/colorRed"
+            app:tabTextAppearance="@style/MyTabLayoutTextAppearance2"
+            app:tabTextColor="@color/colorGray_6">
 
         </android.support.design.widget.TabLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="@color/colorLine" />
+            android:layout_height="5dp"
+            android:background="@color/colorGray_h" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorGray_h"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     </android.support.v4.view.ViewPager>
 
 
-    <!--<android.support.design.widget.FloatingActionButton-->
-    <!--android:id="@+id/fab_a"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="bottom|center_horizontal"-->
-    <!--android:layout_margin="25dp"-->
-    <!--app:backgroundTint="@color/colorPrimary"-->
-    <!--app:fabSize="normal"-->
-    <!--app:layout_behavior="com.osmeet.os.view.widget.ScrollAwareFABBehavior"-->
-    <!--app:rippleColor="@color/colorP2" />-->
-
+    <include layout="@layout/layout_home_top_bar" />
 </android.support.design.widget.CoordinatorLayout>

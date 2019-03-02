@@ -6,13 +6,11 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Category;
-import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.fragment.BaseFragment;
 import com.osmeet.os.contract.HomeContract;
 import com.osmeet.os.presenter.HomePresenter;
@@ -27,8 +25,6 @@ import butterknife.OnClick;
 import top.wzmyyj.wzm_sdk.fragment.InitFragment;
 import top.wzmyyj.wzm_sdk.tools.T;
 import top.wzmyyj.wzm_sdk.utils.DensityUtil;
-import top.wzmyyj.wzm_sdk.utils.TabLayoutUtil;
-import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
 
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
@@ -46,7 +42,7 @@ public class HomeFragment extends BaseFragment<HomeContract.IPresenter> implemen
     }
 
 
-    @OnClick(R.id.img_search)
+    @OnClick({R.id.img_search, R.id.tv_search})
     void search() {
         mPresenter.goSearch();
     }
@@ -80,21 +76,30 @@ public class HomeFragment extends BaseFragment<HomeContract.IPresenter> implemen
         mViewPager.setAdapter(mAdapter);
     }
 
+    @BindView(R.id.fl_bar)
+    FrameLayout fl_bar;
+    @BindView(R.id.tv_xx)
+    TextView tv_xx;
+    @BindView(R.id.v_bu)
+    View v_bu;// 布。
 
     @Override
     protected void initListener() {
         super.initListener();
+        tv_xx.setOnClickListener(v -> mPresenter.toast("This Is Center"));
         mAppBarLayout.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
-            int h = DensityUtil.dp2px(context, 45);
-            int h2 = DensityUtil.dp2px(context, 60);
-            int h3 = DensityUtil.dp2px(context, 45);
-            float scale = (-1f) * verticalOffset / h;// 0->1
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mTabLayout.getLayoutParams();
-            int he = (int) (h2 - scale * (h2 - h3));
-            if (params.height != he) {// 防止不动时，反复重新绘制。
-                params.height = he;
-                mTabLayout.requestLayout();
+
+            int h1 = DensityUtil.dp2px(context, 150);
+            int h2 = DensityUtil.dp2px(context, 180);
+
+            int v=-verticalOffset;
+            if(v>h1) {
+                float f = 1.0f * (v-h1)/ (h2-h1);// 0->1
+                v_bu.setAlpha(f);
+            }else{
+                v_bu.setAlpha(0);
             }
+
         });
     }
 
@@ -118,59 +123,60 @@ public class HomeFragment extends BaseFragment<HomeContract.IPresenter> implemen
         }
 
         mAdapter.notifyDataSetChanged();
-
-        setTabLayoutStyle(mTabLayout, categoryList);
+        mTabLayout.clearOnTabSelectedListeners();
+        mTabLayout.setupWithViewPager(mViewPager);
+//        setTabLayoutStyle(mTabLayout, categoryList);
     }
 
-    private void setTabLayoutStyle(TabLayout tabLayout, final List<Category> categoryList) {
-        // 自定义TabLayout.Tab样式。
-
-        tabLayout.clearOnTabSelectedListeners();
-        tabLayout.setupWithViewPager(mViewPager);
-        TabLayoutUtil.setStyle(tabLayout, new TabLayoutUtil.TabLayoutStyle() {
-            List<View> viewList = new ArrayList<>();
-            List<TextView> textViewList = new ArrayList<>();
-            List<ImageView> imageViewList = new ArrayList<>();
-
-            @Override
-            public void setCustomView(TabLayout.Tab tab) {
-                if (tab == null) return;
-                View customView = tab.setCustomView(R.layout.layout_home_tab_item).getCustomView();
-                if (customView == null) return;
-                int p = tab.getPosition();
-                View view = customView.findViewById(R.id.v_tab_item_indicator);
-                TextView textView = customView.findViewById(R.id.tv_tab_item_text);
-                textView.setText(categoryList.get(p).getName());
-                ImageView imageView = customView.findViewById(R.id.img_tab_item_bg);
-                if (categoryList.get(p).getLogo() != null) {
-                    String url = categoryList.get(p).getLogo().getUrl();
-                    G.img(getActivity(), url, imageView);
-                } else {
-                    imageView.setImageResource(R.color.colorBlue);
-                }
-                viewList.add(view);
-                textViewList.add(textView);
-                imageViewList.add(imageView);
-            }
-
-            @Override
-            public void setTabSelected(TabLayout.Tab tab) {
-                int p = tab.getPosition();
-                WidgetUtil.setTextColor(textViewList.get(p), R.color.colorWhite);
-                viewList.get(p).setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void setTabUnselected(TabLayout.Tab tab) {
-                int p = tab.getPosition();
-                WidgetUtil.setTextColor(textViewList.get(p), R.color.colorGray_b);
-                viewList.get(p).setVisibility(View.GONE);
-            }
-
-            @Override
-            public void setTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-    }
+//    private void setTabLayoutStyle(TabLayout tabLayout, final List<Category> categoryList) {
+//        // 自定义TabLayout.Tab样式。
+//
+//        tabLayout.clearOnTabSelectedListeners();
+//        tabLayout.setupWithViewPager(mViewPager);
+//        TabLayoutUtil.setStyle(tabLayout, new TabLayoutUtil.TabLayoutStyle() {
+//            List<View> viewList = new ArrayList<>();
+//            List<TextView> textViewList = new ArrayList<>();
+//            List<ImageView> imageViewList = new ArrayList<>();
+//
+//            @Override
+//            public void setCustomView(TabLayout.Tab tab) {
+//                if (tab == null) return;
+//                View customView = tab.setCustomView(R.layout.layout_home_tab_item).getCustomView();
+//                if (customView == null) return;
+//                int p = tab.getPosition();
+//                View view = customView.findViewById(R.id.v_tab_item_indicator);
+//                TextView textView = customView.findViewById(R.id.tv_tab_item_text);
+//                textView.setText(categoryList.get(p).getName());
+//                ImageView imageView = customView.findViewById(R.id.img_tab_item_bg);
+//                if (categoryList.get(p).getLogo() != null) {
+//                    String url = categoryList.get(p).getLogo().getUrl();
+//                    G.img(getActivity(), url, imageView);
+//                } else {
+//                    imageView.setImageResource(R.color.colorBlue);
+//                }
+//                viewList.add(view);
+//                textViewList.add(textView);
+//                imageViewList.add(imageView);
+//            }
+//
+//            @Override
+//            public void setTabSelected(TabLayout.Tab tab) {
+//                int p = tab.getPosition();
+//                WidgetUtil.setTextColor(textViewList.get(p), R.color.colorWhite);
+//                viewList.get(p).setVisibility(View.VISIBLE);
+//            }
+//
+//            @Override
+//            public void setTabUnselected(TabLayout.Tab tab) {
+//                int p = tab.getPosition();
+//                WidgetUtil.setTextColor(textViewList.get(p), R.color.colorGray_b);
+//                viewList.get(p).setVisibility(View.GONE);
+//            }
+//
+//            @Override
+//            public void setTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
+//    }
 }

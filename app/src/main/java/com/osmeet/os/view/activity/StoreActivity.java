@@ -84,6 +84,7 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
         View mTopBar = findViewById(R.id.fl_store_top_bar);
         tv_name_top = mTopBar.findViewById(R.id.tv_name_top);
         img_avatar_top = mTopBar.findViewById(R.id.img_avatar_top);
+        tv_name_top.setOnClickListener(v -> mViewPager.setCurrentItem(0));
         ll_tap_bar = mTopBar.findViewById(R.id.ll_top_abr);
         ll_tap_bar.setAlpha(0f);
         ImageView img_back = mTopBar.findViewById(R.id.img_back);
@@ -314,20 +315,22 @@ public class StoreActivity extends BaseActivity<StoreContract.IPresenter> implem
 
             @Override
             public void setTabReselected(TabLayout.Tab tab) {
+                int p = tab.getPosition();
+                if (p == 0) {
+                    mPresenter.loadMatchUnitList();
+                }
             }
         });
 
     }
 
     private void selected(int p) {
-        if (p > 2) {
+        if (p > 0) {
             ll_tap_bar.setAlpha(1.0f);
         } else {
             ll_tap_bar.setAlpha(0.0f);
         }
     }
-
-
 
 
 }

@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -43,8 +44,8 @@ public class MainActivity extends BaseMainActivity<MainContract.IPresenter> impl
 
     @Override
     protected void initFTs(List<FT> fts) {
-        fts.add(new FT(new MessageFragment(), context.getString(R.string.message), R.mipmap.ic_message, R.mipmap.ic_message_selected));
-        fts.add(new FT(new HomeFragment(), context.getString(R.string.home), R.mipmap.ic_home, R.mipmap.ic_home_selected));
+        fts.add(new FT(new HomeFragment(), context.getString(R.string.explore), R.mipmap.ic_home, R.mipmap.ic_home_selected));
+        fts.add(new FT(new MessageFragment(), context.getString(R.string.meet), R.mipmap.ic_message, R.mipmap.ic_message_selected));
         fts.add(new FT(new MineFragment(), context.getString(R.string.mine), R.color.colorClarity, R.mipmap.ic_mine_selected));
     }
 
@@ -62,12 +63,12 @@ public class MainActivity extends BaseMainActivity<MainContract.IPresenter> impl
 
     @Override
     protected int initTabHeight() {
-        return DensityUtil.dp2px(context, 50);
+        return DensityUtil.dp2px(context, 55);
     }
 
     @Override
     protected int firstWhich() {
-        return 1;// 一开始显示中间哪页。
+        return 0;// 一开始显示中间哪页。
     }
 
     @Override
@@ -81,6 +82,8 @@ public class MainActivity extends BaseMainActivity<MainContract.IPresenter> impl
                 View customView = tab.setCustomView(R.layout.layout_main_tab).getCustomView();
                 if (customView == null) return;
                 ImageView img_tab = customView.findViewById(R.id.img_tab);
+                TextView tv_tab = customView.findViewById(R.id.tv_tab);
+                tv_tab.setText(mFTs.get(tab.getPosition()).str);
                 imageViewList.add(img_tab);
                 if (tab.getPosition() == 2) {
                     img_avatar = customView.findViewById(R.id.img_avatar);
@@ -160,7 +163,7 @@ public class MainActivity extends BaseMainActivity<MainContract.IPresenter> impl
                 double longitude = aMapLocation.getLongitude();//获取经度
                 DPoint mPoint = new DPoint(latitude, longitude);
                 App.getInstance().setMyDPoint(mPoint);
-                mPresenter.sendLocation(longitude,latitude);
+                mPresenter.sendLocation(longitude, latitude);
             } else {
                 //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
                 Log.e("AMapError", "location Error, ErrCode:"

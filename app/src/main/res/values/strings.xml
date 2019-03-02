@@ -245,4 +245,7 @@
     <string name="load_more">加载更多</string>
     <string name="no_signature">这个用户很懒，什么都没留下~</string>
     <string name="unknow">未知</string>
+    <string name="meet">见面</string>
+    <string name="explore">探索</string>
+    <string name="search_meet_place">搜索见面地点</string>
 </resources>
