@@ -12,7 +12,7 @@ public class MD5Util {
 
     /**
      * 利用MD5进行加密
-     * @param str
+     * @param str .
      * @return md5
      */
     public static String encrypt(String str) {

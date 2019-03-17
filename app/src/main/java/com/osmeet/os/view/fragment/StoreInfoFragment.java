@@ -42,11 +42,6 @@ public class StoreInfoFragment extends BaseFragment<StoreInfoContract.IPresenter
     FrameLayout fl_panel;
 
     @Override
-    protected boolean isRefreshRootView() {
-        return true;
-    }
-
-    @Override
     protected void initView() {
         super.initView();
         fl_panel.addView(getPanelView(0));

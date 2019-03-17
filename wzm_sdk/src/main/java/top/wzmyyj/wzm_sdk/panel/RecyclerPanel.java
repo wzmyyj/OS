@@ -68,7 +68,7 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
         if (mIVD.size() == 0) {
             defaultIVD();
         }
-        MultiItemTypeAdapter<T> multiItemTypeAdapter = new MyMultiItemTypeAdapter(context, mData);
+        MultiItemTypeAdapter<T> multiItemTypeAdapter = getMultiItemTypeAdapter(context, mData);
         for (IVD<T> ivd : mIVD) {
             multiItemTypeAdapter.addItemViewDelegate(ivd);
         }
@@ -203,21 +203,8 @@ public abstract class RecyclerPanel<T> extends RefreshPanel
 
     }
 
-    class MyMultiItemTypeAdapter extends MultiItemTypeAdapter<T> {
-
-        MyMultiItemTypeAdapter(Context context, List<T> data) {
-            super(context, data);
-        }
-
-        @Override
-        public void onViewRecycled(@NonNull ViewHolder holder) {
-            super.onViewRecycled(holder);
-            viewRecycled(holder);
-        }
-    }
-
-    protected void viewRecycled(@NonNull ViewHolder holder) {
-
+    protected MultiItemTypeAdapter<T> getMultiItemTypeAdapter(Context context, List<T> data) {
+        return new MultiItemTypeAdapter<T>(context, data);
     }
 
     @Override

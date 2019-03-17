@@ -6,9 +6,9 @@ package com.osmeet.os.model.net.utils;
 
 
 public class Urls {
-    public static final String OS_BASE = "http://47.104.219.30:8888";
+    public static final String OS_BASE = "http://47.104.219.30:8886";
 
-    //        public static final String OS_BASE = "http://www.osmeet.com:8888";
+    //        public static final String OS_BASE = "http://www.osmeet.com:8886";
     // 举报。
     public static final String report = "/report";
 

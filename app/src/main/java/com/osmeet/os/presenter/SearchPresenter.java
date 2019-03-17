@@ -30,7 +30,7 @@ public class SearchPresenter extends BasePresenter<SearchContract.IView> impleme
     }
 
     @Override
-    public void searchUser(@NonNull String word, int pageNum) {
+    public void searchUser(@NonNull final String word, final int pageNum) {
         userModel.user_searchUser(new PObserver<Box<ListContent<User>>>() {
             @Override
             public void onNext(Box<ListContent<User>> box) {
@@ -46,7 +46,7 @@ public class SearchPresenter extends BasePresenter<SearchContract.IView> impleme
     }
 
     @Override
-    public void searchStore(@NonNull String word, int pageNum) {
+    public void searchStore(@NonNull final String word, final int pageNum) {
         storeModel.store_findByCondition(new PObserver<Box<ListContent<Store>>>() {
             @Override
             public void onNext(Box<ListContent<Store>> box) {

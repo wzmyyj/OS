@@ -3,7 +3,6 @@ package com.osmeet.os.view.panel;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.SimpleItemAnimator;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -12,33 +11,20 @@ import android.widget.TextView;
 
 import com.kongzue.dialog.v2.InputDialog;
 import com.osmeet.os.R;
-import com.osmeet.os.app.bean.Story;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.tools.G;
-import com.osmeet.os.base.panel.BaseRecyclerPanel;
 import com.osmeet.os.contract.UserInfo2Contract;
-import com.osmeet.os.view.adapter.ivd.StoryIVD;
 import com.osmeet.os.view.panel.simple.UserInfoPanel;
 import com.osmeet.os.view.widget.listener.AlphaReScrollListener;
-
-import java.util.List;
-
-import top.wzmyyj.wzm_sdk.adapter.ivd.IVD;
 
 
 /**
  * Created by yyj on 2018/12/11. email: 2209011667@qq.com
  */
 
-public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<Story, UserInfo2Contract.IPresenter> {
+public class UserInfo2RecyclerPanel extends StoryRecyclerPanel<UserInfo2Contract.IPresenter> {
     public UserInfo2RecyclerPanel(Context context, UserInfo2Contract.IPresenter iPresenter) {
         super(context, iPresenter);
-    }
-
-
-    @Override
-    protected void setIVD(List<IVD<Story>> ivd) {
-        ivd.add(new StoryIVD(context));
     }
 
     @Override
@@ -60,14 +46,6 @@ public class UserInfo2RecyclerPanel extends BaseRecyclerPanel<Story, UserInfo2Co
         super.initPanels();
         addPanels(userInfoPanel = new UserInfoPanel(context));
     }
-
-    @Override
-    protected void initView() {
-        super.initView();
-        // 消除mRecyclerView刷新的动画。
-        ((SimpleItemAnimator) mRecyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
-    }
-
 
     @Override
     protected void initListener() {

@@ -31,14 +31,6 @@ public class InitFragmentPagerAdapter extends FragmentPagerAdapter {
      * @param fragmentList fragment list
      */
     public void setFragmentList(List<InitFragment> fragmentList) {
-//        if (this.mFragmentList != null && this.mFragmentList.size() > 0) {
-//            FragmentTransaction transaction = fragmentManager.beginTransaction();
-//            for (Fragment f : this.mFragmentList) {
-//                transaction.remove(f);
-//            }
-//            transaction.commit();
-//            fragmentManager.executePendingTransactions();
-//        }
         this.mFragmentList = fragmentList;
         notifyDataSetChanged();
     }

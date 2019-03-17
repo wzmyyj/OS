@@ -1,8 +1,5 @@
 package com.osmeet.os.contract;
 
-import android.support.annotation.NonNull;
-
-import com.osmeet.os.app.bean.Goods;
 import com.osmeet.os.app.tools.I;
 import com.osmeet.os.base.contract.BaseContract;
 import com.osmeet.os.contract.ic.IGoodsInfo;
@@ -16,8 +13,6 @@ public interface GoodsContract {
 
     interface IView extends BaseContract.IView,
             IGoodsInfo.V {
-
-        void showGoodsInfo(@NonNull Goods goods);
     }
 
     interface IPresenter extends BaseContract.IPresenter,
