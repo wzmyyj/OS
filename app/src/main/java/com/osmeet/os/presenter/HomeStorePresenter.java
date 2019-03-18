@@ -11,9 +11,6 @@ import com.osmeet.os.model.net.StoreModel;
 import com.osmeet.os.model.net.utils.box.Box;
 import com.osmeet.os.model.net.utils.box.ListContent;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by yyj on 2018/12/03. email: 2209011667@qq.com
  */
@@ -54,13 +51,13 @@ public class HomeStorePresenter extends BasePresenter<HomeStoreContract.IView> i
                 }
                 if (box.getData() != null) {
 //                    toast("加载成功");
-                    List<Store> storeList = new ArrayList<>();
-                    storeList.addAll(box.getData().getContent());
-                    storeList.addAll(box.getData().getContent());// test
-                    storeList.addAll(box.getData().getContent());
-                    storeList.addAll(box.getData().getContent());
-                    storeList.addAll(box.getData().getContent());
-                    mView.showStoreList(storeList, pageNum);
+//                    List<Store> storeList = new ArrayList<>();
+//                    storeList.addAll(box.getData().getContent());
+//                    storeList.addAll(box.getData().getContent());// test
+//                    storeList.addAll(box.getData().getContent());
+//                    storeList.addAll(box.getData().getContent());
+//                    storeList.addAll(box.getData().getContent());
+                    mView.showStoreList(box.getData().getContent(), pageNum);
                 }
 
             }

@@ -22,8 +22,8 @@ public class Store {
     private List<FileInfo> images;
     private String introduce;
     private String introduceEn;
-    private int lat;
-    private int lng;
+    private double lat;
+    private double lng;
     private FileInfo logoImage;
     private String logoImageId;
     private String matchRelatedId;
@@ -126,19 +126,19 @@ public class Store {
         return introduceEn;
     }
 
-    public void setLat(int lat) {
+    public void setLat(double lat) {
         this.lat = lat;
     }
 
-    public int getLat() {
+    public double getLat() {
         return lat;
     }
 
-    public void setLng(int lng) {
+    public void setLng(double lng) {
         this.lng = lng;
     }
 
-    public int getLng() {
+    public double getLng() {
         return lng;
     }
 
