@@ -71,8 +71,6 @@ public interface FriendService {
     @GET(Urls.friends_meNum)
     Observable<Box<Integer>> friends_meNum();
 
-    @GET(Urls.friends_meRead)
-    Observable<Box<String>> friends_meRead();
 
     @GET(Urls.friends_page)
     Observable<Box<ListContent<User>>> friends_page(

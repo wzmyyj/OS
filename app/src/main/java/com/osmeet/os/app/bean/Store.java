@@ -11,51 +11,32 @@ import java.util.List;
 
 public class Store {
 
-    private User boss;
     private String addressStr;
-    private String bossPhone;
+    private String addressStrEn;
+    private User boss;
     private Category category;
+    private FileInfo coverImage;
     private long createDate;
     private long endTime;
-    private int endTimeStamp;
     private String id;
     private List<FileInfo> images;
     private String introduce;
     private String introduceEn;
-    private double lat;
-    private double lng;
+    private int lat;
+    private int lng;
     private FileInfo logoImage;
-    private FileInfo coverImage;
+    private String logoImageId;
+    private String matchRelatedId;
+    private int matchState;
     private int matchUnitCount;
     private String name;
     private String nameEn;
     private String openDay;
     private String phone;
-    private Region region;
+    private String poiId;
     private int sequence;
     private long startTime;
-    private int startTimeStamp;
     private int validState;
-    private int matchState;
-
-    private List<String> avatarIds;
-    private List<String> avatarUrls;
-
-    public User getBoss() {
-        return boss;
-    }
-
-    public void setBoss(User boss) {
-        this.boss = boss;
-    }
-
-    public List<String> getAvatarIds() {
-        return avatarIds;
-    }
-
-    public void setAvatarIds(List<String> avatarIds) {
-        this.avatarIds = avatarIds;
-    }
 
     public void setAddressStr(String addressStr) {
         this.addressStr = addressStr;
@@ -65,12 +46,20 @@ public class Store {
         return addressStr;
     }
 
-    public void setBossPhone(String bossPhone) {
-        this.bossPhone = bossPhone;
+    public void setAddressStrEn(String addressStrEn) {
+        this.addressStrEn = addressStrEn;
     }
 
-    public String getBossPhone() {
-        return bossPhone;
+    public String getAddressStrEn() {
+        return addressStrEn;
+    }
+
+    public void setBoss(User boss) {
+        this.boss = boss;
+    }
+
+    public User getBoss() {
+        return boss;
     }
 
     public void setCategory(Category category) {
@@ -79,6 +68,14 @@ public class Store {
 
     public Category getCategory() {
         return category;
+    }
+
+    public void setCoverImage(FileInfo coverImage) {
+        this.coverImage = coverImage;
+    }
+
+    public FileInfo getCoverImage() {
+        return coverImage;
     }
 
     public void setCreateDate(long createDate) {
@@ -95,14 +92,6 @@ public class Store {
 
     public long getEndTime() {
         return endTime;
-    }
-
-    public void setEndTimeStamp(int endTimeStamp) {
-        this.endTimeStamp = endTimeStamp;
-    }
-
-    public int getEndTimeStamp() {
-        return endTimeStamp;
     }
 
     public void setId(String id) {
@@ -137,19 +126,19 @@ public class Store {
         return introduceEn;
     }
 
-    public void setLat(double lat) {
+    public void setLat(int lat) {
         this.lat = lat;
     }
 
-    public double getLat() {
+    public int getLat() {
         return lat;
     }
 
-    public void setLng(double lng) {
+    public void setLng(int lng) {
         this.lng = lng;
     }
 
-    public double getLng() {
+    public int getLng() {
         return lng;
     }
 
@@ -161,20 +150,36 @@ public class Store {
         return logoImage;
     }
 
-    public FileInfo getCoverImage() {
-        return coverImage;
+    public void setLogoImageId(String logoImageId) {
+        this.logoImageId = logoImageId;
     }
 
-    public void setCoverImage(FileInfo coverImage) {
-        this.coverImage = coverImage;
+    public String getLogoImageId() {
+        return logoImageId;
     }
 
-    public int getMatchUnitCount() {
-        return matchUnitCount;
+    public void setMatchRelatedId(String matchRelatedId) {
+        this.matchRelatedId = matchRelatedId;
+    }
+
+    public String getMatchRelatedId() {
+        return matchRelatedId;
+    }
+
+    public void setMatchState(int matchState) {
+        this.matchState = matchState;
+    }
+
+    public int getMatchState() {
+        return matchState;
     }
 
     public void setMatchUnitCount(int matchUnitCount) {
         this.matchUnitCount = matchUnitCount;
+    }
+
+    public int getMatchUnitCount() {
+        return matchUnitCount;
     }
 
     public void setName(String name) {
@@ -209,12 +214,12 @@ public class Store {
         return phone;
     }
 
-    public void setRegion(Region region) {
-        this.region = region;
+    public void setPoiId(String poiId) {
+        this.poiId = poiId;
     }
 
-    public Region getRegion() {
-        return region;
+    public String getPoiId() {
+        return poiId;
     }
 
     public void setSequence(int sequence) {
@@ -233,14 +238,6 @@ public class Store {
         return startTime;
     }
 
-    public void setStartTimeStamp(int startTimeStamp) {
-        this.startTimeStamp = startTimeStamp;
-    }
-
-    public int getStartTimeStamp() {
-        return startTimeStamp;
-    }
-
     public void setValidState(int validState) {
         this.validState = validState;
     }
@@ -249,19 +246,4 @@ public class Store {
         return validState;
     }
 
-    public List<String> getAvatarUrls() {
-        return avatarUrls;
-    }
-
-    public void setAvatarUrls(List<String> avatarUrls) {
-        this.avatarUrls = avatarUrls;
-    }
-
-    public int getMatchState() {
-        return matchState;
-    }
-
-    public void setMatchState(int matchState) {
-        this.matchState = matchState;
-    }
 }

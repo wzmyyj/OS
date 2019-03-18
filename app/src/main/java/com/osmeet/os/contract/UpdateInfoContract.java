@@ -24,7 +24,6 @@ public interface UpdateInfoContract {
 
         void updateMyAvatar(@NonNull String filePath);
 
-        void updateMyImages(@NonNull String[] imageIds, @NonNull String[] filePaths);
     }
 
 }

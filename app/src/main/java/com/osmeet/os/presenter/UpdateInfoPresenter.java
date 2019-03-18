@@ -67,19 +67,10 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.IView>
         }
     }
 
-    @Override
-    public void updateMyImages(@NonNull String[] imageIds, @NonNull String[] filePaths) {
-        if (isFinishUpdateImages) {
-            isFinishUpdateImages = false;
-            updateImages(imageIds, filePaths);
-        }
-
-    }
 
 
     private boolean isFinishUpdateAvatar = true;
     private boolean isFinishUpdateInfo = true;
-    private boolean isFinishUpdateImages = true;
 
 
     private void updateAvatar(@NonNull String filePath) {
@@ -121,28 +112,8 @@ public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.IView>
         }, user);
     }
 
-    private void updateImages(@NonNull String[] imageIds, @NonNull String[] filePaths) {
-        userModel.user_updateDisplayImages(new PObserver<Box<String>>() {
-            @Override
-            public void onNext(Box<String> box) {
-                if (box.getCode() != 0) {
-                    toast(box.getMessage());
-                    return;
-                }
-                log(box.getData());
-            }
-
-            @Override
-            protected void onFinish() {
-                super.onFinish();
-                isFinishUpdateImages = true;
-                checkFinishAll();
-            }
-        }, imageIds, filePaths);
-    }
-
     private void checkFinishAll() {
-        if (isFinishUpdateInfo && isFinishUpdateAvatar && isFinishUpdateImages) {
+        if (isFinishUpdateInfo && isFinishUpdateAvatar) {
             toast(getContext().getString(R.string.update_info_success));
             App.getInstance().setMyInfo(null);
             EventBus.getDefault().post(new MyInfoUpdateEvent(true));

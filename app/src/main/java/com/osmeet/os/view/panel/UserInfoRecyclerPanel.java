@@ -3,6 +3,8 @@ package com.osmeet.os.view.panel;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.osmeet.os.R;
 import com.osmeet.os.app.bean.Story;
@@ -52,11 +54,11 @@ public class UserInfoRecyclerPanel extends StoryRecyclerPanel<UserInfoContract.I
     }
 
 
-//    @Override
-//    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-//        super.onItemClick(view, holder, position);
-//
-//    }
+    @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        super.onItemClick(view, holder, position);
+
+    }
 
 
     public void setUser(@NonNull User user) {

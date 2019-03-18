@@ -5,7 +5,6 @@ package com.osmeet.os.app.bean;
 
 import android.text.TextUtils;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +29,6 @@ public class User {
     private String fieldOfWork;
     private int friendRelationship;
     private String id;
-    private List<FileInfo> images;
     private List<Store> inStore;
     private int inviteRelationship;
     private String inviteRelationshipInviteId;
@@ -127,14 +125,6 @@ public class User {
 
     public String getId() {
         return id;
-    }
-
-    public void setImages(List<FileInfo> images) {
-        this.images = images;
-    }
-
-    public List<FileInfo> getImages() {
-        return images;
     }
 
     public void setInStore(List<Store> inStore) {
@@ -303,7 +293,6 @@ public class User {
         return this.getExamineStatus() != -1
                 && this.getAvatar() != null
                 && this.getSex() > 0
-                && !TextUtils.isEmpty(this.getUsername())
                 && !TextUtils.isEmpty(this.getUsername());
     }
 
@@ -319,24 +308,13 @@ public class User {
         user.setCompany("ZWD");
         user.setJob("Android Coder");
         user.setBirthday("19970101");
-        List<FileInfo> images = new ArrayList<>();
         FileInfo image = new FileInfo();
         image.setUrl("https://upload-images.jianshu" +
                 ".io/upload_images/3262738-0a5b" +
                 "030907019fd8.jpg?imageMogr2/a" +
                 "uto-orient/strip%7CimageView2/2/w/1240");
         user.setAvatar(image);
-        user.setCreditScore(90);
-        for (int i = 1; i < 6; i++) {
-            FileInfo img = new FileInfo();
-            img.setUrl("https://upload-images.jianshu.i" +
-                    "o/upload_images/326273" +
-                    "8-ead0b680c718d0f0.jpg?image" +
-                    "Mogr2/auto-orient/strip%7Cim" +
-                    "ageView2/2/w/1240");
-            images.add(img);
-        }
-        user.setImages(images);
+
         return user;
     }
 }

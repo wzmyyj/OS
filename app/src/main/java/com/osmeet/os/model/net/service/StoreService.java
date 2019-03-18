@@ -3,7 +3,6 @@ package com.osmeet.os.model.net.service;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.model.net.utils.Urls;
 import com.osmeet.os.model.net.utils.box.Box;
-import com.osmeet.os.model.net.utils.box.ConditionBody;
 import com.osmeet.os.model.net.utils.box.ListContent;
 
 import java.util.List;
@@ -24,27 +23,79 @@ public interface StoreService {
     Observable<Box<Store>> store(
             @Query("id") String id);
 
-    @GET(Urls.store_getStore)
-    Observable<Box<List<Store>>> store_getStore();
+    @GET(Urls.store_boss)
+    Observable<Box<List<Store>>> store_boss();
 
     @POST(Urls.store_findByCondition)
     Observable<Box<ListContent<Store>>> store_findByCondition(
-            @Body ConditionBody body,
+            @Query("condition") String condition,
             @Query("pageNum") int pageNum,
             @Query("pageSize") int pageSize);
 
-    @GET(Urls.store_list)
-    Observable<Box<ListContent<Store>>> store_list(
+    @GET(Urls.store_category)
+    Observable<Box<ListContent<Store>>> store_category(
             @Query("categoryId") String categoryId,
             @Query("pageNum") int pageNum,
             @Query("pageSize") int pageSize);
 
-    @GET(Urls.store_listByRegion)
-    Observable<Box<ListContent<Store>>> store_listByRegion(
-            @Query("categoryId") String categoryId,
-            @Query("regionId") String regionId,
+    @GET(Urls.store_poi)
+    Observable<Box<List<Store>>> store_poi(
+            @Query("poiIds") String poiIds);
+
+    @GET(Urls.store_region)
+    Observable<Box<ListContent<Store>>> store_region(
+            @Body Body1 body,
             @Query("pageNum") int pageNum,
             @Query("pageSize") int pageSize);
 
 
+    class Body1 {
+
+        private String categoryId;
+        private int highLat;
+        private int highLng;
+        private int lowLat;
+        private int lowLng;
+
+        public void setCategoryId(String categoryId) {
+            this.categoryId = categoryId;
+        }
+
+        public String getCategoryId() {
+            return categoryId;
+        }
+
+        public void setHighLat(int highLat) {
+            this.highLat = highLat;
+        }
+
+        public int getHighLat() {
+            return highLat;
+        }
+
+        public void setHighLng(int highLng) {
+            this.highLng = highLng;
+        }
+
+        public int getHighLng() {
+            return highLng;
+        }
+
+        public void setLowLat(int lowLat) {
+            this.lowLat = lowLat;
+        }
+
+        public int getLowLat() {
+            return lowLat;
+        }
+
+        public void setLowLng(int lowLng) {
+            this.lowLng = lowLng;
+        }
+
+        public int getLowLng() {
+            return lowLng;
+        }
+
+    }
 }

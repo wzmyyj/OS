@@ -1,20 +1,17 @@
 package com.osmeet.os.model.net.service;
 
-import com.osmeet.os.app.bean.MatchInvite2;
 import com.osmeet.os.app.bean.MatchInvite;
+import com.osmeet.os.app.bean.MatchInvite2;
 import com.osmeet.os.app.bean.MatchTeam;
 import com.osmeet.os.app.bean.MatchUnit;
 import com.osmeet.os.model.net.utils.Urls;
 import com.osmeet.os.model.net.utils.box.Box;
-import com.osmeet.os.model.net.utils.box.ConditionBody;
 import com.osmeet.os.model.net.utils.box.ListContent;
 
 import java.util.List;
 
 import io.reactivex.Observable;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
@@ -34,14 +31,7 @@ public interface MatchService {
             @Query("unitId") String unitId,
             @Query("wantTime") long wantTime);
 
-    @POST(Urls.matchUnit_getMatchsInAllStore)
-    Observable<Box<List<MatchUnit>>> matchUnit_getMatchsInAllStore(
-            @Body ConditionBody condition);
 
-    @POST(Urls.matchUnit_getMatchsInStore)
-    Observable<Box<List<MatchUnit>>> matchUnit_getMatchsInStore(
-            @Query("storeId") String storeId,
-            @Body ConditionBody condition);
 
     @GET(Urls.matchUnit_goToMatchInStore)
     Observable<Box<MatchUnit>> matchUnit_goToMatchInStore(

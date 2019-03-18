@@ -57,9 +57,9 @@ public class WalletPresenter extends BasePresenter<WalletContract.IView> impleme
         };
 
         if (mode == 0) {
-            balanceModel.balance(pObserver);
+            balanceModel.user_balance(pObserver);
         } else {
-            balanceModel.balance_store(pObserver, storeId);
+//            balanceModel.balance_store(pObserver, storeId);
         }
 
     }
@@ -79,9 +79,9 @@ public class WalletPresenter extends BasePresenter<WalletContract.IView> impleme
             }
         };
         if (mode == 0) {
-            balanceModel.balance_getRecord(pObserver, pageNum, 100);
+            balanceModel.user_balance_getRecord(pObserver, pageNum, 100);
         } else {
-            balanceModel.balance_store_getRecord(pObserver, storeId, pageNum, 100);
+//            balanceModel.balance_store_getRecord(pObserver, storeId, pageNum, 100);
         }
 
     }
@@ -101,9 +101,9 @@ public class WalletPresenter extends BasePresenter<WalletContract.IView> impleme
             }
         };
         if (mode == 0) {
-            balanceModel.balance_tx(pObserver, App.getInstance().getMyInfo().getId(), account, amount, 1);
+            balanceModel.user_balance_tx(pObserver, App.getInstance().getMyInfo().getId(), account, amount, 1);
         } else {
-            balanceModel.balance_store_tx(pObserver, storeId, account, amount, 1);
+//            balanceModel.balance_store_tx(pObserver, storeId, account, amount, 1);
         }
 
     }

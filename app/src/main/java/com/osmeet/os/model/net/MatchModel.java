@@ -9,7 +9,6 @@ import com.osmeet.os.base.model.BaseModel;
 import com.osmeet.os.model.net.service.MatchService;
 import com.osmeet.os.model.net.utils.ReOk;
 import com.osmeet.os.model.net.utils.box.Box;
-import com.osmeet.os.model.net.utils.box.ConditionBody;
 import com.osmeet.os.model.net.utils.box.ListContent;
 
 import java.util.List;
@@ -37,14 +36,9 @@ public class MatchModel extends BaseModel {
         io2main(observable, observer);
     }
 
-    public void matchUnit_getMatchsInAllStore(Observer<Box<List<MatchUnit>>> observer, ConditionBody condition) {
-        Observable<Box<List<MatchUnit>>> observable = getService().matchUnit_getMatchsInAllStore(condition);
-        io2main(observable, observer);
-    }
 
-    public void matchUnit_getMatchsInStore(Observer<Box<List<MatchUnit>>> observer, String storeId, ConditionBody condition) {
-        Observable<Box<List<MatchUnit>>> observable = getService().matchUnit_getMatchsInStore(storeId, condition);
-        io2main(observable, observer);
+    public void matchUnit_getMatchsInStore(Observer<Box<List<MatchUnit>>> observer, String storeId) {
+
     }
 
 

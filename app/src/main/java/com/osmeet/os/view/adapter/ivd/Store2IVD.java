@@ -12,9 +12,6 @@ import com.osmeet.os.app.tools.G;
 import com.osmeet.os.base.adapter.BaseIVD;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import top.wzmyyj.wzm_sdk.utils.DensityUtil;
 import top.wzmyyj.wzm_sdk.utils.MockUtil;
 import top.wzmyyj.wzm_sdk.utils.WidgetUtil;
@@ -67,24 +64,5 @@ public class Store2IVD extends BaseIVD<Store> {
         WidgetUtil.setTextNonNull(tv_store_name, store.getName());
         WidgetUtil.setTextNumber(tv_store_os_num, store.getMatchUnitCount());
 
-        List<String> avatarUrls = store.getAvatarUrls();
-        if (avatarUrls == null) return;
-        // 4个头像。
-        List<ImageView> imageViews = new ArrayList<>();
-        imageViews.add(holder.getView(R.id.img_u_1));
-        imageViews.add(holder.getView(R.id.img_u_2));
-        imageViews.add(holder.getView(R.id.img_u_3));
-        imageViews.add(holder.getView(R.id.img_u_4));
-
-        int size = avatarUrls.size();
-        for (int i = 0; i < 4; i++) {
-            if (i < size) {
-                imageViews.get(i).setVisibility(View.VISIBLE);
-                G.img(context, avatarUrls.get(i), imageViews.get(i));
-            } else {
-                imageViews.get(i).setVisibility(View.GONE);
-            }
-
-        }
     }
 }

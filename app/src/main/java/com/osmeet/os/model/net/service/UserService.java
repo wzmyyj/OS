@@ -6,10 +6,7 @@ import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.bean.WechatInfo;
 import com.osmeet.os.model.net.utils.Urls;
 import com.osmeet.os.model.net.utils.box.Box;
-import com.osmeet.os.model.net.utils.box.ConditionBody;
 import com.osmeet.os.model.net.utils.box.ListContent;
-
-import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
@@ -32,10 +29,6 @@ public interface UserService {
     Observable<Box<User>> user_bindWechat(
             @Body WechatInfo info);
 
-    @POST(Urls.user_consummateInfo)
-    Observable<Box<User>> user_consummateInfo(
-            @Body User user);//不用了。
-
     @POST(Urls.user_consummateInfoNoPass)
     Observable<Box<User>> user_consummateInfoNoPass(
             @Body User user);
@@ -45,16 +38,9 @@ public interface UserService {
             @Query("zoneCode") String zoneCode,
             @Query("phone") String phone);
 
-    @POST(Urls.user_findByCondition)
-    Observable<Box<User>> user_findByCondition(
-            @Body User user);
-
     @POST(Urls.user_getRyToken)
     Observable<Box<RcToken>> user_getRyToken();
 
-    @POST(Urls.user_getUserList)
-    Observable<Box<List<User>>> user_getUserList(
-            @Body ConditionBody body);
 
     @GET(Urls.user_info)
     Observable<Box<User>> user_info(
@@ -116,11 +102,6 @@ public interface UserService {
             @Query("zoneCode") String zoneCode,
             @Query("phone") String phone);
 
-    @POST(Urls.user_sendCode0000)
-    Observable<Box<String>> user_sendCode0000(
-            @Query("zoneCode") String zoneCode,
-            @Query("phone") String phone);
-
     @POST(Urls.user_unbindWechat)
     Observable<Box<User>> user_unbindWechat();
 
@@ -136,10 +117,6 @@ public interface UserService {
     @POST(Urls.user_updateAvatar)
     Observable<Box<String>> user_updateAvatar(
             @Query("fileId") String fileId);
-
-    @POST(Urls.user_updateDisplayImages)
-    Observable<Box<String>> user_updateDisplayImages(
-            @Query("fileIds") String fileIds);
 
     @POST(Urls.user_updatePassword)
     Observable<Box<String>> user_updatePassword(

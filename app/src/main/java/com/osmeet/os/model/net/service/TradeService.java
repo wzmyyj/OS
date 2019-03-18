@@ -22,11 +22,6 @@ public interface TradeService {
             @Query("_requestData") String _requestData,
             @Query("_timestamp") long _timestamp);
 
-    @POST(Urls.trade_fundToAccount)
-    Observable<Box<String>> trade_fundToAccount(
-            @Query("_requestData") String _requestData,
-            @Query("_timestamp") long _timestamp);
-
     @POST(Urls.trade_pay)
     Observable<Box<String>> trade_pay(
             @Query("_requestData") String _requestData,

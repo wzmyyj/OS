@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
-import com.osmeet.os.app.application.App;
 import com.osmeet.os.app.bean.MatchUnit;
 import com.osmeet.os.app.bean.Store;
 import com.osmeet.os.base.presenter.BasePresenter;
@@ -12,7 +11,6 @@ import com.osmeet.os.contract.StoreContract;
 import com.osmeet.os.model.net.MatchModel;
 import com.osmeet.os.model.net.StoreModel;
 import com.osmeet.os.model.net.utils.box.Box;
-import com.osmeet.os.model.net.utils.box.ConditionBody;
 
 import java.util.List;
 
@@ -74,12 +72,7 @@ public class StorePresenter extends BasePresenter<StoreContract.IView> implement
                     mView.showMatchUnitList(box.getData());
                 }
             }
-        }, storeId, new ConditionBody(
-                App.getInstance().getSetting().getOsDistance(),
-                App.getInstance().getSetting().getOsMaxAge(),
-                App.getInstance().getSetting().getOsMinAge(),
-                App.getInstance().getSetting().getOsSex()
-        ));
+        }, storeId);
     }
 
 }

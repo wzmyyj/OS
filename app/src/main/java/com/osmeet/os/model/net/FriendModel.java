@@ -82,10 +82,6 @@ public class FriendModel extends BaseModel {
         io2main(observable, observer);
     }
 
-    public void friends_meRead(Observer<Box<String>> observer) {
-        Observable<Box<String>> observable = getService().friends_meRead();
-        io2main(observable, observer);
-    }
 
     public void friends_page(Observer<Box<ListContent<User>>> observer, int pageNum, int pageSize) {
         Observable<Box<ListContent<User>>> observable = getService().friends_page(pageNum, pageSize);

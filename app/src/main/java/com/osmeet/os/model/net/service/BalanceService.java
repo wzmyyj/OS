@@ -17,31 +17,17 @@ import retrofit2.http.Query;
 
 public interface BalanceService {
 
-    @GET(Urls.balance)
-    Observable<Box<Balance>> balance();
+    @GET(Urls.user_balance)
+    Observable<Box<Balance>> user_balance();
 
-    @GET(Urls.balance_getRecord)
-    Observable<Box<ListContent<Record>>> balance_getRecord(
+    @GET(Urls.user_balance_getRecord)
+    Observable<Box<ListContent<Record>>> user_balance_getRecord(
             @Query("pageNum") int pageNum,
             @Query("pageSize") int pageSize);
 
-    @POST(Urls.balance_tx)
-    Observable<Box<String>> balance_tx(
+    @POST(Urls.trade_tx)
+    Observable<Box<String>> trade_tx(
             @Query("_requestData") String _requestData,
             @Query("_timestamp") long _timestamp);
 
-    @GET(Urls.balance_store)
-    Observable<Box<Balance>> balance_store(
-            @Query("storeId") String storeId);
-
-    @GET(Urls.balance_store_getRecord)
-    Observable<Box<ListContent<Record>>> balance_store_getRecord(
-            @Query("storeId") String storeId,
-            @Query("pageNum") int pageNum,
-            @Query("pageSize") int pageSize);
-
-    @POST(Urls.balance_store_tx)
-    Observable<Box<String>> balance_store_tx(
-            @Query("_requestData") String _requestData,
-            @Query("_timestamp") long _timestamp);
 }

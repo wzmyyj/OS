@@ -11,7 +11,6 @@ import com.osmeet.os.contract.SearchContract;
 import com.osmeet.os.model.net.StoreModel;
 import com.osmeet.os.model.net.UserModel;
 import com.osmeet.os.model.net.utils.box.Box;
-import com.osmeet.os.model.net.utils.box.ConditionBody;
 import com.osmeet.os.model.net.utils.box.ListContent;
 
 /**
@@ -47,7 +46,7 @@ public class SearchPresenter extends BasePresenter<SearchContract.IView> impleme
 
     @Override
     public void searchStore(@NonNull final String word, final int pageNum) {
-        storeModel.store_findByCondition(new PObserver<Box<ListContent<Store>>>() {
+        storeModel.store_searchStore(new PObserver<Box<ListContent<Store>>>() {
             @Override
             public void onNext(Box<ListContent<Store>> box) {
                 if (box.getCode() != 0) {
@@ -58,6 +57,6 @@ public class SearchPresenter extends BasePresenter<SearchContract.IView> impleme
                     mView.showSearchStoreResult(box.getData().getContent(), word, pageNum);
                 }
             }
-        }, new ConditionBody(word), pageNum, 20);
+        }, word, pageNum, 20);
     }
 }

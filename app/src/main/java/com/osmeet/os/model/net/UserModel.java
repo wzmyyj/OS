@@ -1,22 +1,17 @@
 package com.osmeet.os.model.net;
 
-import android.text.TextUtils;
-
 import com.osmeet.os.app.bean.RcToken;
 import com.osmeet.os.app.bean.Token;
 import com.osmeet.os.app.bean.User;
 import com.osmeet.os.app.bean.WechatInfo;
-import com.osmeet.os.app.java.StringUtil;
 import com.osmeet.os.base.model.BaseModel;
 import com.osmeet.os.model.net.service.FileService;
 import com.osmeet.os.model.net.service.UserService;
 import com.osmeet.os.model.net.utils.ReOk;
 import com.osmeet.os.model.net.utils.box.Box;
-import com.osmeet.os.model.net.utils.box.ConditionBody;
 import com.osmeet.os.model.net.utils.box.ListContent;
 
 import java.io.File;
-import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -30,7 +25,7 @@ import okhttp3.RequestBody;
  * 建议用模板生成代码。
  */
 
-public class UserModel extends BaseModel{
+public class UserModel extends BaseModel {
 
     private UserService getService() {
         return ReOk.bind().create(UserService.class);
@@ -47,11 +42,6 @@ public class UserModel extends BaseModel{
         io2main(observable, observer);
     }
 
-    public void user_consummateInfo(Observer<Box<User>> observer, User user) {
-        Observable<Box<User>> observable = getService().user_consummateInfo(user);
-        io2main(observable, observer);
-    }
-
     public void user_consummateInfoNoPass(Observer<Box<User>> observer, User user) {
         Observable<Box<User>> observable = getService().user_consummateInfoNoPass(user);
         io2main(observable, observer);
@@ -62,18 +52,9 @@ public class UserModel extends BaseModel{
         io2main(observable, observer);
     }
 
-    public void user_findByCondition(Observer<Box<User>> observer, User user) {
-        Observable<Box<User>> observable = getService().user_findByCondition(user);
-        io2main(observable, observer);
-    }
 
     public void user_getRyToken(Observer<Box<RcToken>> observer) {
         Observable<Box<RcToken>> observable = getService().user_getRyToken();
-        io2main(observable, observer);
-    }
-
-    public void user_getUserList(Observer<Box<List<User>>> observer, ConditionBody body) {
-        Observable<Box<List<User>>> observable = getService().user_getUserList(body);
         io2main(observable, observer);
     }
 
@@ -127,11 +108,6 @@ public class UserModel extends BaseModel{
         io2main(observable, observer);
     }
 
-    public void user_sendCode0000(Observer<Box<String>> observer, String zoneCode, String phone) {
-        Observable<Box<String>> observable = getService().user_sendCode0000(zoneCode, phone);
-        io2main(observable, observer);
-    }
-
     public void user_unbindWechat(Observer<Box<User>> observer) {
         Observable<Box<User>> observable = getService().user_unbindWechat();
         io2main(observable, observer);
@@ -156,52 +132,6 @@ public class UserModel extends BaseModel{
         io2main(observable, observer);
     }
 
-//    public void user_updateAvatar(Observer<Box<String>> observer, String fileId) {
-//        Observable<Box<String>> observable = getService().user_updateAvatar(fileId);
-//        io2main(observable, observer);
-//    }
-
-    public void user_updateDisplayImages(Observer<Box<String>> observer, final String[] fileIds, String[] paths) {
-        MultipartBody.Builder builder = new MultipartBody.Builder();
-        final boolean[] isUpload = new boolean[6];
-        boolean isPathsAllEmpty = true;
-        for (int i = 0; i < 6; i++) {
-            if (TextUtils.isEmpty(paths[i])) {
-                isUpload[i] = false;
-                continue;
-            } else {
-                isUpload[i] = true;
-            }
-            isPathsAllEmpty = false;
-            File file = new File(paths[i]);
-            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-            builder.addFormDataPart("files", "image.jpg", requestFile);
-        }
-        if (isPathsAllEmpty) {
-            String str = StringUtil.str(fileIds, ",");
-            Observable<Box<String>> observable = getService().user_updateDisplayImages(str);
-            io2main(observable, observer);
-            return;
-        }
-        List<MultipartBody.Part> parts = builder.build().parts();
-        Observable<Box<String>> observable = ReOk.bind().create(FileService.class)
-                .file_uploadList(parts).map(box -> {
-                    for (int i = 0, j = 0; i < 6; i++) {
-                        if (isUpload[i] && j < box.getData().size()) {
-                            fileIds[i] = box.getData().get(j).getId();
-                            j++;
-                        }
-                    }
-                    String str = StringUtil.str(fileIds, ",");
-                    return getService().user_updateDisplayImages(str).blockingLast();
-                });
-        io2main(observable, observer);
-    }
-
-//    public void user_updateDisplayImages(Observer<Box<String>> observer, String fileIds) {
-//        Observable<Box<String>> observable = getService().user_updateDisplayImages(fileIds);
-//        io2main(observable, observer);
-//    }
 
     public void user_updatePassword(Observer<Box<String>> observer, String password) {
         Observable<Box<String>> observable = getService().user_updatePassword(password);

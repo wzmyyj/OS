@@ -30,14 +30,6 @@ public class TradeModel extends BaseModel {
         io2main(observable, observer);
     }
 
-    public void trade_fundToAccount(Observer<Box<String>> observer, String userId, String tradeId) {
-        String requestData = userId + "," + tradeId;
-        String _requestData = RSA.encrypt(requestData);
-        long _timestamp = TimeUtil.getTime();
-        Observable<Box<String>> observable = getService().trade_fundToAccount(_requestData, _timestamp);
-        io2main(observable, observer);
-    }
-
     public void trade_pay(Observer<Box<String>> observer, String userId, String tradeId) {
         String requestData = userId + "," + tradeId;
         String _requestData = RSA.encrypt(requestData);
